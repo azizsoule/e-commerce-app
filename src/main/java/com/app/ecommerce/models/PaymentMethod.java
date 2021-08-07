@@ -16,7 +16,7 @@ public class PaymentMethod {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idPaymentType;
+    private Long idPaymentMethod;
 
     private String label;
 
@@ -25,7 +25,7 @@ public class PaymentMethod {
     private String provider;
 
     @OneToMany(mappedBy = "paymentMethod")
-    private List<PaymentDetails> paymentDetails;
+    private List<PaymentDetail> paymentDetails;
 
     @OneToMany(mappedBy = "paymentMethod")
     private List<UserPaymentMethod> userPaymentMethods;

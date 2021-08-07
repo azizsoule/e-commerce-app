@@ -55,4 +55,7 @@ public class User {
     @JoinColumn(name = "discount_id_discount")
     private Discount discount;
 
+    @OneToMany(mappedBy = "user", orphanRemoval = true)
+    private Set<Order> orders;
+
 }

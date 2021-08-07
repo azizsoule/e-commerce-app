@@ -7,16 +7,16 @@ import lombok.Setter;
 import javax.persistence.*;
 import java.util.Date;
 
-@Table(name = "payment_details")
+@Table(name = "payment_detail")
 @Entity
 @NoArgsConstructor
 @Getter
 @Setter
-public class PaymentDetails {
+public class PaymentDetail {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idPaymentDetails;
+    private Long idPaymentDetail;
 
     private String reference;
 
@@ -26,8 +26,11 @@ public class PaymentDetails {
 
     private Date createdAt;
 
+    @OneToOne(optional = false, mappedBy = "paymentDetail")
+    private Order order;
+
     @ManyToOne
-    @JoinColumn(name = "payment_method_id_payment_type")
+    @JoinColumn(name = "payment_method_id_payment_method")
     private PaymentMethod paymentMethod;
 
 }
