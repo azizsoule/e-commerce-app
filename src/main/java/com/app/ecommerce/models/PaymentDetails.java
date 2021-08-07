@@ -7,31 +7,23 @@ import lombok.Setter;
 import javax.persistence.*;
 import java.util.Date;
 
-@Table(name = "user")
+@Table(name = "payment_details")
 @Entity
 @NoArgsConstructor
 @Getter
 @Setter
-public class User {
+public class PaymentDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idUser;
+    private Long idPaymentDetails;
 
-    private String username;
+    private String reference;
 
-    private String password;
+    private float amount;
 
-    private String firstName;
-
-    private String lastName;
-
-    private String phoneNumber;
-
-    private String email;
+    private String status;
 
     private Date createdAt;
-
-    private boolean blocked;
 
 }

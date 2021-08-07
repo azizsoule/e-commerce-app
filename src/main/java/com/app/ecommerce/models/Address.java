@@ -5,33 +5,22 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.Date;
 
-@Table(name = "user")
+@Table(name = "address")
 @Entity
 @NoArgsConstructor
 @Getter
 @Setter
-public class User {
+public class Address {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idUser;
-
-    private String username;
-
-    private String password;
+    private Long idAddress;
 
     private String firstName;
 
     private String lastName;
 
-    private String phoneNumber;
-
-    private String email;
-
-    private Date createdAt;
-
-    private boolean blocked;
+    private String label;
 
 }
