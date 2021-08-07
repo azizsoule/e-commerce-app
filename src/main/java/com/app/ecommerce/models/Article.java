@@ -31,4 +31,17 @@ public class Article {
     @OneToMany(mappedBy = "article")
     private Set<Comment> comments;
 
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "inventory_id_inventory")
+    private Inventory inventory;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "sub_category_id_sub_category")
+    private SubCategory subCategory;
+
+    @ManyToMany(mappedBy = "articles")
+    private Set<Discount> discounts;
+
+
+
 }

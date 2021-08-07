@@ -51,4 +51,8 @@ public class User {
     @OneToMany(mappedBy = "user")
     private Set<Comment> comments;
 
+    @ManyToOne
+    @JoinColumn(name = "discount_id_discount")
+    private Discount discount;
+
 }
