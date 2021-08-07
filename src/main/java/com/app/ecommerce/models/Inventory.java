@@ -18,7 +18,7 @@ public class Inventory {
 
     private int quantity;
 
-    @OneToOne(mappedBy = "inventory", optional = false, orphanRemoval = true)
+    @OneToOne(mappedBy = "inventory", optional = false)
     private Article article;
 
 }
