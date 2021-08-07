@@ -51,8 +51,6 @@ public class User {
     @OneToMany(mappedBy = "user")
     private Set<Comment> comments;
 
-
-
     @OneToMany(mappedBy = "user", orphanRemoval = true)
     private Set<Order> orders;
 
