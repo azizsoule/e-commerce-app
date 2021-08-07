@@ -22,6 +22,8 @@ public class PaymentMethod {
 
     private boolean available;
 
+    private String provider;
+
     @OneToMany(mappedBy = "paymentMethod")
     private List<PaymentDetails> paymentDetails;
 

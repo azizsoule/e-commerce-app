@@ -5,7 +5,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.List;
+import java.util.Set;
 
 @Table(name = "region")
 @Entity
@@ -21,6 +21,6 @@ public class Region {
     private String label;
 
     @OneToMany(mappedBy = "region")
-    private List<City> cities;
+    private Set<City> cities;
 
 }

@@ -6,7 +6,6 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.Date;
-import java.util.List;
 import java.util.Set;
 
 @Table(name = "user")
@@ -50,6 +49,6 @@ public class User {
     private Set<CartItem> cartItems;
 
     @OneToMany(mappedBy = "user")
-    private List<Comment> comments;
+    private Set<Comment> comments;
 
 }
