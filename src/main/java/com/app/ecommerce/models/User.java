@@ -6,6 +6,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.Set;
 
 @Table(name = "user")
 @Entity
@@ -33,5 +34,9 @@ public class User {
     private Date createdAt;
 
     private boolean blocked;
+
+    @ManyToOne
+    @JoinColumn(name = "discount_id_discount")
+    private Discount discount;
 
 }

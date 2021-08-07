@@ -5,6 +5,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Table(name = "article")
 @Entity
@@ -26,5 +27,18 @@ public class Article {
     private String sku;
 
     private float price;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "inventory_id_inventory")
+    private Inventory inventory;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "sub_category_id_sub_category")
+    private SubCategory subCategory;
+
+    @ManyToMany(mappedBy = "articles")
+    private Set<Discount> discounts;
+
+
 
 }

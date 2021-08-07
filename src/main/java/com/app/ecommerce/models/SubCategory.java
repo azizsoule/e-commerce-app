@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Table(name = "sub_category")
 @Entity
@@ -19,5 +20,8 @@ public class SubCategory {
 
     @ManyToOne
     private Category category;
+
+    @OneToMany(mappedBy = "subCategory", cascade = CascadeType.ALL)
+    private Set<Article> articles;
 
 }

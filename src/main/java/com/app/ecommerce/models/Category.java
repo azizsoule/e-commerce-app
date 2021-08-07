@@ -3,7 +3,6 @@ package com.app.ecommerce.models;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.extern.apachecommons.CommonsLog;
 
 import javax.persistence.*;
 import java.util.Set;
