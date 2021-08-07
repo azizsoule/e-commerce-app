@@ -6,6 +6,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.Set;
 
 @Table(name = "order")
 @Entity
@@ -31,6 +32,9 @@ public class Order {
     @ManyToOne
     @JoinColumn(name = "order_state_code_order")
     private OrderState orderState;
+
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
+    private Set<OrderItem> orderItems;
 
     private Date createdAt;
 
