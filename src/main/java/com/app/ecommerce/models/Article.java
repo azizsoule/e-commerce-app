@@ -42,6 +42,10 @@ public class Article {
     @ManyToMany(mappedBy = "articles")
     private Set<Discount> discounts;
 
+    @OneToOne(mappedBy = "article")
+    private CartItem cartItem;
 
+    @OneToOne(mappedBy = "article")
+    private OrderItem orderItem;
 
 }
