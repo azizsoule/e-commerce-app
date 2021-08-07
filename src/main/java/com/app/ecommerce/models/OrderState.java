@@ -15,8 +15,8 @@ import java.util.Set;
 public class OrderState {
 
     @Id
-    @Column(name = "code_order", nullable = false)
-    private String codeOrder;
+    @Column(name = "code_order_state", nullable = false, length = 30)
+    private String codeOrderState;
 
     @Column(length = 20)
     private String label;

@@ -19,7 +19,6 @@ public class OrderItem extends Item {
     private Article article;
 
     @ManyToOne
-    @JoinColumn(name = "order_id_order")
     private Order order;
 
 }

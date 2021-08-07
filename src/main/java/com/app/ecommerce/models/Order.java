@@ -8,7 +8,7 @@ import javax.persistence.*;
 import java.util.Date;
 import java.util.Set;
 
-@Table(name = "order")
+@Table(name = "order_detail")
 @Entity
 @NoArgsConstructor
 @Getter
@@ -19,18 +19,17 @@ public class Order {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idOrder;
 
-    @ManyToOne
-    @JoinColumn(name = "user_id_user")
-    private User user;
-
     private float total;
+
+    @ManyToOne
+    private User user;
 
     @OneToOne(cascade = CascadeType.ALL, optional = false, orphanRemoval = true)
     @JoinColumn(name = "payment_detail_id_payment_detail", nullable = false)
     private PaymentDetail paymentDetail;
 
     @ManyToOne
-    @JoinColumn(name = "order_state_code_order")
+    @JoinColumn(name = "code_order_state")
     private OrderState orderState;
 
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)

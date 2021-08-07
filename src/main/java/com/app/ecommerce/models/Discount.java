@@ -43,11 +43,16 @@ public class Discount {
     @ManyToMany
     private Set<Article> articles;
 
-    @OneToMany(mappedBy = "discount")
+    @ManyToMany
+    @JoinTable(name = "discount_user",
+            joinColumns = @JoinColumn(name = "discount_id"),
+            inverseJoinColumns = @JoinColumn(name = "user_id"))
     private Set<User> users;
+
 
     @PrePersist
     public void prePersist() {
         createdAt = new Date();
     }
+
 }
