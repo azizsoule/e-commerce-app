@@ -23,4 +23,12 @@ public class Comment {
 
     private boolean blocked;
 
+    @ManyToOne
+    @JoinColumn(name = "article_id_article")
+    private Article article;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id_user")
+    private User user;
+
 }

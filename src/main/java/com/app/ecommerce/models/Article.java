@@ -19,7 +19,7 @@ public class Article {
     private Long idArticle;
 
     @Column(length = 50)
-    private String name;
+    private String label;
 
     private String description;
 
@@ -27,6 +27,9 @@ public class Article {
     private String sku;
 
     private float price;
+
+    @OneToMany(mappedBy = "article")
+    private Set<Comment> comments;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "inventory_id_inventory")

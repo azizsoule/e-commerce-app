@@ -5,18 +5,25 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.Date;
+import java.util.Set;
 
-@Table(name = "user_payment")
+@Table(name = "user_group")
 @Entity
 @NoArgsConstructor
 @Getter
 @Setter
-public class UserPayment {
+public class UserGroup {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idUserPayment;
+    private Long idUserGroup;
 
+    private String label;
 
+    private Date createdAt;
+
+    @OneToMany(mappedBy = "userGroup")
+    private Set<User> users;
 
 }

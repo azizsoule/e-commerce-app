@@ -23,4 +23,12 @@ public class Address {
 
     private String label;
 
+    @ManyToOne
+    @JoinColumn(name = "city_id_city")
+    private City city;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id_user")
+    private User user;
+
 }

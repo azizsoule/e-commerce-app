@@ -6,6 +6,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 import java.util.Set;
 
 @Table(name = "user")
@@ -34,6 +35,22 @@ public class User {
     private Date createdAt;
 
     private boolean blocked;
+
+    @OneToMany(mappedBy = "user")
+    private Set<Address> addresses;
+
+    @OneToMany(mappedBy = "user")
+    private Set<UserPaymentMethod> userPaymentMethods;
+
+    @ManyToOne
+    @JoinColumn(name = "user_group_id_user_group")
+    private UserGroup userGroup;
+
+    @OneToMany(mappedBy = "user")
+    private Set<CartItem> cartItems;
+
+    @OneToMany(mappedBy = "user")
+    private List<Comment> comments;
 
     @ManyToOne
     @JoinColumn(name = "discount_id_discount")
