@@ -5,6 +5,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Table(name = "article")
 @Entity
@@ -18,7 +19,7 @@ public class Article {
     private Long idArticle;
 
     @Column(length = 50)
-    private String name;
+    private String label;
 
     private String description;
 
@@ -26,5 +27,8 @@ public class Article {
     private String sku;
 
     private float price;
+
+    @OneToMany(mappedBy = "article")
+    private Set<Comment> comments;
 
 }

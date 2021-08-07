@@ -26,4 +26,8 @@ public class PaymentDetails {
 
     private Date createdAt;
 
+    @ManyToOne
+    @JoinColumn(name = "payment_method_id_payment_type")
+    private PaymentMethod paymentMethod;
+
 }
