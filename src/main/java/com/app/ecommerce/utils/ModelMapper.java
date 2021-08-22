@@ -5,8 +5,6 @@ import org.mapstruct.Mapper;
 import org.mapstruct.MappingTarget;
 import org.mapstruct.NullValuePropertyMappingStrategy;
 
-import javax.persistence.Entity;
-
 @Mapper(componentModel = "spring")
 public interface ModelMapper<D,E> {
 
