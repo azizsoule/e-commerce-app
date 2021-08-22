@@ -28,6 +28,10 @@ public class Article {
 
     private float price;
 
+    private int nbrComment;
+
+    private int ratingSum;
+
     @OneToMany(mappedBy = "article")
     private Set<Comment> comments;
 
