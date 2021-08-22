@@ -10,16 +10,22 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 @Controller
 public class ArticleController {
+
     private static final String URI="/";
+
     private static final String LIST_VIEW="home";
+
     private static final String VIEW="product";
+
     @Autowired
     private ArticleService service;
+
     @GetMapping(URI)
     public String getArticles(Model model){
         model.addAttribute("articles", service.findAll());
         return LIST_VIEW;
     }
+
     @GetMapping(URI+"/{id}")
     public String getArticle(@PathVariable(name = "id") Long idArticle, Model model){
         model.addAttribute("article", service.findById(idArticle));

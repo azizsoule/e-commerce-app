@@ -6,20 +6,27 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class ArticleService {
+
     @Autowired
     private ArticleRepository repository;
     
     public Article findById(long idArticle){
-        return repository.getOne(idArticle);
+        return repository.getById(idArticle);
     }
+
     public List<Article> findAll(){
         return repository.findAll();
     }
+
     public Article save(Article article){
         return repository.save(article);
     }
+
+    public void delete(long idArticle) {
+        repository.deleteById(idArticle);
+    }
+
 }
