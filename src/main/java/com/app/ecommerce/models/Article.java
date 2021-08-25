@@ -32,6 +32,8 @@ public class Article {
 
     private int ratingSum;
 
+    private String image;
+
     @OneToMany(mappedBy = "article")
     private Set<Comment> comments;
 

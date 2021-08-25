@@ -1,4 +1,4 @@
-package com.app.ecommerce.models.utils;
+package com.app.ecommerce.models.supers;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -13,6 +13,8 @@ public class Item {
     private int quantity;
 
     private Date createdAt;
+
+    private String image;
 
     @PrePersist
     public void prePersist() {

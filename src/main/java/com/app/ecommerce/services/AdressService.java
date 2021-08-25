@@ -15,6 +15,7 @@ public class AdressService {
     @Autowired
     AddressRepository repository;
 
+    @Autowired
     ModelMapper<AddressDTO, Address> mapper;
 
     Address findById(long idAddress) {

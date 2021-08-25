@@ -24,6 +24,8 @@ public class PaymentMethod {
 
     private String provider;
 
+    private String image;
+
     @OneToMany(mappedBy = "paymentMethod")
     private List<PaymentDetail> paymentDetails;
 

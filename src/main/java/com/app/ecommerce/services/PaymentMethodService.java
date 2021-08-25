@@ -1,7 +1,9 @@
 package com.app.ecommerce.services;
 
+import com.app.ecommerce.dtos.PaymentMethodDTO;
 import com.app.ecommerce.models.PaymentMethod;
 import com.app.ecommerce.repositories.PaymentMethodRepository;
+import com.app.ecommerce.utils.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,6 +14,9 @@ public class PaymentMethodService {
 
     @Autowired
     PaymentMethodRepository repository;
+
+    @Autowired
+    ModelMapper<PaymentMethodDTO, PaymentMethod> mapper;
 
     PaymentMethod findById(long idPaymentMethod) {
         return repository.getById(idPaymentMethod);

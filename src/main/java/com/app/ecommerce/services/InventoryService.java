@@ -1,7 +1,9 @@
 package com.app.ecommerce.services;
 
+import com.app.ecommerce.dtos.InventoryDTO;
 import com.app.ecommerce.models.Inventory;
 import com.app.ecommerce.repositories.InventoryRepository;
+import com.app.ecommerce.utils.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,6 +14,9 @@ public class InventoryService {
 
     @Autowired
     InventoryRepository repository;
+
+    @Autowired
+    ModelMapper<InventoryDTO, Inventory> mapper;
 
     Inventory findById(long idInventory) {
         return repository.getById(idInventory);

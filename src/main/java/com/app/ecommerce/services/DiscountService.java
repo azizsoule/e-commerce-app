@@ -1,7 +1,9 @@
 package com.app.ecommerce.services;
 
+import com.app.ecommerce.dtos.DiscountDTO;
 import com.app.ecommerce.models.Discount;
 import com.app.ecommerce.repositories.DiscountRepository;
+import com.app.ecommerce.utils.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,6 +14,9 @@ public class DiscountService {
 
     @Autowired
     DiscountRepository repository;
+
+    @Autowired
+    ModelMapper<DiscountDTO, Discount> mapper;
 
     Discount findById(long idDiscount) {
         return repository.getById(idDiscount);
