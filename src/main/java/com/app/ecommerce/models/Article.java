@@ -59,4 +59,7 @@ public class Article {
     @OneToOne(mappedBy = "article")
     private OrderItem orderItem;
 
+    @OneToOne(mappedBy = "article")
+    private WishItem wishItem;
+
 }
