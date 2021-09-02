@@ -1,39 +1,54 @@
 package com.app.ecommerce.services;
 
 import com.app.ecommerce.dtos.UserDTO;
-import com.app.ecommerce.dtos.UserPaymentMethodDTO;
 import com.app.ecommerce.models.User;
-import com.app.ecommerce.models.UserPaymentMethod;
 import com.app.ecommerce.repositories.UserRepository;
-import com.app.ecommerce.utils.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class UserService {
+public class UserService extends BaseService<UserDTO, Long> {
 
     @Autowired
-    UserRepository repository;
+    private UserRepository repository;
 
-    @Autowired
-    ModelMapper<UserDTO, User> mapper;
-
-    User findById(long idUser) {
-        return repository.getById(idUser);
+    @Override
+    public UserDTO findById(Long idUser) {
+        User user = repository.getById(idUser);
+        return modelMapper().map(user, UserDTO.class);
     }
 
-    List<User> findAll() {
-        return repository.findAll();
+    @Override
+    public List<UserDTO> findAll() {
+        List<User> users = repository.findAll();
+        List<UserDTO> userDTOS = new ArrayList<>();
+        users.forEach(user -> {
+            UserDTO userDTO = modelMapper().map(user, UserDTO.class);
+            userDTOS.add(userDTO);
+        });
+        return userDTOS;
     }
 
-    User save(User user) {
-        return repository.save(user);
+    @Override
+    public UserDTO save(UserDTO userDTO) {
+        User user = modelMapper().map(userDTO, User.class);
+        user = repository.save(user);
+        userDTO = modelMapper().map(user, UserDTO.class);
+        return userDTO;
     }
 
-    void delete(long idUser) {
+    @Override
+    public void deleteById(Long idUser) {
         repository.deleteById(idUser);
+    }
+
+    @Override
+    public void delete(UserDTO userDTO) {
+        User user = modelMapper().map(userDTO, User.class);
+        repository.delete(user);
     }
 
 }

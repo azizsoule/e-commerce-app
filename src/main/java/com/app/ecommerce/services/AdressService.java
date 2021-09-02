@@ -3,41 +3,51 @@ package com.app.ecommerce.services;
 import com.app.ecommerce.dtos.AddressDTO;
 import com.app.ecommerce.models.Address;
 import com.app.ecommerce.repositories.AddressRepository;
-import com.app.ecommerce.utils.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class AdressService {
+public class AdressService extends BaseService<AddressDTO, Long> {
 
     @Autowired
     AddressRepository repository;
 
-    @Autowired
-    ModelMapper<AddressDTO, Address> mapper;
-
-    Address findById(long idAddress) {
-        return repository.getById(idAddress);
+    @Override
+    public AddressDTO findById(Long aLong) {
+        Address address = repository.getById(aLong);
+        return modelMapper().map(address, AddressDTO.class);
     }
 
-    List<Address> findAll() {
-        return repository.findAll();
+    @Override
+    public List<AddressDTO> findAll() {
+        List<AddressDTO> addressDTOS = new ArrayList<>();
+        List<Address> addresses = repository.findAll();
+        addresses.forEach(address -> {
+            addressDTOS.add(modelMapper().map(address, AddressDTO.class));
+        });
+        return addressDTOS;
     }
 
-    Address save(Address address) {
-        return repository.save(address);
+    @Override
+    public AddressDTO save(AddressDTO addressDTO) {
+        Address address = modelMapper().map(addressDTO, Address.class);
+        address = repository.save(address);
+        addressDTO = modelMapper().map(address, AddressDTO.class);
+        return addressDTO;
     }
 
-    public void update(AddressDTO dto) {
-        Address address = this.findById(dto.getIdAddress());
-        mapper.updateModelFromDTO(dto, address);
-        repository.save(address);
+    @Override
+    public void deleteById(Long aLong) {
+        repository.deleteById(aLong);
     }
 
-    void delete(long idAddress) {
-        repository.deleteById(idAddress);
+    @Override
+    public void delete(AddressDTO addressDTO) {
+        Address address = modelMapper().map(addressDTO, Address.class);
+        repository.delete(address);
     }
 
 }

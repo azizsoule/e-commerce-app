@@ -3,35 +3,49 @@ package com.app.ecommerce.services;
 import com.app.ecommerce.dtos.CategoryDTO;
 import com.app.ecommerce.models.Category;
 import com.app.ecommerce.repositories.CategoryRepository;
-import com.app.ecommerce.utils.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class CategoryService {
+public class CategoryService extends BaseService<CategoryDTO, Long> {
 
     @Autowired
     CategoryRepository repository;
 
-    @Autowired
-    ModelMapper<CategoryDTO, Category> mapper;
-
-    Category findById(long idCategory) {
-        return repository.getById(idCategory);
+    @Override
+    public CategoryDTO findById(Long aLong) {
+        Category category = repository.getById(aLong);
+        return modelMapper().map(category, CategoryDTO.class);
     }
 
-    List<Category> findAll() {
-        return repository.findAll();
+    @Override
+    public List<CategoryDTO> findAll() {
+        List<CategoryDTO> categoryDTOS = new ArrayList<>();
+        List<Category> categories = repository.findAll();
+        categories.forEach(category -> {
+            categoryDTOS.add(modelMapper().map(category, CategoryDTO.class));
+        });
+        return categoryDTOS;
     }
 
-    Category save(Category category) {
-        return repository.save(category);
+    @Override
+    public CategoryDTO save(CategoryDTO categoryDTO) {
+        Category category = modelMapper().map(categoryDTO, Category.class);
+        category = repository.save(category);
+        return modelMapper().map(category, CategoryDTO.class);
     }
 
-    void delete(long idCategory) {
-        repository.deleteById(idCategory);
+    @Override
+    public void deleteById(Long aLong) {
+        repository.deleteById(aLong);
+    }
+
+    @Override
+    public void delete(CategoryDTO categoryDTO) {
+        repository.delete(modelMapper().map(categoryDTO, Category.class));
     }
 
 }

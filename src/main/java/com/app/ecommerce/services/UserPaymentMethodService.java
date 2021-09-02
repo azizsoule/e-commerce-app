@@ -3,35 +3,48 @@ package com.app.ecommerce.services;
 import com.app.ecommerce.dtos.UserPaymentMethodDTO;
 import com.app.ecommerce.models.UserPaymentMethod;
 import com.app.ecommerce.repositories.UserPaymentMethodRepository;
-import com.app.ecommerce.utils.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class UserPaymentMethodService {
+public class UserPaymentMethodService extends BaseService<UserPaymentMethodDTO, Long> {
 
     @Autowired
     UserPaymentMethodRepository repository;
 
-    @Autowired
-    ModelMapper<UserPaymentMethodDTO, UserPaymentMethod> mapper;
-
-    UserPaymentMethod findById(long idUserPaymentMethod) {
-        return repository.getById(idUserPaymentMethod);
+    @Override
+    public UserPaymentMethodDTO findById(Long aLong) {
+        UserPaymentMethod userPaymentMethod = repository.getById(aLong);
+        return modelMapper().map(userPaymentMethod, UserPaymentMethodDTO.class);
     }
 
-    List<UserPaymentMethod> findAll() {
-        return repository.findAll();
+    @Override
+    public List<UserPaymentMethodDTO> findAll() {
+        List<UserPaymentMethodDTO> userPaymentMethodDTOS = new ArrayList<>();
+        List<UserPaymentMethod> userPaymentMethods = repository.findAll();
+        userPaymentMethods.forEach(userPaymentMethod -> {
+            userPaymentMethodDTOS.add(modelMapper().map(userPaymentMethod, UserPaymentMethodDTO.class));
+        });
+        return userPaymentMethodDTOS;
     }
 
-    UserPaymentMethod save(UserPaymentMethod userPaymentMethod) {
-        return repository.save(userPaymentMethod);
+    @Override
+    public UserPaymentMethodDTO save(UserPaymentMethodDTO userPaymentMethodDTO) {
+        UserPaymentMethod userPaymentMethod = repository.save(modelMapper().map(userPaymentMethodDTO, UserPaymentMethod.class));
+        return modelMapper().map(userPaymentMethod, UserPaymentMethodDTO.class);
     }
 
-    void delete(long idUserPaymentMethod) {
-        repository.deleteById(idUserPaymentMethod);
+    @Override
+    public void deleteById(Long aLong) {
+        repository.deleteById(aLong);
+    }
+
+    @Override
+    public void delete(UserPaymentMethodDTO userPaymentMethodDTO) {
+        repository.delete(modelMapper().map(userPaymentMethodDTO, UserPaymentMethod.class));
     }
 
 }

@@ -3,35 +3,48 @@ package com.app.ecommerce.services;
 import com.app.ecommerce.dtos.OrderItemDTO;
 import com.app.ecommerce.models.OrderItem;
 import com.app.ecommerce.repositories.OrderItemRepository;
-import com.app.ecommerce.utils.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class OrderItemService {
+public class OrderItemService extends BaseService<OrderItemDTO, Long> {
 
     @Autowired
     OrderItemRepository repository;
 
-    @Autowired
-    ModelMapper<OrderItemDTO, OrderItem> mapper;
-
-    OrderItem findById(long idOrderItem) {
-        return repository.getById(idOrderItem);
+    @Override
+    public OrderItemDTO findById(Long aLong) {
+        OrderItem orderItem = repository.getById(aLong);
+        return modelMapper().map(orderItem, OrderItemDTO.class);
     }
 
-    List<OrderItem> findAll() {
-        return repository.findAll();
+    @Override
+    public List<OrderItemDTO> findAll() {
+        List<OrderItemDTO> orderItemDTOS = new ArrayList<>();
+        List<OrderItem> orderItems = repository.findAll();
+        orderItems.forEach(orderItem -> {
+            orderItemDTOS.add(modelMapper().map(orderItem, OrderItemDTO.class));
+        });
+        return orderItemDTOS;
     }
 
-    OrderItem save(OrderItem orderItem) {
-        return repository.save(orderItem);
+    @Override
+    public OrderItemDTO save(OrderItemDTO orderItemDTO) {
+        OrderItem orderItem = repository.save(modelMapper().map(orderItemDTO, OrderItem.class));
+        return modelMapper().map(orderItem, OrderItemDTO.class);
     }
 
-    void delete(long idOrderItem) {
-        repository.deleteById(idOrderItem);
+    @Override
+    public void deleteById(Long aLong) {
+        repository.deleteById(aLong);
+    }
+
+    @Override
+    public void delete(OrderItemDTO orderItemDTO) {
+        repository.delete(modelMapper().map(orderItemDTO, OrderItem.class));
     }
 
 }

@@ -34,6 +34,11 @@ public class Article {
 
     private String image;
 
+    private String brand;
+
+    @OneToMany(mappedBy = "article")
+    private Set<Image> images;
+
     @OneToMany(mappedBy = "article")
     private Set<Comment> comments;
 

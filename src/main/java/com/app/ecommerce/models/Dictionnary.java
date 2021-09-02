@@ -11,9 +11,12 @@ import javax.persistence.*;
 @Setter
 @NoArgsConstructor
 public class Dictionnary {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_dictionnary", nullable = false)
     private Long idWord;
+
     private String label;
+
 }

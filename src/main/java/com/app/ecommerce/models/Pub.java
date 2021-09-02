@@ -6,14 +6,21 @@ import lombok.Setter;
 
 import javax.persistence.*;
 
-@NoArgsConstructor
-@Setter
-@Getter
+@Table(name = "pub")
 @Entity
-public class Customer {
+@NoArgsConstructor
+@Getter
+@Setter
+public class Pub {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idCustomer;
+    private Long idPub;
+
+    String label;
+
+    String image;
+
+    boolean forSlider;
 
 }
