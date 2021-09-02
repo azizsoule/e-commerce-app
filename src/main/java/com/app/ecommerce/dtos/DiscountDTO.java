@@ -4,8 +4,8 @@ public class DiscountDTO {
     private Long idDiscount;
     private java.sql.Timestamp createdAt;
     private String description;
-    private Integer discountPercent;
     private Float discountAmount;
+    private Integer discountPercent;
     private Boolean enabled;
     private java.sql.Timestamp endDate;
     private String label;
@@ -37,20 +37,20 @@ public class DiscountDTO {
         this.description = description;
     }
 
-    public Integer getDiscountPercent() {
-        return this.discountPercent;
-    }
-
-    public void setDiscountPercent(Integer discountPercent) {
-        this.discountPercent = discountPercent;
-    }
-
     public Float getDiscountAmount() {
         return this.discountAmount;
     }
 
     public void setDiscountAmount(Float discountAmount) {
         this.discountAmount = discountAmount;
+    }
+
+    public Integer getDiscountPercent() {
+        return this.discountPercent;
+    }
+
+    public void setDiscountPercent(Integer discountPercent) {
+        this.discountPercent = discountPercent;
     }
 
     public Boolean getEnabled() {
