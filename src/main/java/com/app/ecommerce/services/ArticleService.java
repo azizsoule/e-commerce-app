@@ -1,11 +1,8 @@
 package com.app.ecommerce.services;
 
 import com.app.ecommerce.dtos.ArticleDTO;
-import com.app.ecommerce.dtos.UserDTO;
 import com.app.ecommerce.models.Article;
-import com.app.ecommerce.models.User;
 import com.app.ecommerce.repositories.ArticleRepository;
-import com.app.ecommerce.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

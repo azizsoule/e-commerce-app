@@ -1,7 +1,6 @@
 package com.app.ecommerce.services;
 
 import com.app.ecommerce.dtos.CartItemDTO;
-import com.app.ecommerce.models.Address;
 import com.app.ecommerce.models.CartItem;
 import com.app.ecommerce.repositories.CartItemRepository;
 import org.springframework.beans.factory.annotation.Autowired;

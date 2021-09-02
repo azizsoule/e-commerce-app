@@ -10,11 +10,11 @@ import javax.persistence.*;
 @Getter
 @Setter
 @NoArgsConstructor
-public class Dictionnary {
+public class Dictionary {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_dictionnary", nullable = false)
+    @Column(name = "id_dictionary", nullable = false)
     private Long idWord;
 
     private String label;
