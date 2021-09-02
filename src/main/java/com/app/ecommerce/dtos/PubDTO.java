@@ -1,16 +1,25 @@
 package com.app.ecommerce.dtos;
 
-public class CatalogDTO {
-    private Long idCatalog;
+public class PubDTO {
+    private Long idPub;
+    private Boolean forSlider;
     private String image;
     private String label;
 
-    public Long getIdCatalog() {
-        return this.idCatalog;
+    public Long getIdPub() {
+        return this.idPub;
     }
 
-    public void setIdCatalog(Long idCatalog) {
-        this.idCatalog = idCatalog;
+    public void setIdPub(Long idPub) {
+        this.idPub = idPub;
+    }
+
+    public Boolean getForSlider() {
+        return this.forSlider;
+    }
+
+    public void setForSlider(Boolean forSlider) {
+        this.forSlider = forSlider;
     }
 
     public String getImage() {
