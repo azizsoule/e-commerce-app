@@ -9,9 +9,10 @@ public class MainController {
     private static final String URI = "/home";
     private static final String VIEW = "index";
 
+
     @GetMapping(URI)
     public String index() {
         return VIEW;
     }
-
 }
+
