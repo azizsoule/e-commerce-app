@@ -18,11 +18,11 @@
 	
 	<!-- Favicon
 	============================================ -->
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" th:href="@{../static/ico/apple-touch-icon-144-precomposed.png}">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" th:href="@{../static/ico/apple-touch-icon-114-precomposed.png}">
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" th:href="@{../static/ico/apple-touch-icon-72-precomposed.png}">
-    <link rel="apple-touch-icon-precomposed" th:href="@{../static/ico/apple-touch-icon-57-precomposed.png}">
-    <link rel="shortcut icon" th:href="@{../static/ico/favicon.png}">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" th:href="@{/ico/apple-touch-icon-144-precomposed.png}">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" th:href="@{/ico/apple-touch-icon-114-precomposed.png}">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" th:href="@{/ico/apple-touch-icon-72-precomposed.png}">
+    <link rel="apple-touch-icon-precomposed" th:href="@{/ico/apple-touch-icon-57-precomposed.png}">
+    <link rel="shortcut icon" th:href="@{/ico/favicon.png}">
 	
 	<!-- Google web fonts
 	============================================ -->
@@ -30,23 +30,23 @@
 	
     <!-- Libs CSS
 	============================================ -->
-    <link rel="stylesheet" th:href="@{../static/css/bootstrap/css/bootstrap.min.css}">
-	<link th:href="@{../static/css/font-awesome/css/font-awesome.min.css}" rel="stylesheet">
-	<link th:href="@{../static/js/datetimepicker/bootstrap-datetimepicker.min.css}" rel="stylesheet">
-    <link th:href="@{../static/js/owl-carousel/owl.carousel.css}" rel="stylesheet">
-	<link th:href="@{../static/css/themecss/lib.css}" rel="stylesheet">
-	<link th:href="@{../static/js/jquery-ui/jquery-ui.min.css}" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/bootstrap/css/bootstrap.min.css}">
+	<link th:href="@{/css/font-awesome/css/font-awesome.min.css}" rel="stylesheet">
+	<link th:href="@{/js/datetimepicker/bootstrap-datetimepicker.min.css}" rel="stylesheet">
+    <link th:href="@{/js/owl-carousel/owl.carousel.css}" rel="stylesheet">
+	<link th:href="@{/css/themecss/lib.css}" rel="stylesheet">
+	<link th:href="@{/js/jquery-ui/jquery-ui.min.css}" rel="stylesheet">
 	
 	<!-- Theme CSS
 	============================================ -->
-   	<link th:href="@{../static/css/themecss/so_megamenu.css}" rel="stylesheet">
-    <link th:href="@{../static/css/themecss/so-categories.css}" rel="stylesheet">
-	<link th:href="@{../static/css/themecss/so-listing-tabs.css}" rel="stylesheet">
-	<link th:href="@{../static/css/footer1.css}" rel="stylesheet">
-	<link th:href="@{../static/css/header1.css}" rel="stylesheet">
-		<link id="color_scheme" th:href="@{../static/css/theme.css}" rel="stylesheet">
+   	<link th:href="@{/css/themecss/so_megamenu.css}" rel="stylesheet">
+    <link th:href="@{/css/themecss/so-categories.css}" rel="stylesheet">
+	<link th:href="@{/css/themecss/so-listing-tabs.css}" rel="stylesheet">
+	<link th:href="@{/css/footer1.css}" rel="stylesheet">
+	<link th:href="@{/css/header1.css}" rel="stylesheet">
+		<link id="color_scheme" th:href="@{/css/theme.css}" rel="stylesheet">
 		
-	<link th:href="@{../static/css/responsive.css}" rel="stylesheet">
+	<link th:href="@{/css/responsive.css}" rel="stylesheet">
 	
    
 	
@@ -66,13 +66,13 @@
 				<div class="form-group languages-block ">
 					<form action="index.html" method="post" enctype="multipart/form-data" id="bt-language">
 						<a class="btn btn-xs dropdown-toggle" data-toggle="dropdown">
-							<img src="../static/image/demo/flags/gb.png" alt="English" title="English">
+							<img th:src="@{/image/demo/flags/gb.png}" alt="English" title="English">
 							<span class="">English</span>
 							<span class="fa fa-angle-down"></span>
 						</a>
 						<ul class="dropdown-menu">
-							<li><a th:href="@{index.html}"><img class="image_flag" src="../static/image/demo/flags/gb.png" alt="English" title="English" /> English </a></li>
-							<li> <a th:href="@{index.html}"> <img class="image_flag" src="../static/image/demo/flags/lb.png" alt="Arabic" title="Arabic" /> Arabic </a> </li>
+							<li><a th:href="@{index.html}"><img class="image_flag" th:src="@{/image/demo/flags/gb.png}" alt="English" title="English" /> English </a></li>
+							<li> <a th:href="@{index.html}"> <img class="image_flag" th:src="@{/image/demo/flags/lb.png}" alt="Arabic" title="Arabic" /> Arabic </a> </li>
 						</ul>
 					</form>
 				</div>
@@ -118,7 +118,7 @@
 		<div class="row">
 			<!-- Logo -->
 			<div class="navbar-logo col-md-3 col-sm-12 col-xs-12">
-				<a th:href="@{index.html}"><img src="../static/image/demo/logos/theme_logo.png" title="Your Store" alt="Your Store" /></a>
+				<a th:href="@{index.html}"><img th:src="@{/image/demo/logos/theme_logo.png}" title="Your Store" alt="Your Store" /></a>
 			</div>
 			<!-- //end Logo -->
 
@@ -171,7 +171,7 @@
 								<tbody>
 									<tr>
 										<td class="text-center" style="width:70px">
-											<a th:href="@{product.html}"> <img src="../static/image/demo/shop/product/35.jpg" style="width:70px" alt="Filet Mign" title="Filet Mign" class="preview"> </a>
+											<a th:href="@{product.html}"> <img th:src="@{/image/demo/shop/product/35.jpg}" style="width:70px" alt="Filet Mign" title="Filet Mign" class="preview"> </a>
 										</td>
 										<td class="text-left"> <a class="cart_product_name" th:href="@{product.html}">Filet Mign</a> </td>
 										<td class="text-center"> x1 </td>
@@ -185,7 +185,7 @@
 									</tr>
 									<tr>
 										<td class="text-center" style="width:70px">
-											<a th:href="@{product.html}"> <img src="../static/image/demo/shop/product/141.jpg" style="width:70px" alt="Canon EOS 5D" title="Canon EOS 5D" class="preview"> </a>
+											<a th:href="@{product.html}"> <img th:src="@{/image/demo/shop/product/141.jpg}" style="width:70px" alt="Canon EOS 5D" title="Canon EOS 5D" class="preview"> </a>
 										</td>
 										<td class="text-left"> <a class="cart_product_name" th:href="@{product.html}">Canon EOS 5D</a> </td>
 										<td class="text-center"> x1 </td>
@@ -280,7 +280,7 @@
 												<li class="item-vertical style1 with-sub-menu hover">
 													<p class="close-menu"></p>
 													<a th:href="@{#}" class="clearfix">
-														<img src="../static/image/theme/icons/9.png" alt="icon">
+														<img th:src="@{/image/theme/icons/9.png}" alt="icon">
 														<span>Automotive &amp; Motocrycle</span>
 														<b class="caret"></b>
 													</a>
@@ -360,7 +360,7 @@
 												<li class="item-vertical">
 													<p class="close-menu"></p>
 													<a th:href="@{#}" class="clearfix">
-														<img src="../static/image/theme/icons/10.png" alt="icon">
+														<img th:src="@{/image/theme/icons/10.png}" alt="icon">
 														<span>Electronic</span>
 														
 													</a>
@@ -369,7 +369,7 @@
 													<p class="close-menu"></p>
 													<a th:href="@{#}" class="clearfix">
 														<span class="label"></span>
-														<img src="../static/image/theme/icons/3.png" alt="icon">
+														<img th:src="@{/image/theme/icons/3.png}" alt="icon">
 														<span>Sports &amp; Outdoors</span>
 														<b class="caret"></b>
 													</a>
@@ -414,7 +414,7 @@
 																<div class="col-md-6">
 																	<div class="row banner">
 																		<a th:href="@{}">
-																			<img src="../static/image/demo/cms/menu_bg2.jpg" alt="banner1">
+																			<img th:src="@{/image/demo/cms/menu_bg2.jpg}" alt="banner1">
 																			</a>
 																		</div>
 																	</div>
@@ -425,7 +425,7 @@
 													<li class="item-vertical with-sub-menu hover">
 														<p class="close-menu"></p>
 														<a th:href="@{#}" class="clearfix">
-															<img src="../static/image/theme/icons/2.png" alt="icon">
+															<img th:src="@{/image/theme/icons/2.png}" alt="icon">
 															<span>Health &amp; Beauty</span>
 															<b class="caret"></b>
 														</a>
@@ -556,7 +556,7 @@
 														<p class="close-menu"></p>
 														<a th:href="@{#}" class="clearfix">
 															
-															<img src="../static/image/theme/icons/2.png" alt="icon">
+															<img th:src="@{/image/theme/icons/2.png}" alt="icon">
 															<span>Smartphone &amp; Tablets</span>
 															<b class="caret"></b>
 														</a>
@@ -595,7 +595,7 @@
 													<li class="item-vertical">
 														<p class="close-menu"></p>
 														<a th:href="@{#}" class="clearfix">
-															<img src="../static/image/theme/icons/11.png" alt="icon">
+															<img th:src="@{/image/theme/icons/11.png}" alt="icon">
 															<span>Flashlights &amp; Lamps</span>
 															
 														</a>
@@ -603,21 +603,21 @@
 													<li class="item-vertical">
 														<p class="close-menu"></p>
 														<a th:href="@{#}" class="clearfix">
-															<img src="../static/image/theme/icons/4.png" alt="icon">
+															<img th:src="@{/image/theme/icons/4.png}" alt="icon">
 															<span>Camera &amp; Photo</span>
 														</a>
 													</li>
 													<li class="item-vertical">
 														<p class="close-menu"></p>
 														<a th:href="@{#}" class="clearfix">
-															<img src="../static/image/theme/icons/5.png" alt="icon">
+															<img th:src="@{/image/theme/icons/5.png}" alt="icon">
 															<span>Smartphone &amp; Tablets</span>
 														</a>
 													</li>
 													<li class="item-vertical" >
 														<p class="close-menu"></p>
 														<a th:href="@{#}" class="clearfix">
-															<img src="../static/image/theme/icons/7.png" alt="icon">
+															<img th:src="@{/image/theme/icons/7.png}" alt="icon">
 															<span>Outdoor &amp; Traveling Supplies</span>
 														</a>
 													</li>
@@ -625,28 +625,28 @@
 														<p class="close-menu"></p>
 														
 														<a th:href="@{#}" class="clearfix">
-															<img src="../static/image/theme/icons/6.png" alt="icon">
+															<img th:src="@{/image/theme/icons/6.png}" alt="icon">
 															<span>Health &amp; Beauty</span>
 														</a>
 													</li>
 													<li class="item-vertical" >
 														<p class="close-menu"></p>
 														<a th:href="@{#}" class="clearfix">
-															<img src="../static/image/theme/icons/8.png" alt="icon">
+															<img th:src="@{/image/theme/icons/8.png}" alt="icon">
 															<span>Toys &amp; Hobbies </span>
 														</a>
 													</li>
 													<li class="item-vertical" >
 														<p class="close-menu"></p>
 														<a th:href="@{#}" class="clearfix">
-															<img src="../static/image/theme/icons/12.png" alt="icon">
+															<img th:src="@{/image/theme/icons/12.png}" alt="icon">
 															<span>Jewelry &amp; Watches</span>
 														</a>
 													</li>
 													<li class="item-vertical" >
 														<p class="close-menu"></p>
 														<a th:href="@{#}" class="clearfix">
-															<img src="../static/image/theme/icons/13.png" alt="icon">
+															<img th:src="@{/image/theme/icons/13.png}" alt="icon">
 															<span>Bags, Holiday Supplies</span>
 														</a>
 													</li>
@@ -654,7 +654,7 @@
 														<p class="close-menu"></p>
 														
 														<a th:href="@{#}" class="clearfix">
-															<img src="../static/image/theme/icons/13.png" alt="icon">
+															<img th:src="@{/image/theme/icons/13.png}" alt="icon">
 															<span>More Car Accessories</span>
 														</a>
 													</li>
@@ -702,7 +702,7 @@
 											<div class="col-md-3">
 												<a th:href="@{ndex.html}" class="image-link">
 													<span class="thumbnail">
-														<img class="img-responsive img-border" src="../static/image/demo/feature/home-1.jpg" alt="">
+														<img class="img-responsive img-border" th:src="@{/image/demo/feature/home-1.jpg}" alt="">
 														<span class="btn btn-default">Read More</span>
 													</span> 
 													<h3 class="figcaption">Home page - (Default)</h3> 
@@ -712,7 +712,7 @@
 											<div class="col-md-3">
 												<a th:href="@{ome2.html}" class="image-link">
 													<span class="thumbnail">
-														<img class="img-responsive img-border" src="../static/image/demo/feature/home-2.jpg" alt="">
+														<img class="img-responsive img-border" th:src="@{/image/demo/feature/home-2.jpg}" alt="">
 														<span class="btn btn-default">Read More</span>
 													</span> 
 													<h3 class="figcaption">Home page - Layout 2</h3> 
@@ -722,7 +722,7 @@
 											<div class="col-md-3">
 												<a th:href="@{ome3.html}" class="image-link">
 													<span class="thumbnail">
-														<img class="img-responsive img-border" src="../static/image/demo/feature/home-3.jpg" alt="">
+														<img class="img-responsive img-border" th:src="@{/image/demo/feature/home-3.jpg}" alt="">
 														<span class="btn btn-default">Read More</span>
 													</span> 
 													<h3 class="figcaption">Home page - Layout 3</h3> 
@@ -732,7 +732,7 @@
 											<div class="col-md-3">
 												<a th:href="@{ome4.html}" class="image-link">
 													<span class="thumbnail">
-														<img class="img-responsive img-border" src="../static/image/demo/feature/home-4.jpg" alt="">
+														<img class="img-responsive img-border" th:src="@{/image/demo/feature/home-4.jpg}" alt="">
 														<span class="btn btn-default">Read More</span>
 													</span> 
 													<h3 class="figcaption">Home page - Layout 4</h3> 
@@ -856,16 +856,16 @@
 											<div class="col-sm-12">
 												<div class="row">
 													<div class="col-md-3 img img1">
-														<a th:href="@{}"><img src="../static/image/demo/cms/img1.jpg" alt="banner1"></a>
+														<a th:href="@{}"><img th:src="@{/image/demo/cms/img1.jpg}" alt="banner1"></a>
 													</div>
 													<div class="col-md-3 img img2">
-														<a th:href="@{}"><img src="../static/image/demo/cms/img2.jpg" alt="banner2"></a>
+														<a th:href="@{}"><img th:src="@{/image/demo/cms/img2.jpg}" alt="banner2"></a>
 													</div>
 													<div class="col-md-3 img img3">
-														<a th:href="@{}"><img src="../static/image/demo/cms/img3.jpg" alt="banner3"></a>
+														<a th:href="@{}"><img th:src="@{/image/demo/cms/img3.jpg}" alt="banner3"></a>
 													</div>
 													<div class="col-md-3 img img4">
-														<a th:href="@{}"><img src="../static/image/demo/cms/img4.jpg" alt="banner4"></a>
+														<a th:href="@{}"><img th:src="@{/image/demo/cms/img4.jpg}" alt="banner4"></a>
 													</div>
 												</div>
 											</div>
@@ -998,7 +998,7 @@
 												<div class="col-sm-12 list-product">
 													<div class="product-thumb">
 														<div class="image pull-left">
-															<a th:href="@{}"><img src="../static/image/demo/shop/product/35.jpg" width="80" alt="Filet Mign" title="Filet Mign" class="img-responsive"></a>
+															<a th:href="@{}"><img th:src="@{/image/demo/shop/product/35.jpg}" width="80" alt="Filet Mign" title="Filet Mign" class="img-responsive"></a>
 														</div>
 														<div class="caption">
 															<h4><a th:href="@{}">Filet Mign</a></h4>
@@ -1016,7 +1016,7 @@
 												<div class="col-sm-12 list-product">
 													<div class="product-thumb">
 														<div class="image pull-left">
-															<a th:href="@{}"><img src="../static/image/demo/shop/product/W1.jpg" width="80" alt="Dail Lulpa" title="Dail Lulpa" class="img-responsive"></a>
+															<a th:href="@{}"><img th:src="@{/image/demo/shop/product/W1.jpg}" width="80" alt="Dail Lulpa" title="Dail Lulpa" class="img-responsive"></a>
 														</div>
 														<div class="caption">
 															<h4><a th:href="@{}">Dail Lulpa</a></h4>
@@ -1034,7 +1034,7 @@
 												<div class="col-sm-12 list-product">
 													<div class="product-thumb">
 														<div class="image pull-left">
-															<a th:href="@{}"><img src="../static/image/demo/shop/product/141.jpg" width="80" alt="Canon EOS 5D" title="Canon EOS 5D" class="img-responsive"></a>
+															<a th:href="@{}"><img th:src="@{/image/demo/shop/product/141.jpg}" width="80" alt="Canon EOS 5D" title="Canon EOS 5D" class="img-responsive"></a>
 														</div>
 														<div class="caption">
 															<h4><a th:href="@{}">Canon EOS 5D</a></h4>
@@ -1331,7 +1331,7 @@
 				<div class="row">
 					<div class="col-sm-5 copyright-text"> © 2016 Market. All Rights Reserved. </div>
 					<div class="col-sm-7">
-						<div class="block-payment text-right"><img src="../static/image/demo/content/payment.png" alt="payment" title="payment" ></div>
+						<div class="block-payment text-right"><img th:src="@{/image/demo/content/payment.png}" alt="payment" title="payment" ></div>
 					</div>
 					<!--Back To Top-->
 					<div class="back-to-top"><i class="fa fa-angle-up"></i><span> Top </span></div>
@@ -1352,24 +1352,24 @@
 <!-- Include Libs & Plugins
 	============================================ -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script type="text/javascript" src="../static/js/jquery-2.2.4.min.js"></script>
-    <script type="text/javascript" src="../static/js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="../static/js/owl-carousel/owl.carousel.js"></script>
-	<script type="text/javascript" src="../static/js/themejs/libs.js"></script>
-	<script type="text/javascript" src="../static/js/unveil/jquery.unveil.js"></script>
-	<script type="text/javascript" src="../static/js/countdown/jquery.countdown.min.js"></script>
-	<script type="text/javascript" src="../static/js/dcjqaccordion/jquery.dcjqaccordion.2.8.min.js"></script>
-	<script type="text/javascript" src="../static/js/datetimepicker/moment.js"></script>
-	<script type="text/javascript" src="../static/js/datetimepicker/bootstrap-datetimepicker.min.js"></script>
-	<script type="text/javascript" src="../static/js/jquery-ui/jquery-ui.min.js"></script>
+    <script type="text/javascript" th:src="@{/js/jquery-2.2.4.min.js}"></script>
+    <script type="text/javascript" th:src="@{/js/bootstrap.min.js}"></script>
+	<script type="text/javascript" th:src="@{/js/owl-carousel/owl.carousel.js}"></script>
+	<script type="text/javascript" th:src="@{/js/themejs/libs.js}"></script>
+	<script type="text/javascript" th:src="@{/js/unveil/jquery.unveil.js}"></script>
+	<script type="text/javascript" th:src="@{/js/countdown/jquery.countdown.min.js}"></script>
+	<script type="text/javascript" th:src="@{/js/dcjqaccordion/jquery.dcjqaccordion.2.8.min.js}"></script>
+	<script type="text/javascript" th:src="@{/js/datetimepicker/moment.js}"></script>
+	<script type="text/javascript" th:src="@{/js/datetimepicker/bootstrap-datetimepicker.min.js}"></script>
+	<script type="text/javascript" th:src="@{/js/jquery-ui/jquery-ui.min.js}"></script>
 	
 	
 	<!-- Theme files
 	============================================ -->
 	
 	
-	<script type="text/javascript" src="../static/js/themejs/so_megamenu.js"></script>
-	<script type="text/javascript" src="../static/js/themejs/addtocart.js"></script>
-	<script type="text/javascript" src="../static/js/themejs/application.js"></script>
+	<script type="text/javascript" th:src="@{/js/themejs/so_megamenu.js}"></script>
+	<script type="text/javascript" th:src="@{/js/themejs/addtocart.js}"></script>
+	<script type="text/javascript" th:src="@{/js/themejs/application.js}"></script>
 </body>
 </html>

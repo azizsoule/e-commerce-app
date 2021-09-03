@@ -1,5 +1,5 @@
 <!DOCTYPE html>
- <html lang="en">
+ <html xmlns:th="http://www.thymeleaf.org" lang="en">
  <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
@@ -17,11 +17,11 @@
 	
 	 <!-- Favicon
 	============================================ -->
-     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../static/ico/apple-touch-icon-144-precomposed.png" />
-     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../static/ico/apple-touch-icon-114-precomposed.png" />
-     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../static/ico/apple-touch-icon-72-precomposed.png" />
-     <link rel="apple-touch-icon-precomposed" href="../static/ico/apple-touch-icon-57-precomposed.png" />
-     <link rel="shortcut icon" href="../static/ico/favicon.png" />
+     <link rel="apple-touch-icon-precomposed" sizes="144x144" th:href="@{/ico/apple-touch-icon-144-precomposed.png}" />
+     <link rel="apple-touch-icon-precomposed" sizes="114x114" th:href="@{/ico/apple-touch-icon-114-precomposed.png}" />
+     <link rel="apple-touch-icon-precomposed" sizes="72x72" th:href="@{/ico/apple-touch-icon-72-precomposed.png}" />
+     <link rel="apple-touch-icon-precomposed" th:href="@{/ico/apple-touch-icon-57-precomposed.png}" />
+     <link rel="shortcut icon" th:href="@{/ico/favicon.png}" />
 	
 	 <!-- Google web fonts
 	============================================ -->
@@ -29,22 +29,22 @@
 	
      <!-- Libs CSS
 	============================================ -->
-     <link rel="stylesheet" href="../static/css/bootstrap/css/bootstrap.min.css" />
-	 <link href="../static/css/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
-	 <link href="../static/js/datetimepicker/bootstrap-datetimepicker.min.css" rel="stylesheet" />
-     <link href="../static/js/owl-carousel/owl.carousel.css" rel="stylesheet" />
-	 <link href="../static/css/themecss/lib.css" rel="stylesheet" />
-	 <link href="../static/js/jquery-ui/jquery-ui.min.css" rel="stylesheet" />
+     <link rel="stylesheet" th:href="@{/css/bootstrap/css/bootstrap.min.css}" />
+	 <link th:href="@{/css/font-awesome/css/font-awesome.min.css}" rel="stylesheet" />
+	 <link th:href="@{/js/datetimepicker/bootstrap-datetimepicker.min.css}" rel="stylesheet" />
+     <link th:href="@{/js/owl-carousel/owl.carousel.css}" rel="stylesheet" />
+	 <link th:href="@{/css/themecss/lib.css}" rel="stylesheet" />
+	 <link th:href="@{/js/jquery-ui/jquery-ui.min.css}" rel="stylesheet" />
 	
 	 <!-- Theme CSS
 	============================================ -->
-   	 <link href="../static/css/themecss/so_megamenu.css" rel="stylesheet" />
-     <link href="../static/css/themecss/so-categories.css" rel="stylesheet" />
-	 <link href="../static/css/themecss/so-listing-tabs.css" rel="stylesheet" />
-	 <link href="../static/css/footer1.css" rel="stylesheet">
-	 <link href="../static/css/header1.css" rel="stylesheet">
-	 <link id="color_scheme" href="../static/css/theme.css" rel="stylesheet" />
-	 <link href="../static/css/responsive.css" rel="stylesheet" />
+   	 <link th:href="@{/css/themecss/so_megamenu.css}" rel="stylesheet" />
+     <link th:href="@{/css/themecss/so-categories.css}" rel="stylesheet" />
+	 <link th:href="@{/css/themecss/so-listing-tabs.css}" rel="stylesheet" />
+	 <link th:href="@{/css/footer1.css}" rel="stylesheet">
+	 <link th:href="@{/css/header1.css}" rel="stylesheet">
+	 <link id="color_scheme" th:href="@{/css/theme.css}" rel="stylesheet" />
+	 <link th:href="@{/css/responsive.css}" rel="stylesheet" />
 	
    
 	
@@ -65,21 +65,21 @@
 						 <div class="row">
 							 <div class="content-product-left  col-sm-6 col-xs-12 ">
 								 <div class="large-image  ">
-									 <img itemprop="image" class="product-image-zoom" src="../static/image/demo/shop/product/J9.jpg" data-zoom-image="image/demo/shop/product/J9.jpg" title="Bint Beef" alt="Bint Beef" />
+									 <img itemprop="image" class="product-image-zoom" th:src="@{/image/demo/shop/product/J9.jpg}" data-zoom-image="image/demo/shop/product/J9.jpg" title="Bint Beef" alt="Bint Beef" />
 								 </div>
 
 								 <div id="thumb-slider" class="owl-theme owl-loaded owl-drag full_slider">
 									 <a data-index="0" class="img thumbnail " data-image="image/demo/shop/product/J9.jpg" title="Bint Beef">
-										 <img src="../static/image/demo/shop/product/J9.jpg" title="Bint Beef" alt="Bint Beef" />
+										 <img th:src="@{/image/demo/shop/product/J9.jpg}" title="Bint Beef" alt="Bint Beef" />
 									 </a>
 									 <a data-index="1" class="img thumbnail" data-image="image/demo/shop/product/J6.jpg" title="Bint Beef">
-										 <img src="../static/image/demo/shop/product/J6.jpg" title="Bint Beef" alt="Bint Beef" />
+										 <img th:src="@{/image/demo/shop/product/J6.jpg}" title="Bint Beef" alt="Bint Beef" />
 									 </a>
 									 <a data-index="2" class="img thumbnail" data-image="image/demo/shop/product/J5.jpg" title="Bint Beef">
-										 <img src="../static/image/demo/shop/product/J5.jpg" title="Bint Beef" alt="Bint Beef" />
+										 <img th:src="@{/image/demo/shop/product/J5.jpg}" title="Bint Beef" alt="Bint Beef" />
 									 </a>
 									 <a data-index="3" class="img thumbnail" data-image="image/demo/shop/product/J4.jpg" title="Bint Beef">
-										 <img src="../static/image/demo/shop/product/J4.jpg" title="Bint Beef" alt="Bint Beef" />
+										 <img th:src="@{/image/demo/shop/product/J4.jpg}" title="Bint Beef" alt="Bint Beef" />
 									 </a>
 								 </div>
 								 
@@ -100,7 +100,7 @@
 											 <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i></span>
 										 </div>
 									 </div>
-									 <a class="reviews_button" href="quickview.php.html" onclick="$('a[href=\'#tab-review\']').trigger('click'); return false;">0 reviews </a>	
+									 <a class="reviews_button" th:href="@{quickview.php}" onclick="$('a[href=\'#tab-review\']').trigger('click'); return false;">0 reviews </a>
 								 </div>
 
 								 <div class="product-label form-group">
@@ -115,7 +115,7 @@
 									 <div class="inner-box-desc">
 										 <div class="price-tax"><span>Ex Tax: </span> $60.00 </div>
 										 <div class="reward"><span>Price in reward points: </span> 400 </div>
-										 <div class="brand"><span>Brand: </span><a href="#">Apple </a>		 </div>
+										 <div class="brand"><span>Brand: </span><a th:href="@{#}">Apple </a>		 </div>
 										 <div class="model"><span>Product Code: </span> Product 15 </div>
 										 <div class="reward"><span>Reward Points: </span> 100 </div>
 									 </div>
@@ -170,18 +170,18 @@
 					// Cart add remove functions
 					var cart = {
 						'add': function(product_id, quantity) {
-							parent.addProductNotice('Product added to Cart', '<img src="../static/image/demo/shop/product/e11.jpg" alt="">', '<h3><a href="#">Apple Cinema 30"</a> added to <a href="#">shopping cart</a>!</h3>', 'success');
+							parent.addProductNotice('Product added to Cart', '<img th:src="@{/image/demo/shop/product/e11.jpg" alt="">', '<h3><a th:href="@{#}">Apple Cinema 30"</a> added to <a th:href="@{#}">shopping cart</a>!</h3>', 'success');
 						}
 					}
 
 					var wishlist = {
 						'add': function(product_id) {
-							parent.addProductNotice('Product added to Wishlist', '<img src="../static/image/demo/shop/product/e11.jpg" alt="">', '<h3>You must <a href="#">login</a>  to save <a href="#">Apple Cinema 30"</a> to your <a href="#">wish list</a>!</h3>', 'success');
+							parent.addProductNotice('Product added to Wishlist', '<img th:src="@{/image/demo/shop/product/e11.jpg" alt="">', '<h3>You must <a th:href="@{#}">login</a>  to save <a th:href="@{#}">Apple Cinema 30"</a> to your <a th:href="@{#}">wish list</a>!</h3>', 'success');
 						}
 					}
 					var compare = {
 						'add': function(product_id) {
-							parent.addProductNotice('Product added to compare', '<img src="../static/image/demo/shop/product/e11.jpg" alt="">', '<h3>Success: You have added <a href="#">Apple Cinema 30"</a> to your <a href="#">product comparison</a>!</h3>', 'success');
+							parent.addProductNotice('Product added to compare', '<img th:src="@{/image/demo/shop/product/e11.jpg" alt="">', '<h3>Success: You have added <a th:href="@{#}">Apple Cinema 30"</a> to your <a th:href="@{#}">product comparison</a>!</h3>', 'success');
 						}
 					}
 
@@ -214,25 +214,25 @@
  <!-- Include Libs & Plugins
 	============================================ -->
  <!-- Placed at the end of the document so the pages load faster -->
- <script type="text/javascript" src="../static/js/jquery-2.2.4.min.js"></script>
- <script type="text/javascript" src="../static/js/bootstrap.min.js"></script>
- <script type="text/javascript" src="../static/js/owl-carousel/owl.carousel.js"></script>
- <script type="text/javascript" src="../static/js/themejs/libs.js"></script>
- <script type="text/javascript" src="../static/js/unveil/jquery.unveil.js"></script>
- <script type="text/javascript" src="../static/js/countdown/jquery.countdown.min.js"></script>
- <script type="text/javascript" src="../static/js/dcjqaccordion/jquery.dcjqaccordion.2.8.min.js"></script>
- <script type="text/javascript" src="../static/js/datetimepicker/moment.js"></script>
- <script type="text/javascript" src="../static/js/datetimepicker/bootstrap-datetimepicker.min.js"></script>
- <script type="text/javascript" src="../static/js/jquery-ui/jquery-ui.min.js"></script>
+ <script type="text/javascript" th:src="@{/js/jquery-2.2.4.min.js}"></script>
+ <script type="text/javascript" th:src="@{/js/bootstrap.min.js}"></script>
+ <script type="text/javascript" th:src="@{/js/owl-carousel/owl.carousel.js}"></script>
+ <script type="text/javascript" th:src="@{/js/themejs/libs.js}"></script>
+ <script type="text/javascript" th:src="@{/js/unveil/jquery.unveil.js}"></script>
+ <script type="text/javascript" th:src="@{/js/countdown/jquery.countdown.min.js}"></script>
+ <script type="text/javascript" th:src="@{/js/dcjqaccordion/jquery.dcjqaccordion.2.8.min.js}"></script>
+ <script type="text/javascript" th:src="@{/js/datetimepicker/moment.js}"></script>
+ <script type="text/javascript" th:src="@{/js/datetimepicker/bootstrap-datetimepicker.min.js}"></script>
+ <script type="text/javascript" th:src="@{/js/jquery-ui/jquery-ui.min.js}"></script>
  
 
  <!-- Theme files
 ============================================ -->
 
  
- <script type="text/javascript" src="../static/js/themejs/so_megamenu.js"></script>
- <script type="text/javascript" src="../static/js/themejs/addtocart.js"></script>
- <script type="text/javascript" src="../static/js/themejs/application.js"></script>
+ <script type="text/javascript" th:src="@{/js/themejs/so_megamenu.js}"></script>
+ <script type="text/javascript" th:src="@{/js/themejs/addtocart.js}"></script>
+ <script type="text/javascript" th:src="@{/js/themejs/application.js}"></script>
 
 </body>
 
