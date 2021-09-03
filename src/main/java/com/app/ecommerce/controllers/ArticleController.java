@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 @Controller
 public class ArticleController {
 
-    private static final String URI = "/";
+    private static final String URI = "/home";
 
     private static final String LIST_VIEW = "home";
 

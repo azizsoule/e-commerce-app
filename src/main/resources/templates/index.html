@@ -65,13 +65,13 @@
 		<div class="row">
 			<!-- Logo -->
 			<div class="navbar-logo col-md-3 col-sm-12 col-xs-12">
-				<a th:href="@{index.html}"><img th:src="@{/image/demo/logos/theme_logo.png}" title="Your Store" alt="Your Store" /></a>
+				<a th:href="@{index}"><img th:src="@{/image/demo/logos/theme_logo.png}" title="Your Store" alt="Your Store" /></a>
 			</div>
 			<!-- //end Logo -->
 
 			<!-- Search -->
 			<div id="sosearchpro" class="col-sm-7 search-pro">
-				<form method="GET" action="index.html">
+				<form method="GET" action="index">
 					<div id="search0" class="search input-group">
 						<div class="select_category filter_type icon-select">
 							<select class="no-border" name="category_id">
@@ -119,13 +119,13 @@
 								<tbody>
 									<tr>
 										<td class="text-center" style="width:70px">
-											<a th:href="@{product.html}"> <img th:src="@{/image/demo/shop/product/resize/2.jpg}" style="width:70px" alt="Filet Mign" title="Filet Mign" class="preview"> </a>
+											<a th:href="@{product}"> <img th:src="@{/image/demo/shop/product/resize/2.jpg}" style="width:70px" alt="Filet Mign" title="Filet Mign" class="preview"> </a>
 										</td>
-										<td class="text-left"> <a class="cart_product_name" th:href="@{product.html}">Filet Mign</a> </td>
+										<td class="text-left"> <a class="cart_product_name" th:href="@{product}">Filet Mign</a> </td>
 										<td class="text-center"> x1 </td>
 										<td class="text-center"> $1,202.00 </td>
 										<td class="text-right">
-											<a th:href="@{product.html}" class="fa fa-edit"></a>
+											<a th:href="@{product}" class="fa fa-edit"></a>
 										</td>
 										<td class="text-right">
 											<a onclick="cart.remove('2');" class="fa fa-times fa-delete"></a>
@@ -133,13 +133,13 @@
 									</tr>
 									<tr>
 										<td class="text-center" style="width:70px">
-											<a th:href="@{product.html}"> <img th:src="@{/image/demo/shop/product/resize/3.jpg}" style="width:70px" alt="Canon EOS 5D" title="Canon EOS 5D" class="preview"> </a>
+											<a th:href="@{product}"> <img th:src="@{/image/demo/shop/product/resize/3.jpg}" style="width:70px" alt="Canon EOS 5D" title="Canon EOS 5D" class="preview"> </a>
 										</td>
-										<td class="text-left"> <a class="cart_product_name" th:href="@{product.html}">Canon EOS 5D</a> </td>
+										<td class="text-left"> <a class="cart_product_name" th:href="@{product}">Canon EOS 5D</a> </td>
 										<td class="text-center"> x1 </td>
 										<td class="text-center"> $60.00 </td>
 										<td class="text-right">
-											<a th:href="@{product.html}" class="fa fa-edit"></a>
+											<a th:href="@{product}" class="fa fa-edit"></a>
 										</td>
 										<td class="text-right">
 											<a onclick="cart.remove('1');" class="fa fa-times fa-delete"></a>
@@ -174,7 +174,7 @@
 										</tr>
 									</tbody>
 								</table>
-								<p class="text-right"> <a class="btn view-cart" th:href="@{cart.html}"><i class="fa fa-shopping-cart"></i>View Cart</a>&nbsp;&nbsp;&nbsp; <a class="btn btn-mega checkout-cart" th:href="@{checkout.html}"><i class="fa fa-share"></i>Checkout</a> </p>
+								<p class="text-right"> <a class="btn view-cart" th:href="@{cart}"><i class="fa fa-shopping-cart"></i>View Cart</a>&nbsp;&nbsp;&nbsp; <a class="btn btn-mega checkout-cart" th:href="@{checkout}"><i class="fa fa-share"></i>Checkout</a> </p>
 							</div>
 						</li>
 					</ul>
@@ -186,8 +186,8 @@
 							<li class="account btn-group" id="my_account">
 								<a th:href="@{#}" title="My Account" class="btn btn-xs dropdown-toggle" data-toggle="dropdown"> <span class="hidden-xs">My Account</span> <span class="fa fa-angle-down "></span></a>
 								<ul class="dropdown-menu ">
-									<li><a th:href="@{register.html}"><i class="fa fa-user"></i> Register</a></li>
-									<li><a th:href="@{login.html}"><i class="fa fa-pencil-square-o"></i> Login</a></li>
+									<li><a th:href="@{register}"><i class="fa fa-user"></i> Register</a></li>
+									<li><a th:href="@{login}"><i class="fa fa-pencil-square-o"></i> Login</a></li>
 								</ul>
 							</li>
 						</ul>
@@ -654,7 +654,7 @@
 					<div class="container">
 						<ul class="megamenu " data-transition="slide" data-animationtime="250">
 							<li class="home hover">
-								<a th:href="@{index.html}">Home </a>
+								<a th:href="@{index}">Home </a>
 							</li>
 
 							<li class="with-sub-menu hover">
@@ -751,17 +751,17 @@
 
 							<li class="">
 								<p class="close-menu"></p>
-								<a th:href="@{contact.html}">Contact us </a>
+								<a th:href="@{contact}">Contact us </a>
 							</li>
 
 							<li class="">
 								<p class="close-menu"></p>
-								<a th:href="@{about-us.html}">About us </a>
+								<a th:href="@{about-us}">About us </a>
 							</li>
 							
 							<li class="">
 								<p class="close-menu"></p>
-								<a th:href="@{faq.html}">FAQ </a>
+								<a th:href="@{faq}">FAQ </a>
 							</li>
 
 						</ul>
@@ -907,12 +907,12 @@
 												<!--Sale Label-->
 												<span class="label label-sale">-15%</span>
 												<!--full quick view block-->
-												<a class="quickview iframe-link visible-lg" data-fancybox-type="iframe"  th:href="@{quickview.html}">  Quickview</a>
+												<a class="quickview iframe-link visible-lg" data-fancybox-type="iframe"  th:href="@{quickview}">  Quickview</a>
 												<!--end full quick view block-->
 											</div>
 											<div class="right-block">
 												<div class="caption">
-													<h4><a th:href="@{product.html}">Cupim Bris</a></h4>
+													<h4><a th:href="@{product}">Cupim Bris</a></h4>
 													<div class="ratings">
 														<div class="rating-box">
 															<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
@@ -946,12 +946,12 @@
 												<!--New Label-->
 												<span class="label label-new">New</span>
 												<!--full quick view block-->
-												<a class="quickview iframe-link visible-lg" data-fancybox-type="iframe"  th:href="@{quickview.html}">  Quickview</a>
+												<a class="quickview iframe-link visible-lg" data-fancybox-type="iframe"  th:href="@{quickview}">  Quickview</a>
 												<!--end full quick view block-->
 											</div>
 											<div class="right-block">
 												<div class="caption">
-													<h4><a th:href="@{product.html}">Cisi Chicken	</a></h4>
+													<h4><a th:href="@{product}">Cisi Chicken	</a></h4>
 													<div class="ratings">
 														<div class="rating-box">
 															<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
@@ -985,12 +985,12 @@
 												<!--Sale Label-->
 												
 												<!--full quick view block-->
-												<a class="quickview iframe-link visible-lg" data-fancybox-type="iframe"  th:href="@{quickview.html}">  Quickview</a>
+												<a class="quickview iframe-link visible-lg" data-fancybox-type="iframe"  th:href="@{quickview}">  Quickview</a>
 												<!--end full quick view block-->
 											</div>
 											<div class="right-block">
 												<div class="caption">
-													<h4><a th:href="@{product.html}">Bint Beef</a></h4>
+													<h4><a th:href="@{product}">Bint Beef</a></h4>
 													<div class="ratings">
 														<div class="rating-box">
 															<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
@@ -1023,12 +1023,12 @@
 												</div>
 												
 												<!--full quick view block-->
-												<a class="quickview iframe-link visible-lg" data-fancybox-type="iframe"  th:href="@{quickview.html}">  Quickview</a>
+												<a class="quickview iframe-link visible-lg" data-fancybox-type="iframe"  th:href="@{quickview}">  Quickview</a>
 												<!--end full quick view block-->
 											</div>
 											<div class="right-block">
 												<div class="caption">
-													<h4><a th:href="@{product.html}">Dail Lulpa</a></h4>
+													<h4><a th:href="@{product}">Dail Lulpa</a></h4>
 													<div class="ratings">
 														<div class="rating-box">
 															<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
@@ -1061,12 +1061,12 @@
 												</div>
 												
 												<!--full quick view block-->
-												<a class="quickview iframe-link visible-lg" data-fancybox-type="iframe"  th:href="@{quickview.html}">  Quickview</a>
+												<a class="quickview iframe-link visible-lg" data-fancybox-type="iframe"  th:href="@{quickview}">  Quickview</a>
 												<!--end full quick view block-->
 											</div>
 											<div class="right-block">
 												<div class="caption">
-													<h4><a th:href="@{product.html}">Et Spare</a></h4>
+													<h4><a th:href="@{product}">Et Spare</a></h4>
 													<div class="ratings">
 														<div class="rating-box">
 															<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
@@ -1101,12 +1101,12 @@
 												<span class="label label-sale">-15%</span>
 												
 												<!--full quick view block-->
-												<a class="quickview iframe-link visible-lg" data-fancybox-type="iframe"  th:href="@{quickview.html}">  Quickview</a>
+												<a class="quickview iframe-link visible-lg" data-fancybox-type="iframe"  th:href="@{quickview}">  Quickview</a>
 												<!--end full quick view block-->
 											</div>
 											<div class="right-block">
 												<div class="caption">
-													<h4><a th:href="@{product.html}">Cupim Bris</a></h4>
+													<h4><a th:href="@{product}">Cupim Bris</a></h4>
 													<div class="ratings">
 														<div class="rating-box">
 															<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
@@ -1141,12 +1141,12 @@
 												<!--Sale Label-->
 												<span class="label label-sale">-15%</span>
 												<!--full quick view block-->
-												<a class="quickview iframe-link visible-lg" data-fancybox-type="iframe"  th:href="@{quickview.html}">  Quickview</a>
+												<a class="quickview iframe-link visible-lg" data-fancybox-type="iframe"  th:href="@{quickview}">  Quickview</a>
 												<!--end full quick view block-->
 											</div>
 											<div class="right-block">
 												<div class="caption">
-													<h4><a th:href="@{product.html}">Apple Cinema 30"</a></h4>
+													<h4><a th:href="@{product}">Apple Cinema 30"</a></h4>
 													<div class="ratings">
 														<div class="rating-box">
 															<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
@@ -1260,12 +1260,12 @@
 												<!--Sale Label-->
 												<span class="label label-sale">-15%</span>
 												<!--full quick view block-->
-												<a class="quickview iframe-link visible-lg" data-fancybox-type="iframe"  th:href="@{quickview.html}">  Quickview</a>
+												<a class="quickview iframe-link visible-lg" data-fancybox-type="iframe"  th:href="@{quickview}">  Quickview</a>
 												<!--end full quick view block-->
 											</div>
 											<div class="right-block">
 												<div class="caption">
-													<h4><a th:href="@{product.html}">Cupim Bris</a></h4>
+													<h4><a th:href="@{product}">Cupim Bris</a></h4>
 													<div class="ratings">
 														<div class="rating-box">
 															<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
@@ -1300,12 +1300,12 @@
 												<!--Sale Label-->
 												<span class="label label-sale">-15%</span>
 												<!--full quick view block-->
-												<a class="quickview iframe-link visible-lg" data-fancybox-type="iframe"  th:href="@{quickview.html}">  Quickview</a>
+												<a class="quickview iframe-link visible-lg" data-fancybox-type="iframe"  th:href="@{quickview}">  Quickview</a>
 												<!--end full quick view block-->
 											</div>
 											<div class="right-block">
 												<div class="caption">
-													<h4><a th:href="@{product.html}">Apple Cinema 30"</a></h4>
+													<h4><a th:href="@{product}">Apple Cinema 30"</a></h4>
 													<div class="ratings">
 														<div class="rating-box">
 															<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
@@ -1340,12 +1340,12 @@
 												<!--Sale Label-->
 												<span class="label label-sale">-15%</span>
 												<!--full quick view block-->
-												<a class="quickview iframe-link visible-lg" data-fancybox-type="iframe"  th:href="@{quickview.html}">  Quickview</a>
+												<a class="quickview iframe-link visible-lg" data-fancybox-type="iframe"  th:href="@{quickview}">  Quickview</a>
 												<!--end full quick view block-->
 											</div>
 											<div class="right-block">
 												<div class="caption">
-													<h4><a th:href="@{product.html}">Cupim Bris</a></h4>
+													<h4><a th:href="@{product}">Cupim Bris</a></h4>
 													<div class="ratings">
 														<div class="rating-box">
 															<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
@@ -1380,12 +1380,12 @@
 												<!--New Label-->
 												<span class="label label-new">New</span>
 												<!--full quick view block-->
-												<a class="quickview iframe-link visible-lg" data-fancybox-type="iframe"  th:href="@{quickview.html}">  Quickview</a>
+												<a class="quickview iframe-link visible-lg" data-fancybox-type="iframe"  th:href="@{quickview}">  Quickview</a>
 												<!--end full quick view block-->
 											</div>
 											<div class="right-block">
 												<div class="caption">
-													<h4><a th:href="@{product.html}">Cisi Chicken	</a></h4>
+													<h4><a th:href="@{product}">Cisi Chicken	</a></h4>
 													<div class="ratings">
 														<div class="rating-box">
 															<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
@@ -1418,12 +1418,12 @@
 												</div>
 												<!--Sale Label-->
 												<!--full quick view block-->
-												<a class="quickview iframe-link visible-lg" data-fancybox-type="iframe"  th:href="@{quickview.html}">  Quickview</a>
+												<a class="quickview iframe-link visible-lg" data-fancybox-type="iframe"  th:href="@{quickview}">  Quickview</a>
 												<!--end full quick view block-->
 											</div>
 											<div class="right-block">
 												<div class="caption">
-													<h4><a th:href="@{product.html}">Bint Beef</a></h4>
+													<h4><a th:href="@{product}">Bint Beef</a></h4>
 													<div class="ratings">
 														<div class="rating-box">
 															<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
@@ -1456,12 +1456,12 @@
 												</div>
 												
 												<!--full quick view block-->
-												<a class="quickview iframe-link visible-lg" data-fancybox-type="iframe"  th:href="@{quickview.html}">  Quickview</a>
+												<a class="quickview iframe-link visible-lg" data-fancybox-type="iframe"  th:href="@{quickview}">  Quickview</a>
 												<!--end full quick view block-->
 											</div>
 											<div class="right-block">
 												<div class="caption">
-													<h4><a th:href="@{product.html}">Dail Lulpa</a></h4>
+													<h4><a th:href="@{product}">Dail Lulpa</a></h4>
 													<div class="ratings">
 														<div class="rating-box">
 															<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
@@ -1494,12 +1494,12 @@
 												</div>
 												
 												<!--full quick view block-->
-												<a class="quickview iframe-link visible-lg" data-fancybox-type="iframe"  th:href="@{quickview.html}">  Quickview</a>
+												<a class="quickview iframe-link visible-lg" data-fancybox-type="iframe"  th:href="@{quickview}">  Quickview</a>
 												<!--end full quick view block-->
 											</div>
 											<div class="right-block">
 												<div class="caption">
-													<h4><a th:href="@{product.html}">Et Spare</a></h4>
+													<h4><a th:href="@{product}">Et Spare</a></h4>
 													<div class="ratings">
 														<div class="rating-box">
 															<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
@@ -1732,9 +1732,9 @@
 							<h3 class="modtitle">Information</h3>
 							<div class="modcontent">
 								<ul class="menu">
-									<li><a th:href="@{about-us.html}">About Us</a></li>
-									<li><a th:href="@{faq.html}">FAQ</a></li>
-									<li><a th:href="@{order-history.html}">Order history</a></li>
+									<li><a th:href="@{about-us}">About Us</a></li>
+									<li><a th:href="@{faq}">FAQ</a></li>
+									<li><a th:href="@{order-history}">Order history</a></li>
 								</ul>
 							</div>
 						</div>
@@ -1745,8 +1745,8 @@
 							<h3 class="modtitle">Customer Service</h3>
 							<div class="modcontent">
 								<ul class="menu">
-									<li><a th:href="@{contact.html}">Contact Us</a></li>
-									<li><a th:href="@{my-account.html}">My Account</a></li>
+									<li><a th:href="@{contact}">Contact Us</a></li>
+									<li><a th:href="@{my-account}">My Account</a></li>
 								</ul>
 							</div>
 						</div>
@@ -1757,9 +1757,9 @@
 							<h3 class="modtitle">My Account</h3>
 							<div class="modcontent">
 								<ul class="menu">
-									<li><a th:href="@{login.html}">Login</a></li>
-									<li><a th:href="@{register.html}">Register</a></li>
-									<li><a th:href="@{gift-voucher.html}">Gift Vouchers</a></li>
+									<li><a th:href="@{login}">Login</a></li>
+									<li><a th:href="@{register}">Register</a></li>
+									<li><a th:href="@{gift-voucher}">Gift Vouchers</a></li>
 								</ul>
 							</div>
 						</div>

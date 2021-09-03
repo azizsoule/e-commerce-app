@@ -14,14 +14,14 @@
             <div class="row">
                 <!-- Logo -->
                 <div class="navbar-logo col-md-3 col-sm-12 col-xs-12">
-                    <a th:href="@{index.html}"><img th:src="@{/image/demo/logos/theme_logo.png}" title="Your Store"
+                    <a th:href="@{index}"><img th:src="@{/image/demo/logos/theme_logo.png}" title="Your Store"
                                                     alt="Your Store"/></a>
                 </div>
                 <!-- //end Logo -->
 
                 <!-- Search -->
                 <div id="sosearchpro" class="col-sm-7 search-pro">
-                    <form method="GET" action="index.html">
+                    <form method="GET" action="index">
                         <div id="search0" class="search input-group">
                             <div class="select_category filter_type icon-select">
                                 <select class="no-border" name="category_id">
@@ -71,17 +71,17 @@
                                     <tbody>
                                     <tr>
                                         <td class="text-center" style="width:70px">
-                                            <a th:href="@{product.html}"> <img
+                                            <a th:href="@{product}"> <img
                                                     th:src="@{/image/demo/shop/product/resize/2.jpg}"
                                                     style="width:70px" alt="Filet Mign" title="Filet Mign"
                                                     class="preview"> </a>
                                         </td>
                                         <td class="text-left"><a class="cart_product_name"
-                                                                 th:href="@{product.html}">Filet Mign</a></td>
+                                                                 th:href="@{product}">Filet Mign</a></td>
                                         <td class="text-center"> x1</td>
                                         <td class="text-center"> $1,202.00</td>
                                         <td class="text-right">
-                                            <a th:href="@{product.html}" class="fa fa-edit"></a>
+                                            <a th:href="@{product}" class="fa fa-edit"></a>
                                         </td>
                                         <td class="text-right">
                                             <a onclick="cart.remove('2');" class="fa fa-times fa-delete"></a>
@@ -89,17 +89,17 @@
                                     </tr>
                                     <tr>
                                         <td class="text-center" style="width:70px">
-                                            <a th:href="@{product.html}"> <img
+                                            <a th:href="@{product}"> <img
                                                     th:src="@{/image/demo/shop/product/resize/3.jpg}"
                                                     style="width:70px" alt="Canon EOS 5D" title="Canon EOS 5D"
                                                     class="preview"> </a>
                                         </td>
                                         <td class="text-left"><a class="cart_product_name"
-                                                                 th:href="@{product.html}">Canon EOS 5D</a></td>
+                                                                 th:href="@{product}">Canon EOS 5D</a></td>
                                         <td class="text-center"> x1</td>
                                         <td class="text-center"> $60.00</td>
                                         <td class="text-right">
-                                            <a th:href="@{product.html}" class="fa fa-edit"></a>
+                                            <a th:href="@{product}" class="fa fa-edit"></a>
                                         </td>
                                         <td class="text-right">
                                             <a onclick="cart.remove('1');" class="fa fa-times fa-delete"></a>
@@ -134,9 +134,9 @@
                                         </tr>
                                         </tbody>
                                     </table>
-                                    <p class="text-right"><a class="btn view-cart" th:href="@{cart.html}"><i
+                                    <p class="text-right"><a class="btn view-cart" th:href="@{cart}"><i
                                             class="fa fa-shopping-cart"></i>View Cart</a>&nbsp;&nbsp;&nbsp; <a
-                                            class="btn btn-mega checkout-cart" th:href="@{checkout.html}"><i
+                                            class="btn btn-mega checkout-cart" th:href="@{checkout}"><i
                                             class="fa fa-share"></i>Checkout</a></p>
                                 </div>
                             </li>
@@ -152,9 +152,9 @@
                                        data-toggle="dropdown"> <span class="hidden-xs">My Account</span> <span
                                             class="fa fa-angle-down "></span></a>
                                     <ul class="dropdown-menu ">
-                                        <li><a th:href="@{register.html}"><i class="fa fa-user"></i> Register</a>
+                                        <li><a th:href="@{register}"><i class="fa fa-user"></i> Register</a>
                                         </li>
-                                        <li><a th:href="@{login.html}"><i class="fa fa-pencil-square-o"></i>
+                                        <li><a th:href="@{login}"><i class="fa fa-pencil-square-o"></i>
                                             Login</a></li>
                                     </ul>
                                 </li>
@@ -829,7 +829,7 @@
                                         <div class="container">
                                             <ul class="megamenu " data-transition="slide" data-animationtime="250">
                                                 <li class="home hover">
-                                                    <a th:href="@{index.html}">Home </a>
+                                                    <a th:href="@{index}">Home </a>
                                                 </li>
 
                                                 <li class="with-sub-menu hover">
@@ -972,17 +972,17 @@
 
                                                 <li class="">
                                                     <p class="close-menu"></p>
-                                                    <a th:href="@{contact.html}">Contact us </a>
+                                                    <a th:href="@{contact}">Contact us </a>
                                                 </li>
 
                                                 <li class="">
                                                     <p class="close-menu"></p>
-                                                    <a th:href="@{about-us.html}">About us </a>
+                                                    <a th:href="@{about-us}">About us </a>
                                                 </li>
 
                                                 <li class="">
                                                     <p class="close-menu"></p>
-                                                    <a th:href="@{faq.html}">FAQ </a>
+                                                    <a th:href="@{faq}">FAQ </a>
                                                 </li>
 
                                             </ul>
