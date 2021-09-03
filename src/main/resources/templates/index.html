@@ -1,6 +1,6 @@
 
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     
     <!-- Basic page needs
@@ -18,7 +18,7 @@
 	<!-- Favicon
 	============================================ -->
    
-    <link rel="shortcut icon" href="../static/ico/favicon.png">
+    <link rel="shortcut icon" th:href="@{../static/ico/favicon.png}">
 	
 	<!-- Google web fonts
 	============================================ -->
@@ -26,25 +26,25 @@
 	
     <!-- Libs CSS
 	============================================ -->
-    <link rel="stylesheet" href="../static/css/bootstrap/css/bootstrap.min.css">
-	<link href="../static/css/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-	<link href="../static/js/datetimepicker/bootstrap-datetimepicker.min.css" rel="stylesheet">
-    <link href="../static/js/owl-carousel/owl.carousel.css" rel="stylesheet">
-	<link href="../static/css/themecss/lib.css" rel="stylesheet">
-	<link href="../static/js/jquery-ui/jquery-ui.min.css" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{../static/css/bootstrap/css/bootstrap.min.css}">
+	<link th:href="@{../static/css/font-awesome/css/font-awesome.min.css}" rel="stylesheet">
+	<link th:href="@{../static/js/datetimepicker/bootstrap-datetimepicker.min.css}" rel="stylesheet">
+    <link th:href="@{../static/js/owl-carousel/owl.carousel.css}" rel="stylesheet">
+	<link th:href="@{../static/css/themecss/lib.css}" rel="stylesheet">
+	<link th:href="@{../static/js/jquery-ui/jquery-ui.min.css}" rel="stylesheet">
 	
 	<!-- Theme CSS
 	============================================ -->
-   	<link href="../static/css/themecss/so_megamenu.css" rel="stylesheet">
-    <link href="../static/css/themecss/so-categories.css" rel="stylesheet">
-	<link href="../static/css/themecss/so-listing-tabs.css" rel="stylesheet">
-	<link href="../static/css/themecss/so-newletter-popup.css" rel="stylesheet">
-	<link href="../static/css/themecss/just_purchased_notification.css" rel=stylesheet>
+   	<link th:href="@{../static/css/themecss/so_megamenu.css}" rel="stylesheet">
+    <link th:href="@{../static/css/themecss/so-categories.css}" rel="stylesheet">
+	<link th:href="@{../static/css/themecss/so-listing-tabs.css}" rel="stylesheet">
+	<link th:href="@{../static/css/themecss/so-newletter-popup.css}" rel="stylesheet">
+	<link th:href="@{../static/css/themecss/just_purchased_notification.css}" rel=stylesheet>
 
-	<link href="../static/css/footer1.css" rel="stylesheet">
-	<link href="../static/css/header1.css" rel="stylesheet">
-	<link id="color_scheme" href="../static/css/theme.css" rel="stylesheet">
-	<link href="../static/css/responsive.css" rel="stylesheet">
+	<link th:href="@{../static/css/footer1.css}" rel="stylesheet">
+	<link th:href="@{../static/css/header1.css}" rel="stylesheet">
+	<link id="color_scheme" th:href="@{../static/css/theme.css}" rel="stylesheet">
+	<link th:href="@{../static/css/responsive.css}" rel="stylesheet">
 	
 </head>
 
@@ -65,7 +65,7 @@
 		<div class="row">
 			<!-- Logo -->
 			<div class="navbar-logo col-md-3 col-sm-12 col-xs-12">
-				<a href="index.html"><img src="../static/image/demo/logos/theme_logo.png" title="Your Store" alt="Your Store" /></a>
+				<a th:href="@{index.html}"><img th:src="@{../static/image/demo/logos/theme_logo.png}" title="Your Store" alt="Your Store" /></a>
 			</div>
 			<!-- //end Logo -->
 
@@ -119,13 +119,13 @@
 								<tbody>
 									<tr>
 										<td class="text-center" style="width:70px">
-											<a href="product.html"> <img src="../static/image/demo/shop/product/resize/2.jpg" style="width:70px" alt="Filet Mign" title="Filet Mign" class="preview"> </a>
+											<a th:href="@{product.html}"> <img th:src="@{../static/image/demo/shop/product/resize/2.jpg}" style="width:70px" alt="Filet Mign" title="Filet Mign" class="preview"> </a>
 										</td>
-										<td class="text-left"> <a class="cart_product_name" href="product.html">Filet Mign</a> </td>
+										<td class="text-left"> <a class="cart_product_name" th:href="@{product.html}">Filet Mign</a> </td>
 										<td class="text-center"> x1 </td>
 										<td class="text-center"> $1,202.00 </td>
 										<td class="text-right">
-											<a href="product.html" class="fa fa-edit"></a>
+											<a th:href="@{product.html}" class="fa fa-edit"></a>
 										</td>
 										<td class="text-right">
 											<a onclick="cart.remove('2');" class="fa fa-times fa-delete"></a>
@@ -133,13 +133,13 @@
 									</tr>
 									<tr>
 										<td class="text-center" style="width:70px">
-											<a href="product.html"> <img src="../static/image/demo/shop/product/resize/3.jpg" style="width:70px" alt="Canon EOS 5D" title="Canon EOS 5D" class="preview"> </a>
+											<a th:href="@{product.html}"> <img th:src="@{../static/image/demo/shop/product/resize/3.jpg}" style="width:70px" alt="Canon EOS 5D" title="Canon EOS 5D" class="preview"> </a>
 										</td>
-										<td class="text-left"> <a class="cart_product_name" href="product.html">Canon EOS 5D</a> </td>
+										<td class="text-left"> <a class="cart_product_name" th:href="@{product.html}">Canon EOS 5D</a> </td>
 										<td class="text-center"> x1 </td>
 										<td class="text-center"> $60.00 </td>
 										<td class="text-right">
-											<a href="product.html" class="fa fa-edit"></a>
+											<a th:href="@{product.html}" class="fa fa-edit"></a>
 										</td>
 										<td class="text-right">
 											<a onclick="cart.remove('1');" class="fa fa-times fa-delete"></a>
@@ -174,20 +174,20 @@
 										</tr>
 									</tbody>
 								</table>
-								<p class="text-right"> <a class="btn view-cart" href="cart.html"><i class="fa fa-shopping-cart"></i>View Cart</a>&nbsp;&nbsp;&nbsp; <a class="btn btn-mega checkout-cart" href="checkout.html"><i class="fa fa-share"></i>Checkout</a> </p>
+								<p class="text-right"> <a class="btn view-cart" th:href="@{cart.html}"><i class="fa fa-shopping-cart"></i>View Cart</a>&nbsp;&nbsp;&nbsp; <a class="btn btn-mega checkout-cart" th:href="@{checkout.html}"><i class="fa fa-share"></i>Checkout</a> </p>
 							</div>
 						</li>
 					</ul>
 				</div>
 				<div class="header-top-right collapsed-block text-right col-lg-6 col-md-7 col-sm-12 col-xs-12 compact-hidden">
-					<h5 class="tabBlockTitle visible-xs">More<a class="expander " href="#TabBlock-1"><i class="fa fa-angle-down"></i></a></h5>
+					<h5 class="tabBlockTitle visible-xs">More<a class="expander " th:href="@{#TabBlock-1}"><i class="fa fa-angle-down"></i></a></h5>
 					<div class="tabBlock" id="TabBlock-1">
 						<ul class="top-link list-inline">
 							<li class="account btn-group" id="my_account">
-								<a href="#" title="My Account" class="btn btn-xs dropdown-toggle" data-toggle="dropdown"> <span class="hidden-xs">My Account</span> <span class="fa fa-angle-down "></span></a>
+								<a th:href="@{#}" title="My Account" class="btn btn-xs dropdown-toggle" data-toggle="dropdown"> <span class="hidden-xs">My Account</span> <span class="fa fa-angle-down "></span></a>
 								<ul class="dropdown-menu ">
-									<li><a href="register.html"><i class="fa fa-user"></i> Register</a></li>
-									<li><a href="login.html"><i class="fa fa-pencil-square-o"></i> Login</a></li>
+									<li><a th:href="@{register.html}"><i class="fa fa-user"></i> Register</a></li>
+									<li><a th:href="@{login.html}"><i class="fa fa-pencil-square-o"></i> Login</a></li>
 								</ul>
 							</li>
 						</ul>
@@ -240,8 +240,8 @@
 											<ul class="megamenu">
 												<li class="item-vertical style1 with-sub-menu hover">
 													<p class="close-menu"></p>
-													<a href="#" class="clearfix">
-														<img src="../static/image/theme/icons/9.png" alt="icon">
+													<a th:href="@{#}" class="clearfix">
+														<img th:src="@{../static/image/theme/icons/9.png}" alt="icon">
 														<span>Automotive &amp; Motocrycle</span>
 														<b class="caret"></b>
 													</a>
@@ -254,44 +254,22 @@
 																			<div class="menu">
 																				<ul>
 																					<li>
-																						<a href="#"  class="main-menu">Apparel</a>
+																						<a th:href="@{#}"  class="main-menu">Apparel</a>
 																						<ul>
-																							<li><a href="#" >Accessories for Tablet PC</a></li>
-																							<li><a href="#" >Accessories for i Pad</a></li>
-																							<li><a  href="#" >Accessories for iPhone</a></li>
-																							<li><a href="#" >Bags, Holiday Supplies</a></li>
-																							<li><a href="#" >Car Alarms and Security</a></li>
-																							<li><a href="#" >Car Audio &amp; Speakers</a></li>
+																							<li><a th:href="@{#}" >Accessories for Tablet PC</a></li>
+																							<li><a th:href="@{#}" >Accessories for i Pad</a></li>
+																							<li><a  th:href="@{#}" >Accessories for iPhone</a></li>
+																							<li><a th:href="@{#}" >Bags, Holiday Supplies</a></li>
+																							<li><a th:href="@{#}" >Car Alarms and Security</a></li>
+																							<li><a th:href="@{#}" >Car Audio &amp; Speakers</a></li>
 																						</ul>
 																					</li>
 																					<li>
-																						<a href="#"  class="main-menu">Cables &amp; Connectors</a>
+																						<a th:href="@{#}"  class="main-menu">Cables &amp; Connectors</a>
 																						<ul>
-																							<li><a href="#" >Cameras &amp; Photo</a></li>
-																							<li><a href="#" >Electronics</a></li>
-																							<li><a href="#" >Outdoor &amp; Traveling</a></li>
-																						</ul>
-																					</li>
-																				</ul>
-																			</div>
-																		</div>
-																		<div class="col-md-4 static-menu">
-																			<div class="menu">
-																				<ul>
-																					<li>
-																						<a href="#"  class="main-menu">Camping &amp; Hiking</a>
-																						<ul>
-																							<li><a href="#" >Earings</a></li>
-																							<li><a href="#" >Shaving &amp; Hair Removal</a></li>
-																							<li><a href="#" >Salon &amp; Spa Equipment</a></li>
-																						</ul>
-																					</li>
-																					<li>
-																						<a href="#" class="main-menu">Smartphone &amp; Tablets</a>
-																						<ul>
-																							<li><a href="#" >Sports &amp; Outdoors</a></li>
-																							<li><a href="#" >Bath &amp; Body</a></li>
-																							<li><a href="#" >Gadgets &amp; Auto Parts</a></li>
+																							<li><a th:href="@{#}" >Cameras &amp; Photo</a></li>
+																							<li><a th:href="@{#}" >Electronics</a></li>
+																							<li><a th:href="@{#}" >Outdoor &amp; Traveling</a></li>
 																						</ul>
 																					</li>
 																				</ul>
@@ -301,12 +279,34 @@
 																			<div class="menu">
 																				<ul>
 																					<li>
-																						<a href="#"  class="main-menu">Bags, Holiday Supplies</a>
+																						<a th:href="@{#}"  class="main-menu">Camping &amp; Hiking</a>
 																						<ul>
-																							<li><a href="#" onclick="window.location = '18_46';">Battereries &amp; Chargers</a></li>
-																							<li><a href="#" onclick="window.location = '24_64';">Bath &amp; Body</a></li>
-																							<li><a href="#" onclick="window.location = '18_45';">Headphones, Headsets</a></li>
-																							<li><a href="#" onclick="window.location = '18_30';">Home Audio</a></li>
+																							<li><a th:href="@{#}" >Earings</a></li>
+																							<li><a th:href="@{#}" >Shaving &amp; Hair Removal</a></li>
+																							<li><a th:href="@{#}" >Salon &amp; Spa Equipment</a></li>
+																						</ul>
+																					</li>
+																					<li>
+																						<a th:href="@{#}" class="main-menu">Smartphone &amp; Tablets</a>
+																						<ul>
+																							<li><a th:href="@{#}" >Sports &amp; Outdoors</a></li>
+																							<li><a th:href="@{#}" >Bath &amp; Body</a></li>
+																							<li><a th:href="@{#}" >Gadgets &amp; Auto Parts</a></li>
+																						</ul>
+																					</li>
+																				</ul>
+																			</div>
+																		</div>
+																		<div class="col-md-4 static-menu">
+																			<div class="menu">
+																				<ul>
+																					<li>
+																						<a th:href="@{#}"  class="main-menu">Bags, Holiday Supplies</a>
+																						<ul>
+																							<li><a th:href="@{#}" onclick="window.location = '18_46';">Battereries &amp; Chargers</a></li>
+																							<li><a th:href="@{#}" onclick="window.location = '24_64';">Bath &amp; Body</a></li>
+																							<li><a th:href="@{#}" onclick="window.location = '18_45';">Headphones, Headsets</a></li>
+																							<li><a th:href="@{#}" onclick="window.location = '18_30';">Home Audio</a></li>
 																						</ul>
 																					</li>
 																				</ul>
@@ -320,17 +320,17 @@
 												</li>
 												<li class="item-vertical">
 													<p class="close-menu"></p>
-													<a href="#" class="clearfix">
-														<img src="../static/image/theme/icons/10.png" alt="icon">
+													<a th:href="@{#}" class="clearfix">
+														<img th:src="@{../static/image/theme/icons/10.png}" alt="icon">
 														<span>Electronic</span>
 														
 													</a>
 												</li>
 												<li class="item-vertical with-sub-menu hover">
 													<p class="close-menu"></p>
-													<a href="#" class="clearfix">
+													<a th:href="@{#}" class="clearfix">
 														<span class="label"></span>
-														<img src="../static/image/theme/icons/3.png" alt="icon">
+														<img th:src="@{../static/image/theme/icons/3.png}" alt="icon">
 														<span>Sports &amp; Outdoors</span>
 														<b class="caret"></b>
 													</a>
@@ -343,28 +343,28 @@
 																			<div class="menu">
 																				<ul>
 																					<li>
-																						<a href="#" onclick="window.location = '81';" class="main-menu">Mobile Accessories</a>
+																						<a th:href="@{#}" onclick="window.location = '81';" class="main-menu">Mobile Accessories</a>
 																						<ul>
-																							<li><a href="#" onclick="window.location = '33_63';">Gadgets &amp; Auto Parts</a></li>
-																							<li><a href="#" onclick="window.location = '24_64';">Bath &amp; Body</a></li>
-																							<li><a href="#" onclick="window.location = '17';">Bags, Holiday Supplies</a></li>
+																							<li><a th:href="@{#}" onclick="window.location = '33_63';">Gadgets &amp; Auto Parts</a></li>
+																							<li><a th:href="@{#}" onclick="window.location = '24_64';">Bath &amp; Body</a></li>
+																							<li><a th:href="@{#}" onclick="window.location = '17';">Bags, Holiday Supplies</a></li>
 																						</ul>
 																					</li>
 																					<li>
-																						<a href="#" onclick="window.location = '18_46';" class="main-menu">Battereries &amp; Chargers</a>
+																						<a th:href="@{#}" onclick="window.location = '18_46';" class="main-menu">Battereries &amp; Chargers</a>
 																						<ul>
-																							<li><a href="#" onclick="window.location = '25_28';">Outdoor &amp; Traveling</a></li>
-																							<li><a href="#" onclick="window.location = '80';">Flashlights &amp; Lamps</a></li>
-																							<li><a href="#" onclick="window.location = '24_66';">Fragrances</a></li>
+																							<li><a th:href="@{#}" onclick="window.location = '25_28';">Outdoor &amp; Traveling</a></li>
+																							<li><a th:href="@{#}" onclick="window.location = '80';">Flashlights &amp; Lamps</a></li>
+																							<li><a th:href="@{#}" onclick="window.location = '24_66';">Fragrances</a></li>
 																						</ul>
 																					</li>
 																					<li>
-																						<a href="#" onclick="window.location = '25_31';" class="main-menu">Fishing</a>
+																						<a th:href="@{#}" onclick="window.location = '25_31';" class="main-menu">Fishing</a>
 																						<ul>
-																							<li><a href="#" onclick="window.location = '57_73';">FPV System &amp; Parts</a></li>
-																							<li><a href="#" onclick="window.location = '18';">Electronics</a></li>
-																							<li><a href="#" onclick="window.location = '20_76';">Earings</a></li>
-																							<li><a href="#" onclick="window.location = '33_60';">More Car Accessories</a></li>
+																							<li><a th:href="@{#}" onclick="window.location = '57_73';">FPV System &amp; Parts</a></li>
+																							<li><a th:href="@{#}" onclick="window.location = '18';">Electronics</a></li>
+																							<li><a th:href="@{#}" onclick="window.location = '20_76';">Earings</a></li>
+																							<li><a th:href="@{#}" onclick="window.location = '33_60';">More Car Accessories</a></li>
 																						</ul>
 																					</li>
 																				</ul>
@@ -374,8 +374,8 @@
 																</div>
 																<div class="col-md-6">
 																	<div class="row banner">
-																		<a href="#">
-																			<img src="../static/image/demo/cms/menu_bg2.jpg" alt="banner1">
+																		<a th:href="@{#}">
+																			<img th:src="@{../static/image/demo/cms/menu_bg2.jpg}" alt="banner1">
 																			</a>
 																		</div>
 																	</div>
@@ -385,8 +385,8 @@
 													</li>
 													<li class="item-vertical with-sub-menu hover">
 														<p class="close-menu"></p>
-														<a href="#" class="clearfix">
-															<img src="../static/image/theme/icons/2.png" alt="icon">
+														<a th:href="@{#}" class="clearfix">
+															<img th:src="@{../static/image/theme/icons/2.png}" alt="icon">
 															<span>Health &amp; Beauty</span>
 															<b class="caret"></b>
 														</a>
@@ -399,68 +399,28 @@
 																				<div class="menu">
 																					<ul>
 																						<li>
-																							<a href="#" class="main-menu">Car Alarms and Security</a>
+																							<a th:href="@{#}" class="main-menu">Car Alarms and Security</a>
 																							<ul>
-																								<li><a href="#" >Car Audio &amp; Speakers</a></li>
-																								<li><a href="#" >Gadgets &amp; Auto Parts</a></li>
-																								<li><a href="#" >Gadgets &amp; Auto Parts</a></li>
-																								<li><a href="#" >Headphones, Headsets</a></li>
+																								<li><a th:href="@{#}" >Car Audio &amp; Speakers</a></li>
+																								<li><a th:href="@{#}" >Gadgets &amp; Auto Parts</a></li>
+																								<li><a th:href="@{#}" >Gadgets &amp; Auto Parts</a></li>
+																								<li><a th:href="@{#}" >Headphones, Headsets</a></li>
 																							</ul>
 																						</li>
 																						<li>
-																							<a href="24" onclick="window.location = '24';" class="main-menu">Health &amp; Beauty</a>
+																							<a th:href="@{24}" onclick="window.location = '24';" class="main-menu">Health &amp; Beauty</a>
 																							<ul>
 																								<li>
-																									<a href="#" >Home Audio</a>
+																									<a th:href="@{#}" >Home Audio</a>
 																								</li>
 																								<li>
-																									<a href="#" >Helicopters &amp; Parts</a>
+																									<a th:href="@{#}" >Helicopters &amp; Parts</a>
 																								</li>
 																								<li>
-																									<a href="#" >Outdoor &amp; Traveling</a>
+																									<a th:href="@{#}" >Outdoor &amp; Traveling</a>
 																								</li>
 																								<li>
-																									<a href="#">Toys &amp; Hobbies</a>
-																								</li>
-																							</ul>
-																						</li>
-																					</ul>
-																				</div>
-																			</div>
-																			<div class="col-md-4 static-menu">
-																				<div class="menu">
-																					<ul>
-																						<li>
-																							<a href="#"  class="main-menu">Electronics</a>
-																							<ul>
-																								<li>
-																									<a href="#">Earings</a>
-																								</li>
-																								<li>
-																									<a href="#" >Salon &amp; Spa Equipment</a>
-																								</li>
-																								<li>
-																									<a href="#" >Shaving &amp; Hair Removal</a>
-																								</li>
-																								<li>
-																									<a href="#">Smartphone &amp; Tablets</a>
-																								</li>
-																							</ul>
-																						</li>
-																						<li>
-																							<a href="#"  class="main-menu">Sports &amp; Outdoors</a>
-																							<ul>
-																								<li>
-																									<a href="#" >Flashlights &amp; Lamps</a>
-																								</li>
-																								<li>
-																									<a href="#" >Fragrances</a>
-																								</li>
-																								<li>
-																									<a href="#" >Fishing</a>
-																								</li>
-																								<li>
-																									<a href="#" >FPV System &amp; Parts</a>
+																									<a th:href="@{#}">Toys &amp; Hobbies</a>
 																								</li>
 																							</ul>
 																						</li>
@@ -471,36 +431,76 @@
 																				<div class="menu">
 																					<ul>
 																						<li>
-																							<a href="#" class="main-menu">More Car Accessories</a>
+																							<a th:href="@{#}"  class="main-menu">Electronics</a>
 																							<ul>
 																								<li>
-																									<a href="#" >Lighter &amp; Cigar Supplies</a>
+																									<a th:href="@{#}">Earings</a>
 																								</li>
 																								<li>
-																									<a href="#" >Mp3 Players &amp; Accessories</a>
+																									<a th:href="@{#}" >Salon &amp; Spa Equipment</a>
 																								</li>
 																								<li>
-																									<a href="#" >Men Watches</a>
+																									<a th:href="@{#}" >Shaving &amp; Hair Removal</a>
 																								</li>
 																								<li>
-																									<a href="#" >Mobile Accessories</a>
+																									<a th:href="@{#}">Smartphone &amp; Tablets</a>
 																								</li>
 																							</ul>
 																						</li>
 																						<li>
-																							<a href="#" class="main-menu">Gadgets &amp; Auto Parts</a>
+																							<a th:href="@{#}"  class="main-menu">Sports &amp; Outdoors</a>
 																							<ul>
 																								<li>
-																									<a href="#" >Gift &amp; Lifestyle Gadgets</a>
+																									<a th:href="@{#}" >Flashlights &amp; Lamps</a>
 																								</li>
 																								<li>
-																									<a href="#" >Gift for Man</a>
+																									<a th:href="@{#}" >Fragrances</a>
 																								</li>
 																								<li>
-																									<a href="#" >Gift for Woman</a>
+																									<a th:href="@{#}" >Fishing</a>
 																								</li>
 																								<li>
-																									<a href="#" >Gift for Woman</a>
+																									<a th:href="@{#}" >FPV System &amp; Parts</a>
+																								</li>
+																							</ul>
+																						</li>
+																					</ul>
+																				</div>
+																			</div>
+																			<div class="col-md-4 static-menu">
+																				<div class="menu">
+																					<ul>
+																						<li>
+																							<a th:href="@{#}" class="main-menu">More Car Accessories</a>
+																							<ul>
+																								<li>
+																									<a th:href="@{#}" >Lighter &amp; Cigar Supplies</a>
+																								</li>
+																								<li>
+																									<a th:href="@{#}" >Mp3 Players &amp; Accessories</a>
+																								</li>
+																								<li>
+																									<a th:href="@{#}" >Men Watches</a>
+																								</li>
+																								<li>
+																									<a th:href="@{#}" >Mobile Accessories</a>
+																								</li>
+																							</ul>
+																						</li>
+																						<li>
+																							<a th:href="@{#}" class="main-menu">Gadgets &amp; Auto Parts</a>
+																							<ul>
+																								<li>
+																									<a th:href="@{#}" >Gift &amp; Lifestyle Gadgets</a>
+																								</li>
+																								<li>
+																									<a th:href="@{#}" >Gift for Man</a>
+																								</li>
+																								<li>
+																									<a th:href="@{#}" >Gift for Woman</a>
+																								</li>
+																								<li>
+																									<a th:href="@{#}" >Gift for Woman</a>
 																								</li>
 																							</ul>
 																						</li>
@@ -515,9 +515,9 @@
 													</li>
 													<li class="item-vertical css-menu with-sub-menu hover">
 														<p class="close-menu"></p>
-														<a href="#" class="clearfix">
+														<a th:href="@{#}" class="clearfix">
 															
-															<img src="../static/image/theme/icons/2.png" alt="icon">
+															<img th:src="@{../static/image/theme/icons/2.png}" alt="icon">
 															<span>Smartphone &amp; Tablets</span>
 															<b class="caret"></b>
 														</a>
@@ -530,19 +530,19 @@
 																				<div class="menu">
 																					<ul>
 																						<li>
-																							<a href="#" class="main-menu">Headphones, Headsets</a>
+																							<a th:href="@{#}" class="main-menu">Headphones, Headsets</a>
 																						</li>
 																						<li>
-																							<a href="#" class="main-menu">Home Audio</a>
+																							<a th:href="@{#}" class="main-menu">Home Audio</a>
 																						</li>
 																						<li>
-																							<a href="#" class="main-menu">Health &amp; Beauty</a>
+																							<a th:href="@{#}" class="main-menu">Health &amp; Beauty</a>
 																						</li>
 																						<li>
-																							<a href="#" class="main-menu">Helicopters &amp; Parts</a>
+																							<a th:href="@{#}" class="main-menu">Helicopters &amp; Parts</a>
 																						</li>
 																						<li>
-																							<a href="#" class="main-menu">Helicopters &amp; Parts</a>
+																							<a th:href="@{#}" class="main-menu">Helicopters &amp; Parts</a>
 																						</li>
 																					</ul>
 																				</div>
@@ -555,67 +555,67 @@
 													</li>
 													<li class="item-vertical">
 														<p class="close-menu"></p>
-														<a href="#" class="clearfix">
-															<img src="../static/image/theme/icons/11.png" alt="icon">
+														<a th:href="@{#}" class="clearfix">
+															<img th:src="@{../static/image/theme/icons/11.png}" alt="icon">
 															<span>Flashlights &amp; Lamps</span>
 															
 														</a>
 													</li>
 													<li class="item-vertical">
 														<p class="close-menu"></p>
-														<a href="#" class="clearfix">
-															<img src="../static/image/theme/icons/4.png" alt="icon">
+														<a th:href="@{#}" class="clearfix">
+															<img th:src="@{../static/image/theme/icons/4.png}" alt="icon">
 															<span>Camera &amp; Photo</span>
 														</a>
 													</li>
 													<li class="item-vertical">
 														<p class="close-menu"></p>
-														<a href="#" class="clearfix">
-															<img src="../static/image/theme/icons/5.png" alt="icon">
+														<a th:href="@{#}" class="clearfix">
+															<img th:src="@{../static/image/theme/icons/5.png}" alt="icon">
 															<span>Smartphone &amp; Tablets</span>
 														</a>
 													</li>
 													<li class="item-vertical" >
 														<p class="close-menu"></p>
-														<a href="#" class="clearfix">
-															<img src="../static/image/theme/icons/7.png" alt="icon">
+														<a th:href="@{#}" class="clearfix">
+															<img th:src="@{../static/image/theme/icons/7.png}" alt="icon">
 															<span>Outdoor &amp; Traveling Supplies</span>
 														</a>
 													</li>
 													<li class="item-vertical" style="display: none;">
 														<p class="close-menu"></p>
 														
-														<a href="#" class="clearfix">
-															<img src="../static/image/theme/icons/6.png" alt="icon">
+														<a th:href="@{#}" class="clearfix">
+															<img th:src="@{../static/image/theme/icons/6.png}" alt="icon">
 															<span>Health &amp; Beauty</span>
 														</a>
 													</li>
 													<li class="item-vertical" >
 														<p class="close-menu"></p>
-														<a href="#" class="clearfix">
-															<img src="../static/image/theme/icons/8.png" alt="icon">
+														<a th:href="@{#}" class="clearfix">
+															<img th:src="@{../static/image/theme/icons/8.png}" alt="icon">
 															<span>Toys &amp; Hobbies </span>
 														</a>
 													</li>
 													<li class="item-vertical" >
 														<p class="close-menu"></p>
-														<a href="#" class="clearfix">
-															<img src="../static/image/theme/icons/12.png" alt="icon">
+														<a th:href="@{#}" class="clearfix">
+															<img th:src="@{../static/image/theme/icons/12.png}" alt="icon">
 															<span>Jewelry &amp; Watches</span>
 														</a>
 													</li>
 													<li class="item-vertical" >
 														<p class="close-menu"></p>
-														<a href="#" class="clearfix">
-															<img src="../static/image/theme/icons/13.png" alt="icon">
+														<a th:href="@{#}" class="clearfix">
+															<img th:src="@{../static/image/theme/icons/13.png}" alt="icon">
 															<span>Bags, Holiday Supplies</span>
 														</a>
 													</li>
 													<li class="item-vertical" >
 														<p class="close-menu"></p>
 														
-														<a href="#" class="clearfix">
-															<img src="../static/image/theme/icons/13.png" alt="icon">
+														<a th:href="@{#}" class="clearfix">
+															<img th:src="@{../static/image/theme/icons/13.png}" alt="icon">
 															<span>More Car Accessories</span>
 														</a>
 													</li>
@@ -654,12 +654,12 @@
 					<div class="container">
 						<ul class="megamenu " data-transition="slide" data-animationtime="250">
 							<li class="home hover">
-								<a href="index.html">Home </a>
+								<a th:href="@{index.html}">Home </a>
 							</li>
 
 							<li class="with-sub-menu hover">
 								<p class="close-menu"></p>
-								<a href="#" class="clearfix">
+								<a th:href="@{#}" class="clearfix">
 									<strong>Categories</strong>
 									<span class="label"></span>
 									<b class="caret"></b>
@@ -670,75 +670,75 @@
 											<div class="col-sm-12">
 												<div class="row">
 													<div class="col-md-3 img img1">
-														<a href="#"><img src="../static/image/demo/cms/img1.jpg" alt="banner1"></a>
+														<a th:href="@{#}"><img th:src="@{../static/image/demo/cms/img1.jpg}" alt="banner1"></a>
 													</div>
 													<div class="col-md-3 img img2">
-														<a href="#"><img src="../static/image/demo/cms/img2.jpg" alt="banner2"></a>
+														<a th:href="@{#}"><img th:src="@{../static/image/demo/cms/img2.jpg}" alt="banner2"></a>
 													</div>
 													<div class="col-md-3 img img3">
-														<a href="#"><img src="../static/image/demo/cms/img3.jpg" alt="banner3"></a>
+														<a th:href="@{#}"><img th:src="@{../static/image/demo/cms/img3.jpg}" alt="banner3"></a>
 													</div>
 													<div class="col-md-3 img img4">
-														<a href="#"><img src="../static/image/demo/cms/img4.jpg" alt="banner4"></a>
+														<a th:href="@{#}"><img th:src="@{../static/image/demo/cms/img4.jpg}" alt="banner4"></a>
 													</div>
 												</div>
 											</div>
 										</div>
 										<div class="row">
 											<div class="col-md-3">
-												<a href="#" class="title-submenu">Automotive</a>
+												<a th:href="@{#}" class="title-submenu">Automotive</a>
 												<div class="row">
 													<div class="col-md-12 hover-menu">
 														<div class="menu">
 															<ul>
-																<li><a href="#"  class="main-menu">Car Alarms and Security</a></li>
-																<li><a href="#"  class="main-menu">Car Audio &amp; Speakers</a></li>
-																<li><a href="#"  class="main-menu">Gadgets &amp; Auto Parts</a></li>
-																<li><a href="#"  class="main-menu">More Car Accessories</a></li>
+																<li><a th:href="@{#}"  class="main-menu">Car Alarms and Security</a></li>
+																<li><a th:href="@{#}"  class="main-menu">Car Audio &amp; Speakers</a></li>
+																<li><a th:href="@{#}"  class="main-menu">Gadgets &amp; Auto Parts</a></li>
+																<li><a th:href="@{#}"  class="main-menu">More Car Accessories</a></li>
 															</ul>
 														</div>
 													</div>
 												</div>
 											</div>
 											<div class="col-md-3">
-												<a href="#" class="title-submenu">Electronics</a>
+												<a th:href="@{#}" class="title-submenu">Electronics</a>
 												<div class="row">
 													<div class="col-md-12 hover-menu">
 														<div class="menu">
 															<ul>
-																<li><a href="#"  class="main-menu">Battereries &amp; Chargers</a></li>
-																<li><a href="#"  class="main-menu">Headphones, Headsets</a></li>
-																<li><a href="#"  class="main-menu">Home Audio</a></li>
-																<li><a href="#"  class="main-menu">Mp3 Players &amp; Accessories</a></li>
+																<li><a th:href="@{#}"  class="main-menu">Battereries &amp; Chargers</a></li>
+																<li><a th:href="@{#}"  class="main-menu">Headphones, Headsets</a></li>
+																<li><a th:href="@{#}"  class="main-menu">Home Audio</a></li>
+																<li><a th:href="@{#}"  class="main-menu">Mp3 Players &amp; Accessories</a></li>
 															</ul>
 														</div>
 													</div>
 												</div>
 											</div>
 											<div class="col-md-3">
-												<a href="#" class="title-submenu">Jewelry &amp; Watches</a>
+												<a th:href="@{#}" class="title-submenu">Jewelry &amp; Watches</a>
 												<div class="row">
 													<div class="col-md-12 hover-menu">
 														<div class="menu">
 															<ul>
-																<li><a href="#"  class="main-menu">Earings</a></li>
-																<li><a href="#"  class="main-menu">Wedding Rings</a></li>
-																<li><a href="#"  class="main-menu">Men Watches</a></li>
+																<li><a th:href="@{#}"  class="main-menu">Earings</a></li>
+																<li><a th:href="@{#}"  class="main-menu">Wedding Rings</a></li>
+																<li><a th:href="@{#}"  class="main-menu">Men Watches</a></li>
 															</ul>
 														</div>
 													</div>
 												</div>
 											</div>
 											<div class="col-md-3">
-												<a href="#" class="title-submenu">Bags, Holiday Supplies</a>
+												<a th:href="@{#}" class="title-submenu">Bags, Holiday Supplies</a>
 												<div class="row">
 													<div class="col-md-12 hover-menu">
 														<div class="menu">
 															<ul>
-																<li><a href="#"  class="main-menu">Gift &amp; Lifestyle Gadgets</a></li>
-																<li><a href="#"  class="main-menu">Gift for Man</a></li>
-																<li><a href="#"  class="main-menu">Gift for Woman</a></li>
-																<li><a href="#"  class="main-menu">Lighter &amp; Cigar Supplies</a></li>
+																<li><a th:href="@{#}"  class="main-menu">Gift &amp; Lifestyle Gadgets</a></li>
+																<li><a th:href="@{#}"  class="main-menu">Gift for Man</a></li>
+																<li><a th:href="@{#}"  class="main-menu">Gift for Woman</a></li>
+																<li><a th:href="@{#}"  class="main-menu">Lighter &amp; Cigar Supplies</a></li>
 															</ul>
 														</div>
 													</div>
@@ -751,17 +751,17 @@
 
 							<li class="">
 								<p class="close-menu"></p>
-								<a href="contact.html">Contact us </a>
+								<a th:href="@{contact.html}">Contact us </a>
 							</li>
 
 							<li class="">
 								<p class="close-menu"></p>
-								<a href="about-us.html">About us </a>
+								<a th:href="@{about-us.html}">About us </a>
 							</li>
 							
 							<li class="">
 								<p class="close-menu"></p>
-								<a href="faq.html">FAQ </a>
+								<a th:href="@{faq.html}">FAQ </a>
 							</li>
 
 						</ul>
@@ -803,13 +803,13 @@
 							<div class="module no-margin">
 								<div class="yt-content-slider yt-content-slider--arrow1"  data-rtl="yes" data-autoplay="no" data-autoheight="no" data-delay="4" data-speed="0.6" data-margin="0" data-items_column0="1" data-items_column1="1" data-items_column2="1"  data-items_column3="1" data-items_column4="1" data-arrows="yes" data-pagination="no" data-lazyload="yes" data-loop="no" data-hoverpause="yes">
 									<div class="yt-content-slide">
-										<a href="#"><img src="../static/image/demo/slider/slider-1.png" alt="slider1" class="img-responsive"></a>
+										<a th:href="@{#}"><img th:src="@{../static/image/demo/slider/slider-1.png}" alt="slider1" class="img-responsive"></a>
 									</div>
 									<div class="yt-content-slide">
-										<a href="#"><img src="../static/image/demo/slider/slider-2.png" alt="slider2" class="img-responsive"></a>
+										<a th:href="@{#}"><img th:src="@{../static/image/demo/slider/slider-2.png}" alt="slider2" class="img-responsive"></a>
 									</div>
 									<div class="yt-content-slide">
-										<a href="#"><img src="../static/image/demo/slider/slider-3.png" alt="slider3" class="img-responsive"></a>
+										<a th:href="@{#}"><img th:src="@{../static/image/demo/slider/slider-3.png}" alt="slider3" class="img-responsive"></a>
 									</div>
 								</div>
 								
@@ -826,21 +826,21 @@
 										<li>
 											<div class="banners">
 												<div>
-													<a href="#"><img src="../static/image/demo/cms/banner1.jpg" alt="banner1"></a>
+													<a th:href="@{#}"><img th:src="@{../static/image/demo/cms/banner1.jpg}" alt="banner1"></a>
 												</div>
 											</div>
 										</li>		
 										<li>
 											<div class="banners">
 												<div>
-													<a href="#"><img src="../static/image/demo/cms/banner2.jpg" alt="banner1"></a>
+													<a th:href="@{#}"><img th:src="@{../static/image/demo/cms/banner2.jpg}" alt="banner1"></a>
 												</div>
 											</div>
 										</li>		
 										<li>
 											<div class="banners">
 												<div>
-													<a href="#"><img src="../static/image/demo/cms/banner3.jpg" alt="banner1"></a>
+													<a th:href="@{#}"><img th:src="@{../static/image/demo/cms/banner3.jpg}" alt="banner1"></a>
 												</div>
 											</div>
 										</li>	
@@ -901,18 +901,18 @@
 										<div class="product-item-container">
 											<div class="left-block">
 												<div class="product-image-container second_img ">
-													<img src="../static/image/demo/shop/resize/J9-270x270.jpg" alt="Apple Cinema 30&quot;" class="img-responsive" />
-													<img src="../static/image/demo/shop/resize/J5-270x270.jpg" alt="Apple Cinema 30&quot;" class="img_0 img-responsive" />
+													<img th:src="@{../static/image/demo/shop/resize/J9-270x270.jpg}" alt="Apple Cinema 30&quot;" class="img-responsive" />
+													<img th:src="@{../static/image/demo/shop/resize/J5-270x270.jpg}" alt="Apple Cinema 30&quot;" class="img_0 img-responsive" />
 												</div>
 												<!--Sale Label-->
 												<span class="label label-sale">-15%</span>
 												<!--full quick view block-->
-												<a class="quickview iframe-link visible-lg" data-fancybox-type="iframe"  href="quickview.html">  Quickview</a>
+												<a class="quickview iframe-link visible-lg" data-fancybox-type="iframe"  th:href="@{quickview.html}">  Quickview</a>
 												<!--end full quick view block-->
 											</div>
 											<div class="right-block">
 												<div class="caption">
-													<h4><a href="product.html">Cupim Bris</a></h4>		
+													<h4><a th:href="@{product.html}">Cupim Bris</a></h4>
 													<div class="ratings">
 														<div class="rating-box">
 															<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
@@ -940,18 +940,18 @@
 										<div class="product-item-container">
 											<div class="left-block">
 												<div class="product-image-container second_img ">
-													<img src="../static/image/demo/shop/resize/m1-270x270.jpg" alt="Apple Cinema 30&quot;" class="img-responsive" />
-													<img src="../static/image/demo/shop/resize/m3-270x270.jpg" alt="Apple Cinema 30&quot;" class="img_0 img-responsive" />
+													<img th:src="@{../static/image/demo/shop/resize/m1-270x270.jpg}" alt="Apple Cinema 30&quot;" class="img-responsive" />
+													<img th:src="@{../static/image/demo/shop/resize/m3-270x270.jpg}" alt="Apple Cinema 30&quot;" class="img_0 img-responsive" />
 												</div>
 												<!--New Label-->
 												<span class="label label-new">New</span>
 												<!--full quick view block-->
-												<a class="quickview iframe-link visible-lg" data-fancybox-type="iframe"  href="quickview.html">  Quickview</a>
+												<a class="quickview iframe-link visible-lg" data-fancybox-type="iframe"  th:href="@{quickview.html}">  Quickview</a>
 												<!--end full quick view block-->
 											</div>
 											<div class="right-block">
 												<div class="caption">
-													<h4><a href="product.html">Cisi Chicken	</a></h4>		
+													<h4><a th:href="@{product.html}">Cisi Chicken	</a></h4>
 													<div class="ratings">
 														<div class="rating-box">
 															<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
@@ -979,18 +979,18 @@
 										<div class="product-item-container">
 											<div class="left-block">
 												<div class="product-image-container second_img ">
-													<img src="../static/image/demo/shop/resize/B10-270x270.jpg" alt="Apple Cinema 30&quot;" class="img-responsive" />
-													<img src="../static/image/demo/shop/resize/B9-270x270.jpg" alt="Apple Cinema 30&quot;" class="img_0 img-responsive" />
+													<img th:src="@{../static/image/demo/shop/resize/B10-270x270.jpg}" alt="Apple Cinema 30&quot;" class="img-responsive" />
+													<img th:src="@{../static/image/demo/shop/resize/B9-270x270.jpg}" alt="Apple Cinema 30&quot;" class="img_0 img-responsive" />
 												</div>
 												<!--Sale Label-->
 												
 												<!--full quick view block-->
-												<a class="quickview iframe-link visible-lg" data-fancybox-type="iframe"  href="quickview.html">  Quickview</a>
+												<a class="quickview iframe-link visible-lg" data-fancybox-type="iframe"  th:href="@{quickview.html}">  Quickview</a>
 												<!--end full quick view block-->
 											</div>
 											<div class="right-block">
 												<div class="caption">
-													<h4><a href="product.html">Bint Beef</a></h4>		
+													<h4><a th:href="@{product.html}">Bint Beef</a></h4>
 													<div class="ratings">
 														<div class="rating-box">
 															<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
@@ -1018,17 +1018,17 @@
 										<div class="product-item-container">
 											<div class="left-block">
 												<div class="product-image-container second_img ">
-													<img src="../static/image/demo/shop/resize/w1-270x270.jpg" alt="Apple Cinema 30&quot;" class="img-responsive" />
-													<img src="../static/image/demo/shop/resize/w10-270x270.jpg" alt="Apple Cinema 30&quot;" class="img_0 img-responsive" />
+													<img th:src="@{../static/image/demo/shop/resize/w1-270x270.jpg}" alt="Apple Cinema 30&quot;" class="img-responsive" />
+													<img th:src="@{../static/image/demo/shop/resize/w10-270x270.jpg}" alt="Apple Cinema 30&quot;" class="img_0 img-responsive" />
 												</div>
 												
 												<!--full quick view block-->
-												<a class="quickview iframe-link visible-lg" data-fancybox-type="iframe"  href="quickview.html">  Quickview</a>
+												<a class="quickview iframe-link visible-lg" data-fancybox-type="iframe"  th:href="@{quickview.html}">  Quickview</a>
 												<!--end full quick view block-->
 											</div>
 											<div class="right-block">
 												<div class="caption">
-													<h4><a href="product.html">Dail Lulpa</a></h4>		
+													<h4><a th:href="@{product.html}">Dail Lulpa</a></h4>
 													<div class="ratings">
 														<div class="rating-box">
 															<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
@@ -1056,17 +1056,17 @@
 										<div class="product-item-container">
 											<div class="left-block">
 												<div class="product-image-container second_img ">
-													<img src="../static/image/demo/shop/resize/B5-270x270.jpg" alt="Apple Cinema 30&quot;" class="img-responsive" />
-													<img src="../static/image/demo/shop/resize/B10-270x270.jpg" alt="Apple Cinema 30&quot;" class="img_0 img-responsive" />
+													<img th:src="@{../static/image/demo/shop/resize/B5-270x270.jpg}" alt="Apple Cinema 30&quot;" class="img-responsive" />
+													<img th:src="@{../static/image/demo/shop/resize/B10-270x270.jpg}" alt="Apple Cinema 30&quot;" class="img_0 img-responsive" />
 												</div>
 												
 												<!--full quick view block-->
-												<a class="quickview iframe-link visible-lg" data-fancybox-type="iframe"  href="quickview.html">  Quickview</a>
+												<a class="quickview iframe-link visible-lg" data-fancybox-type="iframe"  th:href="@{quickview.html}">  Quickview</a>
 												<!--end full quick view block-->
 											</div>
 											<div class="right-block">
 												<div class="caption">
-													<h4><a href="product.html">Et Spare</a></h4>		
+													<h4><a th:href="@{product.html}">Et Spare</a></h4>
 													<div class="ratings">
 														<div class="rating-box">
 															<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
@@ -1094,19 +1094,19 @@
 										<div class="product-item-container">
 											<div class="left-block">
 												<div class="product-image-container second_img ">
-													<img src="../static/image/demo/shop/resize/J5-270x270.jpg" alt="Apple Cinema 30&quot;" class="img-responsive" />
-													<img src="../static/image/demo/shop/resize/J9-270x270.jpg" alt="Apple Cinema 30&quot;" class="img_0 img-responsive" />
+													<img th:src="@{../static/image/demo/shop/resize/J5-270x270.jpg}" alt="Apple Cinema 30&quot;" class="img-responsive" />
+													<img th:src="@{../static/image/demo/shop/resize/J9-270x270.jpg}" alt="Apple Cinema 30&quot;" class="img_0 img-responsive" />
 												</div>
 												<!--Sale Label-->
 												<span class="label label-sale">-15%</span>
 												
 												<!--full quick view block-->
-												<a class="quickview iframe-link visible-lg" data-fancybox-type="iframe"  href="quickview.html">  Quickview</a>
+												<a class="quickview iframe-link visible-lg" data-fancybox-type="iframe"  th:href="@{quickview.html}">  Quickview</a>
 												<!--end full quick view block-->
 											</div>
 											<div class="right-block">
 												<div class="caption">
-													<h4><a href="product.html">Cupim Bris</a></h4>		
+													<h4><a th:href="@{product.html}">Cupim Bris</a></h4>
 													<div class="ratings">
 														<div class="rating-box">
 															<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
@@ -1135,18 +1135,18 @@
 										<div class="product-item-container">
 											<div class="left-block">
 												<div class="product-image-container second_img ">
-													<img src="../static/image/demo/shop/resize/e11-270x270.jpg" alt="Apple Cinema 30&quot;" class="img-responsive" />
-													<img src="../static/image/demo/shop/resize/E3-270x270.jpg" alt="Apple Cinema 30&quot;" class="img_0 img-responsive" />
+													<img th:src="@{../static/image/demo/shop/resize/e11-270x270.jpg}" alt="Apple Cinema 30&quot;" class="img-responsive" />
+													<img th:src="@{../static/image/demo/shop/resize/E3-270x270.jpg}" alt="Apple Cinema 30&quot;" class="img_0 img-responsive" />
 												</div>
 												<!--Sale Label-->
 												<span class="label label-sale">-15%</span>
 												<!--full quick view block-->
-												<a class="quickview iframe-link visible-lg" data-fancybox-type="iframe"  href="quickview.html">  Quickview</a>
+												<a class="quickview iframe-link visible-lg" data-fancybox-type="iframe"  th:href="@{quickview.html}">  Quickview</a>
 												<!--end full quick view block-->
 											</div>
 											<div class="right-block">
 												<div class="caption">
-													<h4><a href="product.html">Apple Cinema 30"</a></h4>		
+													<h4><a th:href="@{product.html}">Apple Cinema 30"</a></h4>
 													<div class="ratings">
 														<div class="rating-box">
 															<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
@@ -1197,20 +1197,20 @@
 								<div class="banner htmlconten1 col-lg-4 col-md-4 col-sm-6 col-xs-12">
 									<div class="banners">
 										<div>
-											<a href="#"><img src="../static/image/demo/cms/banner2-1.png" alt="banner1"></a>
+											<a th:href="@{#}"><img th:src="@{../static/image/demo/cms/banner2-1.png}" alt="banner1"></a>
 										</div>
 									</div>
 								</div>
 								<div class="htmlconten2 col-lg-4 col-md-4 col-sm-6 col-xs-12">
 									<div class="module banners">
 											<div>
-												<a href="#"><img src="../static/image/demo/cms/banner2-2.png" alt="banner1"></a>
+												<a th:href="@{#}"><img th:src="@{../static/image/demo/cms/banner2-2.png}" alt="banner1"></a>
 											</div>
 									</div>
 										
 									<div class="banners">
 										<div>
-											<a href="#"><img src="../static/image/demo/cms/banner2-3.png" alt="banner1"></a>
+											<a th:href="@{#}"><img th:src="@{../static/image/demo/cms/banner2-3.png}" alt="banner1"></a>
 										</div>
 									</div>
 									
@@ -1218,7 +1218,7 @@
 								<div class="banner htmlconten3 hidden-sm col-lg-4 col-md-4 col-sm-6 col-xs-12">
 									<div class="banners">
 										<div>
-											<a href="#"><img src="../static/image/demo/cms/banner2-4.png" alt="banner1"></a>
+											<a th:href="@{#}"><img th:src="@{../static/image/demo/cms/banner2-4.png}" alt="banner1"></a>
 										</div>
 									</div>
 								</div>
@@ -1254,18 +1254,18 @@
 										<div class="product-item-container">
 											<div class="left-block">
 												<div class="product-image-container second_img ">
-													<img src="../static/image/demo/shop/resize/J5-270x270.jpg" alt="Apple Cinema 30&quot;" class="img-responsive" />
-													<img src="../static/image/demo/shop/resize/J9-270x270.jpg" alt="Apple Cinema 30&quot;" class="img_0 img-responsive" />
+													<img th:src="@{../static/image/demo/shop/resize/J5-270x270.jpg}" alt="Apple Cinema 30&quot;" class="img-responsive" />
+													<img th:src="@{../static/image/demo/shop/resize/J9-270x270.jpg}" alt="Apple Cinema 30&quot;" class="img_0 img-responsive" />
 												</div>
 												<!--Sale Label-->
 												<span class="label label-sale">-15%</span>
 												<!--full quick view block-->
-												<a class="quickview iframe-link visible-lg" data-fancybox-type="iframe"  href="quickview.html">  Quickview</a>
+												<a class="quickview iframe-link visible-lg" data-fancybox-type="iframe"  th:href="@{quickview.html}">  Quickview</a>
 												<!--end full quick view block-->
 											</div>
 											<div class="right-block">
 												<div class="caption">
-													<h4><a href="product.html">Cupim Bris</a></h4>		
+													<h4><a th:href="@{product.html}">Cupim Bris</a></h4>
 													<div class="ratings">
 														<div class="rating-box">
 															<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
@@ -1294,18 +1294,18 @@
 										<div class="product-item-container">
 											<div class="left-block">
 												<div class="product-image-container second_img ">
-													<img src="../static/image/demo/shop/resize/e11-270x270.jpg" alt="Apple Cinema 30&quot;" class="img-responsive" />
-													<img src="../static/image/demo/shop/resize/E3-270x270.jpg" alt="Apple Cinema 30&quot;" class="img_0 img-responsive" />
+													<img th:src="@{../static/image/demo/shop/resize/e11-270x270.jpg}" alt="Apple Cinema 30&quot;" class="img-responsive" />
+													<img th:src="@{../static/image/demo/shop/resize/E3-270x270.jpg}" alt="Apple Cinema 30&quot;" class="img_0 img-responsive" />
 												</div>
 												<!--Sale Label-->
 												<span class="label label-sale">-15%</span>
 												<!--full quick view block-->
-												<a class="quickview iframe-link visible-lg" data-fancybox-type="iframe"  href="quickview.html">  Quickview</a>
+												<a class="quickview iframe-link visible-lg" data-fancybox-type="iframe"  th:href="@{quickview.html}">  Quickview</a>
 												<!--end full quick view block-->
 											</div>
 											<div class="right-block">
 												<div class="caption">
-													<h4><a href="product.html">Apple Cinema 30"</a></h4>		
+													<h4><a th:href="@{product.html}">Apple Cinema 30"</a></h4>
 													<div class="ratings">
 														<div class="rating-box">
 															<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
@@ -1334,18 +1334,18 @@
 										<div class="product-item-container">
 											<div class="left-block">
 												<div class="product-image-container second_img ">
-													<img src="../static/image/demo/shop/resize/J9-270x270.jpg" alt="Apple Cinema 30&quot;" class="img-responsive" />
-													<img src="../static/image/demo/shop/resize/J5-270x270.jpg" alt="Apple Cinema 30&quot;" class="img_0 img-responsive" />
+													<img th:src="@{../static/image/demo/shop/resize/J9-270x270.jpg}" alt="Apple Cinema 30&quot;" class="img-responsive" />
+													<img th:src="@{../static/image/demo/shop/resize/J5-270x270.jpg}" alt="Apple Cinema 30&quot;" class="img_0 img-responsive" />
 												</div>
 												<!--Sale Label-->
 												<span class="label label-sale">-15%</span>
 												<!--full quick view block-->
-												<a class="quickview iframe-link visible-lg" data-fancybox-type="iframe"  href="quickview.html">  Quickview</a>
+												<a class="quickview iframe-link visible-lg" data-fancybox-type="iframe"  th:href="@{quickview.html}">  Quickview</a>
 												<!--end full quick view block-->
 											</div>
 											<div class="right-block">
 												<div class="caption">
-													<h4><a href="product.html">Cupim Bris</a></h4>		
+													<h4><a th:href="@{product.html}">Cupim Bris</a></h4>
 													<div class="ratings">
 														<div class="rating-box">
 															<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
@@ -1374,18 +1374,18 @@
 										<div class="product-item-container">
 											<div class="left-block">
 												<div class="product-image-container second_img ">
-													<img src="../static/image/demo/shop/resize/m1-270x270.jpg" alt="Apple Cinema 30&quot;" class="img-responsive" />
-													<img src="../static/image/demo/shop/resize/m3-270x270.jpg" alt="Apple Cinema 30&quot;" class="img_0 img-responsive" />
+													<img th:src="@{../static/image/demo/shop/resize/m1-270x270.jpg}" alt="Apple Cinema 30&quot;" class="img-responsive" />
+													<img th:src="@{../static/image/demo/shop/resize/m3-270x270.jpg}" alt="Apple Cinema 30&quot;" class="img_0 img-responsive" />
 												</div>
 												<!--New Label-->
 												<span class="label label-new">New</span>
 												<!--full quick view block-->
-												<a class="quickview iframe-link visible-lg" data-fancybox-type="iframe"  href="quickview.html">  Quickview</a>
+												<a class="quickview iframe-link visible-lg" data-fancybox-type="iframe"  th:href="@{quickview.html}">  Quickview</a>
 												<!--end full quick view block-->
 											</div>
 											<div class="right-block">
 												<div class="caption">
-													<h4><a href="product.html">Cisi Chicken	</a></h4>		
+													<h4><a th:href="@{product.html}">Cisi Chicken	</a></h4>
 													<div class="ratings">
 														<div class="rating-box">
 															<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
@@ -1413,17 +1413,17 @@
 										<div class="product-item-container">
 											<div class="left-block">
 												<div class="product-image-container second_img ">
-													<img src="../static/image/demo/shop/resize/B10-270x270.jpg" alt="Apple Cinema 30&quot;" class="img-responsive" />
-													<img src="../static/image/demo/shop/resize/B9-270x270.jpg" alt="Apple Cinema 30&quot;" class="img_0 img-responsive" />
+													<img th:src="@{../static/image/demo/shop/resize/B10-270x270.jpg}" alt="Apple Cinema 30&quot;" class="img-responsive" />
+													<img th:src="@{../static/image/demo/shop/resize/B9-270x270.jpg}" alt="Apple Cinema 30&quot;" class="img_0 img-responsive" />
 												</div>
 												<!--Sale Label-->
 												<!--full quick view block-->
-												<a class="quickview iframe-link visible-lg" data-fancybox-type="iframe"  href="quickview.html">  Quickview</a>
+												<a class="quickview iframe-link visible-lg" data-fancybox-type="iframe"  th:href="@{quickview.html}">  Quickview</a>
 												<!--end full quick view block-->
 											</div>
 											<div class="right-block">
 												<div class="caption">
-													<h4><a href="product.html">Bint Beef</a></h4>		
+													<h4><a th:href="@{product.html}">Bint Beef</a></h4>
 													<div class="ratings">
 														<div class="rating-box">
 															<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
@@ -1451,17 +1451,17 @@
 										<div class="product-item-container">
 											<div class="left-block">
 												<div class="product-image-container second_img ">
-													<img src="../static/image/demo/shop/resize/w1-270x270.jpg" alt="Apple Cinema 30&quot;" class="img-responsive" />
-													<img src="../static/image/demo/shop/resize/w10-270x270.jpg" alt="Apple Cinema 30&quot;" class="img_0 img-responsive" />
+													<img th:src="@{../static/image/demo/shop/resize/w1-270x270.jpg}" alt="Apple Cinema 30&quot;" class="img-responsive" />
+													<img th:src="@{../static/image/demo/shop/resize/w10-270x270.jpg}" alt="Apple Cinema 30&quot;" class="img_0 img-responsive" />
 												</div>
 												
 												<!--full quick view block-->
-												<a class="quickview iframe-link visible-lg" data-fancybox-type="iframe"  href="quickview.html">  Quickview</a>
+												<a class="quickview iframe-link visible-lg" data-fancybox-type="iframe"  th:href="@{quickview.html}">  Quickview</a>
 												<!--end full quick view block-->
 											</div>
 											<div class="right-block">
 												<div class="caption">
-													<h4><a href="product.html">Dail Lulpa</a></h4>		
+													<h4><a th:href="@{product.html}">Dail Lulpa</a></h4>
 													<div class="ratings">
 														<div class="rating-box">
 															<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
@@ -1489,17 +1489,17 @@
 										<div class="product-item-container">
 											<div class="left-block">
 												<div class="product-image-container second_img ">
-													<img src="../static/image/demo/shop/resize/B5-270x270.jpg" alt="Apple Cinema 30&quot;" class="img-responsive" />
-													<img src="../static/image/demo/shop/resize/B10-270x270.jpg" alt="Apple Cinema 30&quot;" class="img_0 img-responsive" />
+													<img th:src="@{../static/image/demo/shop/resize/B5-270x270.jpg}" alt="Apple Cinema 30&quot;" class="img-responsive" />
+													<img th:src="@{../static/image/demo/shop/resize/B10-270x270.jpg}" alt="Apple Cinema 30&quot;" class="img_0 img-responsive" />
 												</div>
 												
 												<!--full quick view block-->
-												<a class="quickview iframe-link visible-lg" data-fancybox-type="iframe"  href="quickview.html">  Quickview</a>
+												<a class="quickview iframe-link visible-lg" data-fancybox-type="iframe"  th:href="@{quickview.html}">  Quickview</a>
 												<!--end full quick view block-->
 											</div>
 											<div class="right-block">
 												<div class="caption">
-													<h4><a href="product.html">Et Spare</a></h4>		
+													<h4><a th:href="@{product.html}">Et Spare</a></h4>
 													<div class="ratings">
 														<div class="rating-box">
 															<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
@@ -1560,149 +1560,149 @@
 						<div class="cat-wrap theme3">
 							<div class="content-box">
 								<div class="image-cat">
-									<a href="#" title="Automotive" target="_blank">
-										<img src="../static/image/demo/shop/category/automotive-motocrycle.jpg" title="Automotive" alt="Automotive">
+									<a th:href="@{#}" title="Automotive" target="_blank">
+										<img th:src="@{../static/image/demo/shop/category/automotive-motocrycle.jpg}" title="Automotive" alt="Automotive">
 									</a> 
-									<a class="btn-viewmore hidden-xs" href="#" title="View more">View more</a> 								
+									<a class="btn-viewmore hidden-xs" th:href="@{#}" title="View more">View more</a>
 								</div>
 								<div class="inner">
-									<div class="title-cat"> <a href="#" title="Automotive " target="_blank">Automotive</a> </div>
+									<div class="title-cat"> <a th:href="@{#}" title="Automotive " target="_blank">Automotive</a> </div>
 									<div class="child-cat">
-										<div class="child-cat-title"> <a title="More Car Accessories" href="#" target="_blank">More Car Accessories		</a> </div>
-										<div class="child-cat-title"> <a title="Car Alarms and Security" href="#" target="_blank">Car Alarms and Security		</a> </div>
-										<div class="child-cat-title"> <a title="Car Audio &amp; Speakers" href="#" target="_blank">Car Audio &amp; Speakers		</a> </div>
-										<div class="child-cat-title"> <a title="Gadgets &amp; Auto Parts" href="#" target="_blank">Gadgets &amp; Auto Parts	</a> </div>
+										<div class="child-cat-title"> <a title="More Car Accessories" th:href="@{#}" target="_blank">More Car Accessories		</a> </div>
+										<div class="child-cat-title"> <a title="Car Alarms and Security" th:href="@{#}" target="_blank">Car Alarms and Security		</a> </div>
+										<div class="child-cat-title"> <a title="Car Audio &amp; Speakers" th:href="@{#}" target="_blank">Car Audio &amp; Speakers		</a> </div>
+										<div class="child-cat-title"> <a title="Gadgets &amp; Auto Parts" th:href="@{#}" target="_blank">Gadgets &amp; Auto Parts	</a> </div>
 									</div>
 								</div>
 							</div>
 							<div class="clr1"></div>
 							<div class="content-box">
 								<div class="image-cat">
-									<a href="#" title="Automotive" target="_blank">
-										<img src="../static/image/demo/shop/category/health-beauty.jpg" title="Automotive" alt="Automotive">
+									<a th:href="@{#}" title="Automotive" target="_blank">
+										<img th:src="@{../static/image/demo/shop/category/health-beauty.jpg}" title="Automotive" alt="Automotive">
 									</a> 
-									<a class="btn-viewmore hidden-xs" href="#" title="View more">View more</a> 		
+									<a class="btn-viewmore hidden-xs" th:href="@{#}" title="View more">View more</a>
 								</div>	
 									
 								<div class="inner">
-									<div class="title-cat"> <a href="#" title="Health & Beauty" target="_blank">Health & Beauty</a> </div>
+									<div class="title-cat"> <a th:href="@{#}" title="Health & Beauty" target="_blank">Health & Beauty</a> </div>
 									<div class="child-cat">
-										<div class="child-cat-title"> <a title="More Car Accessories" href="#" target="_blank">Salon & Spa Equipment		</a> </div>
-										<div class="child-cat-title"> <a title="Car Alarms and Security" href="#" target="_blank">Fragrances		</a> </div>
-										<div class="child-cat-title"> <a title="Car Audio &amp; Speakers" href="#" target="_blank">Shaving & Hair Removal..	</a> </div>
-										<div class="child-cat-title"> <a title="Gadgets &amp; Auto Parts" href="#" target="_blank">Bath & Body	</a> </div>
+										<div class="child-cat-title"> <a title="More Car Accessories" th:href="@{#}" target="_blank">Salon & Spa Equipment		</a> </div>
+										<div class="child-cat-title"> <a title="Car Alarms and Security" th:href="@{#}" target="_blank">Fragrances		</a> </div>
+										<div class="child-cat-title"> <a title="Car Audio &amp; Speakers" th:href="@{#}" target="_blank">Shaving & Hair Removal..	</a> </div>
+										<div class="child-cat-title"> <a title="Gadgets &amp; Auto Parts" th:href="@{#}" target="_blank">Bath & Body	</a> </div>
 									</div>
 								</div>
 							</div>
 							<div class="clr1 clr2"></div>
 							<div class="content-box">
 								<div class="image-cat">
-									<a href="#" title="Automotive" target="_blank">
-										<img src="../static/image/demo/shop/category/bags-holiday-supplies-gifts.jpg" title="Automotive" alt="Automotive">
+									<a th:href="@{#}" title="Automotive" target="_blank">
+										<img th:src="@{../static/image/demo/shop/category/bags-holiday-supplies-gifts.jpg}" title="Automotive" alt="Automotive">
 									</a> 
-									<a class="btn-viewmore hidden-xs" href="#" title="View more">View more</a> 		
+									<a class="btn-viewmore hidden-xs" th:href="@{#}" title="View more">View more</a>
 								</div>	
 									
 								<div class="inner">
-									<div class="title-cat"> <a href="#" title="Health & Beauty" target="_blank">Bags, Holiday Supplies</a> </div>
+									<div class="title-cat"> <a th:href="@{#}" title="Health & Beauty" target="_blank">Bags, Holiday Supplies</a> </div>
 									<div class="child-cat">
-										<div class="child-cat-title"> <a title="More Car Accessories" href="#" target="_blank">Gift & Lifestyle Gadgets..		</a> </div>
-										<div class="child-cat-title"> <a title="Car Alarms and Security" href="#" target="_blank">Lighter & Cigar Supplies..		</a> </div>
-										<div class="child-cat-title"> <a title="Car Audio &amp; Speakers" href="#" target="_blank">Gift for Woman	</a> </div>
-										<div class="child-cat-title"> <a title="Gadgets &amp; Auto Parts" href="#" target="_blank">Gift for Man	</a> </div>
+										<div class="child-cat-title"> <a title="More Car Accessories" th:href="@{#}" target="_blank">Gift & Lifestyle Gadgets..		</a> </div>
+										<div class="child-cat-title"> <a title="Car Alarms and Security" th:href="@{#}" target="_blank">Lighter & Cigar Supplies..		</a> </div>
+										<div class="child-cat-title"> <a title="Car Audio &amp; Speakers" th:href="@{#}" target="_blank">Gift for Woman	</a> </div>
+										<div class="child-cat-title"> <a title="Gadgets &amp; Auto Parts" th:href="@{#}" target="_blank">Gift for Man	</a> </div>
 									</div>
 								</div>
 							</div>
 							<div class="clr1 clr3"></div>
 							<div class="content-box">
 								<div class="image-cat">
-									<a href="#" title="Automotive" target="_blank">
-										<img src="../static/image/demo/shop/category/toys-hobbies.jpg" title="Automotive" alt="Automotive">
+									<a th:href="@{#}" title="Automotive" target="_blank">
+										<img th:src="@{../static/image/demo/shop/category/toys-hobbies.jpg}" title="Automotive" alt="Automotive">
 									</a> 
-									<a class="btn-viewmore hidden-xs" href="#" title="View more">View more</a> 		
+									<a class="btn-viewmore hidden-xs" th:href="@{#}" title="View more">View more</a>
 								</div>	
 									
 								<div class="inner">
-									<div class="title-cat"> <a href="#" title="Health & Beauty" target="_blank">Toys & Hobbies</a> </div>
+									<div class="title-cat"> <a th:href="@{#}" title="Health & Beauty" target="_blank">Toys & Hobbies</a> </div>
 									<div class="child-cat">
-										<div class="child-cat-title"> <a title="More Car Accessories" href="#" target="_blank">Helicopters & Parts		</a> </div>
-										<div class="child-cat-title"> <a title="Car Alarms and Security" href="#" target="_blank">RC Cars & Parts	</a> </div>
-										<div class="child-cat-title"> <a title="Car Audio &amp; Speakers" href="#" target="_blank">FPV System & Parts	</a> </div>
-										<div class="child-cat-title"> <a title="Gadgets &amp; Auto Parts" href="#" target="_blank">Walkera	</a> </div>
+										<div class="child-cat-title"> <a title="More Car Accessories" th:href="@{#}" target="_blank">Helicopters & Parts		</a> </div>
+										<div class="child-cat-title"> <a title="Car Alarms and Security" th:href="@{#}" target="_blank">RC Cars & Parts	</a> </div>
+										<div class="child-cat-title"> <a title="Car Audio &amp; Speakers" th:href="@{#}" target="_blank">FPV System & Parts	</a> </div>
+										<div class="child-cat-title"> <a title="Gadgets &amp; Auto Parts" th:href="@{#}" target="_blank">Walkera	</a> </div>
 									</div>
 								</div>
 							</div>
 							<div class="clr1 clr2 clr4"></div>
 							<div class="content-box">
 								<div class="image-cat">
-									<a href="#" title="Automotive" target="_blank">
-										<img src="../static/image/demo/shop/category/electronics.jpg" title="Automotive" alt="Automotive">
+									<a th:href="@{#}" title="Automotive" target="_blank">
+										<img th:src="@{../static/image/demo/shop/category/electronics.jpg}" title="Automotive" alt="Automotive">
 									</a> 
-									<a class="btn-viewmore hidden-xs" href="#" title="View more">View more</a> 		
+									<a class="btn-viewmore hidden-xs" th:href="@{#}" title="View more">View more</a>
 								</div>	
 									
 								<div class="inner">
-									<div class="title-cat"> <a href="#" title="Health & Beauty" target="_blank">Electronics</a> </div>
+									<div class="title-cat"> <a th:href="@{#}" title="Health & Beauty" target="_blank">Electronics</a> </div>
 									<div class="child-cat">
-										<div class="child-cat-title"> <a title="More Car Accessories" href="#" target="_blank">Home Audio</a> </div>
-										<div class="child-cat-title"> <a title="Car Alarms and Security" href="#" target="_blank">Mp3 Players & Accessories..	</a> </div>
-										<div class="child-cat-title"> <a title="Car Audio &amp; Speakers" href="#" target="_blank">Headphones, Headsets</a> </div>
-										<div class="child-cat-title"> <a title="Gadgets &amp; Auto Parts" href="#" target="_blank">Battereries & Chargers..	</a> </div>
+										<div class="child-cat-title"> <a title="More Car Accessories" th:href="@{#}" target="_blank">Home Audio</a> </div>
+										<div class="child-cat-title"> <a title="Car Alarms and Security" th:href="@{#}" target="_blank">Mp3 Players & Accessories..	</a> </div>
+										<div class="child-cat-title"> <a title="Car Audio &amp; Speakers" th:href="@{#}" target="_blank">Headphones, Headsets</a> </div>
+										<div class="child-cat-title"> <a title="Gadgets &amp; Auto Parts" th:href="@{#}" target="_blank">Battereries & Chargers..	</a> </div>
 									</div>
 								</div>
 							</div>
 							<div class="clr1 clr5"></div>
 							<div class="content-box">
 								<div class="image-cat">
-									<a href="#" title="Automotive" target="_blank">
-										<img src="../static/image/demo/shop/category/jewelry-watches.jpg" title="Automotive" alt="Automotive">
+									<a th:href="@{#}" title="Automotive" target="_blank">
+										<img th:src="@{../static/image/demo/shop/category/jewelry-watches.jpg}" title="Automotive" alt="Automotive">
 									</a> 
-									<a class="btn-viewmore hidden-xs" href="#" title="View more">View more</a> 		
+									<a class="btn-viewmore hidden-xs" th:href="@{#}" title="View more">View more</a>
 								</div>	
 									
 								<div class="inner">
-									<div class="title-cat"> <a href="#" title="Health & Beauty" target="_blank">Jewelry & Watches</a> </div>
+									<div class="title-cat"> <a th:href="@{#}" title="Health & Beauty" target="_blank">Jewelry & Watches</a> </div>
 									<div class="child-cat">
-										<div class="child-cat-title"> <a title="More Car Accessories" href="#" target="_blank">Men Watches	</a> </div>
-										<div class="child-cat-title"> <a title="Car Alarms and Security" href="#" target="_blank">Wedding Rings		</a> </div>
-										<div class="child-cat-title"> <a title="Car Audio &amp; Speakers" href="#" target="_blank">Earings	</a> </div>
+										<div class="child-cat-title"> <a title="More Car Accessories" th:href="@{#}" target="_blank">Men Watches	</a> </div>
+										<div class="child-cat-title"> <a title="Car Alarms and Security" th:href="@{#}" target="_blank">Wedding Rings		</a> </div>
+										<div class="child-cat-title"> <a title="Car Audio &amp; Speakers" th:href="@{#}" target="_blank">Earings	</a> </div>
 									</div>
 								</div>
 							</div>
 							<div class="clr1 clr2 clr3 clr6"></div>
 							<div class="content-box">
 								<div class="image-cat">
-									<a href="#" title="Automotive" target="_blank">
-										<img src="../static/image/demo/shop/category/sports-outdoors.jpg" title="Automotive" alt="Automotive">
+									<a th:href="@{#}" title="Automotive" target="_blank">
+										<img th:src="@{../static/image/demo/shop/category/sports-outdoors.jpg}" title="Automotive" alt="Automotive">
 									</a> 
-									<a class="btn-viewmore hidden-xs" href="#" title="View more">View more</a> 		
+									<a class="btn-viewmore hidden-xs" th:href="@{#}" title="View more">View more</a>
 								</div>	
 									
 								<div class="inner">
-									<div class="title-cat"> <a href="#" title="Health & Beauty" target="_blank">Sports & Outdoors</a> </div>
+									<div class="title-cat"> <a th:href="@{#}" title="Health & Beauty" target="_blank">Sports & Outdoors</a> </div>
 									<div class="child-cat">
-										<div class="child-cat-title"> <a title="More Car Accessories" href="#" target="_blank">Outdoor & Traveling	</a> </div>
-										<div class="child-cat-title"> <a title="Car Alarms and Security" href="#" target="_blank">Camping & Hiking		</a> </div>
-										<div class="child-cat-title"> <a title="Car Audio &amp; Speakers" href="#" target="_blank">Golf Supplies	</a> </div>
-										<div class="child-cat-title"> <a title="Gadgets &amp; Auto Parts" href="#" target="_blank">Fishing	</a> </div>
+										<div class="child-cat-title"> <a title="More Car Accessories" th:href="@{#}" target="_blank">Outdoor & Traveling	</a> </div>
+										<div class="child-cat-title"> <a title="Car Alarms and Security" th:href="@{#}" target="_blank">Camping & Hiking		</a> </div>
+										<div class="child-cat-title"> <a title="Car Audio &amp; Speakers" th:href="@{#}" target="_blank">Golf Supplies	</a> </div>
+										<div class="child-cat-title"> <a title="Gadgets &amp; Auto Parts" th:href="@{#}" target="_blank">Fishing	</a> </div>
 									</div>
 								</div>
 							</div>
 							<div class="clr1"></div>
 							<div class="content-box">
 								<div class="image-cat">
-									<a href="#" title="Automotive" target="_blank">
-										<img src="../static/image/demo/shop/category/smartphone-tablets.jpg" title="Automotive" alt="Automotive">
+									<a th:href="@{#}" title="Automotive" target="_blank">
+										<img th:src="@{../static/image/demo/shop/category/smartphone-tablets.jpg}" title="Automotive" alt="Automotive">
 									</a> 
-									<a class="btn-viewmore hidden-xs" href="#" title="View more">View more</a> 		
+									<a class="btn-viewmore hidden-xs" th:href="@{#}" title="View more">View more</a>
 								</div>	
 									
 								<div class="inner">
-									<div class="title-cat"> <a href="#" title="Health & Beauty" target="_blank">Smartphone & Tablets</a> </div>
+									<div class="title-cat"> <a th:href="@{#}" title="Health & Beauty" target="_blank">Smartphone & Tablets</a> </div>
 									<div class="child-cat">
-										<div class="child-cat-title"> <a title="More Car Accessories" href="#" target="_blank">Accessories for iPhone		</a> </div>
-										<div class="child-cat-title"> <a title="Car Audio &amp; Speakers" href="#" target="_blank">Accessories for i Pad	</a> </div>
-										<div class="child-cat-title"> <a title="Gadgets &amp; Auto Parts" href="#" target="_blank">Accessories for Tablet PC	</a> </div>
+										<div class="child-cat-title"> <a title="More Car Accessories" th:href="@{#}" target="_blank">Accessories for iPhone		</a> </div>
+										<div class="child-cat-title"> <a title="Car Audio &amp; Speakers" th:href="@{#}" target="_blank">Accessories for i Pad	</a> </div>
+										<div class="child-cat-title"> <a title="Gadgets &amp; Auto Parts" th:href="@{#}" target="_blank">Accessories for Tablet PC	</a> </div>
 									</div>
 								</div>
 							</div>
@@ -1732,9 +1732,9 @@
 							<h3 class="modtitle">Information</h3>
 							<div class="modcontent">
 								<ul class="menu">
-									<li><a href="about-us.html">About Us</a></li>
-									<li><a href="faq.html">FAQ</a></li>
-									<li><a href="order-history.html">Order history</a></li>
+									<li><a th:href="@{about-us.html}">About Us</a></li>
+									<li><a th:href="@{faq.html}">FAQ</a></li>
+									<li><a th:href="@{order-history.html}">Order history</a></li>
 								</ul>
 							</div>
 						</div>
@@ -1745,8 +1745,8 @@
 							<h3 class="modtitle">Customer Service</h3>
 							<div class="modcontent">
 								<ul class="menu">
-									<li><a href="contact.html">Contact Us</a></li>
-									<li><a href="my-account.html">My Account</a></li>
+									<li><a th:href="@{contact.html}">Contact Us</a></li>
+									<li><a th:href="@{my-account.html}">My Account</a></li>
 								</ul>
 							</div>
 						</div>
@@ -1757,9 +1757,9 @@
 							<h3 class="modtitle">My Account</h3>
 							<div class="modcontent">
 								<ul class="menu">
-									<li><a href="login.html">Login</a></li>
-									<li><a href="register.html">Register</a></li>
-									<li><a href="gift-voucher.html">Gift Vouchers</a></li>
+									<li><a th:href="@{login.html}">Login</a></li>
+									<li><a th:href="@{register.html}">Register</a></li>
+									<li><a th:href="@{gift-voucher.html}">Gift Vouchers</a></li>
 								</ul>
 							</div>
 						</div>
@@ -1771,7 +1771,7 @@
 							<div class="modcontent">
 								<ul class="contact-address">
 									<li><span class="fa fa-map-marker"></span> My Company, 42 avenue des Champs Elysées 75000 Paris France</li>
-									<li><span class="fa fa-envelope-o"></span> Email: <a href="#"> sales@yourcompany.com</a></li>
+									<li><span class="fa fa-envelope-o"></span> Email: <a th:href="@{#}"> sales@yourcompany.com</a></li>
 									<li><span class="fa fa-phone">&nbsp;</span> Phone 1: 0123456789 <br>Phone 2: (123) 4567890</li>
 								</ul>
 							</div>
@@ -1790,7 +1790,7 @@
 				<div class="row">
 					<div class="col-sm-5 copyright-text"> © 2016 Market. All Rights Reserved. </div>
 					<div class="col-sm-7">
-						<div class="block-payment text-right"><img src="../static/image/demo/content/payment.png" alt="payment" title="payment" ></div>
+						<div class="block-payment text-right"><img th:src="@{../static/image/demo/content/payment.png}" alt="payment" title="payment" ></div>
 					</div>
 					<!--Back To Top-->
 					<div class="back-to-top"><i class="fa fa-angle-up"></i><span> Top </span></div>
@@ -1810,25 +1810,25 @@
 <!-- Include Libs & Plugins
 ============================================ -->
 <!-- Placed at the end of the document so the pages load faster -->
-<script type="text/javascript" src="../static/js/jquery-2.2.4.min.js"></script>
-<script type="text/javascript" src="../static/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="../static/js/owl-carousel/owl.carousel.js"></script>
-<script type="text/javascript" src="../static/js/themejs/libs.js"></script>
-<script type="text/javascript" src="../static/js/unveil/jquery.unveil.js"></script>
-<script type="text/javascript" src="../static/js/countdown/jquery.countdown.min.js"></script>
-<script type="text/javascript" src="../static/js/dcjqaccordion/jquery.dcjqaccordion.2.8.min.js"></script>
-<script type="text/javascript" src="../static/js/datetimepicker/moment.js"></script>
-<script type="text/javascript" src="../static/js/datetimepicker/bootstrap-datetimepicker.min.js"></script>
-<script type="text/javascript" src="../static/js/jquery-ui/jquery-ui.min.js"></script>
-<script type="text/javascript" src="../static/js/modernizr/modernizr-2.6.2.min.js"></script>
-<script type="text/javascript" src="../static/js/bootstrap-notify.min.js"></script>
+<script type="text/javascript" th:src="@{../static/js/jquery-2.2.4.min.js}"></script>
+<script type="text/javascript" th:src="@{../static/js/bootstrap.min.js}"></script>
+<script type="text/javascript" th:src="@{../static/js/owl-carousel/owl.carousel.js}"></script>
+<script type="text/javascript" th:src="@{../static/js/themejs/libs.js}"></script>
+<script type="text/javascript" th:src="@{../static/js/unveil/jquery.unveil.js}"></script>
+<script type="text/javascript" th:src="@{../static/js/countdown/jquery.countdown.min.js}"></script>
+<script type="text/javascript" th:src="@{../static/js/dcjqaccordion/jquery.dcjqaccordion.2.8.min.js}"></script>
+<script type="text/javascript" th:src="@{../static/js/datetimepicker/moment.js}"></script>
+<script type="text/javascript" th:src="@{../static/js/datetimepicker/bootstrap-datetimepicker.min.js}"></script>
+<script type="text/javascript" th:src="@{../static/js/jquery-ui/jquery-ui.min.js}"></script>
+<script type="text/javascript" th:src="@{../static/js/modernizr/modernizr-2.6.2.min.js}"></script>
+<script type="text/javascript" th:src="@{../static/js/bootstrap-notify.min.js}"></script>
 
 <!-- Theme files
 ============================================ -->
-<script type="text/javascript" src="../static/js/themejs/application.js"></script>
-<script type="text/javascript" src="../static/js/themejs/homepage.js"></script>
-<script type="text/javascript" src="../static/js/themejs/so_megamenu.js"></script>
-<script type="text/javascript" src="../static/js/themejs/addtocart.js"></script>
+<script type="text/javascript" th:src="@{../static/js/themejs/application.js}"></script>
+<script type="text/javascript" th:src="@{../static/js/themejs/homepage.js}"></script>
+<script type="text/javascript" th:src="@{../static/js/themejs/so_megamenu.js}"></script>
+<script type="text/javascript" th:src="@{../static/js/themejs/addtocart.js}"></script>
 
 
 
