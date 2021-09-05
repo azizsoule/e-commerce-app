@@ -10,6 +10,7 @@ public class UserDTO {
     private String lastName;
     private String password;
     private String phoneNumber;
+    private Long sexIdSex;
     private Long userGroupIdUserGroup;
 
     public Long getId() {
@@ -82,6 +83,14 @@ public class UserDTO {
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
+    }
+
+    public Long getSexIdSex() {
+        return this.sexIdSex;
+    }
+
+    public void setSexIdSex(Long sexIdSex) {
+        this.sexIdSex = sexIdSex;
     }
 
     public Long getUserGroupIdUserGroup() {

@@ -11,6 +11,7 @@ public class CustomerDTO {
     private String password;
     private String phoneNumber;
     private Long customerTypeIdCustomerType;
+    private Long sexIdSex;
 
     public Long getId() {
         return this.id;
@@ -90,5 +91,13 @@ public class CustomerDTO {
 
     public void setCustomerTypeIdCustomerType(Long customerTypeIdCustomerType) {
         this.customerTypeIdCustomerType = customerTypeIdCustomerType;
+    }
+
+    public Long getSexIdSex() {
+        return this.sexIdSex;
+    }
+
+    public void setSexIdSex(Long sexIdSex) {
+        this.sexIdSex = sexIdSex;
     }
 }
