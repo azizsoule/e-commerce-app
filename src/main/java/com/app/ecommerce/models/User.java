@@ -21,4 +21,8 @@ public class User extends Person {
     @JoinColumn(name = "user_group_id_user_group")
     private UserGroup userGroup;
 
+    @ManyToOne
+    @JoinColumn(name = "sex_id_sex")
+    private Sex sex;
+
 }

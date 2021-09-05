@@ -1,5 +1,7 @@
 package com.app.ecommerce.models.supers;
 
+import com.app.ecommerce.models.Sex;
+
 import javax.persistence.*;
 import java.util.Date;
 

@@ -2,7 +2,7 @@ package com.app.ecommerce.services;
 
 import com.app.ecommerce.dtos.UserPaymentMethodDTO;
 import com.app.ecommerce.models.CustomerPaymentMethod;
-import com.app.ecommerce.repositories.UserPaymentMethodRepository;
+import com.app.ecommerce.repositories.CustomerPaymentMethodRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,10 +10,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class UserPaymentMethodService extends BaseService<UserPaymentMethodDTO, Long> {
+public class CustomerPaymentMethodService extends BaseService<UserPaymentMethodDTO, Long> {
 
     @Autowired
-    UserPaymentMethodRepository repository;
+    CustomerPaymentMethodRepository repository;
 
     @Override
     public UserPaymentMethodDTO findById(Long aLong) {

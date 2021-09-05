@@ -32,6 +32,16 @@ public class Route {
 
     static String orderInformation = "order-information";
 
-    //sta
+    static String product = "product";
+
+    static String quickView = "quickview";
+
+    static String register = "register";
+
+    static String siteMap = "sitemap";
+
+    static String typography = "typography";
+
+    static String wishList = "wishlist";
 
 }

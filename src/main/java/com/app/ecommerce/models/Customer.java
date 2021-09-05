@@ -36,4 +36,8 @@ public class Customer extends Person {
     @JoinColumn(name = "customer_type_id_customer_type")
     private CustomerType customerType;
 
+    @ManyToOne
+    @JoinColumn(name = "sex_id_sex")
+    private Sex sex;
+
 }
