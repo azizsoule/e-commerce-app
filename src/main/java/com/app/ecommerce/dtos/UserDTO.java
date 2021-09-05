@@ -1,7 +1,8 @@
 package com.app.ecommerce.dtos;
 
 public class UserDTO {
-    private Long idUser;
+    private Long id;
+    private java.sql.Timestamp birthDate;
     private Boolean blocked;
     private java.sql.Timestamp createdAt;
     private String email;
@@ -9,15 +10,22 @@ public class UserDTO {
     private String lastName;
     private String password;
     private String phoneNumber;
-    private String username;
     private Long userGroupIdUserGroup;
 
-    public Long getIdUser() {
-        return this.idUser;
+    public Long getId() {
+        return this.id;
     }
 
-    public void setIdUser(Long idUser) {
-        this.idUser = idUser;
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public java.sql.Timestamp getBirthDate() {
+        return this.birthDate;
+    }
+
+    public void setBirthDate(java.sql.Timestamp birthDate) {
+        this.birthDate = birthDate;
     }
 
     public Boolean getBlocked() {
@@ -74,14 +82,6 @@ public class UserDTO {
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
-    }
-
-    public String getUsername() {
-        return this.username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
     }
 
     public Long getUserGroupIdUserGroup() {

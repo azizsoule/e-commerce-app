@@ -3,7 +3,6 @@ package com.app.ecommerce.dtos;
 public class WishItemDTO {
     private Long idItem;
     private java.sql.Timestamp createdAt;
-    private String image;
     private Integer quantity;
     private Long articleIdArticle;
     private Long userIdUser;
@@ -22,14 +21,6 @@ public class WishItemDTO {
 
     public void setCreatedAt(java.sql.Timestamp createdAt) {
         this.createdAt = createdAt;
-    }
-
-    public String getImage() {
-        return this.image;
-    }
-
-    public void setImage(String image) {
-        this.image = image;
     }
 
     public Integer getQuantity() {

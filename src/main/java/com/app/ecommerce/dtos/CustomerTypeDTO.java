@@ -1,15 +1,25 @@
 package com.app.ecommerce.dtos;
 
 public class CustomerTypeDTO {
-    private Long idCustumerType;
+    private Long idCustomerType;
+    private Integer end;
     private String label;
+    private Integer start;
 
-    public Long getIdCustumerType() {
-        return this.idCustumerType;
+    public Long getIdCustomerType() {
+        return this.idCustomerType;
     }
 
-    public void setIdCustumerType(Long idCustumerType) {
-        this.idCustumerType = idCustumerType;
+    public void setIdCustomerType(Long idCustomerType) {
+        this.idCustomerType = idCustomerType;
+    }
+
+    public Integer getEnd() {
+        return this.end;
+    }
+
+    public void setEnd(Integer end) {
+        this.end = end;
     }
 
     public String getLabel() {
@@ -18,5 +28,13 @@ public class CustomerTypeDTO {
 
     public void setLabel(String label) {
         this.label = label;
+    }
+
+    public Integer getStart() {
+        return this.start;
+    }
+
+    public void setStart(Integer start) {
+        this.start = start;
     }
 }

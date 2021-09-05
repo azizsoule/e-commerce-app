@@ -3,10 +3,10 @@ package com.app.ecommerce.dtos;
 public class ArticleDTO {
     private Long idArticle;
     private String brand;
+    private Integer commentCount;
     private String description;
     private String image;
     private String label;
-    private Integer nbrComment;
     private Float price;
     private Integer ratingSum;
     private String sku;
@@ -27,6 +27,14 @@ public class ArticleDTO {
 
     public void setBrand(String brand) {
         this.brand = brand;
+    }
+
+    public Integer getCommentCount() {
+        return this.commentCount;
+    }
+
+    public void setCommentCount(Integer commentCount) {
+        this.commentCount = commentCount;
     }
 
     public String getDescription() {
@@ -51,14 +59,6 @@ public class ArticleDTO {
 
     public void setLabel(String label) {
         this.label = label;
-    }
-
-    public Integer getNbrComment() {
-        return this.nbrComment;
-    }
-
-    public void setNbrComment(Integer nbrComment) {
-        this.nbrComment = nbrComment;
     }
 
     public Float getPrice() {
