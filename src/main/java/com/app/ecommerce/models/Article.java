@@ -28,7 +28,7 @@ public class Article {
 
     private float price;
 
-    private int nbrComment;
+    private int commentCount;
 
     private int ratingSum;
 

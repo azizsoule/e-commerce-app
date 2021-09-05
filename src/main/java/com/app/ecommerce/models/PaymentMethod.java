@@ -30,6 +30,6 @@ public class PaymentMethod {
     private List<PaymentDetail> paymentDetails;
 
     @OneToMany(mappedBy = "paymentMethod")
-    private List<UserPaymentMethod> userPaymentMethods;
+    private List<CustomerPaymentMethod> customerPaymentMethods;
 
 }

@@ -1,7 +1,7 @@
 package com.app.ecommerce.repositories;
 
-import com.app.ecommerce.models.UserPaymentMethod;
+import com.app.ecommerce.models.CustomerPaymentMethod;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface UserPaymentMethodRepository extends JpaRepository<UserPaymentMethod, Long> {
+public interface UserPaymentMethodRepository extends JpaRepository<CustomerPaymentMethod, Long> {
 }

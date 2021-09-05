@@ -45,10 +45,10 @@ public class Discount {
     private Set<Article> articles;
 
     @ManyToMany
-    @JoinTable(name = "discount_user",
+    @JoinTable(name = "discount_customer",
             joinColumns = @JoinColumn(name = "discount_id"),
-            inverseJoinColumns = @JoinColumn(name = "user_id"))
-    private Set<User> users;
+            inverseJoinColumns = @JoinColumn(name = "customer_id"))
+    private Set<Customer> customers;
 
     @PrePersist
     public void prePersist() {
