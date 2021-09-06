@@ -1,6 +1,5 @@
 package com.app.ecommerce.dtos;
 
-import com.app.ecommerce.models.Comment;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;

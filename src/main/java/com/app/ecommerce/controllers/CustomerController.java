@@ -2,7 +2,10 @@ package com.app.ecommerce.controllers;
 
 import com.app.ecommerce.dtos.AddressDTO;
 import com.app.ecommerce.dtos.CustomerDTO;
-import com.app.ecommerce.services.*;
+import com.app.ecommerce.services.AddressService;
+import com.app.ecommerce.services.CityService;
+import com.app.ecommerce.services.CustomerService;
+import com.app.ecommerce.services.SexService;
 import com.app.ecommerce.utils.Route;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -40,13 +43,15 @@ public class CustomerController {
     @PostMapping(Route.REGISTER)
     String register(CustomerDTO customer, AddressDTO address, RedirectAttributes redirectAttributes) {
         try {
-            customer = customerService.save(customer);
+            customer = customerService.register(customer);
             address.setFirstName(customer.getFirstName());
             address.setLastName(customer.getLastName());
             address.setCustomerId(customer.getId());
             address.setDef(true);
             address = addressService.save(address);
             redirectAttributes.addFlashAttribute("success", "Succès - Inscription réussie !");
+        } catch (NullPointerException exception) {
+            redirectAttributes.addFlashAttribute("failure", "Erreur - L'adresse e-mail que vous avez entré est déja utilisée !");
         } catch (Exception exception) {
             redirectAttributes.addFlashAttribute("failure", "Erreur - L'inscription a échoué car une erreur est survenue. Veuillez réessayer svp !");
         }

@@ -48,6 +48,14 @@ public class CustomerService extends BaseService<CustomerDTO, Long> implements U
         return modelMapper().map(customer, CustomerDTO.class);
     }
 
+    public CustomerDTO register(CustomerDTO customerDTO) {
+        if (repository.findByEmail(customerDTO.getEmail()) == null) {
+            return this.save(customerDTO);
+        } else {
+            return null;
+        }
+    }
+
     @Override
     public void deleteById(Long aLong) {
         repository.deleteById(aLong);
