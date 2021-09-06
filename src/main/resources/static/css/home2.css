@@ -1,7 +1,7 @@
 /*******************************************
 *	Theme Name: Market
 *	Author: Magentech
-*	Author URI: http://www.magentech.com
+*	Author URI: http:/www.magentech.com
 *	Version: 1.0.0
 *	Description: This is html5 Sass template 
 *******************************************/
@@ -1843,7 +1843,7 @@ STRUCTURE
       margin-bottom: 0;
       white-space: nowrap; }
     .shopping_cart a.top_cart .handle {
-      background: url("../image/theme//icons/icon_minicart.png") no-repeat 8px 8px;
+      background: url("../image/theme/icons/icon_minicart.png") no-repeat 8px 8px;
       background-color: #F4A137;
       width: 36px;
       height: 34px;
@@ -2027,12 +2027,12 @@ STRUCTURE
   transition: all 0.3s ease; }
   .yt-content-slider--arrow1 .owl2-controls .owl2-nav div.owl2-prev {
     left: 0px;
-    background: url("../image/theme//icons/arrow-slider-left.png") no-repeat; }
+    background: url("../image/theme/icons/arrow-slider-left.png") no-repeat; }
     .yt-content-slider--arrow1 .owl2-controls .owl2-nav div.owl2-prev:hover {
       background-position: 0 -59px; }
   .yt-content-slider--arrow1 .owl2-controls .owl2-nav div.owl2-next {
     right: 0px;
-    background: url("../image/theme//icons/arrow-slider-right.png") no-repeat; }
+    background: url("../image/theme/icons/arrow-slider-right.png") no-repeat; }
     .yt-content-slider--arrow1 .owl2-controls .owl2-nav div.owl2-next:hover {
       background-position: 0 -59px; }
 
@@ -4105,7 +4105,7 @@ h2.title-category {
 /*******************************************
 *	Theme Name: Market
 *	Author: Magentech
-*	Author URI: http://www.magentech.com
+*	Author URI: http:/www.magentech.com
 *	Version: 1.0.0
 *	Description: This is html5 Sass template 
 *******************************************/
@@ -4258,17 +4258,17 @@ h2.title-category {
         border-color: #F4A137;
         background: transparent; }
     #collections_block ul li.collection_0 a {
-      background-image: url("../image/theme//icons/collections-1-1.png"); }
+      background-image: url("../image/theme/icons/collections-1-1.png"); }
     #collections_block ul li.collection_1 a {
-      background-image: url("../image/theme//icons/collections-2-1.png"); }
+      background-image: url("../image/theme/icons/collections-2-1.png"); }
     #collections_block ul li.collection_2 a {
-      background-image: url("../image/theme//icons/collections-3-1.png"); }
+      background-image: url("../image/theme/icons/collections-3-1.png"); }
     #collections_block ul li.collection_3 a {
-      background-image: url("../image/theme//icons/collections-4-1.png"); }
+      background-image: url("../image/theme/icons/collections-4-1.png"); }
     #collections_block ul li.collection_4 a {
-      background-image: url("../image/theme//icons/collections-5-1.png"); }
+      background-image: url("../image/theme/icons/collections-5-1.png"); }
     #collections_block ul li.collection_5 a {
-      background-image: url("../image/theme//icons/collections-6-1.png"); }
+      background-image: url("../image/theme/icons/collections-6-1.png"); }
 
 .so-spotlight3 {
   background: #F5F5F5; }
@@ -4337,7 +4337,7 @@ h2.title-category {
           background: #F4A137; }
 
 .news-letter .newsletter {
-  background: url("../image/theme//home2/newsletter-bg.jpg") no-repeat;
+  background: url("../image/theme/home2/newsletter-bg.jpg") no-repeat;
   overflow: hidden;
   padding: 33px 20px;
   background-size: cover;
@@ -4367,7 +4367,7 @@ h2.title-category {
     width: 49px;
     min-width: 49px;
     height: 40px;
-    background: url("../image/theme//home2/newsletter-btn.png") no-repeat center center;
+    background: url("../image/theme/home2/newsletter-btn.png") no-repeat center center;
     position: absolute;
     right: 0px;
     bottom: 0px;
@@ -4507,7 +4507,7 @@ div.tab-slider {
         width: 20px;
         height: 27px;
         border: 1px solid #ddd;
-        background-image: url("../image/theme//icons/ico-slider.png");
+        background-image: url("../image/theme/icons/ico-slider.png");
         background-repeat: no-repeat;
         background-color: #fff;
         display: inline-block;

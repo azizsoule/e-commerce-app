@@ -42,6 +42,8 @@ public class Route {
 
     public static final String WISHLIST = "wishlist";
 
+    public static final String LOGOUT = "logout";
+
     public static String redirectTo(String route) {
         return "redirect:/"+route;
     }

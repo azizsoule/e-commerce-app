@@ -57,11 +57,6 @@ public class MainController {
         return Route.GIFT_VOUCHER;
     }
 
-    @GetMapping(Route.LOGIN)
-    public String login() {
-        return Route.LOGIN;
-    }
-
     @GetMapping(Route.MY_ACCOUNT)
     public String myAccount() {
         return Route.MY_ACCOUNT;

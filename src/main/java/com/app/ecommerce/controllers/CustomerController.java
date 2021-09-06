@@ -9,9 +9,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
+@RequestMapping("/")
 public class CustomerController {
 
     @Autowired
@@ -49,6 +51,11 @@ public class CustomerController {
             redirectAttributes.addFlashAttribute("failure", "Erreur - L'inscription a échoué car une erreur est survenue. Veuillez réessayer svp !");
         }
         return Route.redirectTo(Route.REGISTER);
+    }
+
+    @GetMapping(Route.LOGIN)
+    String login() {
+        return Route.LOGIN;
     }
 
 }

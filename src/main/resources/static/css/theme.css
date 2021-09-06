@@ -1843,7 +1843,7 @@ STRUCTURE
       margin-bottom: 0;
       white-space: nowrap; }
     .shopping_cart a.top_cart .handle {
-      background: url("../image/theme//icons/icon_minicart.png") no-repeat 8px 8px;
+      background: url("../image/theme/icons/icon_minicart.png") no-repeat 8px 8px;
       background-color: #F4A137;
       width: 36px;
       height: 34px;
@@ -2027,12 +2027,12 @@ STRUCTURE
   transition: all 0.3s ease; }
   .yt-content-slider--arrow1 .owl2-controls .owl2-nav div.owl2-prev {
     left: 0px;
-    background: url("../image/theme//icons/arrow-slider-left.png") no-repeat; }
+    background: url("../image/theme/icons/arrow-slider-left.png") no-repeat; }
     .yt-content-slider--arrow1 .owl2-controls .owl2-nav div.owl2-prev:hover {
       background-position: 0 -59px; }
   .yt-content-slider--arrow1 .owl2-controls .owl2-nav div.owl2-next {
     right: 0px;
-    background: url("../image/theme//icons/arrow-slider-right.png") no-repeat; }
+    background: url("../image/theme/icons/arrow-slider-right.png") no-repeat; }
     .yt-content-slider--arrow1 .owl2-controls .owl2-nav div.owl2-next:hover {
       background-position: 0 -59px; }
 
@@ -4268,17 +4268,17 @@ h2.title-category {
         border-color: #F4A137;
         background: transparent; }
     #collections_block ul li.collection_0 a {
-      background-image: url("../image/theme//icons/collections-1-1.png"); }
+      background-image: url("../image/theme/icons/collections-1-1.png"); }
     #collections_block ul li.collection_1 a {
-      background-image: url("../image/theme//icons/collections-2-1.png"); }
+      background-image: url("../image/theme/icons/collections-2-1.png"); }
     #collections_block ul li.collection_2 a {
-      background-image: url("../image/theme//icons/collections-3-1.png"); }
+      background-image: url("../image/theme/icons/collections-3-1.png"); }
     #collections_block ul li.collection_3 a {
-      background-image: url("../image/theme//icons/collections-4-1.png"); }
+      background-image: url("../image/theme/icons/collections-4-1.png"); }
     #collections_block ul li.collection_4 a {
-      background-image: url("../image/theme//icons/collections-5-1.png"); }
+      background-image: url("../image/theme/icons/collections-5-1.png"); }
     #collections_block ul li.collection_5 a {
-      background-image: url("../image/theme//icons/collections-6-1.png"); }
+      background-image: url("../image/theme/icons/collections-6-1.png"); }
 
 @media (min-width: 1200px) {
   .left_column .so-vertical-menu .vertical-wrapper {
