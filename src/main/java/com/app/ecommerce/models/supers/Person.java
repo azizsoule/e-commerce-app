@@ -1,11 +1,17 @@
 package com.app.ecommerce.models.supers;
 
-import com.app.ecommerce.models.Sex;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.util.Date;
 
 @MappedSuperclass
+@Getter
+@Setter
+@NoArgsConstructor
 public class Person {
 
     @Id
@@ -18,6 +24,7 @@ public class Person {
 
     private String phoneNumber;
 
+    @DateTimeFormat(pattern = "yyyy-mm-dd", fallbackPatterns = "yyyy/mm/dd")
     private Date birthDate;
 
     private String email;
@@ -26,7 +33,7 @@ public class Person {
 
     private Date createdAt;
 
-    private boolean blocked;
+    private boolean blocked = false;
 
     @PrePersist
     public void prePersist() {

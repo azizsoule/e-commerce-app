@@ -2,46 +2,48 @@ package com.app.ecommerce.utils;
 
 public class Route {
 
-    static String apiEndpoint = "/api/v1/";
+    public static final String API_ENDPOINT = "/api/";
 
-    static String index = "index";
+    public static final String INDEX = "index";
 
-    static String home = "home";
+    public static final String ABOUT_US = "about-us";
 
-    static String aboutUs = "about-us";
+    public static final String BANNER_EFFECT = "banner-effect";
 
-    static String bannerEffect = "banner-effect";
+    public static final String CART = "cart";
 
-    static String cart = "cart";
+    public static final String CATEGORY = "category";
 
-    static String category = "category";
+    public static final String CHECKOUT = "checkout";
 
-    static String checkout = "checkout";
+    public static final String CONTACT = "contact";
 
-    static String contact = "contact";
+    public static final String FAQ = "faq";
 
-    static String faq = "faq";
+    public static final String GIFT_VOUCHER = "gift-voucher";
 
-    static String giftVoucher = "gift-voucher";
+    public static final String LOGIN = "login";
 
-    static String login = "login";
+    public static final String MY_ACCOUNT = "my-account";
 
-    static String myAccount = "my-account";
+    public static final String ORDER_HISTORY = "order-history";
 
-    static String orderHistory = "order-history";
+    public static final String ORDER_INFORMATION = "order-information";
 
-    static String orderInformation = "order-information";
+    public static final String PRODUCT = "product";
 
-    static String product = "product";
+    public static final String QUICK_VIEW = "quickview";
 
-    static String quickView = "quickview";
+    public static final String REGISTER = "register";
 
-    static String register = "register";
+    public static final String SITEMAP = "sitemap";
 
-    static String siteMap = "sitemap";
+    public static final String TYPOGRAPHY = "typography";
 
-    static String typography = "typography";
+    public static final String WISHLIST = "wishlist";
 
-    static String wishList = "wishlist";
+    public static String redirectTo(String route) {
+        return "redirect:/"+route;
+    }
 
 }

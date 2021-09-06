@@ -1,9 +1,11 @@
 package com.app.ecommerce.dtos;
 
+import java.util.Date;
+
 public class PaymentDetailDTO {
     private Long idPaymentDetail;
     private Float amount;
-    private java.sql.Timestamp createdAt;
+    private Date createdAt;
     private String reference;
     private String status;
     private Long paymentMethodIdPaymentMethod;
@@ -24,11 +26,11 @@ public class PaymentDetailDTO {
         this.amount = amount;
     }
 
-    public java.sql.Timestamp getCreatedAt() {
+    public Date getCreatedAt() {
         return this.createdAt;
     }
 
-    public void setCreatedAt(java.sql.Timestamp createdAt) {
+    public void setCreatedAt(Date createdAt) {
         this.createdAt = createdAt;
     }
 

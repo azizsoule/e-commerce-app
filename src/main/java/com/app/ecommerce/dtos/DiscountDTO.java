@@ -1,17 +1,39 @@
 package com.app.ecommerce.dtos;
 
+import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
+
 public class DiscountDTO {
     private Long idDiscount;
-    private java.sql.Timestamp createdAt;
+    private Date createdAt;
     private String description;
     private Float discountAmount;
     private Integer discountPercent;
     private Boolean enabled;
-    private java.sql.Timestamp endDate;
+    private Date endDate;
     private String label;
     private Boolean percentage;
     private String promoCode;
-    private java.sql.Timestamp startDate;
+    private Date startDate;
+    private Set<ArticleDTO> articles = new HashSet<>();
+    private Set<CustomerDTO> customers = new HashSet<>();
+
+    public Set<ArticleDTO> getArticles() {
+        return articles;
+    }
+
+    public void setArticles(Set<ArticleDTO> articles) {
+        this.articles = articles;
+    }
+
+    public Set<CustomerDTO> getCustomers() {
+        return customers;
+    }
+
+    public void setCustomers(Set<CustomerDTO> customers) {
+        this.customers = customers;
+    }
 
     public Long getIdDiscount() {
         return this.idDiscount;
@@ -21,11 +43,11 @@ public class DiscountDTO {
         this.idDiscount = idDiscount;
     }
 
-    public java.sql.Timestamp getCreatedAt() {
+    public Date getCreatedAt() {
         return this.createdAt;
     }
 
-    public void setCreatedAt(java.sql.Timestamp createdAt) {
+    public void setCreatedAt(Date createdAt) {
         this.createdAt = createdAt;
     }
 
@@ -61,11 +83,11 @@ public class DiscountDTO {
         this.enabled = enabled;
     }
 
-    public java.sql.Timestamp getEndDate() {
+    public Date getEndDate() {
         return this.endDate;
     }
 
-    public void setEndDate(java.sql.Timestamp endDate) {
+    public void setEndDate(Date endDate) {
         this.endDate = endDate;
     }
 
@@ -93,11 +115,12 @@ public class DiscountDTO {
         this.promoCode = promoCode;
     }
 
-    public java.sql.Timestamp getStartDate() {
+    public Date getStartDate() {
         return this.startDate;
     }
 
-    public void setStartDate(java.sql.Timestamp startDate) {
+    public void setStartDate(Date startDate) {
         this.startDate = startDate;
     }
+
 }

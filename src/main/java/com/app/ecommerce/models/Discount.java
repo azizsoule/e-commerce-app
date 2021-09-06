@@ -3,6 +3,7 @@ package com.app.ecommerce.models;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -33,12 +34,15 @@ public class Discount {
 
     private boolean percentage;
 
-    private boolean enabled;
+    private boolean enabled = true;
 
+    @DateTimeFormat(pattern = "yyyy-mm-dd", fallbackPatterns = "yyyy/mm/dd")
     private Date createdAt;
 
+    @DateTimeFormat(pattern = "yyyy-mm-dd", fallbackPatterns = "yyyy/mm/dd")
     private Date startDate;
 
+    @DateTimeFormat(pattern = "yyyy-mm-dd", fallbackPatterns = "yyyy/mm/dd")
     private Date endDate;
 
     @ManyToMany

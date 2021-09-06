@@ -23,7 +23,7 @@ public class Address {
 
     private String label;
 
-    private Boolean def;
+    private Boolean def = false;
 
     @ManyToOne
     @JoinColumn(name = "city_id_city")

@@ -1,10 +1,12 @@
 package com.app.ecommerce.dtos;
 
+import java.util.Date;
+
 public class UserDTO {
     private Long id;
-    private java.sql.Timestamp birthDate;
+    private Date birthDate;
     private Boolean blocked;
-    private java.sql.Timestamp createdAt;
+    private Date createdAt;
     private String email;
     private String firstName;
     private String lastName;
@@ -21,11 +23,11 @@ public class UserDTO {
         this.id = id;
     }
 
-    public java.sql.Timestamp getBirthDate() {
+    public Date getBirthDate() {
         return this.birthDate;
     }
 
-    public void setBirthDate(java.sql.Timestamp birthDate) {
+    public void setBirthDate(Date birthDate) {
         this.birthDate = birthDate;
     }
 
@@ -37,11 +39,11 @@ public class UserDTO {
         this.blocked = blocked;
     }
 
-    public java.sql.Timestamp getCreatedAt() {
+    public Date getCreatedAt() {
         return this.createdAt;
     }
 
-    public void setCreatedAt(java.sql.Timestamp createdAt) {
+    public void setCreatedAt(Date createdAt) {
         this.createdAt = createdAt;
     }
 

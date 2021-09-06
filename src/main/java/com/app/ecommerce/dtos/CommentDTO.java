@@ -1,5 +1,7 @@
 package com.app.ecommerce.dtos;
 
+import java.util.Date;
+
 public class CommentDTO {
     private Long idComment;
     private Boolean blocked;
@@ -7,6 +9,15 @@ public class CommentDTO {
     private Integer rating;
     private Long articleIdArticle;
     private Long customerId;
+    private Date date;
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
 
     public Long getIdComment() {
         return this.idComment;

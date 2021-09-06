@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class AdressService extends BaseService<AddressDTO, Long> {
+public class AddressService extends BaseService<AddressDTO, Long> {
 
     @Autowired
     AddressRepository repository;

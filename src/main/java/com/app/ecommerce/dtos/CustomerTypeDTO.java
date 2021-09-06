@@ -1,10 +1,23 @@
 package com.app.ecommerce.dtos;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class CustomerTypeDTO {
     private Long idCustomerType;
     private Integer end;
     private String label;
     private Integer start;
+
+    public Set<CustomerDTO> getCustomers() {
+        return customers;
+    }
+
+    public void setCustomers(Set<CustomerDTO> customers) {
+        this.customers = customers;
+    }
+
+    private Set<CustomerDTO> customers = new HashSet<>();
 
     public Long getIdCustomerType() {
         return this.idCustomerType;

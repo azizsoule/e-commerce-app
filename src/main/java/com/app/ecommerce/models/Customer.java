@@ -14,7 +14,7 @@ import java.util.Set;
 @Entity
 public class Customer extends Person {
 
-    @OneToMany(mappedBy = "customer")
+    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
     private Set<Address> addresses;
 
     @OneToMany(mappedBy = "customer")
@@ -28,6 +28,9 @@ public class Customer extends Person {
 
     @OneToMany(mappedBy = "customer", orphanRemoval = true)
     private Set<Order> orders;
+
+    @OneToMany(mappedBy = "customer", orphanRemoval = true)
+    private Set<WishItem> wishItems;
 
     @ManyToMany(mappedBy = "customers")
     private Set<Discount> discounts;

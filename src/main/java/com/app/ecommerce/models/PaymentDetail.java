@@ -3,6 +3,7 @@ package com.app.ecommerce.models;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -24,6 +25,7 @@ public class PaymentDetail {
 
     private String status;
 
+    @DateTimeFormat(pattern = "yyyy-mm-dd", fallbackPatterns = "yyyy/mm/dd")
     private Date createdAt;
 
     @OneToOne(optional = false, mappedBy = "paymentDetail")

@@ -1,11 +1,32 @@
 package com.app.ecommerce.dtos;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class PaymentMethodDTO {
     private Long idPaymentMethod;
     private Boolean available;
     private String image;
     private String label;
     private String provider;
+    private Set<PaymentDetailDTO> paymentDetails = new HashSet<>();
+    private Set<CustomerPaymentMethodDTO> customerPaymentMethods = new HashSet<>();
+
+    public Set<PaymentDetailDTO> getPaymentDetails() {
+        return paymentDetails;
+    }
+
+    public void setPaymentDetails(Set<PaymentDetailDTO> paymentDetails) {
+        this.paymentDetails = paymentDetails;
+    }
+
+    public Set<CustomerPaymentMethodDTO> getCustomerPaymentMethods() {
+        return customerPaymentMethods;
+    }
+
+    public void setCustomerPaymentMethods(Set<CustomerPaymentMethodDTO> customerPaymentMethods) {
+        this.customerPaymentMethods = customerPaymentMethods;
+    }
 
     public Long getIdPaymentMethod() {
         return this.idPaymentMethod;

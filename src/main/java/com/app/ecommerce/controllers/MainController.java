@@ -1,112 +1,105 @@
 package com.app.ecommerce.controllers;
 
+import com.app.ecommerce.utils.Route;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class MainController {
 
-    private static final String URI = "/";
-    private static final String VIEW = "index";
-
-    @GetMapping(URI)
-    public String index() {
-        return VIEW;
+    @GetMapping("")
+    public String home() {
+        return Route.INDEX;
     }
 
-    @GetMapping("index")
+    @GetMapping(Route.INDEX)
     public String ind() {
-        return VIEW;
+        return Route.INDEX;
     }
 
-    @GetMapping("/about-us")
+    @GetMapping(Route.ABOUT_US)
     public String aboutUs() {
-        return "about-us";
+        return Route.ABOUT_US;
     }
 
-    @GetMapping("/banner-effect")
+    @GetMapping(Route.BANNER_EFFECT)
     public String bannerEffect() {
-        return "banner-effect";
+        return Route.BANNER_EFFECT;
     }
 
-    @GetMapping("/cart")
+    @GetMapping(Route.CART)
     public String cart() {
-        return "cart";
+        return Route.CART;
     }
 
-    @GetMapping("/category")
+    @GetMapping(Route.CATEGORY)
     public String category() {
-        return "category";
+        return Route.CATEGORY;
     }
 
-    @GetMapping("/checkout")
+    @GetMapping(Route.CHECKOUT)
     public String checkout() {
-        return "checkout";
+        return Route.CHECKOUT;
     }
 
-    @GetMapping("/contact")
+    @GetMapping(Route.CONTACT)
     public String contact() {
-        return "contact";
+        return Route.CONTACT;
     }
 
-    @GetMapping("/faq")
+    @GetMapping(Route.FAQ)
     public String faq() {
-        return "faq";
+        return Route.FAQ;
     }
 
-    @GetMapping("/gift-voucher")
+    @GetMapping(Route.GIFT_VOUCHER)
     public String giftVoucher() {
-        return "gift-voucher";
+        return Route.GIFT_VOUCHER;
     }
 
-    @GetMapping("/login")
+    @GetMapping(Route.LOGIN)
     public String login() {
-        return "login";
+        return Route.LOGIN;
     }
 
-    @GetMapping("/my-account")
+    @GetMapping(Route.MY_ACCOUNT)
     public String myAccount() {
-        return "my-account";
+        return Route.MY_ACCOUNT;
     }
 
-    @GetMapping("/order-history")
+    @GetMapping(Route.ORDER_HISTORY)
     public String orderHistory() {
-        return "order-history";
+        return Route.ORDER_HISTORY;
     }
 
-    @GetMapping("/order-information")
+    @GetMapping(Route.ORDER_INFORMATION)
     public String orderInformation() {
-        return "order-information";
+        return Route.ORDER_INFORMATION;
     }
 
-    @GetMapping("/product")
+    @GetMapping(Route.PRODUCT)
     public String product() {
-        return "product";
+        return Route.PRODUCT;
     }
 
-    @GetMapping("/quickview")
+    @GetMapping(Route.QUICK_VIEW)
     public String quickview() {
-        return "quickview";
+        return Route.QUICK_VIEW;
     }
 
-    @GetMapping("/register")
-    public String register() {
-        return "register";
-    }
-
-    @GetMapping("/sitemap")
+    @GetMapping(Route.SITEMAP)
     public String sitemap() {
-        return "sitemap";
+        return Route.SITEMAP;
     }
 
-    @GetMapping("/typography")
+    @GetMapping(Route.TYPOGRAPHY)
     public String typography() {
-        return "typography";
+        return Route.TYPOGRAPHY;
     }
 
-    @GetMapping("/wishlist")
+    @GetMapping(Route.WISHLIST)
     public String wishlist() {
-        return "wishlist";
+        return Route.WISHLIST;
     }
 
 }

@@ -1,8 +1,10 @@
 package com.app.ecommerce.dtos;
 
+import java.util.Date;
+
 public class OrderItemDTO {
     private Long idItem;
-    private java.sql.Timestamp createdAt;
+    private Date createdAt;
     private Integer quantity;
     private Long articleIdArticle;
     private Long orderIdOrder;
@@ -15,11 +17,11 @@ public class OrderItemDTO {
         this.idItem = idItem;
     }
 
-    public java.sql.Timestamp getCreatedAt() {
+    public Date getCreatedAt() {
         return this.createdAt;
     }
 
-    public void setCreatedAt(java.sql.Timestamp createdAt) {
+    public void setCreatedAt(Date createdAt) {
         this.createdAt = createdAt;
     }
 

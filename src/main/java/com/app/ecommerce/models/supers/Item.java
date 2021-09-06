@@ -1,9 +1,16 @@
 package com.app.ecommerce.models.supers;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import javax.persistence.*;
 import java.util.Date;
 
 @MappedSuperclass
+@Getter
+@Setter
+@NoArgsConstructor
 public class Item {
 
     @Id

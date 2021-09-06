@@ -3,8 +3,10 @@ package com.app.ecommerce.models;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Table(name = "comment")
 @Entity
@@ -23,6 +25,9 @@ public class Comment {
 
     private boolean blocked;
 
+    @DateTimeFormat(pattern = "yyyy-mm-dd", fallbackPatterns = "yyyy/mm/dd")
+    private Date date;
+
     @ManyToOne
     @JoinColumn(name = "article_id_article")
     private Article article;
@@ -30,5 +35,10 @@ public class Comment {
     @ManyToOne
     @JoinColumn(name = "customer_id")
     private Customer customer;
+
+    @PrePersist
+    public void prePersist() {
+        date = new Date();
+    }
 
 }

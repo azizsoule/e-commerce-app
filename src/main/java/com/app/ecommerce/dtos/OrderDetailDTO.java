@@ -1,12 +1,26 @@
 package com.app.ecommerce.dtos;
 
+import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
+
 public class OrderDetailDTO {
     private Long idOrder;
-    private java.sql.Timestamp createdAt;
+    private Date createdAt;
     private Float total;
     private Long customerId;
     private String codeOrderState;
     private Long paymentDetailIdPaymentDetail;
+
+    public Set<OrderItemDTO> getOrderItems() {
+        return orderItems;
+    }
+
+    public void setOrderItems(Set<OrderItemDTO> orderItems) {
+        this.orderItems = orderItems;
+    }
+
+    private Set<OrderItemDTO> orderItems = new HashSet<>();
 
     public Long getIdOrder() {
         return this.idOrder;
@@ -16,11 +30,11 @@ public class OrderDetailDTO {
         this.idOrder = idOrder;
     }
 
-    public java.sql.Timestamp getCreatedAt() {
+    public Date getCreatedAt() {
         return this.createdAt;
     }
 
-    public void setCreatedAt(java.sql.Timestamp createdAt) {
+    public void setCreatedAt(Date createdAt) {
         this.createdAt = createdAt;
     }
 

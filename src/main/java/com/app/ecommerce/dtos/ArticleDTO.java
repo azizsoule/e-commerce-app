@@ -1,5 +1,9 @@
 package com.app.ecommerce.dtos;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
+
 public class ArticleDTO {
     private Long idArticle;
     private String brand;
@@ -12,6 +16,33 @@ public class ArticleDTO {
     private String sku;
     private Long inventoryIdInventory;
     private Long subCategoryIdSubCategory;
+    private Set<ImageDTO> images = new HashSet<>();
+    private Set<CommentDTO> comments = new HashSet<>();
+    private Set<DiscountDTO> discounts = new HashSet<>();
+
+    public Set<ImageDTO> getImages() {
+        return images;
+    }
+
+    public void setImages(Set<ImageDTO> images) {
+        this.images = images;
+    }
+
+    public Set<CommentDTO> getComments() {
+        return comments;
+    }
+
+    public void setComments(Set<CommentDTO> comments) {
+        this.comments = comments;
+    }
+
+    public Set<DiscountDTO> getDiscounts() {
+        return discounts;
+    }
+
+    public void setDiscounts(Set<DiscountDTO> discounts) {
+        this.discounts = discounts;
+    }
 
     public Long getIdArticle() {
         return this.idArticle;

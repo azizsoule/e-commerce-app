@@ -1,8 +1,10 @@
 package com.app.ecommerce.dtos;
 
-public class UserPaymentMethodDTO {
+import java.util.Date;
+
+public class CustomerPaymentMethodDTO {
     private Long idCustomerPayment;
-    private java.sql.Timestamp ccExpirationDate;
+    private Date ccExpirationDate;
     private String ccNumber;
     private String cvv;
     private String phoneNumber;
@@ -17,11 +19,11 @@ public class UserPaymentMethodDTO {
         this.idCustomerPayment = idCustomerPayment;
     }
 
-    public java.sql.Timestamp getCcExpirationDate() {
+    public Date getCcExpirationDate() {
         return this.ccExpirationDate;
     }
 
-    public void setCcExpirationDate(java.sql.Timestamp ccExpirationDate) {
+    public void setCcExpirationDate(Date ccExpirationDate) {
         this.ccExpirationDate = ccExpirationDate;
     }
 

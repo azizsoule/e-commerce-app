@@ -11,7 +11,7 @@ public abstract class BaseService<DTO, ID> {
     private final ModelMapper modelMapper = new ModelMapper();
 
     public ModelMapper modelMapper() {
-        modelMapper.getConfiguration().setSkipNullEnabled(true);
+        //modelMapper.getConfiguration().setSkipNullEnabled(true);
         return modelMapper;
     }
 
