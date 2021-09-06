@@ -29,6 +29,7 @@
 
     <!-- Libs CSS
 	============================================ -->
+    <link rel="stylesheet" th:href="@{/css/register.css}">
     <link rel="stylesheet" th:href="@{/css/bootstrap/css/bootstrap.min.css}">
     <link th:href="@{/css/font-awesome/css/font-awesome.min.css}" rel="stylesheet">
     <link th:href="@{/js/datetimepicker/bootstrap-datetimepicker.min.css}" rel="stylesheet">
@@ -155,24 +156,25 @@
                     <fieldset>
                         <legend>Your Password</legend>
                         <div class="form-group required">
-                            <label class="col-sm-2 control-label" for="input-password">Password</label>
+                            <label class="col-sm-2 control-label" for="password">Password</label>
                             <div class="col-sm-10">
-                                <input required type="password" th:field="${customer.password}" value="" placeholder="Password"
-                                       id="input-password" class="form-control">
+                                <input required type="password"  th:field="${customer.password}" value="" placeholder="Password"
+                                       id="password" class="form-control">
                             </div>
                         </div>
                         <div class="form-group required">
-                            <label class="col-sm-2 control-label" for="input-confirm">Password Confirm</label>
+                            <label class="col-sm-2 control-label" for="confirm_pass">Password Confirm</label>
                             <div class="col-sm-10">
-                                <input required type="password" name="confirm" value="" placeholder="Password Confirm"
-                                       id="input-confirm" class="form-control">
+                                <input required type="password" name="confirm_pass" value="" placeholder="Password Confirm"
+                                       id="confirm_pass" class="form-control">
+                                <p></p>
                             </div>
                         </div>
                     </fieldset>
                     <div class="buttons">
                         <div class="pull-right">I have read and agree to the conditions
                             <input required class="box-checkbox" type="checkbox" name="agree" value="1"> &nbsp;
-                            <input type="submit" value="Continue" class="btn btn-primary">
+                            <input  type="submit" value="Continue" class="btn btn-primary">
                         </div>
                     </div>
                 </form>
@@ -193,6 +195,7 @@
 	============================================ -->
 <!-- Placed at the end of the document so the pages load faster -->
 <script type="text/javascript" th:src="@{/js/jquery-2.2.4.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/register.js}"></script>
 <script type="text/javascript" th:src="@{/js/bootstrap.min.js}"></script>
 <script type="text/javascript" th:src="@{/js/owl-carousel/owl.carousel.js}"></script>
 <script type="text/javascript" th:src="@{/js/themejs/libs.js}"></script>
@@ -202,6 +205,7 @@
 <script type="text/javascript" th:src="@{/js/datetimepicker/moment.js}"></script>
 <script type="text/javascript" th:src="@{/js/datetimepicker/bootstrap-datetimepicker.min.js}"></script>
 <script type="text/javascript" th:src="@{/js/jquery-ui/jquery-ui.min.js}"></script>
+
 
 
 <!-- Theme files
