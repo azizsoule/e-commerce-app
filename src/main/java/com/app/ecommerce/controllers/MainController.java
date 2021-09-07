@@ -32,9 +32,9 @@ public class MainController {
         return Route.CART;
     }
 
-    @GetMapping(Route.CATEGORY)
-    public String category() {
-        return Route.CATEGORY;
+    @GetMapping(Route.SUB_CATEGORY)
+    public String subCategory() {
+        return Route.SUB_CATEGORY;
     }
 
     @GetMapping(Route.CHECKOUT)

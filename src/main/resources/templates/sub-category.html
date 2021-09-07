@@ -117,9 +117,9 @@
 				</li>
 				<li class=""><a th:href="@{category}" class="cutom-parent">Health &amp; Beauty</a>  <span class="dcjq-icon"></span></li>
 				<li class=""><a th:href="@{category}" class="cutom-parent">Kids &amp; Babies</a>    <span class="dcjq-icon"></span></li>
-				<li class=""><a th:href="@{category.html}" class="cutom-parent">Sports</a>  <span class="dcjq-icon"></span></li>
-				<li class=""><a th:href="@{category.html}" class="cutom-parent">Home &amp; Garden</a><span class="dcjq-icon"></span></li>
-				<li class=""><a th:href="@{category.html}" class="cutom-parent">Wines &amp; Spirits</a>  <span class="dcjq-icon"></span></li>
+				<li class=""><a th:href="@{sub-category}" class="cutom-parent">Sports</a>  <span class="dcjq-icon"></span></li>
+				<li class=""><a th:href="@{sub-category}" class="cutom-parent">Home &amp; Garden</a><span class="dcjq-icon"></span></li>
+				<li class=""><a th:href="@{sub-category}" class="cutom-parent">Wines &amp; Spirits</a>  <span class="dcjq-icon"></span></li>
 			</ul>
 		</div>
 		
@@ -319,8 +319,8 @@
 		<div class="product-item-container">
 			<div class="left-block">
 				<div class="product-image-container lazy second_img ">
-					<img th:src="@{image/demo/shop/product/e11.jpg}" th:src="@{data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7}"  alt="Apple Cinema 30&quot;" class="img-responsive" />
-					<img th:src="@{image/demo/shop/product/e12.jpg}" th:src="@{data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7}"  alt="Apple Cinema 30&quot;" class="img_0 img-responsive" />
+					<img th:src="@{image/demo/shop/product/e11.jpg}" alt="Apple Cinema 30&quot;" class="img-responsive" />
+					<img th:src="@{image/demo/shop/product/e12.jpg}" alt="Apple Cinema 30&quot;" class="img_0 img-responsive" />
 				</div>
 				<!--Sale Label-->
 				<span class="label label-sale">Sale</span>
@@ -335,14 +335,14 @@
 				<!--end countdown box-->
 				
 				<!--full quick view block-->
-				<a class="quickview iframe-link visible-lg" data-fancybox-type="iframe"  th:href="@{quickview.html}">  Quickview</a>
+				<a class="quickview iframe-link visible-lg" data-fancybox-type="iframe"  th:href="@{quickview}">  Quickview</a>
 				<!--end full quick view block-->
 			</div>
 			
 			
 			<div class="right-block">
 				<div class="caption">
-					<h4><a th:href="@{product.html}">Apple Cinema 30&quot;</a></h4>
+					<h4><a th:href="@{product}">Apple Cinema 30&quot;</a></h4>
 					<div class="ratings">
 						<div class="rating-box">
 							<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
@@ -378,19 +378,19 @@
 		<div class="product-item-container">
 			<div class="left-block">
 				<div class="product-image-container lazy second_img ">
-					<img th:src="@{image/demo/shop/product/11.jpg}" th:src="@{data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7}"  alt="Apple Cinema 30&quot;" class="img-responsive" />
-					<img th:src="@{image/demo/shop/product/10.jpg}" th:src="@{data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7}"  alt="Apple Cinema 30&quot;" class="img_0 img-responsive" />
+					<img th:src="@{image/demo/shop/product/11.jpg}"  alt="Apple Cinema 30&quot;" class="img-responsive" />
+					<img th:src="@{image/demo/shop/product/10.jpg}"   alt="Apple Cinema 30&quot;" class="img_0 img-responsive" />
 				</div>
 				
 				<!--full quick view block-->
-				<a class="quickview iframe-link visible-lg" data-fancybox-type="iframe"  th:href="@{quickview.html}">  Quickview</a>
+				<a class="quickview iframe-link visible-lg" data-fancybox-type="iframe"  th:href="@{quickview}">  Quickview</a>
 				<!--end full quick view block-->
 			</div>
 			
 			
 			<div class="right-block">
 				<div class="caption">
-					<h4><a th:href="@{product.html}">Canon EOS 5D</a></h4>
+					<h4><a th:href="@{product}">Canon EOS 5D</a></h4>
 					<div class="ratings">
 						<div class="rating-box">
 							<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
@@ -425,8 +425,8 @@
 		<div class="product-item-container">
 			<div class="left-block">
 				<div class="product-image-container lazy second_img ">
-					<img th:src="@{image/demo/shop/product/35.jpg}" th:src="@{data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7}"  alt="Apple Cinema 30&quot;" class="img-responsive" />
-					<img th:src="@{image/demo/shop/product/34.jpg}" th:src="@{data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7}"  alt="Apple Cinema 30&quot;" class="img_0 img-responsive" />
+					<img th:src="@{image/demo/shop/product/35.jpg}" alt="Apple Cinema 30&quot;" class="img-responsive" />
+					<img th:src="@{image/demo/shop/product/34.jpg}" alt="Apple Cinema 30&quot;" class="img_0 img-responsive" />
 				</div>
 				<!--Sale Label-->
 				<span class="label label-new">New</span>
@@ -442,14 +442,14 @@
 				<!--end countdown box-->
 				
 				<!--full quick view block-->
-				<a class="quickview iframe-link visible-lg" data-fancybox-type="iframe"  th:href="@{quickview.html}">  Quickview</a>
+				<a class="quickview iframe-link visible-lg" data-fancybox-type="iframe"  th:href="@{quickview}">  Quickview</a>
 				<!--end full quick view block-->
 			</div>
 			
 			
 			<div class="right-block">
 				<div class="caption">
-					<h4><a th:href="@{product.html}">Filet Mign</a></h4>
+					<h4><a th:href="@{product}">Filet Mign</a></h4>
 					<div class="ratings">
 						<div class="rating-box">
 							<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
@@ -485,20 +485,20 @@
 		<div class="product-item-container">
 			<div class="left-block">
 				<div class="product-image-container lazy second_img ">
-					<img data-th:src="@{image/demo/shop/product/14.jpg}" th:src="@{data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7}"  alt="Apple Cinema 30&quot;" class="img-responsive" />
-					<img data-th:src="@{image/demo/shop/product/15.jpg}" th:src="@{data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7}"  alt="Apple Cinema 30&quot;" class="img_0 img-responsive" />
+					<img th:src="@{image/demo/shop/product/14.jpg}" alt="Apple Cinema 30&quot;" class="img-responsive" />
+					<img th:src="@{image/demo/shop/product/15.jpg}" alt="Apple Cinema 30&quot;" class="img_0 img-responsive" />
 				</div>
 				<!--Sale Label-->
 				<span class="label label-sale">Sale</span>
 				<!--full quick view block-->
-				<a class="quickview iframe-link visible-lg" data-fancybox-type="iframe"  th:href="@{quickview.html}">  Quickview</a>
+				<a class="quickview iframe-link visible-lg" data-fancybox-type="iframe"  th:href="@{quickview}">  Quickview</a>
 				<!--end full quick view block-->
 			</div>
 			
 			
 			<div class="right-block">
 				<div class="caption">
-					<h4><a th:href="@{product.html}">Lorem Cow</a></h4>
+					<h4><a th:href="@{product}">Lorem Cow</a></h4>
 					<div class="ratings">
 						<div class="rating-box">
 							<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
@@ -534,18 +534,18 @@
 		<div class="product-item-container">
 			<div class="left-block">
 				<div class="product-image-container lazy second_img ">
-					<img th:src="@{image/demo/shop/product/18.jpg}" th:src="@{data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7}"  alt="Apple Cinema 30&quot;" class="img-responsive" />
-					<img th:src="@{image/demo/shop/product/1.png}" th:src="@{data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7}"  alt="Apple Cinema 30&quot;" class="img_0 img-responsive" />
+					<img th:src="@{image/demo/shop/product/18.jpg}" alt="Apple Cinema 30&quot;" class="img-responsive" />
+					<img th:src="@{image/demo/shop/product/1.png}" alt="Apple Cinema 30&quot;" class="img_0 img-responsive" />
 				</div>
 				
 				<!--full quick view block-->
-				<a class="quickview iframe-link visible-lg" data-fancybox-type="iframe"  th:href="@{quickview.html}">  Quickview</a>
+				<a class="quickview iframe-link visible-lg" data-fancybox-type="iframe"  th:href="@{quickview}">  Quickview</a>
 				<!--end full quick view block-->
 			</div>
 			
 			<div class="right-block">
 				<div class="caption">
-					<h4><a th:href="@{product.html}">MacBook</a></h4>
+					<h4><a th:href="@{product}">MacBook</a></h4>
 					<div class="ratings">
 						<div class="rating-box">
 							<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
@@ -580,19 +580,19 @@
 		<div class="product-item-container">
 			<div class="left-block">
 				<div class="product-image-container lazy second_img ">
-					<img th:src="@{image/demo/shop/product/141.jpg}" th:src="@{data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7}"  alt="Apple Cinema 30&quot;" class="img-responsive" />
-					<img th:src="@{image/demo/shop/product/11.jpg}" th:src="@{data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7}"  alt="Apple Cinema 30&quot;" class="img_0 img-responsive" />
+					<img th:src="@{image/demo/shop/product/141.jpg}" alt="Apple Cinema 30&quot;" class="img-responsive" />
+					<img th:src="@{image/demo/shop/product/11.jpg}" alt="Apple Cinema 30&quot;" class="img_0 img-responsive" />
 				</div>
 				
 				<!--full quick view block-->
-				<a class="quickview iframe-link visible-lg" data-fancybox-type="iframe"  th:href="@{quickview.html}">  Quickview</a>
+				<a class="quickview iframe-link visible-lg" data-fancybox-type="iframe"  th:href="@{quickview}">  Quickview</a>
 				<!--end full quick view block-->
 			</div>
 			
 			
 			<div class="right-block">
 				<div class="caption">
-					<h4><a th:href="@{product.html}">Nikon D300</a></h4>
+					<h4><a th:href="@{product}">Nikon D300</a></h4>
 					<div class="ratings">
 						<div class="rating-box">
 							<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
@@ -628,19 +628,19 @@
 		<div class="product-item-container">
 			<div class="left-block">
 				<div class="product-image-container lazy second_img ">
-					<img th:src="@{image/demo/shop/product/E3.jpg}" th:src="@{data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7}"  alt="Apple Cinema 30&quot;" class="img-responsive" />
-					<img th:src="@{image/demo/shop/product/E4.jpg}" th:src="@{data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7}"  alt="Apple Cinema 30&quot;" class="img_0 img-responsive" />
+					<img th:src="@{image/demo/shop/product/E3.jpg}" alt="Apple Cinema 30&quot;" class="img-responsive" />
+					<img th:src="@{image/demo/shop/product/E4.jpg}" alt="Apple Cinema 30&quot;" class="img_0 img-responsive" />
 				</div>
 				
 				<!--full quick view block-->
-				<a class="quickview iframe-link visible-lg" data-fancybox-type="iframe"  th:href="@{quickview.html}">  Quickview</a>
+				<a class="quickview iframe-link visible-lg" data-fancybox-type="iframe"  th:href="@{quickview}">  Quickview</a>
 				<!--end full quick view block-->
 			</div>
 			
 			
 			<div class="right-block">
 				<div class="caption">
-					<h4><a th:href="@{product.html}">Laborum Com</a></h4>
+					<h4><a th:href="@{product}">Laborum Com</a></h4>
 					<div class="ratings">
 						<div class="rating-box">
 							<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
@@ -675,20 +675,20 @@
 		<div class="product-item-container">
 			<div class="left-block">
 				<div class="product-image-container lazy second_img ">
-					<img th:src="@{image/demo/shop/product/E1.jpg}" th:src="@{data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7}"  alt="Apple Cinema 30&quot;" class="img-responsive" />
-					<img th:src="@{image/demo/shop/product/E2.jpg}" th:src="@{data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7}"  alt="Apple Cinema 30&quot;" class="img_0 img-responsive" />
+					<img th:src="@{image/demo/shop/product/E1.jpg}" alt="Apple Cinema 30&quot;" class="img-responsive" />
+					<img th:src="@{image/demo/shop/product/E2.jpg}" alt="Apple Cinema 30&quot;" class="img_0 img-responsive" />
 				</div>
 				<!--Sale Label-->
 				<span class="label label-sale">Sale</span>
 				<!--full quick view block-->
-				<a class="quickview iframe-link visible-lg" data-fancybox-type="iframe"  th:href="@{quickview.html}">  Quickview</a>
+				<a class="quickview iframe-link visible-lg" data-fancybox-type="iframe"  th:href="@{quickview}">  Quickview</a>
 				<!--end full quick view block-->
 			</div>
 			
 			
 			<div class="right-block">
 				<div class="caption">
-					<h4><a th:href="@{product.html}">Samsung Galaxy Tab 10.1</a></h4>
+					<h4><a th:href="@{product}">Samsung Galaxy Tab 10.1</a></h4>
 					<div class="ratings">
 						<div class="rating-box">
 							<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
@@ -724,19 +724,19 @@
 		<div class="product-item-container">
 			<div class="left-block">
 				<div class="product-image-container lazy second_img ">
-					<img th:src="@{image/demo/shop/product/19.jpg}" th:src="@{data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7}"  alt="Apple Cinema 30&quot;" class="img-responsive" />
-					<img th:src="@{image/demo/shop/product/15.jpg}" th:src="@{data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7}"  alt="Apple Cinema 30&quot;" class="img_0 img-responsive" />
+					<img th:src="@{image/demo/shop/product/19.jpg}" alt="Apple Cinema 30&quot;" class="img-responsive" />
+					<img th:src="@{image/demo/shop/product/15.jpg}" alt="Apple Cinema 30&quot;" class="img_0 img-responsive" />
 				</div>
 				
 				<!--full quick view block-->
-				<a class="quickview iframe-link visible-lg" data-fancybox-type="iframe"  th:href="@{quickview.html}">  Quickview</a>
+				<a class="quickview iframe-link visible-lg" data-fancybox-type="iframe"  th:href="@{quickview}">  Quickview</a>
 				<!--end full quick view block-->
 			</div>
 			
 			
 			<div class="right-block">
 				<div class="caption">
-					<h4><a th:href="@{product.html}">Palm Treo Pro</a></h4>
+					<h4><a th:href="@{product}">Palm Treo Pro</a></h4>
 					<div class="ratings">
 						<div class="rating-box">
 							<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>

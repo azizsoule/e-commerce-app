@@ -12,7 +12,7 @@ public class Route {
 
     public static final String CART = "cart";
 
-    public static final String CATEGORY = "category";
+    public static final String SUB_CATEGORY = "sub-category";
 
     public static final String CHECKOUT = "checkout";
 
