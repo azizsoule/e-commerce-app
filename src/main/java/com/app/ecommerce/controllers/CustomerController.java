@@ -1,13 +1,14 @@
 package com.app.ecommerce.controllers;
 
 import com.app.ecommerce.dtos.AddressDTO;
+import com.app.ecommerce.dtos.ArticleDTO;
 import com.app.ecommerce.dtos.CustomerDTO;
-import com.app.ecommerce.services.AddressService;
-import com.app.ecommerce.services.CityService;
-import com.app.ecommerce.services.CustomerService;
-import com.app.ecommerce.services.SexService;
+import com.app.ecommerce.models.Customer;
+import com.app.ecommerce.services.*;
 import com.app.ecommerce.utils.Route;
+import org.dom4j.rule.Mode;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -30,6 +31,9 @@ public class CustomerController {
 
     @Autowired
     AddressService addressService;
+
+    @Autowired
+    ArticleService articleService;
 
     @GetMapping(Route.REGISTER)
     String register(Model model) {
@@ -61,6 +65,32 @@ public class CustomerController {
     @GetMapping(Route.LOGIN)
     String login() {
         return Route.LOGIN;
+    }
+
+    @GetMapping(Route.CART)
+    String cart(@AuthenticationPrincipal Customer customer, Model model) {
+        var total = new Object() {
+            float subTotal = 0;
+            float discountTotal = 0;
+        };
+        CustomerDTO customerDTO = customerService.findById(customer.getId());
+        customerDTO.getCartItems().forEach(cartItemDTO -> {
+            ArticleDTO article = articleService.findById(cartItemDTO.getArticleIdArticle());
+            total.subTotal = total.subTotal + (cartItemDTO.getQuantity() * article.getPrice());
+            article.getDiscounts().forEach(discountDTO -> {
+                float discountAmount = 0;
+                if (discountDTO.getPercentage()) {
+                    discountAmount = (article.getPrice() * discountDTO.getDiscountPercent()) / 100;
+                } else {
+                    discountAmount = discountDTO.getDiscountAmount();
+                }
+                total.discountTotal = total.discountTotal + discountAmount;
+            });
+        });
+        model.addAttribute("subTotal", total.subTotal);
+        model.addAttribute("discountTotal", total.discountTotal);
+        model.addAttribute("cartItems", customerDTO.getCartItems());
+        return Route.CART;
     }
 
 }

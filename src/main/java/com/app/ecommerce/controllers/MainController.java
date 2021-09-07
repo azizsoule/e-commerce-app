@@ -1,19 +1,29 @@
 package com.app.ecommerce.controllers;
 
+import com.app.ecommerce.models.Catalog;
+import com.app.ecommerce.services.CatalogService;
 import com.app.ecommerce.utils.Route;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
+@RequestMapping("/")
 public class MainController {
+
+    @Autowired
+    CatalogService catalogService;
 
     @GetMapping("")
     public String home() {
-        return Route.INDEX;
+        return Route.redirectTo(Route.INDEX);
     }
 
     @GetMapping(Route.INDEX)
-    public String ind() {
+    public String index(Model model) {
+        model.addAttribute("catalogs", catalogService.findAll());
         return Route.INDEX;
     }
 
@@ -25,11 +35,6 @@ public class MainController {
     @GetMapping(Route.BANNER_EFFECT)
     public String bannerEffect() {
         return Route.BANNER_EFFECT;
-    }
-
-    @GetMapping(Route.CART)
-    public String cart() {
-        return Route.CART;
     }
 
     @GetMapping(Route.SUB_CATEGORY)
