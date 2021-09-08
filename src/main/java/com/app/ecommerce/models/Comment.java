@@ -19,11 +19,11 @@ public class Comment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idComment;
 
-    private int rating;
+    private int rating = 0;
 
     private String content;
 
-    private boolean blocked;
+    private boolean blocked = false;
 
     @DateTimeFormat(pattern = "yyyy-mm-dd", fallbackPatterns = "yyyy/mm/dd")
     private Date date;

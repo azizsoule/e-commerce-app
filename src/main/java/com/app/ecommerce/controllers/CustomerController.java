@@ -1,9 +1,7 @@
 package com.app.ecommerce.controllers;
 
-import com.app.ecommerce.models.Address;
-import com.app.ecommerce.models.Article;
-import com.app.ecommerce.models.Customer;
-import com.app.ecommerce.models.Order;
+import com.app.ecommerce.exceptions.CustomerEmailAlreadyExistException;
+import com.app.ecommerce.models.*;
 import com.app.ecommerce.services.*;
 import com.app.ecommerce.utils.Route;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,6 +30,12 @@ public class CustomerController {
     @Autowired
     OrderService orderService;
 
+    @Autowired
+    PaymentMethodService paymentMethodService;
+
+    @Autowired
+    CartItemService cartItemService;
+
     @GetMapping(Route.REGISTER)
     String register(Model model) {
         model.addAttribute("customer", new Customer());
@@ -44,13 +48,9 @@ public class CustomerController {
     @PostMapping(Route.REGISTER)
     String register(Customer customer, Address address, RedirectAttributes redirectAttributes) {
         try {
-            address.setFirstName(customer.getFirstName());
-            address.setLastName(customer.getLastName());
-            address.setDef(true);
-            customer.getAddresses().add(address);
-            customer = customerService.register(customer);
-            redirectAttributes.addFlashAttribute("success", "Succès - Inscription réussie !");
-        } catch (NullPointerException exception) {
+            customerService.register(customer, address);
+            redirectAttributes.addFlashAttribute("success", "Succès - Inscription réussie. Vous pouvez vous connecter à votre compte en utilisant votre email et votre mot de passe !");
+        } catch (CustomerEmailAlreadyExistException exception) {
             redirectAttributes.addFlashAttribute("failure", "Erreur - L'adresse e-mail que vous avez entré est déja utilisée !");
         } catch (Exception exception) {
             redirectAttributes.addFlashAttribute("failure", "Erreur - L'inscription a échoué car une erreur est survenue. Veuillez réessayer svp !");
@@ -91,6 +91,34 @@ public class CustomerController {
         return Route.CART;
     }
 
+    @GetMapping(Route.CART+"/remove/{cartItemId}")
+    public String removeCartItemFromCart(@PathVariable String cartItemId) {
+        cartItemService.deleteById(Long.parseLong(cartItemId));
+        return Route.redirectTo(Route.CART);
+    }
+
+    @GetMapping(Route.CHECKOUT+"/remove/{cartItemId}")
+    public String removeCartItemFromCheckout(@PathVariable String cartItemId) {
+        cartItemService.deleteById(Long.parseLong(cartItemId));
+        return Route.redirectTo(Route.CHECKOUT);
+    }
+
+    @PostMapping(Route.CART+"/update")
+    public String updateCartItemFromCart(CartItem emptyCartItem) {
+        CartItem cartItem1 = cartItemService.findById(emptyCartItem.getIdItem());
+        cartItem1.setQuantity(emptyCartItem.getQuantity());
+        cartItemService.update(cartItem1);
+        return Route.redirectTo(Route.CART);
+    }
+
+    @PostMapping(Route.CHECKOUT+"/update")
+    public String updateCartItemFromCheckout(CartItem cartItem) {
+        CartItem cartItem1 = cartItemService.findById(cartItem.getIdItem());
+        cartItem1.setQuantity(cartItem.getQuantity());
+        cartItemService.update(cartItem1);
+        return Route.redirectTo(Route.CHECKOUT);
+    }
+
     @GetMapping(Route.ORDER_HISTORY)
     String orderHistory(@AuthenticationPrincipal Customer customer, Model model) {
         customer = customerService.findById(customer.getId());
@@ -103,6 +131,37 @@ public class CustomerController {
         Order order = orderService.findById(Long.parseLong(id));
         model.addAttribute("order", order);
         return Route.ORDER_INFORMATION;
+    }
+
+    @GetMapping(Route.CHECKOUT)
+    public String checkout(@AuthenticationPrincipal Customer customer, Model model) {
+
+        customer = customerService.findById(customer.getId());
+
+        var total = new Object() {
+            public float subTotal = 0;
+            public float discountTotal = 0;
+        };
+
+        customer.getCartItems().forEach(cartItem -> {
+            Article article = cartItem.getArticle();
+            total.subTotal = total.subTotal + (cartItem.getQuantity() * article.getPrice());
+            article.getDiscounts().forEach(discount -> {
+                float discountAmount = 0;
+                if (discount.isPercentage()) {
+                    discountAmount = (article.getPrice() * discount.getDiscountPercent()) / 100;
+                } else {
+                    discountAmount = discount.getDiscountAmount();
+                }
+                total.discountTotal = total.discountTotal + discountAmount;
+            });
+        });
+
+        model.addAttribute("total", total);
+        model.addAttribute("customer", customer);
+        model.addAttribute("paymentMethods", paymentMethodService.findAll());
+        model.addAttribute("order", new Order());
+        return Route.CHECKOUT;
     }
 
 }

@@ -65,31 +65,16 @@
                             <div class="content-product-left  col-sm-6 col-xs-12 ">
                                 <div class="large-image  ">
                                     <img itemprop="image" class="product-image-zoom"
-                                         th:src="@{/image/demo/shop/product/J9.jpg}"
-                                         data-zoom-image="image/demo/shop/product/J9.jpg" title="Bint Beef"
-                                         alt="Bint Beef"/>
+                                         th:src="${article.image}"
+                                         data-zoom-image="image/demo/shop/product/J9.jpg" th:title="${article.label}"
+                                         th:alt="${article.label}"/>
                                 </div>
 
                                 <div id="thumb-slider" class="owl-theme owl-loaded owl-drag full_slider">
-                                    <a data-index="0" class="img thumbnail " data-image="image/demo/shop/product/J9.jpg"
-                                       title="Bint Beef">
-                                        <img th:src="@{/image/demo/shop/product/J9.jpg}" title="Bint Beef"
-                                             alt="Bint Beef"/>
-                                    </a>
-                                    <a data-index="1" class="img thumbnail" data-image="image/demo/shop/product/J6.jpg"
-                                       title="Bint Beef">
-                                        <img th:src="@{/image/demo/shop/product/J6.jpg}" title="Bint Beef"
-                                             alt="Bint Beef"/>
-                                    </a>
-                                    <a data-index="2" class="img thumbnail" data-image="image/demo/shop/product/J5.jpg"
-                                       title="Bint Beef">
-                                        <img th:src="@{/image/demo/shop/product/J5.jpg}" title="Bint Beef"
-                                             alt="Bint Beef"/>
-                                    </a>
-                                    <a data-index="3" class="img thumbnail" data-image="image/demo/shop/product/J4.jpg"
-                                       title="Bint Beef">
-                                        <img th:src="@{/image/demo/shop/product/J4.jpg}" title="Bint Beef"
-                                             alt="Bint Beef"/>
+                                    <a th:each="image : ${article.images}" data-index="0" class="img thumbnail " data-image="image/demo/shop/product/J9.jpg"
+                                       th:title="${article.label}">
+                                        <img th:src="${image.image}" th:title="${article.label}"
+                                             th:alt="${article.label}"/>
                                     </a>
                                 </div>
 
@@ -97,33 +82,35 @@
 
                             <div class="content-product-right col-sm-6 col-xs-12">
                                 <div class="title-product">
-                                    <h1>Bint Beef </h1>
+                                    <h1 th:text="${article.label}">Bint Beef </h1>
                                 </div>
                                 <!-- Review ---->
                                 <div class="box-review form-group">
-                                    <div class="ratings">
+
+                                    <div th:if="${article.comments.size() != 0}" class="ratings">
                                         <div class="rating-box">
-                                            <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i
-                                                    class="fa fa-star-o fa-stack-1x"></i></span>
-                                            <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i
-                                                    class="fa fa-star-o fa-stack-1x"></i></span>
-                                            <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i
-                                                    class="fa fa-star-o fa-stack-1x"></i></span>
-                                            <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i
-                                                    class="fa fa-star-o fa-stack-1x"></i></span>
-                                            <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i></span>
+                                            <span th:each="i : ${#numbers.sequence(1, 5)}" class="fa fa-stack"><i th:class="${i<=(article.ratingSum/article.commentCount) ? 'fa fa-star fa-stack-1x' : 'fa fa-star-o fa-stack-1x' }"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
                                         </div>
                                     </div>
-                                    <a class="reviews_button" th:href="@{quickview.php}"
-                                       onclick="$('a[href=\'#tab-review\']').trigger('click'); return false;">0
-                                        reviews </a>
+
+                                    <div th:if="${article.comments.size() == 0}" class="ratings" >
+                                        <div class="rating-box">
+                                            <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
+                                            <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
+                                            <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
+                                            <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
+                                            <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
+                                        </div>
+                                    </div>
+
+                                    <a class="reviews_button" th:href="@{/product/{id}#tab-review(id=${article.idArticle})}">[[ ${article.comments.size()} ]] reviews </a>
                                 </div>
 
                                 <div class="product-label form-group">
                                     <div class="product_page_price price" itemprop="offerDetails" itemscope=""
                                          itemtype="http://data-vocabulary.org/Offer">
-                                        <span class="price-new" itemprop="price">$114.00 </span>
-                                        <span class="price-old">$122.00 </span>
+                                        <span class="price-new" itemprop="price" >[[ ${article.price} ]] FCFA</span>
+                                        <span class="price-old">[[ ${article.price} ]] FCFA</span>
                                     </div>
                                     <div class="stock"><span>Availability: </span> <span
                                             class="status-stock">In Stock </span></div>
@@ -131,11 +118,8 @@
 
                                 <div class="product-box-desc">
                                     <div class="inner-box-desc">
-                                        <div class="price-tax"><span>Ex Tax: </span> $60.00</div>
-                                        <div class="reward"><span>Price in reward points: </span> 400</div>
-                                        <div class="brand"><span>Brand: </span><a th:href="@{#}">Apple </a></div>
-                                        <div class="model"><span>Product Code: </span> Product 15</div>
-                                        <div class="reward"><span>Reward Points: </span> 100</div>
+                                        <div class="brand"><span>Brand: </span><a th:text="${article.brand}">Apple </a></div>
+                                        <div class="model"><span>Product Code: </span> [[ ${article.sku} ]]</div>
                                     </div>
                                 </div>
 

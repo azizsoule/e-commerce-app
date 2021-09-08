@@ -14,7 +14,7 @@
             <div class="row">
                 <!-- Logo -->
                 <div class="navbar-logo col-md-3 col-sm-12 col-xs-12">
-                    <a th:href="@{index}"><img th:src="@{/image/demo/logos/theme_logo.png}" title="Your Store"
+                    <a th:href="@{/index}"><img th:src="@{/image/demo/logos/theme_logo.png}" title="Your Store"
                                                     alt="Your Store"/></a>
                 </div>
                 <!-- //end Logo -->
@@ -134,10 +134,14 @@
                                         </tr>
                                         </tbody>
                                     </table>
-                                    <p class="text-right"><a class="btn view-cart" th:href="@{cart}"><i
-                                            class="fa fa-shopping-cart"></i>View Cart</a>&nbsp;&nbsp;&nbsp; <a
-                                            class="btn btn-mega checkout-cart" th:href="@{checkout}"><i
-                                            class="fa fa-share"></i>Checkout</a></p>
+                                    <p class="text-right">
+                                        <a sec:authorize="isAuthenticated()" class="btn view-cart" th:href="@{/cart}"><i
+                                            class="fa fa-shopping-cart"></i>View Cart
+                                        </a>&nbsp;&nbsp;&nbsp;
+                                        <a sec:authorize="isAuthenticated()" class="btn btn-mega checkout-cart" th:href="@{/checkout}"><i
+                                            class="fa fa-share"></i>Checkout
+                                        </a>
+                                    </p>
                                 </div>
                             </li>
                         </ul>
@@ -152,13 +156,13 @@
                                        data-toggle="dropdown"> <span class="hidden-xs">My Account</span> <span
                                             class="fa fa-angle-down "></span></a>
                                     <ul class="dropdown-menu ">
-                                        <li sec:authorize="isAuthenticated()" ><a th:href="@{my-account}"><i class="fa fa-pencil-square-o"></i>
+                                        <li sec:authorize="isAuthenticated()" ><a th:href="@{/my-account}"><i class="fa fa-pencil-square-o"></i>
                                             My Account</a></li>
-                                        <li sec:authorize="isAnonymous()" ><a th:href="@{login}"><i class="fa fa-pencil-square-o"></i>
+                                        <li sec:authorize="isAnonymous()" ><a th:href="@{/login}"><i class="fa fa-pencil-square-o"></i>
                                             Login</a></li>
-                                        <li sec:authorize="isAnonymous()" ><a th:href="@{register}"><i class="fa fa-user"></i> Register</a>
+                                        <li sec:authorize="isAnonymous()" ><a th:href="@{/register}"><i class="fa fa-user"></i> Register</a>
                                         </li>
-                                        <li sec:authorize="isAuthenticated()" ><a th:href="@{logout}"><i class="fa fa-user"></i> Logout</a>
+                                        <li sec:authorize="isAuthenticated()" ><a th:href="@{/logout}"><i class="fa fa-user"></i> Logout</a>
                                         </li>
                                     </ul>
                                 </li>
@@ -281,12 +285,12 @@
                                         <div class="container">
                                             <ul class="megamenu " data-transition="slide" data-animationtime="250">
                                                 <li class="home hover">
-                                                    <a th:href="@{index}">Home </a>
+                                                    <a th:href="@{/index}">Home </a>
                                                 </li>
 
                                                 <li class="with-sub-menu hover">
                                                     <p class="close-menu"></p>
-                                                    <a th:href="@{#}" class="clearfix">
+                                                    <a class="clearfix">
                                                         <strong>Categories</strong>
                                                         <span class="label"></span>
                                                         <b class="caret"></b>
@@ -424,17 +428,17 @@
 
                                                 <li class="">
                                                     <p class="close-menu"></p>
-                                                    <a th:href="@{contact}">Contact us </a>
+                                                    <a th:href="@{/contact}">Contact us </a>
                                                 </li>
 
                                                 <li class="">
                                                     <p class="close-menu"></p>
-                                                    <a th:href="@{about-us}">About us </a>
+                                                    <a th:href="@{/about-us}">About us </a>
                                                 </li>
 
                                                 <li class="">
                                                     <p class="close-menu"></p>
-                                                    <a th:href="@{faq}">FAQ </a>
+                                                    <a th:href="@{/faq}">FAQ </a>
                                                 </li>
 
                                             </ul>

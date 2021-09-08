@@ -1,6 +1,7 @@
 package com.app.ecommerce.models;
 
 import com.app.ecommerce.models.supers.Person;
+import groovyjarjarantlr4.v4.runtime.misc.Array2DHashSet;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -11,6 +12,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.Set;
 
 @NoArgsConstructor
@@ -20,25 +22,25 @@ import java.util.Set;
 public class Customer extends Person implements UserDetails {
 
     @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
-    private Set<Address> addresses;
+    private Set<Address> addresses = new HashSet<>();
 
     @OneToMany(mappedBy = "customer")
-    private Set<CustomerPaymentMethod> customerPaymentMethods;
+    private Set<CustomerPaymentMethod> customerPaymentMethods = new HashSet<>();
 
     @OneToMany(mappedBy = "customer")
-    private Set<CartItem> cartItems;
+    private Set<CartItem> cartItems = new HashSet<>();
 
     @OneToMany(mappedBy = "customer")
-    private Set<Comment> comments;
+    private Set<Comment> comments = new HashSet<>();
 
     @OneToMany(mappedBy = "customer", orphanRemoval = true)
-    private Set<Order> orders;
+    private Set<Order> orders = new HashSet<>();
 
     @OneToMany(mappedBy = "customer", orphanRemoval = true)
-    private Set<WishItem> wishItems;
+    private Set<WishItem> wishItems = new HashSet<>();
 
     @ManyToMany(mappedBy = "customers")
-    private Set<Discount> discounts;
+    private Set<Discount> discounts = new HashSet<>();
 
     @ManyToOne
     @JoinColumn(name = "customer_type_id_customer_type")

@@ -16,9 +16,8 @@
                         <h3 class="modtitle">Information</h3>
                         <div class="modcontent">
                             <ul class="menu">
-                                <li><a th:href="@{about-us}">About Us</a></li>
-                                <li><a th:href="@{faq}">FAQ</a></li>
-                                <li sec:authorize="isAuthenticated()" ><a th:href="@{order-history}">Order history</a></li>
+                                <li><a th:href="@{/about-us}">About Us</a></li>
+                                <li><a th:href="@{/faq}">FAQ</a></li>
                             </ul>
                         </div>
                     </div>
@@ -29,8 +28,8 @@
                         <h3 class="modtitle">Customer Service</h3>
                         <div class="modcontent">
                             <ul class="menu">
-                                <li><a th:href="@{contact}">Contact Us</a></li>
-                                <li sec:authorize="isAuthenticated()" ><a th:href="@{my-account}">My Account</a></li>
+                                <li><a th:href="@{/contact}">Contact Us</a></li>
+                                <li sec:authorize="isAuthenticated()" ><a th:href="@{/my-account}">My Account</a></li>
                             </ul>
                         </div>
                     </div>
@@ -41,9 +40,10 @@
                         <h3 class="modtitle">My Account</h3>
                         <div class="modcontent">
                             <ul class="menu">
-                                <li sec:authorize="isAnonymous()" ><a th:href="@{login}">Login</a></li>
-                                <li sec:authorize="isAnonymous()" ><a th:href="@{register}">Register</a></li>
-                                <li sec:authorize="isAuthenticated()" ><a th:href="@{gift-voucher}">Gift Vouchers</a></li>
+                                <li sec:authorize="isAnonymous()" ><a th:href="@{/login}">Login</a></li>
+                                <li sec:authorize="isAnonymous()" ><a th:href="@{/register}">Register</a></li>
+                                <li sec:authorize="isAuthenticated()" ><a th:href="@{/gift-voucher}">Gift Vouchers</a></li>
+                                <li sec:authorize="isAuthenticated()" ><a th:href="@{/order-history}">Order history</a></li>
                             </ul>
                         </div>
                     </div>

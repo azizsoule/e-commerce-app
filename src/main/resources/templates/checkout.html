@@ -79,14 +79,10 @@
 								  </div>
 								  <div class="panel-body">
 									  <p>Please select the preferred payment method to use on this order.</p>
-									  <div class="radio">
+									  <div th:each="paymentMethod : ${paymentMethods}" class="radio">
 										  <label>
-											  <input type="radio" checked="checked" name="Cash On Delivery">Cash On Delivery</label>
-									  </div>
-
-									  <div class="radio">
-										  <label>
-											  <input type="radio" name="Paypal">Paypal</label>
+											  <input type="radio" th:disabled="${!paymentMethod.available}" th:value="${paymentMethod.idPaymentMethod}" >[[ ${paymentMethod.label} ]]
+										  </label>
 									  </div>
 								  </div>
 							  </div>
@@ -94,7 +90,24 @@
 
 					  </div>
 
+					  <div class="col-sm-12">
+						  <div class="panel panel-default no-padding">
+							  <div class="checkout-payment-methods">
+								  <div class="panel-heading">
+									  <h4 class="panel-title"><i class="fa fa-credit-card"></i> Shipping address</h4>
+								  </div>
+								  <div class="panel-body">
+									  <p>Please select your shipping address</p>
+									  <div th:each="address : ${customer.addresses}" class="radio">
+										  <label>
+											  <input type="radio" th:checked="${address.def}" th:value="${address.idAddress}" >[[ ${address.city.region.label + ' ' + address.city.label + ' ' + address.label} ]] ([[ ${address.firstName + ' ' + address.lastName} ]])
+										  </label>
+									  </div>
+								  </div>
+							  </div>
+						  </div>
 
+					  </div>
 
 					  <div class="col-sm-12">
 						  <div class="panel panel-default">
@@ -131,46 +144,38 @@
 										  </tr>
 										  </thead>
 										  <tbody>
-										  <tr>
-											  <td class="text-center"><a th:href="@{product}"><img width="60px" th:src="@{/image/demo/shop/product/E4.jpg}" alt="Xitefun Causal Wear Fancy Shoes" title="Xitefun Causal Wear Fancy Shoes" class="img-thumbnail"></a></td>
-											  <td class="text-left"><a th:href="@{product}">Emasa rumas gacem</a></td>
+										  <tr th:each="cartItem : ${customer.cartItems}">
+											  <td class="text-center"><a th:href="@{/product/{id}(id=${cartItem.idItem})}"><img width="60px" th:src="${cartItem.article.image}" th:alt="${cartItem.article.label}" th:title="${cartItem.article.image}" class="img-thumbnail"></a></td>
+											  <td class="text-left"><a th:href="@{/product/{id}(id=${cartItem.idItem})}" th:text="${cartItem.article.label}">Emasa rumas gacem</a></td>
 											  <td class="text-left">
 												  <div class="option quantity">
 													  <div class="input-group quantity-control" unselectable="on">
 														  <span class="input-group-addon product_quantity_down">− </span>
-														  <input disabled style="text-align: center;" class="form-control" type="text" name="quantity" value="1" />
+														  <input disabled style="text-align: center;" class="form-control" type="text" th:value="${cartItem.quantity}" name="quantity" value="1" />
 														  <input type="hidden" disabled name="product_id" value="50" />
 														  <span class="input-group-addon product_quantity_up">+ </span>
 														  <span class="input-group-btn">
 															  <button type="submit" data-toggle="tooltip" title="Update" class="btn btn-primary"><i class="fa fa-clone"></i></button>
-															  <button type="button" data-toggle="tooltip" title="Remove" class="btn btn-danger" onClick=""><i class="fa fa-times-circle"></i></button>
+															  <a th:href="@{/checkout/remove/{id}(id=${cartItem.idItem})}" type="button" data-toggle="tooltip" title="Remove" class="btn btn-danger" onClick=""><i class="fa fa-times-circle"></i></a>
 													  </div>
 												  </div>
 											  </td>
-											  <td class="text-right">$114.35</td>
-											  <td class="text-right">$114.35</td>
+											  <td class="text-right">[[ ${cartItem.article.price} ]] FCFA</td>
+											  <td class="text-right">[[ ${cartItem.article.price * cartItem.quantity} ]] FCFA</td>
 										  </tr>
 										  </tbody>
 										  <tfoot>
 										  <tr>
 											  <td class="text-right" colspan="4"><strong>Sub-Total:</strong></td>
-											  <td class="text-right">$93.73</td>
+											  <td class="text-right">[[${total.subTotal}]] FCFA</td>
 										  </tr>
 										  <tr>
-											  <td class="text-right" colspan="4"><strong>Flat Shipping Rate:</strong></td>
-											  <td class="text-right">$4.69.00</td>
-										  </tr>
-										  <tr>
-											  <td class="text-right" colspan="4"><strong>Eco Tax (-2.00):</strong></td>
-											  <td class="text-right">$3.75.00</td>
-										  </tr>
-										  <tr>
-											  <td class="text-right" colspan="4"><strong>VAT (20%):</strong></td>
-											  <td class="text-right">$19.68</td>
+											  <td class="text-right" colspan="4"><strong>Discount total:</strong></td>
+											  <td class="text-right">[[${total.discountTotal}]] FCFA</td>
 										  </tr>
 										  <tr>
 											  <td class="text-right" colspan="4"><strong>Total:</strong></td>
-											  <td class="text-right">$121.85</td>
+											  <td class="text-right">[[${total.subTotal - total.discountTotal}]] FCFA</td>
 										  </tr>
 										  </tfoot>
 									  </table>

@@ -1,5 +1,7 @@
 package com.app.ecommerce.services;
 
+import com.app.ecommerce.exceptions.CustomerEmailAlreadyExistException;
+import com.app.ecommerce.models.Address;
 import com.app.ecommerce.models.Customer;
 import com.app.ecommerce.repositories.CustomerRepository;
 import com.app.ecommerce.utils.Constants;
@@ -35,11 +37,17 @@ public class CustomerService extends BaseService<Customer, Long> implements User
         return repository.save(customer);
     }
 
-    public Customer register(Customer customer) {
-        if (repository.findByEmail(customer.getEmail()) == null) {
+    public Customer register(Customer customer, Address address) throws CustomerEmailAlreadyExistException {
+        if (!repository.existsByEmail(customer.getEmail())) {
+            address.setFirstName(customer.getFirstName());
+            address.setLastName(customer.getLastName());
+            address.setDef(true);
+            address.setCustomer(customer);
+            customer.getAddresses().add(address);
+            customer.setPassword(passwordEncoder.encode(customer.getPassword()));
             return this.save(customer);
         } else {
-            return null;
+            throw new CustomerEmailAlreadyExistException("Un compte possédant l'adress email "+customer.getEmail()+" exite déjà.");
         }
     }
 

@@ -835,14 +835,14 @@
 						<div class="cat-wrap theme3">
 							<div th:each="category : ${categories}" class="content-box">
 								<div class="image-cat">
-									<a title="Automotive" target="_blank">
-										<img th:src="@{/image/demo/shop/category/automotive-motocrycle.jpg}" title="Automotive" alt="Automotive">
+									<a th:title="${category.label}">
+										<img th:src="@{${category.image}}" th:title="${category.label}" th:alt="${category.label}">
 									</a>
 								</div>
 								<div class="inner">
-									<div class="title-cat"> <a target="_blank" th:text="${category.label}" >Automotive</a> </div>
+									<div class="title-cat"> <a th:text="${category.label}" >Automotive</a> </div>
 									<div class="child-cat">
-										<div th:each="subCategory : ${category.subCategories}" class="child-cat-title"> <a title="More Car Accessories" th:href="@{#}" target="_blank" th:text="${subCategory.label}">More Car Accessories		</a> </div>
+										<div th:each="subCategory : ${category.subCategories}" class="child-cat-title"> <a th:title="${subCategory.label}" th:href="@{/sub-category/{id}(id=${subCategory.idSubCategory})}" th:text="${subCategory.label}">More Car Accessories		</a> </div>
 									</div>
 								</div>
 							</div>
