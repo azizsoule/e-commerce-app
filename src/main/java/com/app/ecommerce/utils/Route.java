@@ -1,6 +1,6 @@
 package com.app.ecommerce.utils;
 
-public class Route {
+public class  Route {
 
     public static final String API_ENDPOINT = "/api/";
 
