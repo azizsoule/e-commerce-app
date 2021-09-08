@@ -31,7 +31,9 @@ public class CatalogController {
     String article(@PathVariable String id, Model model) {
         Article article = articleService.findById(Long.parseLong(id));
         model.addAttribute("article", article);
+
         return Route.PRODUCT;
     }
+
 
 }

@@ -2,13 +2,16 @@ package com.app.ecommerce.controllers;
 
 import com.app.ecommerce.models.Catalog;
 import com.app.ecommerce.models.Category;
+import com.app.ecommerce.services.ArticleService;
 import com.app.ecommerce.services.CatalogService;
 import com.app.ecommerce.services.CategoryService;
+import com.app.ecommerce.services.SubCategoryService;
 import com.app.ecommerce.utils.Route;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
@@ -18,6 +21,10 @@ import java.util.Set;
 @Controller
 @RequestMapping("/")
 public class MainController {
+    @Autowired
+    ArticleService articleService;
+    @Autowired
+    SubCategoryService subCategoryService;
 
     @Autowired
     CatalogService catalogService;
@@ -38,8 +45,11 @@ public class MainController {
         Set<Category> categories = randomCatalog.getCategories();
         model.addAttribute("catalogs", catalogs);
         model.addAttribute("categories", categoryService.findAll());
+        model.addAttribute("articles",articleService.findAll());
         return Route.INDEX;
     }
+
+
 
     @GetMapping(Route.ABOUT_US)
     public String aboutUs() {
