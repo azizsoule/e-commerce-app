@@ -1,40 +1,31 @@
 package com.app.ecommerce.services;
 
-import com.app.ecommerce.dtos.DiscountDTO;
 import com.app.ecommerce.models.Discount;
 import com.app.ecommerce.repositories.DiscountRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class DiscountService extends BaseService<DiscountDTO, Long> {
+public class DiscountService extends BaseService<Discount, Long> {
 
     @Autowired
     DiscountRepository repository;
 
     @Override
-    public DiscountDTO findById(Long aLong) {
-        Discount discount = repository.getById(aLong);
-        return modelMapper().map(discount, DiscountDTO.class);
+    public Discount findById(Long aLong) {
+        return repository.getById(aLong);
     }
 
     @Override
-    public List<DiscountDTO> findAll() {
-        List<DiscountDTO> discountDTOS = new ArrayList<>();
-        List<Discount> discounts = repository.findAll();
-        discounts.forEach(discount -> {
-            discountDTOS.add(modelMapper().map(discount, DiscountDTO.class));
-        });
-        return discountDTOS;
+    public List<Discount> findAll() {
+        return repository.findAll();
     }
 
     @Override
-    public DiscountDTO save(DiscountDTO discountDTO) {
-        Discount discount = repository.save(modelMapper().map(discountDTO, Discount.class));
-        return modelMapper().map(discount, DiscountDTO.class);
+    public Discount save(Discount discount) {
+        return repository.save(discount);
     }
 
     @Override
@@ -43,8 +34,8 @@ public class DiscountService extends BaseService<DiscountDTO, Long> {
     }
 
     @Override
-    public void delete(DiscountDTO discountDTO) {
-        repository.delete(modelMapper().map(discountDTO, Discount.class));
+    public void delete(Discount discount) {
+        repository.delete(discount);
     }
 
 }

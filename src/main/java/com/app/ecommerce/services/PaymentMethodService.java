@@ -1,40 +1,31 @@
 package com.app.ecommerce.services;
 
-import com.app.ecommerce.dtos.PaymentMethodDTO;
 import com.app.ecommerce.models.PaymentMethod;
 import com.app.ecommerce.repositories.PaymentMethodRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class PaymentMethodService extends BaseService<PaymentMethodDTO, Long> {
+public class PaymentMethodService extends BaseService<PaymentMethod, Long> {
 
     @Autowired
     PaymentMethodRepository repository;
 
     @Override
-    public PaymentMethodDTO findById(Long aLong) {
-        PaymentMethod paymentMethod = repository.getById(aLong);
-        return modelMapper().map(paymentMethod, PaymentMethodDTO.class);
+    public PaymentMethod findById(Long aLong) {
+        return repository.getById(aLong);
     }
 
     @Override
-    public List<PaymentMethodDTO> findAll() {
-        List<PaymentMethodDTO> paymentMethodDTOS = new ArrayList<>();
-        List<PaymentMethod> paymentMethods = repository.findAll();
-        paymentMethods.forEach(paymentMethod -> {
-            paymentMethodDTOS.add(modelMapper().map(paymentMethod, PaymentMethodDTO.class));
-        });
-        return paymentMethodDTOS;
+    public List<PaymentMethod> findAll() {
+        return repository.findAll();
     }
 
     @Override
-    public PaymentMethodDTO save(PaymentMethodDTO paymentMethodDTO) {
-        PaymentMethod paymentMethod = repository.save(modelMapper().map(paymentMethodDTO, PaymentMethod.class));
-        return modelMapper().map(paymentMethod, PaymentMethodDTO.class);
+    public PaymentMethod save(PaymentMethod paymentMethod) {
+        return repository.save(paymentMethod);
     }
 
     @Override
@@ -43,8 +34,8 @@ public class PaymentMethodService extends BaseService<PaymentMethodDTO, Long> {
     }
 
     @Override
-    public void delete(PaymentMethodDTO paymentMethodDTO) {
-        repository.delete(modelMapper().map(paymentMethodDTO, PaymentMethod.class));
+    public void delete(PaymentMethod paymentMethod) {
+        repository.delete(paymentMethod);
     }
 
 }

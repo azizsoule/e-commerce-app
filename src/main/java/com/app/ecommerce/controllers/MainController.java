@@ -1,13 +1,19 @@
 package com.app.ecommerce.controllers;
 
 import com.app.ecommerce.models.Catalog;
+import com.app.ecommerce.models.Category;
 import com.app.ecommerce.services.CatalogService;
+import com.app.ecommerce.services.CategoryService;
 import com.app.ecommerce.utils.Route;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import java.util.List;
+import java.util.Random;
+import java.util.Set;
 
 @Controller
 @RequestMapping("/")
@@ -16,6 +22,9 @@ public class MainController {
     @Autowired
     CatalogService catalogService;
 
+    @Autowired
+    CategoryService categoryService;
+
     @GetMapping("")
     public String home() {
         return Route.redirectTo(Route.INDEX);
@@ -23,7 +32,12 @@ public class MainController {
 
     @GetMapping(Route.INDEX)
     public String index(Model model) {
-        model.addAttribute("catalogs", catalogService.findAll());
+        List<Catalog> catalogs = catalogService.findAll();
+        Random random = new Random();
+        Catalog randomCatalog = catalogs.get(random.nextInt(catalogs.size()));
+        Set<Category> categories = randomCatalog.getCategories();
+        model.addAttribute("catalogs", catalogs);
+        model.addAttribute("categories", categoryService.findAll());
         return Route.INDEX;
     }
 
@@ -35,11 +49,6 @@ public class MainController {
     @GetMapping(Route.BANNER_EFFECT)
     public String bannerEffect() {
         return Route.BANNER_EFFECT;
-    }
-
-    @GetMapping(Route.SUB_CATEGORY)
-    public String subCategory() {
-        return Route.SUB_CATEGORY;
     }
 
     @GetMapping(Route.CHECKOUT)
@@ -65,21 +74,6 @@ public class MainController {
     @GetMapping(Route.MY_ACCOUNT)
     public String myAccount() {
         return Route.MY_ACCOUNT;
-    }
-
-    @GetMapping(Route.ORDER_HISTORY)
-    public String orderHistory() {
-        return Route.ORDER_HISTORY;
-    }
-
-    @GetMapping(Route.ORDER_INFORMATION)
-    public String orderInformation() {
-        return Route.ORDER_INFORMATION;
-    }
-
-    @GetMapping(Route.PRODUCT)
-    public String product() {
-        return Route.PRODUCT;
     }
 
     @GetMapping(Route.QUICK_VIEW)

@@ -1,6 +1,5 @@
 package com.app.ecommerce.services;
 
-import com.app.ecommerce.dtos.CustomerDTO;
 import com.app.ecommerce.models.Customer;
 import com.app.ecommerce.repositories.CustomerRepository;
 import com.app.ecommerce.utils.Constants;
@@ -11,11 +10,10 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service("userDetailsService")
-public class CustomerService extends BaseService<CustomerDTO, Long> implements UserDetailsService {
+public class CustomerService extends BaseService<Customer, Long> implements UserDetailsService {
 
     @Autowired
     private CustomerRepository repository;
@@ -23,34 +21,23 @@ public class CustomerService extends BaseService<CustomerDTO, Long> implements U
     private final BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder(Constants.ENCODER_LENGTH);
 
     @Override
-    public CustomerDTO findById(Long aLong) {
-        Customer customer = repository.getById(aLong);
-        return modelMapper().map(customer, CustomerDTO.class);
+    public Customer findById(Long aLong) {
+        return repository.getById(aLong);
     }
 
     @Override
-    public List<CustomerDTO> findAll() {
-        List<Customer> customers = repository.findAll();
-        List<CustomerDTO> customerDTOS = new ArrayList<>();
-        customers.forEach(customer -> {
-            customerDTOS.add(modelMapper().map(customer, CustomerDTO.class));
-        });
-        return customerDTOS;
+    public List<Customer> findAll() {
+        return repository.findAll();
     }
 
     @Override
-    public CustomerDTO save(CustomerDTO customerDTO) {
-        if (customerDTO.getPassword() != null) {
-            customerDTO.setPassword(passwordEncoder.encode(customerDTO.getPassword()));
-        }
-        System.out.println(customerDTO.getPassword());
-        Customer customer = repository.save(modelMapper().map(customerDTO, Customer.class));
-        return modelMapper().map(customer, CustomerDTO.class);
+    public Customer save(Customer customer) {
+        return repository.save(customer);
     }
 
-    public CustomerDTO register(CustomerDTO customerDTO) {
-        if (repository.findByEmail(customerDTO.getEmail()) == null) {
-            return this.save(customerDTO);
+    public Customer register(Customer customer) {
+        if (repository.findByEmail(customer.getEmail()) == null) {
+            return this.save(customer);
         } else {
             return null;
         }
@@ -62,8 +49,8 @@ public class CustomerService extends BaseService<CustomerDTO, Long> implements U
     }
 
     @Override
-    public void delete(CustomerDTO customerDTO) {
-        repository.delete(modelMapper().map(customerDTO, Customer.class));
+    public void delete(Customer customer) {
+        repository.delete(customer);
     }
 
     @Override
