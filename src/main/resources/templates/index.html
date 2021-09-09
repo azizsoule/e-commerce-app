@@ -77,7 +77,7 @@
 						<div id="so-slideshow" class="col-lg-8 col-md-8 col-sm-12 col-xs-12 two-block">
 							<div class="module no-margin">
 								<div class="yt-content-slider yt-content-slider--arrow1"  data-rtl="yes" data-autoplay="no" data-autoheight="no" data-delay="4" data-speed="0.6" data-margin="0" data-items_column0="1" data-items_column1="1" data-items_column2="1"  data-items_column3="1" data-items_column4="1" data-arrows="yes" data-pagination="no" data-lazyload="yes" data-loop="no" data-hoverpause="yes">
-									<div class="yt-content-slide">
+									<div  class="yt-content-slide">
 										<a th:href="@{#}"><img th:src="@{/image/demo/slider/slider-1.png}" alt="slider1" class="img-responsive"></a>
 									</div>
 									<div class="yt-content-slide">
@@ -128,9 +128,9 @@
 							<div class="modcontent clearfix">
 								<div class="policy-detail">
 									<div>
-										
-											
-									
+
+
+
 									</div>
 								</div>
 							</div>
@@ -172,22 +172,22 @@
 							<!--Begin Items-->
 							<div class="ltabs-items ltabs-items-selected items-category-20 grid" data-total="10">
 								<div class="ltabs-items-inner ltabs-slider ">
-									<div class="ltabs-item product-layout">
-										<div  th:each="article:${articles}" class="product-item-container">
+									<div  th:each="article:${articles}" class="ltabs-item product-layout">
+										<div class="product-item-container">
 											<div class="left-block">
 												<div class="product-image-container second_img ">
-													<img th:src="@{/image/demo/shop/resize/J9-270x270.jpg}" alt="Apple Cinema 30&quot;" class="img-responsive" />
-													<img th:src="@{/image/demo/shop/resize/J5-270x270.jpg}" alt="Apple Cinema 30&quot;" class="img_0 img-responsive" />
+													<img th:src="@{/image/demo/shop/resize/J5-270x270.jpg}" alt="Apple Cinema 30&quot;" class="img-responsive" />
+													<img th:src="@{/image/demo/shop/resize/J9-270x270.jpg}" alt="Apple Cinema 30&quot;" class="img_0 img-responsive" />
 												</div>
 												<!--Sale Label-->
 												<span class="label label-sale">-15%</span>
 												<!--full quick view block-->
-												<a class="quickview iframe-link visible-lg" data-fancybox-type="iframe"  th:href="@{/quickview}">  Quickview</a>
+												<a class="quickview iframe-link visible-lg" data-fancybox-type="iframe"  th:href="@{quickview}">  Quickview</a>
 												<!--end full quick view block-->
 											</div>
 											<div class="right-block">
 												<div class="caption">
-													<h4><a  th:text="${article.label}" th:href="@{product/{id}(id=${article.idArticle})}">Cupim Bris</a></h4>
+													<h4><a th:text="${article.label}" th:href="@{/product/{id}(id=${article.idArticle})}">Cupim Bris</a></h4>
 													<div class="ratings">
 														<div class="rating-box">
 															<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
@@ -197,17 +197,17 @@
 															<span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i></span>
 														</div>
 													</div>
-																		
+
 													<div class="price">
 														<span th:text="${article.price}" class="price-new">$50.00</span>
-														<span class="price-old">$62.00</span>		 
+														<span class="price-old">$62.00</span>
 													</div>
 												</div>
-												
-												  <div class="button-group">
+												<div class="button-group">
 													<button class="addToCart" type="button" data-toggle="tooltip" title="Add to Cart" onclick="cart.add('42', '1');"><i class="fa fa-shopping-cart"></i> <span class="">Add to Cart</span></button>
 													<button class="wishlist" type="button" data-toggle="tooltip" title="Add to Wish List" onclick="wishlist.add('42');"><i class="fa fa-heart"></i></button>
-												  </div>
+													<button class="compare" type="button" data-toggle="tooltip" title="Compare this Product" onclick="compare.add('42');"><i class="fa fa-exchange"></i></button>
+												</div>
 											</div><!-- right block -->
 										</div>
 									</div>
@@ -216,7 +216,7 @@
 							</div>
 							<div class="ltabs-items items-category-18 grid" data-total="11">
 								<div class="ltabs-loading"></div>
-								
+
 							</div>
 							<div class="ltabs-items  items-category-25 grid" data-total="11">
 								<div class="ltabs-loading"></div>
@@ -289,7 +289,7 @@
 							<!--Begin Items-->
 							<div class="ltabs-items ltabs-items-selected items-category-20 grid" data-total="10">
 								<div class="ltabs-items-inner ltabs-slider ">
-									<div class="ltabs-item product-layout">
+									<div  th:each="article:${articles}" class="ltabs-item product-layout">
 										<div class="product-item-container">
 											<div class="left-block">
 												<div class="product-image-container second_img ">
@@ -304,7 +304,7 @@
 											</div>
 											<div class="right-block">
 												<div class="caption">
-													<h4><a th:href="@{product}">Cupim Bris</a></h4>
+													<h4><a th:text="${article.label}" th:href="@{product}">Cupim Bris</a></h4>
 													<div class="ratings">
 														<div class="rating-box">
 															<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
@@ -316,11 +316,10 @@
 													</div>
 																		
 													<div class="price">
-														<span class="price-new">$50.00</span> 
+														<span th:text="${article.price}" class="price-new">$50.00</span>
 														<span class="price-old">$62.00</span>		 
 													</div>
 												</div>
-												
 												  <div class="button-group">
 													<button class="addToCart" type="button" data-toggle="tooltip" title="Add to Cart" onclick="cart.add('42', '1');"><i class="fa fa-shopping-cart"></i> <span class="">Add to Cart</span></button>
 													<button class="wishlist" type="button" data-toggle="tooltip" title="Add to Wish List" onclick="wishlist.add('42');"><i class="fa fa-heart"></i></button>
@@ -329,241 +328,6 @@
 											</div><!-- right block -->
 										</div>
 									</div>
-									<div class="ltabs-item product-layout">
-										<div class="product-item-container">
-											<div class="left-block">
-												<div class="product-image-container second_img ">
-													<img th:src="@{/image/demo/shop/resize/e11-270x270.jpg}" alt="Apple Cinema 30&quot;" class="img-responsive" />
-													<img th:src="@{/image/demo/shop/resize/E3-270x270.jpg}" alt="Apple Cinema 30&quot;" class="img_0 img-responsive" />
-												</div>
-												<!--Sale Label-->
-												<span class="label label-sale">-15%</span>
-												<!--full quick view block-->
-												<a class="quickview iframe-link visible-lg" data-fancybox-type="iframe"  th:href="@{quickview}">  Quickview</a>
-												<!--end full quick view block-->
-											</div>
-											<div class="right-block">
-												<div class="caption">
-													<h4><a th:href="@{product}">Apple Cinema 30"</a></h4>
-													<div class="ratings">
-														<div class="rating-box">
-															<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-															<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-															<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-															<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-															<span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i></span>
-														</div>
-													</div>
-																		
-													<div class="price">
-														<span class="price-new">$50.00</span> 
-														<span class="price-old">$62.00</span>		 
-													</div>
-												</div>
-												
-												  <div class="button-group">
-													<button class="addToCart" type="button" data-toggle="tooltip" title="Add to Cart" onclick="cart.add('42', '1');"><i class="fa fa-shopping-cart"></i> <span class="">Add to Cart</span></button>
-													<button class="wishlist" type="button" data-toggle="tooltip" title="Add to Wish List" onclick="wishlist.add('42');"><i class="fa fa-heart"></i></button>
-													<button class="compare" type="button" data-toggle="tooltip" title="Compare this Product" onclick="compare.add('42');"><i class="fa fa-exchange"></i></button>
-												  </div>
-											</div><!-- right block -->
-										</div>
-									</div>
-									<div class="ltabs-item product-layout">
-										<div class="product-item-container">
-											<div class="left-block">
-												<div class="product-image-container second_img ">
-													<img th:src="@{/image/demo/shop/resize/J9-270x270.jpg}" alt="Apple Cinema 30&quot;" class="img-responsive" />
-													<img th:src="@{/image/demo/shop/resize/J5-270x270.jpg}" alt="Apple Cinema 30&quot;" class="img_0 img-responsive" />
-												</div>
-												<!--Sale Label-->
-												<span class="label label-sale">-15%</span>
-												<!--full quick view block-->
-												<a class="quickview iframe-link visible-lg" data-fancybox-type="iframe"  th:href="@{quickview}">  Quickview</a>
-												<!--end full quick view block-->
-											</div>
-											<div class="right-block">
-												<div class="caption">
-													<h4><a th:href="@{product}">Cupim Bris</a></h4>
-													<div class="ratings">
-														<div class="rating-box">
-															<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-															<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-															<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-															<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-															<span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i></span>
-														</div>
-													</div>
-																		
-													<div class="price">
-														<span class="price-new">$50.00</span> 
-														<span class="price-old">$62.00</span>		 
-													</div>
-												</div>
-												
-												  <div class="button-group">
-													<button class="addToCart" type="button" data-toggle="tooltip" title="Add to Cart" onclick="cart.add('42', '1');"><i class="fa fa-shopping-cart"></i> <span class="">Add to Cart</span></button>
-													<button class="wishlist" type="button" data-toggle="tooltip" title="Add to Wish List" onclick="wishlist.add('42');"><i class="fa fa-heart"></i></button>
-													<button class="compare" type="button" data-toggle="tooltip" title="Compare this Product" onclick="compare.add('42');"><i class="fa fa-exchange"></i></button>
-												  </div>
-											</div><!-- right block -->
-										</div>
-									</div>
-									<div class="ltabs-item product-layout">
-										<div class="product-item-container">
-											<div class="left-block">
-												<div class="product-image-container second_img ">
-													<img th:src="@{/image/demo/shop/resize/m1-270x270.jpg}" alt="Apple Cinema 30&quot;" class="img-responsive" />
-													<img th:src="@{/image/demo/shop/resize/m3-270x270.jpg}" alt="Apple Cinema 30&quot;" class="img_0 img-responsive" />
-												</div>
-												<!--New Label-->
-												<span class="label label-new">New</span>
-												<!--full quick view block-->
-												<a class="quickview iframe-link visible-lg" data-fancybox-type="iframe"  th:href="@{quickview}">  Quickview</a>
-												<!--end full quick view block-->
-											</div>
-											<div class="right-block">
-												<div class="caption">
-													<h4><a th:href="@{product}">Cisi Chicken	</a></h4>
-													<div class="ratings">
-														<div class="rating-box">
-															<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-															<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-															<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-															<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-															<span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i></span>
-														</div>
-													</div>
-																		
-													<div class="price">
-														<span class="price-new">$59.00</span> 
-													</div>
-												</div>
-												
-												  <div class="button-group">
-													<button class="addToCart" type="button" data-toggle="tooltip" title="Add to Cart" onclick="cart.add('42', '1');"><i class="fa fa-shopping-cart"></i> <span class="">Add to Cart</span></button>
-													<button class="wishlist" type="button" data-toggle="tooltip" title="Add to Wish List" onclick="wishlist.add('42');"><i class="fa fa-heart"></i></button>
-													<button class="compare" type="button" data-toggle="tooltip" title="Compare this Product" onclick="compare.add('42');"><i class="fa fa-exchange"></i></button>
-												  </div>
-											</div><!-- right block -->
-										</div>
-									</div>
-									<div class="ltabs-item product-layout">
-										<div class="product-item-container">
-											<div class="left-block">
-												<div class="product-image-container second_img ">
-													<img th:src="@{/image/demo/shop/resize/B10-270x270.jpg}" alt="Apple Cinema 30&quot;" class="img-responsive" />
-													<img th:src="@{/image/demo/shop/resize/B9-270x270.jpg}" alt="Apple Cinema 30&quot;" class="img_0 img-responsive" />
-												</div>
-												<!--Sale Label-->
-												<!--full quick view block-->
-												<a class="quickview iframe-link visible-lg" data-fancybox-type="iframe"  th:href="@{quickview}">  Quickview</a>
-												<!--end full quick view block-->
-											</div>
-											<div class="right-block">
-												<div class="caption">
-													<h4><a th:href="@{product}">Bint Beef</a></h4>
-													<div class="ratings">
-														<div class="rating-box">
-															<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-															<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-															<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-															<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-															<span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i></span>
-														</div>
-													</div>
-																		
-													<div class="price">
-														<span class="price-new">$97.00</span> 
-													</div>
-												</div>
-												
-												  <div class="button-group">
-													<button class="addToCart" type="button" data-toggle="tooltip" title="Add to Cart" onclick="cart.add('42', '1');"><i class="fa fa-shopping-cart"></i> <span class="">Add to Cart</span></button>
-													<button class="wishlist" type="button" data-toggle="tooltip" title="Add to Wish List" onclick="wishlist.add('42');"><i class="fa fa-heart"></i></button>
-													<button class="compare" type="button" data-toggle="tooltip" title="Compare this Product" onclick="compare.add('42');"><i class="fa fa-exchange"></i></button>
-												  </div>
-											</div><!-- right block -->
-										</div>
-									</div>
-									<div class="ltabs-item product-layout">
-										<div class="product-item-container">
-											<div class="left-block">
-												<div class="product-image-container second_img ">
-													<img th:src="@{/image/demo/shop/resize/w1-270x270.jpg}" alt="Apple Cinema 30&quot;" class="img-responsive" />
-													<img th:src="@{/image/demo/shop/resize/w10-270x270.jpg}" alt="Apple Cinema 30&quot;" class="img_0 img-responsive" />
-												</div>
-												
-												<!--full quick view block-->
-												<a class="quickview iframe-link visible-lg" data-fancybox-type="iframe"  th:href="@{quickview}">  Quickview</a>
-												<!--end full quick view block-->
-											</div>
-											<div class="right-block">
-												<div class="caption">
-													<h4><a th:href="@{product}">Dail Lulpa</a></h4>
-													<div class="ratings">
-														<div class="rating-box">
-															<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-															<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-															<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-															<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-															<span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i></span>
-														</div>
-													</div>
-																		
-													<div class="price">
-														<span class="price-new">$97.00</span> 
-													</div>
-												</div>
-												
-												  <div class="button-group">
-													<button class="addToCart" type="button" data-toggle="tooltip" title="Add to Cart" onclick="cart.add('42', '1');"><i class="fa fa-shopping-cart"></i> <span class="">Add to Cart</span></button>
-													<button class="wishlist" type="button" data-toggle="tooltip" title="Add to Wish List" onclick="wishlist.add('42');"><i class="fa fa-heart"></i></button>
-													<button class="compare" type="button" data-toggle="tooltip" title="Compare this Product" onclick="compare.add('42');"><i class="fa fa-exchange"></i></button>
-												  </div>
-											</div><!-- right block -->
-										</div>
-									</div>
-									<div class="ltabs-item product-layout">
-										<div class="product-item-container">
-											<div class="left-block">
-												<div class="product-image-container second_img ">
-													<img th:src="@{/image/demo/shop/resize/B5-270x270.jpg}" alt="Apple Cinema 30&quot;" class="img-responsive" />
-													<img th:src="@{/image/demo/shop/resize/B10-270x270.jpg}" alt="Apple Cinema 30&quot;" class="img_0 img-responsive" />
-												</div>
-												
-												<!--full quick view block-->
-												<a class="quickview iframe-link visible-lg" data-fancybox-type="iframe"  th:href="@{quickview}">  Quickview</a>
-												<!--end full quick view block-->
-											</div>
-											<div class="right-block">
-												<div class="caption">
-													<h4><a th:href="@{product}">Et Spare</a></h4>
-													<div class="ratings">
-														<div class="rating-box">
-															<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-															<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-															<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-															<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-															<span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i></span>
-														</div>
-													</div>
-																		
-													<div class="price">
-														<span class="price-new">$65.00</span> 
-													</div>
-												</div>
-												
-												  <div class="button-group">
-													<button class="addToCart" type="button" data-toggle="tooltip" title="Add to Cart" onclick="cart.add('42', '1');"><i class="fa fa-shopping-cart"></i> <span class="">Add to Cart</span></button>
-													<button class="wishlist" type="button" data-toggle="tooltip" title="Add to Wish List" onclick="wishlist.add('42');"><i class="fa fa-heart"></i></button>
-													<button class="compare" type="button" data-toggle="tooltip" title="Compare this Product" onclick="compare.add('42');"><i class="fa fa-exchange"></i></button>
-												  </div>
-											</div><!-- right block -->
-										</div>
-									</div>	
-									
-									
 								
 								</div>
 								
@@ -597,20 +361,155 @@
 					
 					<div class="wrap-categories">
 						<div class="cat-wrap theme3">
-							<div th:each="category : ${categories}" class="content-box">
+							<div class="content-box">
 								<div class="image-cat">
-									<a th:title="${category.label}">
-										<img th:src="@{${category.image}}" th:title="${category.label}" th:alt="${category.label}">
-									</a>
+									<a th:href="@{#}" title="Automotive" target="_blank">
+										<img th:src="@{/image/demo/shop/category/automotive-motocrycle.jpg}" title="Automotive" alt="Automotive">
+									</a> 
+									<a class="btn-viewmore hidden-xs" th:href="@{#}" title="View more">View more</a>
 								</div>
 								<div class="inner">
-									<div class="title-cat"> <a th:text="${category.label}" >Automotive</a> </div>
+									<div class="title-cat"> <a th:href="@{#}" title="Automotive " target="_blank">Automotive</a> </div>
 									<div class="child-cat">
-										<div th:each="subCategory : ${category.subCategories}" class="child-cat-title"> <a th:title="${subCategory.label}" th:href="@{/sub-category/{id}(id=${subCategory.idSubCategory})}" th:text="${subCategory.label}">More Car Accessories		</a> </div>
+										<div class="child-cat-title"> <a title="More Car Accessories" th:href="@{#}" target="_blank">More Car Accessories		</a> </div>
+										<div class="child-cat-title"> <a title="Car Alarms and Security" th:href="@{#}" target="_blank">Car Alarms and Security		</a> </div>
+										<div class="child-cat-title"> <a title="Car Audio &amp; Speakers" th:href="@{#}" target="_blank">Car Audio &amp; Speakers		</a> </div>
+										<div class="child-cat-title"> <a title="Gadgets &amp; Auto Parts" th:href="@{#}" target="_blank">Gadgets &amp; Auto Parts	</a> </div>
 									</div>
 								</div>
 							</div>
 							<div class="clr1"></div>
+							<div class="content-box">
+								<div class="image-cat">
+									<a th:href="@{#}" title="Automotive" target="_blank">
+										<img th:src="@{/image/demo/shop/category/health-beauty.jpg}" title="Automotive" alt="Automotive">
+									</a> 
+									<a class="btn-viewmore hidden-xs" th:href="@{#}" title="View more">View more</a>
+								</div>	
+									
+								<div class="inner">
+									<div class="title-cat"> <a th:href="@{#}" title="Health & Beauty" target="_blank">Health & Beauty</a> </div>
+									<div class="child-cat">
+										<div class="child-cat-title"> <a title="More Car Accessories" th:href="@{#}" target="_blank">Salon & Spa Equipment		</a> </div>
+										<div class="child-cat-title"> <a title="Car Alarms and Security" th:href="@{#}" target="_blank">Fragrances		</a> </div>
+										<div class="child-cat-title"> <a title="Car Audio &amp; Speakers" th:href="@{#}" target="_blank">Shaving & Hair Removal..	</a> </div>
+										<div class="child-cat-title"> <a title="Gadgets &amp; Auto Parts" th:href="@{#}" target="_blank">Bath & Body	</a> </div>
+									</div>
+								</div>
+							</div>
+							<div class="clr1 clr2"></div>
+							<div class="content-box">
+								<div class="image-cat">
+									<a th:href="@{#}" title="Automotive" target="_blank">
+										<img th:src="@{/image/demo/shop/category/bags-holiday-supplies-gifts.jpg}" title="Automotive" alt="Automotive">
+									</a> 
+									<a class="btn-viewmore hidden-xs" th:href="@{#}" title="View more">View more</a>
+								</div>	
+									
+								<div class="inner">
+									<div class="title-cat"> <a th:href="@{#}" title="Health & Beauty" target="_blank">Bags, Holiday Supplies</a> </div>
+									<div class="child-cat">
+										<div class="child-cat-title"> <a title="More Car Accessories" th:href="@{#}" target="_blank">Gift & Lifestyle Gadgets..		</a> </div>
+										<div class="child-cat-title"> <a title="Car Alarms and Security" th:href="@{#}" target="_blank">Lighter & Cigar Supplies..		</a> </div>
+										<div class="child-cat-title"> <a title="Car Audio &amp; Speakers" th:href="@{#}" target="_blank">Gift for Woman	</a> </div>
+										<div class="child-cat-title"> <a title="Gadgets &amp; Auto Parts" th:href="@{#}" target="_blank">Gift for Man	</a> </div>
+									</div>
+								</div>
+							</div>
+							<div class="clr1 clr3"></div>
+							<div class="content-box">
+								<div class="image-cat">
+									<a th:href="@{#}" title="Automotive" target="_blank">
+										<img th:src="@{/image/demo/shop/category/toys-hobbies.jpg}" title="Automotive" alt="Automotive">
+									</a> 
+									<a class="btn-viewmore hidden-xs" th:href="@{#}" title="View more">View more</a>
+								</div>	
+									
+								<div class="inner">
+									<div class="title-cat"> <a th:href="@{#}" title="Health & Beauty" target="_blank">Toys & Hobbies</a> </div>
+									<div class="child-cat">
+										<div class="child-cat-title"> <a title="More Car Accessories" th:href="@{#}" target="_blank">Helicopters & Parts		</a> </div>
+										<div class="child-cat-title"> <a title="Car Alarms and Security" th:href="@{#}" target="_blank">RC Cars & Parts	</a> </div>
+										<div class="child-cat-title"> <a title="Car Audio &amp; Speakers" th:href="@{#}" target="_blank">FPV System & Parts	</a> </div>
+										<div class="child-cat-title"> <a title="Gadgets &amp; Auto Parts" th:href="@{#}" target="_blank">Walkera	</a> </div>
+									</div>
+								</div>
+							</div>
+							<div class="clr1 clr2 clr4"></div>
+							<div class="content-box">
+								<div class="image-cat">
+									<a th:href="@{#}" title="Automotive" target="_blank">
+										<img th:src="@{/image/demo/shop/category/electronics.jpg}" title="Automotive" alt="Automotive">
+									</a> 
+									<a class="btn-viewmore hidden-xs" th:href="@{#}" title="View more">View more</a>
+								</div>	
+									
+								<div class="inner">
+									<div class="title-cat"> <a th:href="@{#}" title="Health & Beauty" target="_blank">Electronics</a> </div>
+									<div class="child-cat">
+										<div class="child-cat-title"> <a title="More Car Accessories" th:href="@{#}" target="_blank">Home Audio</a> </div>
+										<div class="child-cat-title"> <a title="Car Alarms and Security" th:href="@{#}" target="_blank">Mp3 Players & Accessories..	</a> </div>
+										<div class="child-cat-title"> <a title="Car Audio &amp; Speakers" th:href="@{#}" target="_blank">Headphones, Headsets</a> </div>
+										<div class="child-cat-title"> <a title="Gadgets &amp; Auto Parts" th:href="@{#}" target="_blank">Battereries & Chargers..	</a> </div>
+									</div>
+								</div>
+							</div>
+							<div class="clr1 clr5"></div>
+							<div class="content-box">
+								<div class="image-cat">
+									<a th:href="@{#}" title="Automotive" target="_blank">
+										<img th:src="@{/image/demo/shop/category/jewelry-watches.jpg}" title="Automotive" alt="Automotive">
+									</a> 
+									<a class="btn-viewmore hidden-xs" th:href="@{#}" title="View more">View more</a>
+								</div>	
+									
+								<div class="inner">
+									<div class="title-cat"> <a th:href="@{#}" title="Health & Beauty" target="_blank">Jewelry & Watches</a> </div>
+									<div class="child-cat">
+										<div class="child-cat-title"> <a title="More Car Accessories" th:href="@{#}" target="_blank">Men Watches	</a> </div>
+										<div class="child-cat-title"> <a title="Car Alarms and Security" th:href="@{#}" target="_blank">Wedding Rings		</a> </div>
+										<div class="child-cat-title"> <a title="Car Audio &amp; Speakers" th:href="@{#}" target="_blank">Earings	</a> </div>
+									</div>
+								</div>
+							</div>
+							<div class="clr1 clr2 clr3 clr6"></div>
+							<div class="content-box">
+								<div class="image-cat">
+									<a th:href="@{#}" title="Automotive" target="_blank">
+										<img th:src="@{/image/demo/shop/category/sports-outdoors.jpg}" title="Automotive" alt="Automotive">
+									</a> 
+									<a class="btn-viewmore hidden-xs" th:href="@{#}" title="View more">View more</a>
+								</div>	
+									
+								<div class="inner">
+									<div class="title-cat"> <a th:href="@{#}" title="Health & Beauty" target="_blank">Sports & Outdoors</a> </div>
+									<div class="child-cat">
+										<div class="child-cat-title"> <a title="More Car Accessories" th:href="@{#}" target="_blank">Outdoor & Traveling	</a> </div>
+										<div class="child-cat-title"> <a title="Car Alarms and Security" th:href="@{#}" target="_blank">Camping & Hiking		</a> </div>
+										<div class="child-cat-title"> <a title="Car Audio &amp; Speakers" th:href="@{#}" target="_blank">Golf Supplies	</a> </div>
+										<div class="child-cat-title"> <a title="Gadgets &amp; Auto Parts" th:href="@{#}" target="_blank">Fishing	</a> </div>
+									</div>
+								</div>
+							</div>
+							<div class="clr1"></div>
+							<div class="content-box">
+								<div class="image-cat">
+									<a th:href="@{#}" title="Automotive" target="_blank">
+										<img th:src="@{/image/demo/shop/category/smartphone-tablets.jpg}" title="Automotive" alt="Automotive">
+									</a> 
+									<a class="btn-viewmore hidden-xs" th:href="@{#}" title="View more">View more</a>
+								</div>	
+									
+								<div class="inner">
+									<div class="title-cat"> <a th:href="@{#}" title="Health & Beauty" target="_blank">Smartphone & Tablets</a> </div>
+									<div class="child-cat">
+										<div class="child-cat-title"> <a title="More Car Accessories" th:href="@{#}" target="_blank">Accessories for iPhone		</a> </div>
+										<div class="child-cat-title"> <a title="Car Audio &amp; Speakers" th:href="@{#}" target="_blank">Accessories for i Pad	</a> </div>
+										<div class="child-cat-title"> <a title="Gadgets &amp; Auto Parts" th:href="@{#}" target="_blank">Accessories for Tablet PC	</a> </div>
+									</div>
+								</div>
+							</div>
+							<div class="clr1 clr2 clr4"></div>
 						</div>
 					</div>
 				</div>
