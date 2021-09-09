@@ -19,7 +19,7 @@ public class WishItem extends Item {
     private Article article;
 
     @ManyToOne
-    @JoinColumn(name = "customer_id_customer")
+    @JoinColumn(name = "customer_id")
     private Customer customer;
 
 }
