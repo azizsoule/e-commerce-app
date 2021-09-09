@@ -32,6 +32,9 @@ public class Order {
     @JoinColumn(name = "code_order_state")
     private OrderState orderState;
 
+    @ManyToOne
+    private Address address;
+
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
     private Set<OrderItem> orderItems;
 

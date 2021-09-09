@@ -83,7 +83,7 @@
                 <tbody>
                   <tr th:each="cartItem : ${cartItems}">
                     <td class="text-center"><a th:href="@{/product/{id}(id=${cartItem.idItem})}"><img width="70px" th:src="${cartItem.article.image}" alt="Aspire Ultrabook Laptop" title="Aspire Ultrabook Laptop" class="img-thumbnail" /></a></td>
-                    <td class="text-left"><a th:href="@{/product/{id}(id=${cartItem.idItem})}" th:text="${cartItem.article.label}">Emasa rumas gacem</a><br />
+                    <td class="text-left"><a th:href="@{/product/{id}(id=${cartItem.idItem})}" th:text="cartItem.article.label">Emasa rumas gacem</a><br />
                      </td>
                     <td class="text-left" th:text="${cartItem.article.brand}">Pt 001</td>
                     <td class="text-left" >

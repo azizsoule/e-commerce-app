@@ -1,6 +1,8 @@
 package com.app.ecommerce.services;
 
 import com.app.ecommerce.models.Article;
+import com.app.ecommerce.models.Comment;
+import com.app.ecommerce.models.Customer;
 import com.app.ecommerce.repositories.ArticleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,6 +18,15 @@ public class ArticleService extends BaseService<Article, Long> {
     @Override
     public Article findById(Long idUser) {
         return repository.getById(idUser);
+    }
+
+    public Article addComment(Customer customer, Article article, Comment comment) {
+        comment.setArticle(article);
+        comment.setCustomer(customer);
+        article.getComments().add(comment);
+        article.setCommentCount(article.getCommentCount()+1);
+        article.setRatingSum(article.getRatingSum()+comment.getRating());
+        return this.update(article);
     }
 
     @Override

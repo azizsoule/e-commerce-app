@@ -59,8 +59,10 @@
 	<!-- Main Container  -->
 	<div class="main-container container">
 		<ul class="breadcrumb">
-			<li><a th:href="@{#}"><i class="fa fa-home"></i></a></li>
-			<li><a th:href="@{#}">Smartphone & Tablets</a></li>
+			<li><a><i class="fa fa-home"></i></a></li>
+			<li><a th:text="${subCategory.category.catalog.label}">Smartphone & Tablets</a></li>
+			<li><a th:text="${subCategory.category.label}">Smartphone & Tablets</a></li>
+			<li><a th:text="${subCategory.label}">Smartphone & Tablets</a></li>
 		</ul>
 		
 		<div class="row">
@@ -71,177 +73,22 @@
 	<div class="modcontent">
 		<div class="box-category">
 			<ul id="cat_accordion" class="list-group">
-				<li class="hadchild"><a th:href="@{category}" class="cutom-parent">Smartphone & Tablets</a>   <span class="button-view  fa fa-plus-square-o"></span>
-					<ul style="display: block;">
-						<li><a th:href="@{category}">Men's Watches</a></li>
-						<li><a th:href="@{category}">Women's Watches</a></li>
-						<li><a th:href="@{category}">Kids' Watches</a></li>
-						<li><a th:href="@{category}">Accessories</a></li>
-					</ul>
-				</li>
-				<li class="hadchild"><a class="cutom-parent" th:href="@{category}">Electronics</a>   <span class="button-view  fa fa-plus-square-o"></span>
+				<li th:each="category : ${categories}" class="hadchild"><a class="cutom-parent" th:text="${category.label + ' ( ' + category.catalog.label +' )'}">Electronics</a>   <span class="button-view  fa fa-plus-square-o"></span>
 					<ul style="display: none;">
-						<li><a th:href="@{category}">Cycling</a></li>
-						<li><a th:href="@{category}">Running</a></li>
-						<li><a th:href="@{category}">Swimming</a></li>
-						<li><a th:href="@{category}">Football</a></li>
-						<li><a th:href="@{category}">Golf</a></li>
-						<li><a th:href="@{category}">Windsurfing</a></li>
+						<li th:each="subCategory : ${category.subCategories}"><a th:href="@{/sub-category/{id}(id=${subCategory.idSubCategory})}" th:text="${subCategory.label}" >Cycling</a></li>
 					</ul>
 				</li>
-				<li class="hadchild"><a th:href="@{category}" class="cutom-parent">Shoes</a>   <span class="button-view  fa fa-plus-square-o"></span>
-					<ul style="display: none;">
-						<li><a th:href="@{category}">Sub Categories</a></li>
-						<li><a th:href="@{category}">Sub Categories</a></li>
-						<li><a th:href="@{category}">Sub Categories</a></li>
-						<li><a th:href="@{category}">Sub Categories</a></li>
-						<li><a th:href="@{category}">Sub Categories</a></li>
-					</ul>
-				</li>
-				<li class="hadchild"><a th:href="@{category}" class="cutom-parent">Watches</a>  <span class="button-view  fa fa-plus-square-o"></span>
-					<ul style="display: none;">
-						<li><a th:href="@{category}">Men's Watches</a></li>
-						<li><a th:href="@{category}">Women's Watches</a></li>
-						<li><a th:href="@{category}">Kids' Watches</a></li>
-						<li><a th:href="@{category}">Accessories</a></li>
-					</ul>
-				</li>
-				<li class="hadchild"><a th:href="@{category}" class="cutom-parent">Jewellery</a>    <span class="button-view  fa fa-plus-square-o"></span>
-					<ul style="display: none;">
-						<li><a th:href="@{category}">Sub Categories</a></li>
-						<li><a th:href="@{category}">Sub Categories</a></li>
-						<li><a th:href="@{category}">Sub Categories</a></li>
-						<li><a th:href="@{category}">Sub Categories</a></li>
-						<li><a th:href="@{category}">Sub Categories</a></li>
-					</ul>
-				</li>
-				<li class=""><a th:href="@{category}" class="cutom-parent">Health &amp; Beauty</a>  <span class="dcjq-icon"></span></li>
-				<li class=""><a th:href="@{category}" class="cutom-parent">Kids &amp; Babies</a>    <span class="dcjq-icon"></span></li>
-				<li class=""><a th:href="@{sub-category}" class="cutom-parent">Sports</a>  <span class="dcjq-icon"></span></li>
-				<li class=""><a th:href="@{sub-category}" class="cutom-parent">Home &amp; Garden</a><span class="dcjq-icon"></span></li>
-				<li class=""><a th:href="@{sub-category}" class="cutom-parent">Wines &amp; Spirits</a>  <span class="dcjq-icon"></span></li>
 			</ul>
 		</div>
 		
 		
 	</div>
 </div>
-				<div class="module latest-product titleLine">
-   <h3 class="modtitle">Latest Product</h3>
-   <div class="modcontent ">
-		<div class="product-latest-item">
-			<div class="media">
-			   <div class="media-left">
-				  <a th:href="@{#}"><img th:src="@{/image/demo/shop/product/m1.jpg}" alt="Cisi Chicken" title="Cisi Chicken" class="img-responsive" style="width: 100px; height: 82px;"></a>
-			   </div>
-			   <div class="media-body">
-				  <div class="caption">
-					 <h4><a th:href="@{#}">Sunt Molup</a></h4>
-					
-					 <div class="price">
-						<span class="price-new">$100.00</span>
-					 </div>
-					 <div class="ratings">
-						<div class="rating-box">
-						   <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-						   <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-						   <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-						   <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-						   <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-						</div>
-					 </div>
-				  </div>
-				  
-			   </div>
-			</div>
-		</div>
-		<div class="product-latest-item">
-			<div class="media">
-			   <div class="media-left">
-				  <a th:href="@{#}"><img th:src="@{/image/demo/shop/product/m2.jpg}" alt="Cisi Chicken" title="Cisi Chicken" class="img-responsive" style="width: 100px; height: 82px;"></a>
-			   </div>
-			   <div class="media-body">
-				  <div class="caption">
-					 <h4><a th:href="@{#}">Et Spare</a></h4>
-					
-					 <div class="price">
-						<span class="price-new">$99.00</span>
-					 </div>
-					 <div class="ratings">
-						<div class="rating-box">
-						   <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-						   <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-						   <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-						   <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-						   <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i></span>
-						</div>
-					 </div>
-				  </div>
-				  
-			   </div>
-			</div>
-		</div>
-		<div class="product-latest-item">
-			<div class="media">
-			   <div class="media-left">
-				  <a th:href="@{#}"><img th:src="@{/image/demo/shop/product/18.jpg}" alt="Cisi Chicken" title="Cisi Chicken" class="img-responsive" style="width: 100px; height: 82px;"></a>
-			   </div>
-			   <div class="media-body">
-				  <div class="caption">
-					 <h4><a th:href="@{#}">Cisi Chicken</a></h4>
-					
-					 <div class="price">
-						<span class="price-new">$59.00</span>
-					 </div>
-					 <div class="ratings">
-						<div class="rating-box">
-						   <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-						   <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-						   <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-						   <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-						   <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i></span>
-						</div>
-					 </div>
-				  </div>
-				  
-			   </div>
-			</div>
-		</div>
-		<div class="product-latest-item transition">
-			<div class="media">
-			   <div class="media-left">
-				  <a th:href="@{#}"><img th:src="@{/image/demo/shop/product/9.jpg}" alt="Cisi Chicken" title="Cisi Chicken" class="img-responsive" style="width: 100px; height:82px;"></a>
-			   </div>
-			   <div class="media-body">
-				  <div class="caption">
-					 <h4><a th:href="@{#}">Kevin Labor</a></h4>
-					 <div class="price">
-						<span class="price-new">$245.00</span>
-					 </div>
-					 <div class="ratings">
-						<div class="rating-box">
-						   <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-						   <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-						   <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-						   <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-						   <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i></span>
-						</div>
-					 </div>
-				  </div>
-				 
-			   </div>
-			</div>
-		 </div>
-		
-		
-   </div>
-   
-</div>
 				<div class="module">
 					<div class="modcontent clearfix">
 						<div class="banners">
 							<div>
-								<a th:href="@{#}"><img th:src="@{/image/demo/cms/left-image-static.png}" alt="left-image"></a>
+								<a><img th:src="@{/image/demo/cms/left-image-static.png}" alt="left-image"></a>
 							</div>
 						</div>
 						
@@ -258,7 +105,7 @@
 							<div class="col-sm-12">
 								<div class="banners">
 									<div>
-										<a  th:href="@{#}"><img th:src="@{/image/demo/shop/category/electronic-cat.png}" alt="Apple Cinema 30&quot;"><br></a>
+										<a><img th:src="@{${subCategory.image}}" alt="Apple Cinema 30&quot;"><br></a>
 									</div>
 								</div>
 							
@@ -276,105 +123,71 @@
 									</div>
 								</div>
 							</div>
-							<div  class="short-by-show form-inline text-right col-md-7 col-sm-8 col-xs-12">
-								<div class="form-group short-by">
-									<label class="control-label" for="input-sort">Sort By:</label>
-									<select id="input-sort" class="form-control"
-									onchange="location = this.value;">
-										<option value="" selected="selected">Default</option>
-										<option value="">Name (A - Z)</option>
-										<option value="">Name (Z - A)</option>
-										<option value="">Price (Low &gt; High)</option>
-										<option value="">Price (High &gt; Low)</option>
-										<option value="">Rating (Highest)</option>
-										<option value="">Rating (Lowest)</option>
-										<option value="">Model (A - Z)</option>
-										<option value="">Model (Z - A)</option>
-									</select>
-								</div>
-								<div class="form-group">
-									<label class="control-label" for="input-limit">Show:</label>
-									<select id="input-limit" class="form-control" onchange="location = this.value;">
-										<option value="" selected="selected">9</option>
-										<option value="">25</option>
-										<option value="">50</option>
-										<option value="">75</option>
-										<option value="">100</option>
-									</select>
-								</div>
-							</div>
-							<div class="box-pagination col-md-3 col-sm-4 col-xs-12 text-right">
-								<ul class="pagination">
-									<li class="active"><span>1</span></li>
-									<li><a href="">2</a></li><li><a href="">&gt;</a></li>
-									<li><a href="">&gt;|</a></li>
-								</ul>
-							</div>
+
 						</div>
 					</div>
 					<!-- //end Filters -->
 					<!--changed listings-->
 					<div class="products-list row grid">
-	<div th:each="article:${articles}"  class="product-layout col-md-4 col-sm-6 col-xs-12 ">
-		<div class="product-item-container">
-			<div class="left-block">
-				<div class="product-image-container lazy second_img ">
-					<img th:src="@{image/demo/shop/product/e11.jpg}" alt="Apple Cinema 30&quot;" class="img-responsive" />
-					<img th:src="@{image/demo/shop/product/e12.jpg}" alt="Apple Cinema 30&quot;" class="img_0 img-responsive" />
-				</div>
-				<!--Sale Label-->
-				<span class="label label-sale">Sale</span>
-				<!--countdown box-->
-				<div class="countdown_box">
-	<div class="countdown_inner">
-		<div class="title">This limited offer ends</div>
-		
-		<div class="defaultCountdown-30"></div>
-	</div>
-</div>
-				<!--end countdown box-->
-				
-				<!--full quick view block-->
-				<a class="quickview iframe-link visible-lg" data-fancybox-type="iframe"  th:href="@{quickview}">  Quickview</a>
-				<!--end full quick view block-->
-			</div>
-			
-			
-			<div class="right-block">
-				<div class="caption">
-					<h4><a th:text="${article.label}" th:href="@{/product/{id}(id=${article.idArticle})}">Apple Cinema 30&quot;</a></h4>
-					<div class="ratings">
-						<div class="rating-box">
-							<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-							<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-							<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-							<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-							<span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i></span>
+
+						<div th:each="article : ${subCategory.articles}">
+							<div class="product-layout col-md-4 col-sm-6 col-xs-12 ">
+								<div class="product-item-container">
+									<div class="left-block">
+										<div class="product-image-container lazy second_img ">
+											<img th:src="@{${article.image}}" th:alt="${article.label}" class="img-responsive" />
+											<img th:src="@{${article.image}}" th:alt="${article.label}" class="img_0 img-responsive" />
+										</div>
+										<!--Sale Label-->
+										<span class="label label-sale">Sale</span>
+										<!--full quick view block-->
+										<a class="quickview iframe-link visible-lg" data-fancybox-type="iframe"  th:href="@{/quickview/{id}(id=${article.idArticle})}">  Quickview</a>
+										<!--end full quick view block-->
+									</div>
+
+
+									<div class="right-block">
+										<div class="caption">
+											<h4><a th:href="@{/product/{id}(id=${article.idArticle})}" th:text="${article.label}" >Lorem Cow</a></h4>
+
+											<div th:if="${article.commentCount != 0}" class="ratings">
+												<div class="rating-box">
+													<span th:each="i : ${#numbers.sequence(1, 5)}" class="fa fa-stack"><i th:class="${i<=(article.ratingSum/article.commentCount) ? 'fa fa-star fa-stack-1x' : 'fa fa-star-o fa-stack-1x' }"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
+												</div>
+											</div>
+
+											<div th:if="${article.commentCount == 0}" class="ratings" >
+												<div class="rating-box">
+													<span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
+													<span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
+													<span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
+													<span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
+													<span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
+												</div>
+											</div>
+
+											<div class="price">
+												<span th:text="${article.price}" class="price-new">$74.00</span>
+												<span th:text="${article.price}" class="price-old">$122.00</span>
+												<span th:if="${!article.discounts.isEmpty()}" class="label label-percent">-40%</span>
+											</div>
+											<div class="description item-desc hidden">
+												<p th:text="${article.description}" >Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est . </p>
+											</div>
+										</div>
+
+										<div class="button-group">
+											<button class="addToCart" type="button" data-toggle="tooltip" title="Add to Cart" onclick="cart.add('42', '1');"><i class="fa fa-shopping-cart"></i> <span class="hidden-xs">Add to Cart</span></button>
+											<button class="wishlist" type="button" data-toggle="tooltip" title="Add to Wish List" onclick="wishlist.add('42');"><i class="fa fa-heart"></i></button>
+										</div>
+									</div><!-- right block -->
+
+								</div>
+							</div>
+							<div class="clearfix visible-sm-block"></div><div class="clearfix visible-xs-block"></div>
 						</div>
-					</div>
-										
-					<div class="price">
-						<span th:text="${article.price}" class="price-new">$74.00</span>
-						<span class="price-old">$122.00</span>		 
-						<span class="label label-percent">-40%</span>    
-					</div>
-					<div class="description item-desc hidden">
-						<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est . </p>
-					</div>
-				</div>
-				
-				  <div class="button-group">
-					<button class="addToCart" type="button" data-toggle="tooltip" title="Add to Cart" onclick="cart.add('42', '1');"><i class="fa fa-shopping-cart"></i> <span class="hidden-xs">Add to Cart</span></button>
-					<button class="wishlist" type="button" data-toggle="tooltip" title="Add to Wish List" onclick="wishlist.add('42');"><i class="fa fa-heart"></i></button>
-					<button class="compare" type="button" data-toggle="tooltip" title="Compare this Product" onclick="compare.add('42');"><i class="fa fa-exchange"></i></button>
-				  </div>
-			</div><!-- right block -->
 
-		</div>
-	</div>
-	<div class="clearfix visible-xs-block"></div>
-
-</div>					<!--// End Changed listings-->
+					</div>					<!--// End Changed listings-->
 					<!-- Filters -->
 					<div class="product-filter product-filter-bottom filters-panel" >
 						<div class="row">

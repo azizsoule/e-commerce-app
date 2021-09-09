@@ -59,11 +59,6 @@ public class MainController {
         return Route.BANNER_EFFECT;
     }
 
-    @GetMapping(Route.CHECKOUT)
-    public String checkout() {
-        return Route.CHECKOUT;
-    }
-
     @GetMapping(Route.CONTACT)
     public String contact() {
         return Route.CONTACT;
@@ -82,11 +77,6 @@ public class MainController {
     @GetMapping(Route.MY_ACCOUNT)
     public String myAccount() {
         return Route.MY_ACCOUNT;
-    }
-
-    @GetMapping(Route.QUICK_VIEW)
-    public String quickview() {
-        return Route.QUICK_VIEW;
     }
 
     @GetMapping(Route.SITEMAP)
