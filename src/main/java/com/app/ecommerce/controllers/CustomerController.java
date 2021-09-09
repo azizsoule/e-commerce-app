@@ -164,4 +164,26 @@ public class CustomerController {
         return Route.CHECKOUT;
     }
 
+    @PostMapping(Route.CHECKOUT)
+    public String addOrder(@AuthenticationPrincipal Customer customer, Order order, Object total) {
+        customer = customerService.findById(customer.getId());
+        order.setCustomer(customer);
+        customer.getCartItems().forEach(cartItem -> {
+            OrderItem orderItem = new OrderItem();
+            orderItem.setOrder(order);
+            orderItem.setQuantity(cartItem.getQuantity());
+            orderItem.setArticle(cartItem.getArticle());
+            order.getOrderItems().add(orderItem);
+        });
+        OrderState orderState = new OrderState();
+        orderState.setCodeOrderState("PENDING");
+        order.setOrderState(orderState);
+        order.setTotal(50000);
+        order.getPaymentDetail().setAmount(50000);
+        orderService.save(order);
+        customer.getCartItems().clear();
+        customerService.update(customer);
+        return Route.redirectTo(Route.ORDER_HISTORY);
+    }
+
 }

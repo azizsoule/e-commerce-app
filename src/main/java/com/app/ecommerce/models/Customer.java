@@ -34,6 +34,7 @@ public class Customer extends Person implements UserDetails {
     private Set<Comment> comments = new HashSet<>();
 
     @OneToMany(mappedBy = "customer", orphanRemoval = true)
+    @OrderBy("createdAt DESC")
     private Set<Order> orders = new HashSet<>();
 
     @OneToMany(mappedBy = "customer", orphanRemoval = true)

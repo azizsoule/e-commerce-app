@@ -67,134 +67,140 @@
 		
 		<div class="row">
 			<!--Middle Part Start-->
-			<div id="content" class="col-sm-12">
-			  <h2 class="title">Checkout</h2>
-			  <div class="so-onepagecheckout ">
-				  <div class="row">
-					  <div class="col-sm-12">
-						  <div class="panel panel-default no-padding">
-							  <div class="checkout-payment-methods">
-								  <div class="panel-heading">
-									  <h4 class="panel-title"><i class="fa fa-credit-card"></i> Payment Method</h4>
-								  </div>
-								  <div class="panel-body">
-									  <p>Please select the preferred payment method to use on this order.</p>
-									  <div th:each="paymentMethod : ${paymentMethods}" class="radio">
-										  <label>
-											  <input type="radio" th:disabled="${!paymentMethod.available}" th:value="${paymentMethod.idPaymentMethod}" >[[ ${paymentMethod.label} ]]
-										  </label>
-									  </div>
-								  </div>
-							  </div>
-						  </div>
 
-					  </div>
+			<form method="post" th:action="@{/checkout}" th:object="${order}">
 
-					  <div class="col-sm-12">
-						  <div class="panel panel-default no-padding">
-							  <div class="checkout-payment-methods">
-								  <div class="panel-heading">
-									  <h4 class="panel-title"><i class="fa fa-credit-card"></i> Shipping address</h4>
-								  </div>
-								  <div class="panel-body">
-									  <p>Please select your shipping address</p>
-									  <div th:each="address : ${customer.addresses}" class="radio">
-										  <label>
-											  <input type="radio" th:checked="${address.def}" th:value="${address.idAddress}" >[[ ${address.city.region.label + ' ' + address.city.label + ' ' + address.label} ]] ([[ ${address.firstName + ' ' + address.lastName} ]])
-										  </label>
-									  </div>
-								  </div>
-							  </div>
-						  </div>
+				<div id="content" class="col-sm-12">
+					<h2 class="title">Checkout</h2>
+					<div class="so-onepagecheckout ">
+						<div class="row">
+							<div class="col-sm-12">
+								<div class="panel panel-default no-padding">
+									<div class="checkout-payment-methods">
+										<div class="panel-heading">
+											<h4 class="panel-title"><i class="fa fa-credit-card"></i> Payment Method</h4>
+										</div>
+										<div class="panel-body">
+											<p>Please select the preferred payment method to use on this order.</p>
+											<div th:each="paymentMethod : ${paymentMethods}" class="radio">
+												<label th:for="${#ids.next('paymentMethod')}">
+													<input th:field="${order.paymentDetail.paymentMethod.idPaymentMethod}" type="radio" th:disabled="${!paymentMethod.available}" th:value="${paymentMethod.idPaymentMethod}" >[[${paymentMethod.label}]]
+												</label>
+											</div>
+										</div>
+									</div>
+								</div>
 
-					  </div>
+							</div>
 
-					  <div class="col-sm-12">
-						  <div class="panel panel-default">
-							  <div class="panel-heading">
-								  <h4 class="panel-title"><i class="fa fa-ticket"></i> Do you Have a Promo-code ?</h4>
-							  </div>
-							  <div class="panel-body row">
-								  <div class="">
-									  <div class="input-group">
-										  <input type="text" class="form-control" id="input-coupon" placeholder="Enter your coupon here" value="" name="coupon">
-										  <span class="input-group-btn">
+							<div class="col-sm-12">
+								<div class="panel panel-default no-padding">
+									<div class="checkout-payment-methods">
+										<div class="panel-heading">
+											<h4 class="panel-title"><i class="fa fa-credit-card"></i> Shipping address</h4>
+										</div>
+										<div class="panel-body">
+											<p>Please select your shipping address</p>
+											<div th:each="address : ${customer.addresses}" class="radio">
+												<label th:for="${#ids.next('address')}">
+													<input type="radio" th:field="${order.address.idAddress}" th:checked="${address.def}" th:value="${address.idAddress}" >[[ ${address.city.region.label + ' ' + address.city.label + ' ' + address.label} ]] ([[ ${address.firstName + ' ' + address.lastName} ]])
+												</label>
+											</div>
+										</div>
+									</div>
+								</div>
+
+							</div>
+
+							<div class="col-sm-12">
+								<div class="panel panel-default">
+									<div class="panel-heading">
+										<h4 class="panel-title"><i class="fa fa-ticket"></i> Do you Have a Promo-code ?</h4>
+									</div>
+									<div class="panel-body row">
+										<div class="">
+											<div class="input-group">
+												<input type="text" class="form-control" id="input-coupon" placeholder="Enter your coupon here" value="" name="coupon">
+												<span class="input-group-btn">
 							  <input type="button" class="btn btn-primary" data-loading-text="Loading..." id="button-coupon" value="Apply Coupon">
 							  </span></div>
-								  </div>
-							  </div>
-						  </div>
-					  </div>
+										</div>
+									</div>
+								</div>
+							</div>
 
-					  <div class="col-sm-12">
-						  <div class="panel panel-default">
-							  <div class="panel-heading">
-								  <h4 class="panel-title"><i class="fa fa-shopping-cart"></i> Shopping cart</h4>
-							  </div>
-							  <div class="panel-body">
-								  <div class="table-responsive">
-									  <table class="table table-bordered">
-										  <thead>
-										  <tr>
-											  <td class="text-center">Image</td>
-											  <td class="text-left">Product Name</td>
-											  <td class="text-left">Quantity</td>
-											  <td class="text-right">Unit Price</td>
-											  <td class="text-right">Total</td>
-										  </tr>
-										  </thead>
-										  <tbody>
-										  <tr th:each="cartItem : ${customer.cartItems}">
-											  <td class="text-center"><a th:href="@{/product/{id}(id=${cartItem.idItem})}"><img width="60px" th:src="${cartItem.article.image}" th:alt="${cartItem.article.label}" th:title="${cartItem.article.image}" class="img-thumbnail"></a></td>
-											  <td class="text-left"><a th:href="@{/product/{id}(id=${cartItem.idItem})}" th:text="${cartItem.article.label}">Emasa rumas gacem</a></td>
-											  <td class="text-left">
-												  <div class="option quantity">
-													  <div class="input-group quantity-control" unselectable="on">
-														  <span class="input-group-addon product_quantity_down">− </span>
-														  <input disabled style="text-align: center;" class="form-control" type="text" th:value="${cartItem.quantity}" name="quantity" value="1" />
-														  <input type="hidden" disabled name="product_id" value="50" />
-														  <span class="input-group-addon product_quantity_up">+ </span>
-														  <span class="input-group-btn">
+							<div class="col-sm-12">
+								<div class="panel panel-default">
+									<div class="panel-heading">
+										<h4 class="panel-title"><i class="fa fa-shopping-cart"></i> Shopping cart</h4>
+									</div>
+									<div class="panel-body">
+										<div class="table-responsive">
+											<table class="table table-bordered">
+												<thead>
+												<tr>
+													<td class="text-center">Image</td>
+													<td class="text-left">Product Name</td>
+													<td class="text-left">Quantity</td>
+													<td class="text-right">Unit Price</td>
+													<td class="text-right">Total</td>
+												</tr>
+												</thead>
+												<tbody>
+												<tr th:each="cartItem : ${customer.cartItems}">
+													<td class="text-center"><a th:href="@{/product/{id}(id=${cartItem.idItem})}"><img width="60px" th:src="${cartItem.article.image}" th:alt="${cartItem.article.label}" th:title="${cartItem.article.image}" class="img-thumbnail"></a></td>
+													<td class="text-left"><a th:href="@{/product/{id}(id=${cartItem.idItem})}" th:text="${cartItem.article.label}">Emasa rumas gacem</a></td>
+													<td class="text-left">
+														<div class="option quantity">
+															<div class="input-group quantity-control" unselectable="on">
+																<span class="input-group-addon product_quantity_down">− </span>
+																<input disabled style="text-align: center;" class="form-control" type="text" th:value="${cartItem.quantity}" name="quantity" value="1" />
+																<input type="hidden" disabled name="product_id" value="50" />
+																<span class="input-group-addon product_quantity_up">+ </span>
+																<span class="input-group-btn">
 															  <button type="submit" data-toggle="tooltip" title="Update" class="btn btn-primary"><i class="fa fa-clone"></i></button>
 															  <a th:href="@{/checkout/remove/{id}(id=${cartItem.idItem})}" type="button" data-toggle="tooltip" title="Remove" class="btn btn-danger" onClick=""><i class="fa fa-times-circle"></i></a>
-													  </div>
-												  </div>
-											  </td>
-											  <td class="text-right">[[ ${cartItem.article.price} ]] FCFA</td>
-											  <td class="text-right">[[ ${cartItem.article.price * cartItem.quantity} ]] FCFA</td>
-										  </tr>
-										  </tbody>
-										  <tfoot>
-										  <tr>
-											  <td class="text-right" colspan="4"><strong>Sub-Total:</strong></td>
-											  <td class="text-right">[[${total.subTotal}]] FCFA</td>
-										  </tr>
-										  <tr>
-											  <td class="text-right" colspan="4"><strong>Discount total:</strong></td>
-											  <td class="text-right">[[${total.discountTotal}]] FCFA</td>
-										  </tr>
-										  <tr>
-											  <td class="text-right" colspan="4"><strong>Total:</strong></td>
-											  <td class="text-right">[[${total.subTotal - total.discountTotal}]] FCFA</td>
-										  </tr>
-										  </tfoot>
-									  </table>
-								  </div>
-							  </div>
-						  </div>
-					  </div>
-					  <div class="col-sm-12">
-						  <div class="buttons">
-							  <div th:if="${!customer.cartItems.isEmpty()}" class="pull-right">
-								  <input type="button" class="btn btn-primary" id="button-confirm" value="Confirm Order">
-								  <br>
-								  <br>
-							  </div>
-						  </div>
-					  </div>
-				  </div>
-			  </div>
-			</div>
+															</div>
+														</div>
+													</td>
+													<td class="text-right">[[ ${cartItem.article.price} ]] FCFA</td>
+													<td class="text-right">[[ ${cartItem.article.price * cartItem.quantity} ]] FCFA</td>
+												</tr>
+												</tbody>
+												<tfoot>
+												<tr>
+													<td class="text-right" colspan="4"><strong>Sub-Total:</strong></td>
+													<td class="text-right">[[${total.subTotal}]] FCFA</td>
+												</tr>
+												<tr>
+													<td class="text-right" colspan="4"><strong>Discount total:</strong></td>
+													<td class="text-right">[[${total.discountTotal}]] FCFA</td>
+												</tr>
+												<tr>
+													<td class="text-right" colspan="4"><strong>Total:</strong></td>
+													<td class="text-right">[[${total.subTotal - total.discountTotal}]] FCFA</td>
+												</tr>
+												</tfoot>
+											</table>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-sm-12">
+								<div class="buttons">
+									<div th:if="${!customer.cartItems.isEmpty()}" class="pull-right">
+										<input type="submit" class="btn btn-primary" id="button-confirm" value="Confirm Order">
+										<br>
+										<br>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</form>
+
 			<!--Middle Part End -->
 			
 		</div>
