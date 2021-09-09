@@ -148,8 +148,8 @@
 												</thead>
 												<tbody>
 												<tr th:each="cartItem : ${customer.cartItems}">
-													<td class="text-center"><a th:href="@{/product/{id}(id=${cartItem.idItem})}"><img width="60px" th:src="${cartItem.article.image}" th:alt="${cartItem.article.label}" th:title="${cartItem.article.image}" class="img-thumbnail"></a></td>
-													<td class="text-left"><a th:href="@{/product/{id}(id=${cartItem.idItem})}" th:text="${cartItem.article.label}">Emasa rumas gacem</a></td>
+													<td class="text-center"><a th:href="@{/product/{id}(id=${cartItem.article.idArticle})}"><img width="60px" th:src="${cartItem.article.image}" th:alt="${cartItem.article.label}" th:title="${cartItem.article.image}" class="img-thumbnail"></a></td>
+													<td class="text-left"><a th:href="@{/product/{id}(id=${cartItem.article.idArticle})}" th:text="${cartItem.article.label}">Emasa rumas gacem</a></td>
 													<td class="text-left">
 														<div class="option quantity">
 															<div class="input-group quantity-control" unselectable="on">
