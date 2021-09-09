@@ -22,7 +22,7 @@ public class Order {
     private float total;
 
     @ManyToOne
-    private User user;
+    private Customer customer;
 
     @OneToOne(cascade = CascadeType.ALL, optional = false, orphanRemoval = true)
     @JoinColumn(name = "payment_detail_id_payment_detail", nullable = false)
@@ -31,6 +31,9 @@ public class Order {
     @ManyToOne
     @JoinColumn(name = "code_order_state")
     private OrderState orderState;
+
+    @ManyToOne
+    private Address address;
 
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
     private Set<OrderItem> orderItems;

@@ -5,6 +5,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Table(name = "address")
 @Entity
@@ -23,12 +24,17 @@ public class Address {
 
     private String label;
 
+    private Boolean def = false;
+
     @ManyToOne
     @JoinColumn(name = "city_id_city")
     private City city;
 
     @ManyToOne
-    @JoinColumn(name = "user_id_user")
-    private User user;
+    @JoinColumn(name = "customer_id")
+    private Customer customer;
+
+    @OneToMany(mappedBy = "address")
+    private Set<Order> orders;
 
 }

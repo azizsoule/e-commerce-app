@@ -5,6 +5,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 @Table(name = "article")
@@ -28,8 +29,20 @@ public class Article {
 
     private float price;
 
+    private int commentCount = 0;
+
+    private int ratingSum = 0;
+
+    private String image;
+
+    private String brand;
+
     @OneToMany(mappedBy = "article")
-    private Set<Comment> comments;
+    private Set<Image> images = new HashSet<>();
+
+    @OneToMany(mappedBy = "article", cascade = CascadeType.ALL)
+    @OrderBy("date DESC")
+    private Set<Comment> comments = new HashSet<>();
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "inventory_id_inventory")
@@ -40,12 +53,15 @@ public class Article {
     private SubCategory subCategory;
 
     @ManyToMany(mappedBy = "articles")
-    private Set<Discount> discounts;
+    private Set<Discount> discounts = new HashSet<>();
 
     @OneToOne(mappedBy = "article")
     private CartItem cartItem;
 
     @OneToOne(mappedBy = "article")
     private OrderItem orderItem;
+
+    @OneToOne(mappedBy = "article")
+    private WishItem wishItem;
 
 }

@@ -5,7 +5,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.List;
+import java.util.Set;
 
 @Table(name = "payment_method")
 @Entity
@@ -24,10 +24,12 @@ public class PaymentMethod {
 
     private String provider;
 
-    @OneToMany(mappedBy = "paymentMethod")
-    private List<PaymentDetail> paymentDetails;
+    private String image;
 
     @OneToMany(mappedBy = "paymentMethod")
-    private List<UserPaymentMethod> userPaymentMethods;
+    private Set<PaymentDetail> paymentDetails;
+
+    @OneToMany(mappedBy = "paymentMethod")
+    private Set<CustomerPaymentMethod> customerPaymentMethods;
 
 }
