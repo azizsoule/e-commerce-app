@@ -185,7 +185,7 @@
 					  </div>
 					  <div class="col-sm-12">
 						  <div class="buttons">
-							  <div class="pull-right">
+							  <div th:if="${!customer.cartItems.isEmpty()}" class="pull-right">
 								  <input type="button" class="btn btn-primary" id="button-confirm" value="Confirm Order">
 								  <br>
 								  <br>
