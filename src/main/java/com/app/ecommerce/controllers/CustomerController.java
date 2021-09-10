@@ -110,6 +110,12 @@ public class CustomerController {
         cartItemService.update(cartItem1);
         return Route.redirectTo(Route.CART);
     }
+    @GetMapping(Route.WISHLIST)
+    public String wishlist(@AuthenticationPrincipal Customer customer, Model model) {
+        customer = customerService.findById(customer.getId());
+        model.addAttribute( "wishlist",customer.getWishItems());
+        return Route.WISHLIST;
+    }
 
     @PostMapping(Route.CHECKOUT+"/update")
     public String updateCartItemFromCheckout(CartItem cartItem) {
