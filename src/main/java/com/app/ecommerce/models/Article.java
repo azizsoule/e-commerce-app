@@ -29,9 +29,7 @@ public class Article {
 
     private float price;
 
-    private int commentCount = 0;
-
-    private int ratingSum = 0;
+    private float ratingSum = 0;
 
     private String image;
 

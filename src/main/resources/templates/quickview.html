@@ -89,7 +89,7 @@
 
                                     <div th:if="${article.comments.size() != 0}" class="ratings">
                                         <div class="rating-box">
-                                            <span th:each="i : ${#numbers.sequence(1, 5)}" class="fa fa-stack"><i th:class="${i<=(article.ratingSum/article.commentCount) ? 'fa fa-star fa-stack-1x' : 'fa fa-star-o fa-stack-1x' }"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
+                                            <span th:each="i : ${#numbers.sequence(1, 5)}" class="fa fa-stack"><i th:class="${i<=(article.ratingSum/article.comments.size()) ? 'fa fa-star fa-stack-1x' : 'fa fa-star-o fa-stack-1x' }"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
                                         </div>
                                     </div>
 

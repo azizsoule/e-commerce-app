@@ -19,7 +19,7 @@ public class Comment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idComment;
 
-    private int rating = 0;
+    private float rating = 0;
 
     private String content;
 

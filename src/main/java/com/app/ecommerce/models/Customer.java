@@ -83,4 +83,9 @@ public class Customer extends Person implements UserDetails {
         return true;
     }
 
+    @Transient
+    public int getCartSize() {
+        return cartItems.size();
+    }
+
 }
