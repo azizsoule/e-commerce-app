@@ -89,10 +89,6 @@ public class MainController {
         return Route.TYPOGRAPHY;
     }
 
-    @GetMapping(Route.WISHLIST)
-    public String wishlist() {
-        return Route.WISHLIST;
-    }
 
 }
 
