@@ -14,7 +14,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(Route.API_ENDPOINT)
-public class ShopController {
+public class ShopControllerAPI {
 
     @Autowired
     CartItemService cartItemService;
