@@ -1,6 +1,7 @@
 package com.app.ecommerce.models;
 
 import com.app.ecommerce.models.supers.Item;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -14,7 +15,7 @@ import javax.persistence.*;
 @Setter
 public class CartItem extends Item {
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "article_id_article")
     private Article article;
 

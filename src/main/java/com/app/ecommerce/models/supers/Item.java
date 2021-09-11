@@ -17,7 +17,7 @@ public class Item {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idItem;
 
-    private int quantity;
+    private int quantity = 1;
 
     private Date createdAt;
 

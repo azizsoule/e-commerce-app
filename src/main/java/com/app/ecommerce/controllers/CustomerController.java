@@ -36,6 +36,9 @@ public class CustomerController {
     @Autowired
     CartItemService cartItemService;
 
+    @Autowired
+    WishItemService wishItemService;
+
     @GetMapping(Route.REGISTER)
     String register(Model model) {
         model.addAttribute("customer", new Customer());
@@ -72,7 +75,7 @@ public class CustomerController {
             public float discountTotal = 0;
         };
 
-        customer.getCartItems().forEach(cartItem -> {
+        cartItemService.findAllByCustomer(customer).forEach(cartItem -> {
             Article article = cartItem.getArticle();
             total.subTotal = total.subTotal + (cartItem.getQuantity() * article.getPrice());
             article.getDiscounts().forEach(discount -> {
@@ -110,11 +113,30 @@ public class CustomerController {
         cartItemService.update(cartItem1);
         return Route.redirectTo(Route.CART);
     }
+
     @GetMapping(Route.WISHLIST)
     public String wishlist(@AuthenticationPrincipal Customer customer, Model model) {
         customer = customerService.findById(customer.getId());
-        model.addAttribute( "wishlist",customer.getWishItems());
+        model.addAttribute( "wishlist",wishItemService.findAllByCustomer(customer));
         return Route.WISHLIST;
+    }
+
+    @GetMapping(Route.WISHLIST+"/remove/{id}")
+    public String removeWishItem(@PathVariable Long id) {
+        wishItemService.deleteById(id);
+        return Route.redirectTo(Route.WISHLIST);
+    }
+
+    @GetMapping(Route.WISHLIST+"/add/to/cart/{id}")
+    public String addWishItemToCart(@PathVariable Long id) {
+        WishItem wishItem = wishItemService.findById(id);
+        CartItem cartItem = new CartItem();
+        cartItem.setQuantity(1);
+        cartItem.setCustomer(wishItem.getCustomer());
+        cartItem.setArticle(wishItem.getArticle());
+        wishItemService.delete(wishItem);
+        cartItemService.addToCart(cartItem);
+        return Route.redirectTo(Route.CART);
     }
 
     @PostMapping(Route.CHECKOUT+"/update")
