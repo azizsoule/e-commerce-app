@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5" lang="en">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 
@@ -133,13 +133,12 @@
                                         </ul>
                                     </div>
 
-
-                                    <div class="form-group box-info-product">
+                                    <div sec:authorize="isAuthenticated()" class="form-group box-info-product">
                                         <div class="option quantity">
                                             <div class="input-group quantity-control" unselectable="on"
                                                  style="-webkit-user-select: none;">
                                                 <label>Qty </label>
-                                                <input disabled class="form-control" type="text" name="quantity"
+                                                <input id="qt" disabled class="form-control" type="text" name="quantity"
                                                        value="1"/>
                                                 <input disabled type="hidden" name="product_id" value="50"/>
                                                 <span class="input-group-addon product_quantity_down">− </span>
@@ -147,16 +146,16 @@
                                             </div>
                                         </div>
                                         <div class="cart">
-                                            <input type="button" data-toggle="tooltip" title="" value="Add to Cart"
-                                                   onclick="cart.add('42', '1');" data-loading-text="Loading..."
+                                            <input th:data-pi="${article.idArticle}" th:data-ci="${customer.id}" th:data-pimg="${article.image}" th:data-pn="${article.label}" type="button" data-toggle="tooltip" title="" value="Add to Cart"
+                                                   onclick="cart.add(this.getAttribute('data-pi'), this.getAttribute('data-ci'), document.getElementById('qt').value, this.getAttribute('data-pimg'), this.getAttribute('data-pn'))" data-loading-text="Loading..."
                                                    id="button-cart" class="btn btn-mega btn-lg"
                                                    data-original-title="Add to Cart"/>
                                         </div>
                                         <div class="add-to-links wish_comp">
                                             <ul class="blank list-inline">
                                                 <li class="wishlist">
-                                                    <a class="icon" data-toggle="tooltip" title=""
-                                                       onclick="wishlist.add('50');"
+                                                    <a th:data-pi="${article.idArticle}" th:data-ci="${customer.id}" th:data-pimg="${article.image}" th:data-pn="${article.label}" class="icon" data-toggle="tooltip" title=""
+                                                       onclick="wishlist.add(this.getAttribute('data-pi'), this.getAttribute('data-ci'), this.getAttribute('data-pimg'), this.getAttribute('data-pn'));"
                                                        data-original-title="Add to Wish List"><i
                                                             class="fa fa-heart"></i>
                                                     </a>

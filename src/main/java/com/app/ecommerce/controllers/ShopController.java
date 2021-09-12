@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/")
-public class ShopController {
+public class ShopController extends BaseController {
 
     @Autowired
     SubCategoryService subCategoryService;
@@ -34,23 +34,26 @@ public class ShopController {
     CustomerService customerService;
 
     @GetMapping(Route.SUB_CATEGORY+"/{id}")
-    String subCategory(@PathVariable String id, Model model) {
-        model.addAttribute("categories", categoryService.findAll());
+    String subCategory(@AuthenticationPrincipal Customer customer, @PathVariable String id, Model model) {
+        model.addAttribute("customer", customer);
+        //model.addAttribute("categories", categoryService.findAll());
         model.addAttribute("subCategory", subCategoryService.findById(Long.parseLong(id)));
         return Route.SUB_CATEGORY;
     }
 
     @GetMapping(Route.PRODUCT+"/{id}")
-    String article(@PathVariable String id, Model model) {
+    String article(@AuthenticationPrincipal Customer customer, @PathVariable String id, Model model) {
         Article article = articleService.findById(Long.parseLong(id));
+        model.addAttribute("customer", customer);
         model.addAttribute("article", article);
         model.addAttribute("comment", new Comment());
         return Route.PRODUCT;
     }
 
     @GetMapping(Route.QUICK_VIEW+"/{id}")
-    public String quickView(@PathVariable String id, Model model) {
+    public String quickView(@AuthenticationPrincipal Customer customer, @PathVariable String id, Model model) {
         Article article = articleService.findById(Long.parseLong(id));
+        model.addAttribute("customer", customer);
         model.addAttribute("article", article);
         return Route.QUICK_VIEW;
     }

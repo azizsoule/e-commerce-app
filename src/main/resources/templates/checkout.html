@@ -153,18 +153,20 @@
 													<td class="text-left">
 														<div class="option quantity">
 															<div class="input-group quantity-control" unselectable="on">
-																<span class="input-group-addon product_quantity_down">− </span>
-																<input disabled style="text-align: center;" class="form-control" type="text" th:value="${cartItem.quantity}" name="quantity" value="1" />
-																<input type="hidden" disabled name="product_id" value="50" />
-																<span class="input-group-addon product_quantity_up">+ </span>
+																<span th:onclick="'totalPrice('+${cartItem.idItem}+',\'-\')'" class="input-group-addon product_quantity_down">− </span>
+																<input th:id="${'qt-'+cartItem.idItem}" disabled style="text-align: center;" class="form-control" type="text" th:value="${cartItem.quantity}" />
+																<span th:onclick="'totalPrice('+${cartItem.idItem}+',\'+\')'" class="input-group-addon product_quantity_up">+ </span>
 																<span class="input-group-btn">
-															  <button type="submit" data-toggle="tooltip" title="Update" class="btn btn-primary"><i class="fa fa-clone"></i></button>
-															  <a th:href="@{/checkout/remove/{id}(id=${cartItem.idItem})}" type="button" data-toggle="tooltip" title="Remove" class="btn btn-danger" onClick=""><i class="fa fa-times-circle"></i></a>
+																<button type="button" th:onclick="'updateCartItem('+${cartItem.idItem}+')'" data-toggle="tooltip" title="Update" class="btn btn-primary">
+																	<i class="fa fa-clone"></i>
+																</button>
+
+																<a th:href="@{/checkout/remove/{id}(id=${cartItem.idItem})}" type="button" data-toggle="tooltip" title="Remove" class="btn btn-danger" onClick=""><i class="fa fa-times-circle"></i></a>
 															</div>
 														</div>
 													</td>
-													<td class="text-right">[[ ${cartItem.article.price} ]] FCFA</td>
-													<td class="text-right">[[ ${cartItem.article.price * cartItem.quantity} ]] FCFA</td>
+													<td th:id="${'price-'+cartItem.idItem}" class="text-right" th:text="${cartItem.article.price}">120.00</td>
+													<td th:id="${'total-'+cartItem.idItem}" class="text-right" th:text="${cartItem.article.price * cartItem.quantity}" >120.00</td>
 												</tr>
 												</tbody>
 												<tfoot>
@@ -237,6 +239,36 @@
 <script type="text/javascript" th:src="@{/js/themejs/so_megamenu.js}"></script>
 <script type="text/javascript" th:src="@{/js/themejs/addtocart.js}"></script>
 <script type="text/javascript" th:src="@{/js/themejs/application.js}"></script>
+
+<script>
+	function updateCartItem(id) {
+		console.log(document.getElementById("qt-"+id).value);
+		$.ajax({
+			type: "POST",
+			url: "/api/cart/update/"+id,
+			headers: {
+				'Accept': 'application/json',
+				'Content-Type': 'application/json'
+			},
+			data: JSON.stringify({
+				"quantity" : document.getElementById("qt-"+id).value
+			}),
+			success: function (data) {
+				window.location.href = "/checkout";
+			},
+		})
+	}
+
+	function totalPrice(id,btn) {
+		if (btn === '+') {
+			document.getElementById("total-"+id).textContent = ((parseFloat(document.getElementById("qt-"+id).value) + 1) * parseFloat(document.getElementById("price-"+id).textContent)).toString();
+		}
+
+		if (btn === '-' && document.getElementById("qt-"+id).value > 1) {
+			document.getElementById("total-"+id).textContent = ((parseFloat(document.getElementById("qt-"+id).value) - 1) * parseFloat(document.getElementById("price-"+id).textContent)).toString();
+		}
+	}
+</script>
 
 </body>
 </html>

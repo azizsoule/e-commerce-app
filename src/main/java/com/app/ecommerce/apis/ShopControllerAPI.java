@@ -34,16 +34,16 @@ public class ShopControllerAPI {
         return new ResponseEntity<List<CartItem>>(items, HttpStatus.OK);
     }
 
-    @PostMapping("/cart/update")
-    public ResponseEntity<?> updateCart(@RequestBody CartItem cartItem) {
-        CartItem cartItemDB = cartItemService.findById(cartItem.getIdItem());
-        cartItemDB.setQuantity(cartItem.getQuantity());
-        cartItemService.update(cartItemDB);
-        List<CartItem> items = new ArrayList<>(customerService.findById(cartItem.getCustomer().getId()).getCartItems());
+    @PostMapping("/cart/update/{id}")
+    public ResponseEntity<?> updateCart(@PathVariable Long id, @RequestBody CartItem ci) {
+        CartItem cartItemDB = cartItemService.findById(id);
+        cartItemDB.setQuantity(ci.getQuantity());
+        cartItemDB = cartItemService.update(cartItemDB);
+        List<CartItem> items = new ArrayList<>(cartItemDB.getCustomer().getCartItems());
         return new ResponseEntity<List<CartItem>>(items, HttpStatus.OK);
     }
 
-    @PostMapping("/cart/remove/{id}")
+    @GetMapping("/cart/remove/{id}")
     public ResponseEntity<?> removeFromCart(@PathVariable Long id) {
         CartItem cartItem = cartItemService.findById(id);
         cartItemService.deleteById(id);
@@ -56,7 +56,7 @@ public class ShopControllerAPI {
         return new ResponseEntity<List<WishItem>>(wishItemService.findAllByCustomer(wishItem.getCustomer()), HttpStatus.OK);
     }
 
-    @PostMapping("/wishlist/remove/{id}")
+    @GetMapping("/wishlist/remove/{id}")
     public ResponseEntity<?> removeFromWishList(@PathVariable Long id) {
         WishItem wishItem = wishItemService.findById(id);
         wishItemService.deleteById(id);

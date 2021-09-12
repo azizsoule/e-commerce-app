@@ -1,6 +1,6 @@
 
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5" lang="en">
 <head>
     
     <!-- Basic page needs
@@ -161,8 +161,6 @@
 								<div class="item-sub-cat">
 									<ul class="ltabs-tabs cf">
 										<li class="ltabs-tab tab-sel" data-category-id="20" data-active-content=".items-category-20"> <span class="ltabs-tab-label">Jewelry &amp; Watches						</span> </li>
-										<li class="ltabs-tab " data-category-id="18" data-active-content=".items-category-18"> <span class="ltabs-tab-label">Electronics		</span> </li>
-										<li class="ltabs-tab " data-category-id="25" data-active-content=".items-category-25"> <span class="ltabs-tab-label">Sports &amp; Outdoors	</span> </li>
 									</ul>
 								</div>
 							</div>
@@ -182,19 +180,26 @@
 												<!--Sale Label-->
 												<span class="label label-sale">-15%</span>
 												<!--full quick view block-->
-												<a class="quickview iframe-link visible-lg" data-fancybox-type="iframe"  th:href="@{quickview}">  Quickview</a>
+												<a class="quickview iframe-link visible-lg" data-fancybox-type="iframe"  th:href="@{/quickview/{id}(id=${article.idArticle})}">  Quickview</a>
 												<!--end full quick view block-->
 											</div>
 											<div class="right-block">
 												<div class="caption">
 													<h4><a th:text="${article.label}" th:href="@{/product/{id}(id=${article.idArticle})}">Cupim Bris</a></h4>
-													<div class="ratings">
+
+													<div th:if="${article.comments.size() != 0}" class="ratings">
 														<div class="rating-box">
-															<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-															<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-															<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-															<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-															<span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i></span>
+															<span th:each="i : ${#numbers.sequence(1, 5)}" class="fa fa-stack"><i th:class="${i<=(article.ratingSum/article.comments.size()) ? 'fa fa-star fa-stack-1x' : 'fa fa-star-o fa-stack-1x' }"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
+														</div>
+													</div>
+
+													<div th:if="${article.comments.size() == 0}" class="ratings" >
+														<div class="rating-box">
+															<span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
+															<span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
+															<span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
+															<span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
+															<span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
 														</div>
 													</div>
 
@@ -204,15 +209,15 @@
 													</div>
 												</div>
 												<div class="button-group">
-													<button class="addToCart" type="button" data-toggle="tooltip" title="Add to Cart" onclick="cart.add('42', '1');"><i class="fa fa-shopping-cart"></i> <span class="">Add to Cart</span></button>
-													<button class="wishlist" type="button" data-toggle="tooltip" title="Add to Wish List" onclick="wishlist.add('42');"><i class="fa fa-heart"></i></button>
-													<button class="compare" type="button" data-toggle="tooltip" title="Compare this Product" onclick="compare.add('42');"><i class="fa fa-exchange"></i></button>
+													<button sec:authorize="isAuthenticated()" class="addToCart" type="button" data-toggle="tooltip" title="Add to Cart" th:data-pi="${article.idArticle}" th:data-ci="${customer.id}" th:data-pimg="${article.image}" th:data-pn="${article.label}" onclick="cart.add(this.getAttribute('data-pi'), this.getAttribute('data-ci'), 1, this.getAttribute('data-pimg'), this.getAttribute('data-pn'))"><i class="fa fa-shopping-cart"></i> <span class="hidden-xs">Add to Cart</span></button>
+													<button sec:authorize="isAuthenticated()" class="wishlist" type="button" data-toggle="tooltip" title="Add to Wish List" th:data-pi="${article.idArticle}" th:data-ci="${customer.id}" th:data-pimg="${article.image}" th:data-pn="${article.label}" onclick="wishlist.add(this.getAttribute('data-pi'), this.getAttribute('data-ci'), this.getAttribute('data-pimg'), this.getAttribute('data-pn'))"><i class="fa fa-heart"></i></button>
 												</div>
 											</div><!-- right block -->
 										</div>
 									</div>
+
 								</div>
-							</div>
+
 							</div>
 							<div class="ltabs-items items-category-18 grid" data-total="11">
 								<div class="ltabs-loading"></div>
@@ -278,68 +283,72 @@
 								<div class="item-sub-cat">
 									<ul class="ltabs-tabs cf">
 										<li class="ltabs-tab tab-sel" data-category-id="20" data-active-content=".items-category-20"> <span class="ltabs-tab-label">Jewelry &amp; Watches						</span> </li>
-										<li class="ltabs-tab " data-category-id="18" data-active-content=".items-category-18"> <span class="ltabs-tab-label">Electronics		</span> </li>
-										<li class="ltabs-tab " data-category-id="25" data-active-content=".items-category-25"> <span class="ltabs-tab-label">Sports &amp; Outdoors	</span> </li>
 									</ul>
 								</div>
 							</div>
 							<!-- End Tabs-->
 						</div>
-						<div class="ltabs-items-container">
-							<!--Begin Items-->
-							<div class="ltabs-items ltabs-items-selected items-category-20 grid" data-total="10">
-								<div class="ltabs-items-inner ltabs-slider ">
-									<div  th:each="article:${articles}" class="ltabs-item product-layout">
-										<div class="product-item-container">
-											<div class="left-block">
-												<div class="product-image-container second_img ">
-													<img th:src="@{/image/demo/shop/resize/J5-270x270.jpg}" alt="Apple Cinema 30&quot;" class="img-responsive" />
-													<img th:src="@{/image/demo/shop/resize/J9-270x270.jpg}" alt="Apple Cinema 30&quot;" class="img_0 img-responsive" />
+							<div class="ltabs-items-container">
+								<!--Begin Items-->
+								<div class="ltabs-items ltabs-items-selected items-category-20 grid" data-total="10">
+									<div class="ltabs-items-inner ltabs-slider ">
+										<div  th:each="article:${articles}" class="ltabs-item product-layout">
+											<div class="product-item-container">
+												<div class="left-block">
+													<div class="product-image-container second_img ">
+														<img th:src="@{/image/demo/shop/resize/J5-270x270.jpg}" alt="Apple Cinema 30&quot;" class="img-responsive" />
+														<img th:src="@{/image/demo/shop/resize/J9-270x270.jpg}" alt="Apple Cinema 30&quot;" class="img_0 img-responsive" />
+													</div>
+													<!--Sale Label-->
+													<span class="label label-sale">-15%</span>
+													<!--full quick view block-->
+													<a class="quickview iframe-link visible-lg" data-fancybox-type="iframe"  th:href="@{/quickview/{id}(id=${article.idArticle})}">  Quickview</a>
+													<!--end full quick view block-->
 												</div>
-												<!--Sale Label-->
-												<span class="label label-sale">-15%</span>
-												<!--full quick view block-->
-												<a class="quickview iframe-link visible-lg" data-fancybox-type="iframe"  th:href="@{quickview}">  Quickview</a>
-												<!--end full quick view block-->
-											</div>
-											<div class="right-block">
-												<div class="caption">
-													<h4><a th:text="${article.label}" th:href="@{product}">Cupim Bris</a></h4>
-													<div class="ratings">
-														<div class="rating-box">
-															<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-															<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-															<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-															<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-															<span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i></span>
+												<div class="right-block">
+													<div class="caption">
+														<h4><a th:text="${article.label}" th:href="@{/product/{id}(id=${article.idArticle})}">Cupim Bris</a></h4>
+
+														<div th:if="${article.comments.size() != 0}" class="ratings">
+															<div class="rating-box">
+																<span th:each="i : ${#numbers.sequence(1, 5)}" class="fa fa-stack"><i th:class="${i<=(article.ratingSum/article.comments.size()) ? 'fa fa-star fa-stack-1x' : 'fa fa-star-o fa-stack-1x' }"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
+															</div>
+														</div>
+
+														<div th:if="${article.comments.size() == 0}" class="ratings" >
+															<div class="rating-box">
+																<span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
+																<span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
+																<span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
+																<span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
+																<span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
+															</div>
+														</div>
+
+														<div class="price">
+															<span th:text="${article.price}" class="price-new">$50.00</span>
+															<span class="price-old">$62.00</span>
 														</div>
 													</div>
-																		
-													<div class="price">
-														<span th:text="${article.price}" class="price-new">$50.00</span>
-														<span class="price-old">$62.00</span>		 
+													<div class="button-group">
+														<button sec:authorize="isAuthenticated()" class="addToCart" type="button" data-toggle="tooltip" title="Add to Cart" th:data-pi="${article.idArticle}" th:data-ci="${customer.id}" th:data-pimg="${article.image}" th:data-pn="${article.label}" onclick="cart.add(this.getAttribute('data-pi'), this.getAttribute('data-ci'), 1, this.getAttribute('data-pimg'), this.getAttribute('data-pn'))"><i class="fa fa-shopping-cart"></i> <span class="hidden-xs">Add to Cart</span></button>
+														<button sec:authorize="isAuthenticated()" class="wishlist" type="button" data-toggle="tooltip" title="Add to Wish List" th:data-pi="${article.idArticle}" th:data-ci="${customer.id}" th:data-pimg="${article.image}" th:data-pn="${article.label}" onclick="wishlist.add(this.getAttribute('data-pi'), this.getAttribute('data-ci'), this.getAttribute('data-pimg'), this.getAttribute('data-pn'))"><i class="fa fa-heart"></i></button>
 													</div>
-												</div>
-												  <div class="button-group">
-													<button class="addToCart" type="button" data-toggle="tooltip" title="Add to Cart" onclick="cart.add('42', '1');"><i class="fa fa-shopping-cart"></i> <span class="">Add to Cart</span></button>
-													<button class="wishlist" type="button" data-toggle="tooltip" title="Add to Wish List" onclick="wishlist.add('42');"><i class="fa fa-heart"></i></button>
-													<button class="compare" type="button" data-toggle="tooltip" title="Compare this Product" onclick="compare.add('42');"><i class="fa fa-exchange"></i></button>
-												  </div>
-											</div><!-- right block -->
+												</div><!-- right block -->
+											</div>
 										</div>
+
 									</div>
-								
+
 								</div>
-								
+								<div class="ltabs-items items-category-18 grid" data-total="11">
+									<div class="ltabs-loading"></div>
+
+								</div>
+								<div class="ltabs-items  items-category-25 grid" data-total="11">
+									<div class="ltabs-loading"></div>
+								</div>
 							</div>
-							<div class="ltabs-items items-category-18 grid" data-total="11">
-								<div class="ltabs-loading"></div>
-								
-							</div>
-							<div class="ltabs-items  items-category-25 grid" data-total="11">
-								<div class="ltabs-loading"></div>
-							</div>
-						</div>
 						<!--End Items-->
 						
 						

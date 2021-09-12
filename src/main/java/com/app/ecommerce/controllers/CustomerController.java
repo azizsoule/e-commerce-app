@@ -8,15 +8,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 @RequestMapping("/")
-public class CustomerController {
+public class CustomerController extends BaseController {
 
     @Autowired
     SexService sexService;
@@ -91,6 +88,7 @@ public class CustomerController {
 
         model.addAttribute("total", total);
         model.addAttribute("cartItems", customer.getCartItems());
+        model.addAttribute("qto",new CartItem());
         return Route.CART;
     }
 
@@ -100,65 +98,12 @@ public class CustomerController {
         return Route.redirectTo(Route.CART);
     }
 
-    @GetMapping(Route.CHECKOUT+"/remove/{cartItemId}")
-    public String removeCartItemFromCheckout(@PathVariable String cartItemId) {
-        cartItemService.deleteById(Long.parseLong(cartItemId));
-        return Route.redirectTo(Route.CHECKOUT);
-    }
-
-    @PostMapping(Route.CART+"/update")
-    public String updateCartItemFromCart(CartItem emptyCartItem) {
-        CartItem cartItem1 = cartItemService.findById(emptyCartItem.getIdItem());
-        cartItem1.setQuantity(emptyCartItem.getQuantity());
-        cartItemService.update(cartItem1);
+    @PostMapping(Route.CART+"/update/{id}")
+    public String updateCartItemFromCart(@PathVariable Long id, CartItem ci) {
+        CartItem cartItem = cartItemService.findById(id);
+        cartItem.setQuantity(ci.getQuantity());
+        cartItemService.update(cartItem);
         return Route.redirectTo(Route.CART);
-    }
-
-    @GetMapping(Route.WISHLIST)
-    public String wishlist(@AuthenticationPrincipal Customer customer, Model model) {
-        customer = customerService.findById(customer.getId());
-        model.addAttribute( "wishlist",wishItemService.findAllByCustomer(customer));
-        return Route.WISHLIST;
-    }
-
-    @GetMapping(Route.WISHLIST+"/remove/{id}")
-    public String removeWishItem(@PathVariable Long id) {
-        wishItemService.deleteById(id);
-        return Route.redirectTo(Route.WISHLIST);
-    }
-
-    @GetMapping(Route.WISHLIST+"/add/to/cart/{id}")
-    public String addWishItemToCart(@PathVariable Long id) {
-        WishItem wishItem = wishItemService.findById(id);
-        CartItem cartItem = new CartItem();
-        cartItem.setQuantity(1);
-        cartItem.setCustomer(wishItem.getCustomer());
-        cartItem.setArticle(wishItem.getArticle());
-        wishItemService.delete(wishItem);
-        cartItemService.addToCart(cartItem);
-        return Route.redirectTo(Route.CART);
-    }
-
-    @PostMapping(Route.CHECKOUT+"/update")
-    public String updateCartItemFromCheckout(CartItem cartItem) {
-        CartItem cartItem1 = cartItemService.findById(cartItem.getIdItem());
-        cartItem1.setQuantity(cartItem.getQuantity());
-        cartItemService.update(cartItem1);
-        return Route.redirectTo(Route.CHECKOUT);
-    }
-
-    @GetMapping(Route.ORDER_HISTORY)
-    String orderHistory(@AuthenticationPrincipal Customer customer, Model model) {
-        customer = customerService.findById(customer.getId());
-        model.addAttribute("orders", customer.getOrders());
-        return Route.ORDER_HISTORY;
-    }
-
-    @GetMapping(Route.ORDER_INFORMATION+"/{id}")
-    String orderInformation(@PathVariable String id, Model model) {
-        Order order = orderService.findById(Long.parseLong(id));
-        model.addAttribute("order", order);
-        return Route.ORDER_INFORMATION;
     }
 
     @GetMapping(Route.CHECKOUT)
@@ -212,6 +157,59 @@ public class CustomerController {
         customer.getCartItems().clear();
         customerService.update(customer);
         return Route.redirectTo(Route.ORDER_HISTORY);
+    }
+
+    @PostMapping(Route.CHECKOUT+"/update")
+    public String updateCartItemFromCheckout(CartItem cartItem) {
+        CartItem cartItem1 = cartItemService.findById(cartItem.getIdItem());
+        cartItem1.setQuantity(cartItem.getQuantity());
+        cartItemService.update(cartItem1);
+        return Route.redirectTo(Route.CHECKOUT);
+    }
+
+    @GetMapping(Route.CHECKOUT+"/remove/{cartItemId}")
+    public String removeCartItemFromCheckout(@PathVariable String cartItemId) {
+        cartItemService.deleteById(Long.parseLong(cartItemId));
+        return Route.redirectTo(Route.CHECKOUT);
+    }
+
+    @GetMapping(Route.WISHLIST)
+    public String wishlist(@AuthenticationPrincipal Customer customer, Model model) {
+        customer = customerService.findById(customer.getId());
+        model.addAttribute( "wishlist",wishItemService.findAllByCustomer(customer));
+        return Route.WISHLIST;
+    }
+
+    @GetMapping(Route.WISHLIST+"/remove/{id}")
+    public String removeWishItem(@PathVariable Long id) {
+        wishItemService.deleteById(id);
+        return Route.redirectTo(Route.WISHLIST);
+    }
+
+    @GetMapping(Route.WISHLIST+"/add/to/cart/{id}")
+    public String addWishItemToCart(@PathVariable Long id) {
+        WishItem wishItem = wishItemService.findById(id);
+        CartItem cartItem = new CartItem();
+        cartItem.setQuantity(1);
+        cartItem.setCustomer(wishItem.getCustomer());
+        cartItem.setArticle(wishItem.getArticle());
+        wishItemService.delete(wishItem);
+        cartItemService.addToCart(cartItem);
+        return Route.redirectTo(Route.CART);
+    }
+
+    @GetMapping(Route.ORDER_HISTORY)
+    String orderHistory(@AuthenticationPrincipal Customer customer, Model model) {
+        customer = customerService.findById(customer.getId());
+        model.addAttribute("orders", customer.getOrders());
+        return Route.ORDER_HISTORY;
+    }
+
+    @GetMapping(Route.ORDER_INFORMATION+"/{id}")
+    String orderInformation(@PathVariable String id, Model model) {
+        Order order = orderService.findById(Long.parseLong(id));
+        model.addAttribute("order", order);
+        return Route.ORDER_INFORMATION;
     }
 
 }
