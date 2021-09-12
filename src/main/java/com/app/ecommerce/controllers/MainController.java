@@ -38,6 +38,11 @@ public class MainController extends BaseController {
         return Route.redirectTo(Route.INDEX);
     }
 
+    @GetMapping(Route.CHECKOUT_CONFIRM)
+    public String checkoutConfirm() {
+        return Route.CHECKOUT_CONFIRM;
+    }
+
     @GetMapping(Route.INDEX)
     public String index(@AuthenticationPrincipal Customer customer, Model model) {
         List<Category> categories = this.categories();
