@@ -144,8 +144,13 @@ public class CustomerController extends BaseController {
         return Route.CHECKOUT;
     }
 
+    @GetMapping(Route.CHECKOUT_CONFIRM)
+    public String checkoutConfirm() {
+        return Route.CHECKOUT_CONFIRM;
+    }
+
     @PostMapping(Route.CHECKOUT)
-    public String addOrder(@AuthenticationPrincipal Customer customer, Order order, PaymentDetail pd) {
+    public String addOrder(@AuthenticationPrincipal Customer customer, Order order, PaymentDetail pd, Model model) {
         customer = customerService.findById(customer.getId());
 
         var total = new Object() {
@@ -184,11 +189,12 @@ public class CustomerController extends BaseController {
         pd.setStatus("SUCCESS");
         pd = paymentDetailService.save(pd);
         order.setPaymentDetail(pd);
-        orderService.save(order);
+        Order o = orderService.save(order);
         customer.getCartItems().forEach(cartItem -> {
             cartItemService.delete(cartItem);
         });
-        return Route.redirectTo(Route.ORDER_HISTORY);
+        model.addAttribute("code", o.getIdOrder());
+        return Route.redirectTo(Route.CHECKOUT_CONFIRM);
     }
 
     @PostMapping(Route.CHECKOUT+"/update")

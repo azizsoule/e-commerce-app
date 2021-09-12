@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5" lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <title th:replace="fragments/title :: title"></title>
     <meta charset="utf-8">
@@ -70,9 +70,10 @@
                     <div class="check"><i class="fa fa-check" aria-hidden="true"></i></div>
                 </div>
                 <div class="content-confirm">
-                    <h1>Payment Success !</h1>
-                    <p>Merci Pour votre commande, Votre commande est en cours d'analyse...</p>
-                    <a th:href="@{index}">Go to Home</a>
+                    <h1>Commande enregistrée avec succès !</h1>
+                    <p>Merci Pour votre commande, Votre commande est en cours d'analyse. Votre code de commande est <a th:href="@{/order-information/{id}(id=${code})}">#[[${code}]]</a></p>
+                    <p>Consultez régulièrement vos commandes pour suivre l'état de votre commande !</p>
+                    <a th:href="@{/index}">Go to Home</a>
                 </div>
 <div>
 </div>
