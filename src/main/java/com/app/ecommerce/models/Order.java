@@ -25,8 +25,8 @@ public class Order {
     @ManyToOne
     private Customer customer;
 
-    @OneToOne(cascade = CascadeType.ALL, optional = false, orphanRemoval = true)
-    @JoinColumn(name = "payment_detail_id_payment_detail", nullable = false)
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "payment_detail_id_payment_detail")
     private PaymentDetail paymentDetail;
 
     @ManyToOne

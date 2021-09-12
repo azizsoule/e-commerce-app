@@ -28,7 +28,7 @@ public class PaymentDetail {
     @DateTimeFormat(pattern = "yyyy-mm-dd", fallbackPatterns = "yyyy/mm/dd")
     private Date createdAt;
 
-    @OneToOne(optional = false, mappedBy = "paymentDetail")
+    @OneToOne(mappedBy = "paymentDetail")
     private Order order;
 
     @ManyToOne

@@ -11,6 +11,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.util.Random;
+
 @Controller
 @RequestMapping("/")
 public class CustomerController extends BaseController {
@@ -35,6 +37,9 @@ public class CustomerController extends BaseController {
 
     @Autowired
     WishItemService wishItemService;
+
+    @Autowired
+    PaymentDetailService paymentDetailService;
 
     @GetMapping(Route.REGISTER)
     String register(Model model) {
@@ -108,7 +113,6 @@ public class CustomerController extends BaseController {
 
     @GetMapping(Route.CHECKOUT)
     public String checkout(@AuthenticationPrincipal Customer customer, Model model) {
-
         customer = customerService.findById(customer.getId());
 
         var total = new Object() {
@@ -130,16 +134,40 @@ public class CustomerController extends BaseController {
             });
         });
 
+        Order order = new Order();
+
         model.addAttribute("total", total);
         model.addAttribute("customer", customer);
         model.addAttribute("paymentMethods", paymentMethodService.findAll());
-        model.addAttribute("order", new Order());
+        model.addAttribute("order", order);
+        model.addAttribute("pd", new PaymentDetail());
         return Route.CHECKOUT;
     }
 
     @PostMapping(Route.CHECKOUT)
-    public String addOrder(@AuthenticationPrincipal Customer customer, Order order, Object total) {
+    public String addOrder(@AuthenticationPrincipal Customer customer, Order order, PaymentDetail pd) {
         customer = customerService.findById(customer.getId());
+
+        var total = new Object() {
+            public float subTotal = 0;
+            public float discountTotal = 0;
+        };
+
+        customer.getCartItems().forEach(cartItem -> {
+            Article article = cartItem.getArticle();
+            total.subTotal = total.subTotal + (cartItem.getQuantity() * article.getPrice());
+            article.getDiscounts().forEach(discount -> {
+                float discountAmount = 0;
+                if (discount.isPercentage()) {
+                    discountAmount = (article.getPrice() * discount.getDiscountPercent()) / 100;
+                } else {
+                    discountAmount = discount.getDiscountAmount();
+                }
+                total.discountTotal = total.discountTotal + discountAmount;
+            });
+        });
+
+        order.setTotal(total.subTotal - total.discountTotal);
         order.setCustomer(customer);
         customer.getCartItems().forEach(cartItem -> {
             OrderItem orderItem = new OrderItem();
@@ -151,11 +179,15 @@ public class CustomerController extends BaseController {
         OrderState orderState = new OrderState();
         orderState.setCodeOrderState("PENDING");
         order.setOrderState(orderState);
-        order.setTotal(50000);
-        order.getPaymentDetail().setAmount(50000);
+        pd.setAmount(order.getTotal());
+        //pd.setReference("REF-XAZ");
+        pd.setStatus("SUCCESS");
+        pd = paymentDetailService.save(pd);
+        order.setPaymentDetail(pd);
         orderService.save(order);
-        customer.getCartItems().clear();
-        customerService.update(customer);
+        customer.getCartItems().forEach(cartItem -> {
+            cartItemService.delete(cartItem);
+        });
         return Route.redirectTo(Route.ORDER_HISTORY);
     }
 

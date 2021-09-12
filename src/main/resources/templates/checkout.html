@@ -84,7 +84,7 @@
 											<p>Please select the preferred payment method to use on this order.</p>
 											<div th:each="paymentMethod : ${paymentMethods}" class="radio">
 												<label th:for="${#ids.next('paymentMethod')}">
-													<input th:field="${order.paymentDetail.paymentMethod.idPaymentMethod}" type="radio" th:disabled="${!paymentMethod.available}" th:value="${paymentMethod.idPaymentMethod}" >[[${paymentMethod.label}]]
+													<input required th:field="${pd.paymentMethod.idPaymentMethod}" type="radio" th:disabled="${!paymentMethod.available}" th:value="${paymentMethod.idPaymentMethod}" >[[${paymentMethod.label}]]
 												</label>
 											</div>
 										</div>
@@ -103,7 +103,7 @@
 											<p>Please select your shipping address</p>
 											<div th:each="address : ${customer.addresses}" class="radio">
 												<label th:for="${#ids.next('address')}">
-													<input type="radio" th:field="${order.address.idAddress}" th:checked="${address.def}" th:value="${address.idAddress}" >[[ ${address.city.region.label + ' ' + address.city.label + ' ' + address.label} ]] ([[ ${address.firstName + ' ' + address.lastName} ]])
+													<input required type="radio" th:field="${order.address.idAddress}" th:checked="${address.def}" th:value="${address.idAddress}" >[[ ${address.city.region.label + ' ' + address.city.label + ' ' + address.label} ]] ([[ ${address.firstName + ' ' + address.lastName} ]])
 												</label>
 											</div>
 										</div>

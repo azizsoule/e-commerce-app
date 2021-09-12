@@ -36,7 +36,6 @@ public class ShopController extends BaseController {
     @GetMapping(Route.SUB_CATEGORY+"/{id}")
     String subCategory(@AuthenticationPrincipal Customer customer, @PathVariable String id, Model model) {
         model.addAttribute("customer", customer);
-        //model.addAttribute("categories", categoryService.findAll());
         model.addAttribute("subCategory", subCategoryService.findById(Long.parseLong(id)));
         return Route.SUB_CATEGORY;
     }
