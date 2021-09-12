@@ -36,6 +36,8 @@ public class  Route {
 
     public static final String REGISTER = "register";
 
+    public static final String CHECKOUT_CONFIRM = "checkout-confirm";
+
     public static final String SITEMAP = "sitemap";
 
     public static final String TYPOGRAPHY = "typography";
