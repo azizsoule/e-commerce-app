@@ -59,8 +59,8 @@
                             <div class="shopcart">
                                 <span class="handle pull-left"></span>
                                 <span class="title">My cart</span>
-                                <p sec:authorize="isAuthenticated()" class="text-shopping-cart cart-total-full">[[ ${userCartItems.size()} ]] item(s) </p>
-                                <p sec:authorize="isAnonymous()" class="text-shopping-cart cart-total-full">0 item </p>
+                                <p sec:authorize="isAuthenticated()" id="cart-counter" class="text-shopping-cart cart-total-full">[[ ${userCartItems.size()} ]] item(s) </p>
+                                <p sec:authorize="isAnonymous()" id="cart-counter" class="text-shopping-cart cart-total-full">0 item </p>
 
                             </div>
                         </a>
@@ -69,13 +69,13 @@
                         <ul class="tab-content content dropdown-menu pull-right shoppingcart-box" role="menu">
 
                             <li>
-                                <table sec:authorize="isAuthenticated()" class="table table-striped">
+                                <table sec:authorize="isAuthenticated()" id="cart-table" class="table table-striped">
                                     <tbody>
-                                    <tr th:each="item : ${userCartItems}">
+                                    <tr th:each="item : ${userCartItems}" th:id="'ci-'+${item.idItem}" >
                                         <td class="text-center" style="width:70px">
                                             <a th:href="@{/product/{id}(id=${item.article.idArticle})}"> <img
                                                     th:src="${item.article.image}"
-                                                    style="width:70px" alt="Filet Mign" title="Filet Mign"
+                                                    style="width:70px" th:alt="${item.article.label}" th:title="${item.article.label}"
                                                     class="preview"> </a>
                                         </td>
                                         <td class="text-left"><a class="cart_product_name"
@@ -86,11 +86,19 @@
                                             <a th:href="@{product}" class="fa fa-edit"></a>
                                         </td>
                                         <td class="text-right">
-                                            <a onclick="cart.remove('2');" class="fa fa-times fa-delete"></a>
+                                            <a th:data-ci="${item.idItem}" th:data-pi="${item.article.image}" th:data-pn="${item.article.label}" onclick="removeCartItem(this.getAttribute('data-ci'),this.getAttribute('data-pi'),this.getAttribute('data-pn'));" class="fa fa-times fa-delete"></a>
                                         </td>
                                     </tr>
                                     </tbody>
                                 </table>
+                                <script>
+                                    function removeCartItem(item_id, product_image, product_name) {
+                                        cart.remove(item_id, product_image, product_name);
+                                        document.getElementById("ci-"+item_id).remove();
+                                        const rowCount = $("#cart-table").length;
+                                        document.getElementById("cart-counter").innerHTML = rowCount.toString() + " item(s)";
+                                    }
+                                </script>
                             </li>
                             <li>
                                 <div>

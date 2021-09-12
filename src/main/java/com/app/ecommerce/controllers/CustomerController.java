@@ -41,6 +41,9 @@ public class CustomerController extends BaseController {
     @Autowired
     PaymentDetailService paymentDetailService;
 
+    @Autowired
+    OrderStateService orderStateService;
+
     @GetMapping(Route.REGISTER)
     String register(Model model) {
         model.addAttribute("customer", new Customer());
@@ -144,8 +147,9 @@ public class CustomerController extends BaseController {
         return Route.CHECKOUT;
     }
 
-    @GetMapping(Route.CHECKOUT_CONFIRM)
-    public String checkoutConfirm() {
+    @GetMapping(Route.CHECKOUT_CONFIRM+"/{id}")
+    public String checkoutConfirm(@PathVariable Long id, Model model) {
+        model.addAttribute("code", id);
         return Route.CHECKOUT_CONFIRM;
     }
 
@@ -193,8 +197,7 @@ public class CustomerController extends BaseController {
         customer.getCartItems().forEach(cartItem -> {
             cartItemService.delete(cartItem);
         });
-        model.addAttribute("code", o.getIdOrder());
-        return Route.redirectTo(Route.CHECKOUT_CONFIRM);
+        return Route.redirectTo(Route.CHECKOUT_CONFIRM+"/"+o.getIdOrder());
     }
 
     @PostMapping(Route.CHECKOUT+"/update")
@@ -248,6 +251,15 @@ public class CustomerController extends BaseController {
         Order order = orderService.findById(Long.parseLong(id));
         model.addAttribute("order", order);
         return Route.ORDER_INFORMATION;
+    }
+
+    @GetMapping(Route.ORDER_HISTORY+"/cancel/{id}")
+    String cancelOrder(@PathVariable Long id) {
+        Order order = orderService.findById(id);
+        OrderState canceledOrderState = orderStateService.findById("CANCELED");
+        order.setOrderState(canceledOrderState);
+        orderService.update(order);
+        return Route.redirectTo(Route.ORDER_HISTORY);
     }
 
 }

@@ -88,7 +88,11 @@
 								</td>
 								<td class="text-center" th:text="${order.createdAt}" >21/06/2016</td>
 								<td class="text-right" >[[${order.total}]] FCFA</td>
-								<td class="text-center"><a class="btn btn-info" title="" data-toggle="tooltip" th:href="@{/order-information/{id}(id=${order.idOrder})}" data-original-title="View"><i class="fa fa-eye"></i></a>
+								<td class="text-center">
+									<a class="btn btn-info" title="" data-toggle="tooltip" th:href="@{/order-information/{id}(id=${order.idOrder})}" data-original-title="View"><i class="fa fa-eye"></i></a>
+									<a th:if="${order.orderState.codeOrderState == 'PENDING'}" class="btn btn-danger" th:href="@{/order-history/cancel/{id}(id=${order.idOrder})}" data-toggle="tooltip" data-original-title="Cancel">
+										<i class="fa fa-times"></i>
+									</a>
 								</td>
 							</tr>
 						</tbody>

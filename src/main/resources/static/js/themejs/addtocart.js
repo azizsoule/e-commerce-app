@@ -30,6 +30,19 @@
 					addProductNotice('Product added to Cart', '<img src="'+ product_image +'">', '<h3><a>'+ product_name +'</a> added to <a>shopping cart</a> !</h3>', 'success');
 				},
 			})
+		},
+		'remove': function (item_id, product_image, product_name) {
+			$.ajax({
+				type: "GET",
+				url: "/api/cart/remove/"+item_id,
+				headers: {
+					'Accept': 'application/json',
+					'Content-Type': 'application/json'
+				},
+				success: function (data) {
+					addProductNotice('Product removed from Cart', '<img src="'+ product_image +'">', '<h3><a>'+ product_name +'</a> removed from your <a>shopping cart</a> !</h3>', 'success');
+				},
+			})
 		}
 	}
 

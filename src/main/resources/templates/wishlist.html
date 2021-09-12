@@ -82,9 +82,9 @@
                         <tbody>
                         <tr th:each="wishItem : ${wishlist}">
                             <td class="text-center">
-                                <a th:href="@{/product/{id}(id=${wishItem.article.idArticle})}"><img width="70px" th:src="@{/image/demo/shop/product/18.jpg}"
-                                                             alt="Aspire Ultrabook Laptop"
-                                                             title="Aspire Ultrabook Laptop">
+                                <a th:href="@{/product/{id}(id=${wishItem.article.idArticle})}"><img width="70px" th:src="${wishItem.article.image}"
+                                                             th:alt="${wishItem.article.label}"
+                                                             th:title="${wishItem.article.label}">
                                 </a>
                             </td>
                             <td class="text-left"><a th:href="@{/product/{id}(id=${wishItem.article.idArticle})}" th:text="${wishItem.article.label}">iPad</a>
@@ -92,7 +92,7 @@
                             <td class="text-left" th:text="${wishItem.article.brand}">Pt 001</td>
                             <td class="text-right">
                                 <div class="price" >
-                                    <span class="price-new"  th:text="${wishItem.article.price}">$45</span>
+                                    <span class="price-new" >[[${wishItem.article.price}]] FCFA</span>
 
                                 </div>
 
