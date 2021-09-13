@@ -52,7 +52,7 @@ public class Customer extends Person implements UserDetails {
     private Set<Discount> discounts = new HashSet<>();
 
     @ManyToOne
-    @JoinColumn(name = "customer_type_id_customer_type")
+    @JoinColumn(name = "customer_type_id")
     @JsonIgnore
     private CustomerType customerType;
 
@@ -91,11 +91,6 @@ public class Customer extends Person implements UserDetails {
     @Override
     public boolean isEnabled() {
         return true;
-    }
-
-    @Transient
-    public int getCartSize() {
-        return cartItems.size();
     }
 
 }

@@ -8,7 +8,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import javax.persistence.*;
 import java.util.Date;
 
-@Table(name = "user_payment_method")
+@Table(name = "customer_pm")
 @Entity
 @NoArgsConstructor
 @Getter
@@ -33,7 +33,7 @@ public class CustomerPaymentMethod {
     private Customer customer;
 
     @ManyToOne
-    @JoinColumn(name = "payment_method_id_payment_type")
+    @JoinColumn(name = "id_payment_type")
     private PaymentMethod paymentMethod;
 
 }

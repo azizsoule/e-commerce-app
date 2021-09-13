@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.util.List;
 import java.util.Random;
 
 @Controller
@@ -43,6 +44,9 @@ public class CustomerController extends BaseController {
 
     @Autowired
     OrderStateService orderStateService;
+
+    @Autowired
+    AddressService addressService;
 
     @GetMapping(Route.REGISTER)
     String register(Model model) {
@@ -138,6 +142,13 @@ public class CustomerController extends BaseController {
         });
 
         Order order = new Order();
+
+        customer.getAddresses().forEach(address -> {
+            if (address.getDef()) {
+                order.setAddress(new Address());
+                order.getAddress().setIdAddress(address.getIdAddress());
+            }
+        });
 
         model.addAttribute("total", total);
         model.addAttribute("customer", customer);
@@ -260,6 +271,36 @@ public class CustomerController extends BaseController {
         order.setOrderState(canceledOrderState);
         orderService.update(order);
         return Route.redirectTo(Route.ORDER_HISTORY);
+    }
+
+    @GetMapping(Route.MY_ACCOUNT)
+    public String myAccount(@AuthenticationPrincipal Customer customer, Model model) {
+        customer = customerService.findById(customer.getId());
+        Address address = new Address();
+        address.setFirstName(customer.getFirstName());
+        address.setLastName(customer.getLastName());
+        List<City> cities = cityService.findAll();
+        model.addAttribute("address", address);
+        model.addAttribute("cities", cities);
+        model.addAttribute("customer", customer);
+        return Route.MY_ACCOUNT;
+    }
+
+    @PostMapping(Route.MY_ACCOUNT+"/customer/update")
+    public String updateCustomer(@AuthenticationPrincipal Customer currentCustomer, Customer customer) {
+        currentCustomer = customerService.findById(currentCustomer.getId());
+        currentCustomer.setFirstName(customer.getFirstName());
+        currentCustomer.setLastName(customer.getLastName());
+        currentCustomer.setPhoneNumber(customer.getPhoneNumber());
+        customerService.update(currentCustomer);
+        return Route.redirectTo(Route.MY_ACCOUNT);
+    }
+
+    @PostMapping(Route.MY_ACCOUNT+"/address/add")
+    public String addNewAddress(@AuthenticationPrincipal Customer customer, Address address) {
+        address.setCustomer(customer);
+        addressService.save(address);
+        return Route.redirectTo(Route.MY_ACCOUNT);
     }
 
 }

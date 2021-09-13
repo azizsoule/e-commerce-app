@@ -26,7 +26,7 @@ public class Order {
     private Customer customer;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "payment_detail_id_payment_detail")
+    @JoinColumn(name = "id_payment_detail")
     private PaymentDetail paymentDetail;
 
     @ManyToOne
@@ -34,6 +34,7 @@ public class Order {
     private OrderState orderState;
 
     @ManyToOne
+    @JoinColumn(name = "id_address")
     private Address address;
 
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)

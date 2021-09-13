@@ -10,7 +10,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-@Table(name = "user")
+@Table(name = "admin_user")
 @Entity
 @NoArgsConstructor
 @Getter
@@ -18,7 +18,7 @@ import javax.persistence.Table;
 public class User extends Person {
 
     @ManyToOne
-    @JoinColumn(name = "user_group_id_user_group")
+    @JoinColumn(name = "id_user_group")
     private UserGroup userGroup;
 
     @ManyToOne

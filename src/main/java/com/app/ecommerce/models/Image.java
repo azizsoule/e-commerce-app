@@ -1,5 +1,6 @@
 package com.app.ecommerce.models;
 
+import com.app.ecommerce.utils.Constants;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -22,5 +23,10 @@ public class Image {
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "article_id_article")
     Article article;
+
+    @Transient
+    public String getImagePath() {
+        return Constants.MEDIA_SERVER_ENDPOINT + "/" + article.getSku() + "/" + image;
+    }
 
 }

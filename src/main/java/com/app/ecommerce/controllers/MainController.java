@@ -73,11 +73,6 @@ public class MainController extends BaseController {
         return Route.GIFT_VOUCHER;
     }
 
-    @GetMapping(Route.MY_ACCOUNT)
-    public String myAccount() {
-        return Route.MY_ACCOUNT;
-    }
-
     @GetMapping(Route.SITEMAP)
     public String sitemap() {
         return Route.SITEMAP;

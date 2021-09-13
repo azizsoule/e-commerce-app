@@ -13,6 +13,7 @@ import java.util.Set;
 @Getter
 @Setter
 public class SubCategory {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idSubCategory;

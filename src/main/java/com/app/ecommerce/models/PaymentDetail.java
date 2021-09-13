@@ -32,7 +32,7 @@ public class PaymentDetail {
     private Order order;
 
     @ManyToOne
-    @JoinColumn(name = "payment_method_id_payment_method")
+    @JoinColumn(name = "id_payment_method")
     private PaymentMethod paymentMethod;
 
     @PrePersist

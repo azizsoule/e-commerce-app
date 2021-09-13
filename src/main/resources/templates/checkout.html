@@ -103,7 +103,7 @@
 											<p>Please select your shipping address</p>
 											<div th:each="address : ${customer.addresses}" class="radio">
 												<label th:for="${#ids.next('address')}">
-													<input required type="radio" th:field="${order.address.idAddress}" th:checked="${address.def}" th:value="${address.idAddress}" >[[ ${address.city.region.label + ' ' + address.city.label + ' ' + address.label} ]] ([[ ${address.firstName + ' ' + address.lastName} ]])
+													<input required type="radio" th:field="${order.address.idAddress}" th:value="${address.idAddress}" >[[ ${address.city.region.label + ' ' + address.city.label + ' ' + address.label} ]] ([[ ${address.firstName + ' ' + address.lastName} ]])
 												</label>
 											</div>
 										</div>
