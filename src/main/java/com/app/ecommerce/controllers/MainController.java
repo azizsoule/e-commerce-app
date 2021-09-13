@@ -2,16 +2,17 @@ package com.app.ecommerce.controllers;
 
 import com.app.ecommerce.models.Catalog;
 import com.app.ecommerce.models.Category;
+import com.app.ecommerce.models.Customer;
 import com.app.ecommerce.services.ArticleService;
 import com.app.ecommerce.services.CatalogService;
 import com.app.ecommerce.services.CategoryService;
 import com.app.ecommerce.services.SubCategoryService;
 import com.app.ecommerce.utils.Route;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
@@ -20,7 +21,7 @@ import java.util.Set;
 
 @Controller
 @RequestMapping("/")
-public class MainController {
+public class MainController extends BaseController {
     @Autowired
     ArticleService articleService;
     @Autowired
@@ -38,17 +39,13 @@ public class MainController {
     }
 
     @GetMapping(Route.INDEX)
-    public String index(Model model) {
-        List<Catalog> catalogs = catalogService.findAll();
+    public String index(@AuthenticationPrincipal Customer customer, Model model) {
+        List<Category> categories = this.categories();
         Random random = new Random();
-        Catalog randomCatalog = catalogs.get(random.nextInt(catalogs.size()));
-        Set<Category> categories = randomCatalog.getCategories();
-        model.addAttribute("catalogs", catalogs);
-        model.addAttribute("categories", categoryService.findAll());
+        model.addAttribute("customer", customer);
         model.addAttribute("articles",articleService.findAll());
         return Route.INDEX;
     }
-
 
 
     @GetMapping(Route.ABOUT_US)
@@ -76,11 +73,6 @@ public class MainController {
         return Route.GIFT_VOUCHER;
     }
 
-    @GetMapping(Route.MY_ACCOUNT)
-    public String myAccount() {
-        return Route.MY_ACCOUNT;
-    }
-
     @GetMapping(Route.SITEMAP)
     public String sitemap() {
         return Route.SITEMAP;
@@ -89,11 +81,6 @@ public class MainController {
     @GetMapping(Route.TYPOGRAPHY)
     public String typography() {
         return Route.TYPOGRAPHY;
-    }
-
-    @GetMapping(Route.WISHLIST)
-    public String wishlist() {
-        return Route.WISHLIST;
     }
 
 }

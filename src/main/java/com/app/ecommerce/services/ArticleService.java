@@ -24,7 +24,6 @@ public class ArticleService extends BaseService<Article, Long> {
         comment.setArticle(article);
         comment.setCustomer(customer);
         article.getComments().add(comment);
-        article.setCommentCount(article.getCommentCount()+1);
         article.setRatingSum(article.getRatingSum()+comment.getRating());
         return this.update(article);
     }

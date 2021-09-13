@@ -28,11 +28,11 @@ public class PaymentDetail {
     @DateTimeFormat(pattern = "yyyy-mm-dd", fallbackPatterns = "yyyy/mm/dd")
     private Date createdAt;
 
-    @OneToOne(optional = false, mappedBy = "paymentDetail")
+    @OneToOne(mappedBy = "paymentDetail")
     private Order order;
 
     @ManyToOne
-    @JoinColumn(name = "payment_method_id_payment_method")
+    @JoinColumn(name = "id_payment_method")
     private PaymentMethod paymentMethod;
 
     @PrePersist

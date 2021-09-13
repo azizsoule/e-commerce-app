@@ -126,37 +126,9 @@
 						<tfoot>
 							<tr>
 								<td colspan="3"></td>
-								<td class="text-right"><b>Sub-Total</b>
-								</td>
-								<td class="text-right">$101.00</td>
-								<td></td>
-							</tr>
-							<tr>
-								<td colspan="3"></td>
-								<td class="text-right"><b>Flat Shipping Rate</b>
-								</td>
-								<td class="text-right">$5.00</td>
-								<td></td>
-							</tr>
-							<tr>
-								<td colspan="3"></td>
-								<td class="text-right"><b>Eco Tax (-2.00)</b>
-								</td>
-								<td class="text-right">$6.00</td>
-								<td></td>
-							</tr>
-							<tr>
-								<td colspan="3"></td>
-								<td class="text-right"><b>VAT (20%)</b>
-								</td>
-								<td class="text-right">$21.20</td>
-								<td></td>
-							</tr>
-							<tr>
-								<td colspan="3"></td>
 								<td class="text-right"><b>Total</b>
 								</td>
-								<td class="text-right">$133.20</td>
+								<td class="text-right">[[ ${order.total} ]] FCFA</td>
 								<td></td>
 							</tr>
 						</tfoot>
@@ -166,14 +138,18 @@
 				<table class="table table-bordered table-hover">
 					<thead>
 						<tr>
-							<td class="text-left">Date Added</td>
+							<td class="text-left">Date</td>
 							<td class="text-left">Status</td>
 						</tr>
 					</thead>
 					<tbody>
 						<tr>
 							<td th:text="${order.createdAt}" class="text-left">20/06/2016</td>
-							<td th:text="${order.orderState.label}" class="text-left">Processing</td>
+							<td class="text-left">
+								<button th:if="${order.orderState.codeOrderState == 'PENDING'}" class="btn btn-warning" onclick="">[[${order.orderState.label}]]</button>
+								<button th:if="${order.orderState.codeOrderState == 'CANCELED'}" class="btn btn-danger" onclick="">[[${order.orderState.label}]]</button>
+								<button th:if="${order.orderState.codeOrderState == 'COMPLETE'}" class="btn btn-success" onclick="">[[${order.orderState.label}]]</button>
+							</td>
 						</tr>
 					</tbody>
 				</table>

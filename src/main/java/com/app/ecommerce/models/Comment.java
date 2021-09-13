@@ -1,5 +1,6 @@
 package com.app.ecommerce.models;
 
+import com.app.ecommerce.utils.CommentFilter;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -8,8 +9,9 @@ import org.springframework.format.annotation.DateTimeFormat;
 import javax.persistence.*;
 import java.util.Date;
 
-@Table(name = "comment")
+@Table(name = "customer_comment")
 @Entity
+@EntityListeners(CommentFilter.class)
 @NoArgsConstructor
 @Getter
 @Setter
@@ -19,17 +21,17 @@ public class Comment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idComment;
 
-    private int rating = 0;
+    private float rating = 0;
 
     private String content;
 
     private boolean blocked = false;
 
     @DateTimeFormat(pattern = "yyyy-mm-dd", fallbackPatterns = "yyyy/mm/dd")
-    private Date date;
+    private Date createdAt;
 
     @ManyToOne
-    @JoinColumn(name = "article_id_article")
+    @JoinColumn(name = "id_article")
     private Article article;
 
     @ManyToOne
@@ -38,7 +40,7 @@ public class Comment {
 
     @PrePersist
     public void prePersist() {
-        date = new Date();
+        createdAt = new Date();
     }
 
 }

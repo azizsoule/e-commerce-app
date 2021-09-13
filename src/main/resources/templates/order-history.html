@@ -72,7 +72,6 @@
 						<thead>
 							<tr>
 								<td class="text-center">Order ID</td>
-								<td class="text-center">Qty</td>
 								<td class="text-center">Status</td>
 								<td class="text-center">Date Added</td>
 								<td class="text-right">Total</td>
@@ -81,12 +80,19 @@
 						</thead>
 						<tbody>
 							<tr th:each="order : ${orders}">
-								<td th:text="${order.idOrder}" class="text-center">#214521</td>
-								<td class="text-center"></td>
-								<td class="text-center" th:text="${order.orderState.label}" ></td>
+								<td class="text-center">#[[${order.idOrder}]]</td>
+								<td class="text-center" >
+									<button th:if="${order.orderState.codeOrderState == 'PENDING'}" class="btn btn-warning" onclick="">[[${order.orderState.label}]]</button>
+									<button th:if="${order.orderState.codeOrderState == 'CANCELED'}" class="btn btn-danger" onclick="">[[${order.orderState.label}]]</button>
+									<button th:if="${order.orderState.codeOrderState == 'COMPLETE'}" class="btn btn-success" onclick="">[[${order.orderState.label}]]</button>
+								</td>
 								<td class="text-center" th:text="${order.createdAt}" >21/06/2016</td>
-								<td class="text-right" th:text="${order.total}">$228.00</td>
-								<td class="text-center"><a class="btn btn-info" title="" data-toggle="tooltip" th:href="@{/order-information/{id}(id=${order.idOrder})}" data-original-title="View"><i class="fa fa-eye"></i></a>
+								<td class="text-right" >[[${order.total}]] FCFA</td>
+								<td class="text-center">
+									<a class="btn btn-info" title="" data-toggle="tooltip" th:href="@{/order-information/{id}(id=${order.idOrder})}" data-original-title="View"><i class="fa fa-eye"></i></a>
+									<a th:if="${order.orderState.codeOrderState == 'PENDING'}" class="btn btn-danger" th:href="@{/order-history/cancel/{id}(id=${order.idOrder})}" data-toggle="tooltip" data-original-title="Cancel">
+										<i class="fa fa-times"></i>
+									</a>
 								</td>
 							</tr>
 						</tbody>

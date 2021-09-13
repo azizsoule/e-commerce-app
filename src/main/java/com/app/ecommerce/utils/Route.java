@@ -2,7 +2,7 @@ package com.app.ecommerce.utils;
 
 public class  Route {
 
-    public static final String API_ENDPOINT = "/api/";
+    public static final String API_ENDPOINT = "/api";
 
     public static final String INDEX = "index";
 
@@ -35,6 +35,8 @@ public class  Route {
     public static final String QUICK_VIEW = "quickview";
 
     public static final String REGISTER = "register";
+
+    public static final String CHECKOUT_CONFIRM = "checkout-confirm";
 
     public static final String SITEMAP = "sitemap";
 

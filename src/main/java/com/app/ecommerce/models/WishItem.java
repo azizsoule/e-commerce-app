@@ -14,12 +14,12 @@ import javax.persistence.*;
 @Setter
 public class WishItem extends Item {
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "article_id_article")
     private Article article;
 
     @ManyToOne
-    @JoinColumn(name = "customer_id_customer")
+    @JoinColumn(name = "customer_id")
     private Customer customer;
 
 }

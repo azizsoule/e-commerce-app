@@ -1,8 +1,12 @@
 package com.app.ecommerce.models;
 
+import com.app.ecommerce.utils.Constants;
+import com.app.ecommerce.utils.Generator;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -22,46 +26,63 @@ public class Article {
     @Column(length = 50)
     private String label;
 
+    @Type(type = "text")
     private String description;
 
-    @Column(length = 20)
+    @Column(length = 20, unique = true)
     private String sku;
 
     private float price;
 
-    private int commentCount = 0;
-
-    private int ratingSum = 0;
+    private float ratingSum = 0;
 
     private String image;
 
     private String brand;
 
     @OneToMany(mappedBy = "article")
+    @JsonIgnore
     private Set<Image> images = new HashSet<>();
 
     @OneToMany(mappedBy = "article", cascade = CascadeType.ALL)
-    @OrderBy("date DESC")
+    @OrderBy("createdAt DESC")
+    @JsonIgnore
     private Set<Comment> comments = new HashSet<>();
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "inventory_id_inventory")
+    @JoinColumn(name = "id_inventory")
+    @JsonIgnore
     private Inventory inventory;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "sub_category_id_sub_category")
+    @JoinColumn(name = "id_sub_category")
+    @JsonIgnore
     private SubCategory subCategory;
 
     @ManyToMany(mappedBy = "articles")
+    @JsonIgnore
     private Set<Discount> discounts = new HashSet<>();
 
-    @OneToOne(mappedBy = "article")
-    private CartItem cartItem;
+    @OneToMany(mappedBy = "article")
+    @JsonIgnore
+    private Set<CartItem> cartItems;
 
-    @OneToOne(mappedBy = "article")
-    private OrderItem orderItem;
+    @OneToMany(mappedBy = "article")
+    @JsonIgnore
+    private Set<OrderItem> orderItems;
 
-    @OneToOne(mappedBy = "article")
-    private WishItem wishItem;
+    @OneToMany(mappedBy = "article")
+    @JsonIgnore
+    private Set<WishItem> wishItems;
+
+    @PrePersist
+    public void prePersist() {
+        sku = "SKU"+ Generator.generate(5);
+    }
+
+    @Transient
+    public String getImagePath() {
+        return Constants.MEDIA_SERVER_ENDPOINT + "/" + sku + "/" + image;
+    }
 
 }
