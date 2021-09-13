@@ -39,6 +39,7 @@ public class CategoryService extends BaseService<Category, Long> {
     public void delete(Category category) {
         repository.delete(category);
     }
+
     public void replicateData(Map<String, Object> data, Envelope.Operation operation) {
         final Category category = this.modelMapper().map(data, Category.class);
         if (Envelope.Operation.DELETE == operation) {
