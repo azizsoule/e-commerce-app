@@ -30,6 +30,4 @@ public abstract class BaseService<ENTITY, ID> {
 
     public abstract void delete(ENTITY entity);
 
-    public abstract void replicateData(Map<String, Object> catalogData, Envelope.Operation operation);
-
 }
