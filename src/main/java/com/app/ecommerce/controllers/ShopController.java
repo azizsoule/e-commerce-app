@@ -3,10 +3,7 @@ package com.app.ecommerce.controllers;
 import com.app.ecommerce.models.Article;
 import com.app.ecommerce.models.Comment;
 import com.app.ecommerce.models.Customer;
-import com.app.ecommerce.services.ArticleService;
-import com.app.ecommerce.services.CategoryService;
-import com.app.ecommerce.services.CustomerService;
-import com.app.ecommerce.services.SubCategoryService;
+import com.app.ecommerce.services.*;
 import com.app.ecommerce.utils.Route;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -16,6 +13,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import java.util.concurrent.atomic.AtomicBoolean;
 
 @Controller
 @RequestMapping("/")
@@ -42,10 +41,20 @@ public class ShopController extends BaseController {
 
     @GetMapping(Route.PRODUCT+"/{id}")
     String article(@AuthenticationPrincipal Customer customer, @PathVariable String id, Model model) {
+        customer = customerService.findById(customer.getId());
         Article article = articleService.findById(Long.parseLong(id));
+        AtomicBoolean hasAlreadyOrderedProduct = new AtomicBoolean(false);
+        customer.getOrders().forEach(order -> {
+            order.getOrderItems().forEach(orderItem -> {
+                if (orderItem.getArticle().equals(article)) {
+                    hasAlreadyOrderedProduct.set(true);
+                }
+            });
+        });
         model.addAttribute("customer", customer);
         model.addAttribute("article", article);
         model.addAttribute("comment", new Comment());
+        model.addAttribute("hasAlreadyOrderedProduct", hasAlreadyOrderedProduct.get());
         return Route.PRODUCT;
     }
 

@@ -260,7 +260,7 @@
 						<div class="text-right"></div>
 					</div>
 					<h2 sec:authorize="isAuthenticated()" id="review-title">Write a review</h2>
-					<div sec:authorize="isAuthenticated()" class="contacts-form">
+					<div sec:authorize="isAuthenticated()" th:if="${hasAlreadyOrderedProduct}" class="contacts-form">
 						
 						<div class="form-group"> <span class="icon icon-bubbles-2"></span>
 							<textarea th:field="${comment.content}" class="form-control" name="text" placeholder="Your Review"></textarea>
@@ -274,6 +274,7 @@
 						</div>
 						 <br> <br> <br>
 						<input type="submit" class="buttons clearfix btn buttonGray" id="button-review" value="send" />
+
 					</div>
 				</form>
 			</div>
