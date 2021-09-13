@@ -1,6 +1,6 @@
 package com.app.ecommerce.listeners;
 
-import com.app.ecommerce.services.CatalogService;
+import com.app.ecommerce.services.OrderService;
 import io.debezium.config.Configuration;
 import io.debezium.embedded.Connect;
 import io.debezium.engine.DebeziumEngine;
@@ -26,20 +26,19 @@ import static java.util.stream.Collectors.toMap;
 
 @Slf4j
 @Component
-public class CatalogListener {
-
+public class OrderListener {
     private final Executor executor = Executors.newSingleThreadExecutor();
-    private final CatalogService catalogService;
+    private final OrderService orderService;
     private final DebeziumEngine<RecordChangeEvent<SourceRecord>> debeziumEngine;
 
-    public CatalogListener(Configuration customerConnectorConfiguration, CatalogService catalogService) {
+    public OrderListener(Configuration customerConnectorConfiguration, OrderService orderService) {
 
         this.debeziumEngine = DebeziumEngine.create(ChangeEventFormat.of(Connect.class))
                 .using(customerConnectorConfiguration.asProperties())
                 .notifying(this::handleChangeEvent)
                 .build();
 
-        this.catalogService = catalogService;
+        this.orderService = orderService;
     }
 
     private void handleChangeEvent(RecordChangeEvent<SourceRecord> sourceRecordRecordChangeEvent) {
@@ -62,7 +61,7 @@ public class CatalogListener {
                         .map(fieldName -> Pair.of(fieldName, struct.get(fieldName)))
                         .collect(toMap(Pair::getKey, Pair::getValue));
 
-                this.catalogService.replicateData(payload, operation);
+                this.orderService.replicateData(payload, operation);
                 log.info("Updated Data: {} with Operation: {}", payload, operation.name());
             }
         }
@@ -79,5 +78,6 @@ public class CatalogListener {
             this.debeziumEngine.close();
         }
     }
+
 
 }

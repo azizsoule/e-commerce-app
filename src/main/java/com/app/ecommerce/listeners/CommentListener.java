@@ -1,7 +1,8 @@
 package com.app.ecommerce.listeners;
 
-import com.app.ecommerce.services.CatalogService;
+import com.app.ecommerce.services.CommentService;
 import io.debezium.config.Configuration;
+import io.debezium.data.Envelope;
 import io.debezium.embedded.Connect;
 import io.debezium.engine.DebeziumEngine;
 import io.debezium.engine.RecordChangeEvent;
@@ -21,25 +22,24 @@ import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
 import static io.debezium.data.Envelope.FieldName.*;
-import static io.debezium.data.Envelope.Operation;
 import static java.util.stream.Collectors.toMap;
 
 @Slf4j
 @Component
-public class CatalogListener {
+public class CommentListener {
 
     private final Executor executor = Executors.newSingleThreadExecutor();
-    private final CatalogService catalogService;
+    private final CommentService commentService;
     private final DebeziumEngine<RecordChangeEvent<SourceRecord>> debeziumEngine;
 
-    public CatalogListener(Configuration customerConnectorConfiguration, CatalogService catalogService) {
+    public CommentListener(Configuration customerConnectorConfiguration, CommentService commentService) {
 
         this.debeziumEngine = DebeziumEngine.create(ChangeEventFormat.of(Connect.class))
                 .using(customerConnectorConfiguration.asProperties())
                 .notifying(this::handleChangeEvent)
                 .build();
 
-        this.catalogService = catalogService;
+        this.commentService = commentService;
     }
 
     private void handleChangeEvent(RecordChangeEvent<SourceRecord> sourceRecordRecordChangeEvent) {
@@ -50,10 +50,10 @@ public class CatalogListener {
         Struct sourceRecordChangeValue = (Struct) sourceRecord.value();
 
         if (sourceRecordChangeValue != null) {
-            Operation operation = Operation.forCode((String) sourceRecordChangeValue.get(OPERATION));
+            Envelope.Operation operation = Envelope.Operation.forCode((String) sourceRecordChangeValue.get(OPERATION));
 
-            if (operation != Operation.READ) {
-                String record = operation == Operation.DELETE ? BEFORE : AFTER; // Handling Update & Insert operations.
+            if (operation != Envelope.Operation.READ) {
+                String record = operation == Envelope.Operation.DELETE ? BEFORE : AFTER; // Handling Update & Insert operations.
 
                 Struct struct = (Struct) sourceRecordChangeValue.get(record);
                 Map<String, Object> payload = struct.schema().fields().stream()
@@ -62,7 +62,7 @@ public class CatalogListener {
                         .map(fieldName -> Pair.of(fieldName, struct.get(fieldName)))
                         .collect(toMap(Pair::getKey, Pair::getValue));
 
-                this.catalogService.replicateData(payload, operation);
+                this.commentService.replicateData(payload, operation);
                 log.info("Updated Data: {} with Operation: {}", payload, operation.name());
             }
         }
@@ -79,5 +79,6 @@ public class CatalogListener {
             this.debeziumEngine.close();
         }
     }
+
 
 }
