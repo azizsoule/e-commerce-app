@@ -1,5 +1,6 @@
 package com.app.ecommerce.models;
 
+import com.app.ecommerce.utils.Constants;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -28,5 +29,10 @@ public class SubCategory {
 
     @OneToMany(mappedBy = "subCategory", cascade = CascadeType.ALL)
     private Set<Article> articles;
+
+    @Transient
+    public String getImagePath() {
+        return Constants.MEDIA_SERVER_ENDPOINT + "/sub-categories/" + image;
+    }
 
 }

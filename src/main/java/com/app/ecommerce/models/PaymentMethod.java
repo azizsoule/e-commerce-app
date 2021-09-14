@@ -1,5 +1,6 @@
 package com.app.ecommerce.models;
 
+import com.app.ecommerce.utils.Constants;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -31,5 +32,10 @@ public class PaymentMethod {
 
     @OneToMany(mappedBy = "paymentMethod")
     private Set<CustomerPaymentMethod> customerPaymentMethods;
+
+    @Transient
+    public String getImagePath() {
+        return Constants.MEDIA_SERVER_ENDPOINT + "/payment-methods/" + image;
+    }
 
 }

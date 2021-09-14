@@ -74,7 +74,7 @@
                                     <tr th:each="item : ${userCartItems}" th:id="'ci-'+${item.idItem}" >
                                         <td class="text-center" style="width:70px">
                                             <a th:href="@{/product/{id}(id=${item.article.idArticle})}"> <img
-                                                    th:src="${item.article.image}"
+                                                    th:src="${item.article.getImagePath()}"
                                                     style="width:70px" th:alt="${item.article.label}" th:title="${item.article.label}"
                                                     class="preview"> </a>
                                         </td>
@@ -86,7 +86,7 @@
                                             <a th:href="@{product}" class="fa fa-edit"></a>
                                         </td>
                                         <td class="text-right">
-                                            <a th:data-ci="${item.idItem}" th:data-pi="${item.article.image}" th:data-pn="${item.article.label}" onclick="removeCartItem(this.getAttribute('data-ci'),this.getAttribute('data-pi'),this.getAttribute('data-pn'));" class="fa fa-times fa-delete"></a>
+                                            <a th:data-ci="${item.idItem}" th:data-pi="${item.article.getImagePath()}" th:data-pn="${item.article.label}" onclick="removeCartItem(this.getAttribute('data-ci'),this.getAttribute('data-pi'),this.getAttribute('data-pn'));" class="fa fa-times fa-delete"></a>
                                         </td>
                                     </tr>
                                     </tbody>
@@ -270,7 +270,7 @@
                                                                     <div class="row">
                                                                         <div th:each="category : ${categories}" class="col-md-3 img img1">
                                                                             <a ><img
-                                                                                    th:src="${category.image}"
+                                                                                    th:src="${category.getImagePath()}"
                                                                                     th:alt="${category.label}"></a>
                                                                         </div>
                                                                     </div>

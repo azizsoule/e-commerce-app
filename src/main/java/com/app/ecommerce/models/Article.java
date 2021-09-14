@@ -82,7 +82,7 @@ public class Article {
 
     @Transient
     public String getImagePath() {
-        return Constants.MEDIA_SERVER_ENDPOINT + "/" + sku + "/" + image;
+        return Constants.MEDIA_SERVER_ENDPOINT + "/articles/" + sku + "/" + image;
     }
 
 }

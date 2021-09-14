@@ -87,11 +87,11 @@
 						<div class="row">
 							<div class="content-product-left class-honizol col-sm-6 col-xs-12 ">
 								<div class="large-image  ">
-									<img itemprop="image" class="product-image-zoom" th:src="${article.image}" data-zoom-image="image/demo/shop/product/J9.jpg" th:title="${article.label}" th:alt="${article.label}">
+									<img itemprop="image" class="product-image-zoom" th:src="${article.getImagePath()}" data-zoom-image="image/demo/shop/product/J9.jpg" th:title="${article.label}" th:alt="${article.label}">
 								</div>
 								<div id="thumb-slider" class="owl-theme owl-loaded owl-drag full_slider">
 									<a th:each="image : ${article.images}" data-index="0" class="img thumbnail " data-image="image/demo/shop/product/J9.jpg" th:title="${article.label}">
-										<img th:src="${image.image}" th:title="${article.label}" th:alt="${article.label}">
+										<img th:src="${image.getImagePath()}" th:title="${article.label}" th:alt="${article.label}">
 									</a>
 								</div>
 								
@@ -152,7 +152,7 @@
 											</div>
 										</div>
 										<div class="cart">
-											<input th:data-pi="${article.idArticle}" th:data-ci="${customer.id}" th:data-pimg="${article.image}" th:data-pn="${article.label}" type="button" data-toggle="tooltip" title="" value="Add to Cart"
+											<input th:data-pi="${article.idArticle}" th:data-ci="${customer.id}" th:data-pimg="${article.getImagePath()}" th:data-pn="${article.label}" type="button" data-toggle="tooltip" title="" value="Add to Cart"
 												   onclick="cart.add(this.getAttribute('data-pi'), this.getAttribute('data-ci'), document.getElementById('qt').value, this.getAttribute('data-pimg'), this.getAttribute('data-pn'))" data-loading-text="Loading..."
 												   id="button-cart" class="btn btn-mega btn-lg"
 												   data-original-title="Add to Cart"/>
@@ -160,7 +160,7 @@
 										<div class="add-to-links wish_comp">
 											<ul class="blank list-inline">
 												<li class="wishlist">
-													<a th:data-pi="${article.idArticle}" th:data-ci="${customer.id}" th:data-pimg="${article.image}" th:data-pn="${article.label}" class="icon" data-toggle="tooltip" title=""
+													<a th:data-pi="${article.idArticle}" th:data-ci="${customer.id}" th:data-pimg="${article.getImagePath()}" th:data-pn="${article.label}" class="icon" data-toggle="tooltip" title=""
 													   onclick="wishlist.add(this.getAttribute('data-pi'), this.getAttribute('data-ci'), this.getAttribute('data-pimg'), this.getAttribute('data-pn'));"
 													   data-original-title="Add to Wish List"><i
 															class="fa fa-heart"></i>

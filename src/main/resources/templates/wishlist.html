@@ -83,7 +83,7 @@
                         <tbody>
                         <tr th:each="wishItem : ${wishlist}">
                             <td class="text-center">
-                                <a th:href="@{/product/{id}(id=${wishItem.article.idArticle})}"><img width="70px" th:src="${wishItem.article.image}"
+                                <a th:href="@{/product/{id}(id=${wishItem.article.idArticle})}"><img width="70px" th:src="${wishItem.article.getImagePath()}"
                                                              th:alt="${wishItem.article.label}"
                                                              th:title="${wishItem.article.label}">
                                 </a>

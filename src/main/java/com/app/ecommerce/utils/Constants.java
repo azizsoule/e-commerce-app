@@ -8,6 +8,6 @@ public class Constants {
 
     public static String MEDIA_SERVER_PORT = "8080";
 
-    public static String MEDIA_SERVER_ENDPOINT = "http://" + MEDIA_SERVER_IP + ":" + MEDIA_SERVER_PORT + "/e-media/articles";
+    public static String MEDIA_SERVER_ENDPOINT = "http://" + MEDIA_SERVER_IP + ":" + MEDIA_SERVER_PORT + "/e-media";
 
 }
