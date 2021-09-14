@@ -1,11 +1,14 @@
 package com.app.ecommerce.services;
 
+import com.app.ecommerce.models.Catalog;
 import com.app.ecommerce.models.Dictionary;
 import com.app.ecommerce.repositories.DictionaryRepository;
+import io.debezium.data.Envelope;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class DictionaryService extends BaseService<Dictionary, Long> {
@@ -36,6 +39,15 @@ public class DictionaryService extends BaseService<Dictionary, Long> {
     @Override
     public void delete(Dictionary dictionary) {
         repository.delete(dictionary);
+    }
+
+    public void replicateData(Map<String, Object> dictionaryData, Envelope.Operation operation) {
+        final Dictionary dictionary = this.modelMapper().map(dictionaryData, Dictionary.class);
+        if (Envelope.Operation.DELETE == operation) {
+            this.deleteById(dictionary.getIdWord());
+        } else {
+            this.save(dictionary);
+        }
     }
 
 }

@@ -1,5 +1,6 @@
 package com.app.ecommerce.models;
 
+import com.app.ecommerce.utils.Generator;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -38,6 +39,7 @@ public class PaymentDetail {
     @PrePersist
     public void prePersist() {
         createdAt = new Date();
+        reference = "REF"+Generator.generate(5);
     }
 
 }

@@ -82,7 +82,7 @@
                 </thead>
                 <tbody>
                   <tr th:each="cartItem : ${cartItems}">
-                    <td class="text-center"><a th:href="@{/product/{id}(id=${cartItem.article.idArticle})}"><img width="70px" th:src="${cartItem.article.image}" th:alt="${cartItem.article.label}" th:title="${cartItem.article.label}" class="img-thumbnail" /></a></td>
+                    <td class="text-center"><a th:href="@{/product/{id}(id=${cartItem.article.idArticle})}"><img width="70px" th:src="${cartItem.article.getImagePath()}" th:alt="${cartItem.article.label}" th:title="${cartItem.article.label}" class="img-thumbnail" /></a></td>
                     <td class="text-left"><a th:href="@{/product/{id}(id=${cartItem.article.idArticle})}" th:text="${cartItem.article.label}">Emasa rumas gacem</a><br />
                      </td>
                     <td class="text-left" th:text="${cartItem.article.brand}">Pt 001</td>

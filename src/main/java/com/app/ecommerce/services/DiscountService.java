@@ -2,10 +2,12 @@ package com.app.ecommerce.services;
 
 import com.app.ecommerce.models.Discount;
 import com.app.ecommerce.repositories.DiscountRepository;
+import io.debezium.data.Envelope;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class DiscountService extends BaseService<Discount, Long> {
@@ -38,4 +40,12 @@ public class DiscountService extends BaseService<Discount, Long> {
         repository.delete(discount);
     }
 
+    public void replicateData(Map<String, Object> discountData, Envelope.Operation operation) {
+        final Discount discount = this.modelMapper().map(discountData, Discount.class);
+        if (Envelope.Operation.DELETE == operation) {
+            this.deleteById(discount.getIdDiscount());
+        } else {
+            this.save(discount);
+        }
+    }
 }

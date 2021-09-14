@@ -209,8 +209,8 @@
 													</div>
 												</div>
 												<div class="button-group">
-													<button sec:authorize="isAuthenticated()" class="addToCart" type="button" data-toggle="tooltip" title="Add to Cart" th:data-pi="${article.idArticle}" th:data-ci="${customer.id}" th:data-pimg="${article.image}" th:data-pn="${article.label}" onclick="cart.add(this.getAttribute('data-pi'), this.getAttribute('data-ci'), 1, this.getAttribute('data-pimg'), this.getAttribute('data-pn'))"><i class="fa fa-shopping-cart"></i> <span class="hidden-xs">Add to Cart</span></button>
-													<button sec:authorize="isAuthenticated()" class="wishlist" type="button" data-toggle="tooltip" title="Add to Wish List" th:data-pi="${article.idArticle}" th:data-ci="${customer.id}" th:data-pimg="${article.image}" th:data-pn="${article.label}" onclick="wishlist.add(this.getAttribute('data-pi'), this.getAttribute('data-ci'), this.getAttribute('data-pimg'), this.getAttribute('data-pn'))"><i class="fa fa-heart"></i></button>
+													<button sec:authorize="isAuthenticated()" class="addToCart" type="button" data-toggle="tooltip" title="Add to Cart" th:data-pi="${article.idArticle}" th:data-ci="${customer.id}" th:data-pimg="${article.getImagePath()}" th:data-pn="${article.label}" onclick="cart.add(this.getAttribute('data-pi'), this.getAttribute('data-ci'), 1, this.getAttribute('data-pimg'), this.getAttribute('data-pn'))"><i class="fa fa-shopping-cart"></i> <span class="hidden-xs">Add to Cart</span></button>
+													<button sec:authorize="isAuthenticated()" class="wishlist" type="button" data-toggle="tooltip" title="Add to Wish List" th:data-pi="${article.idArticle}" th:data-ci="${customer.id}" th:data-pimg="${article.getImagePath()}" th:data-pn="${article.label}" onclick="wishlist.add(this.getAttribute('data-pi'), this.getAttribute('data-ci'), this.getAttribute('data-pimg'), this.getAttribute('data-pn'))"><i class="fa fa-heart"></i></button>
 												</div>
 											</div><!-- right block -->
 										</div>
@@ -331,8 +331,8 @@
 														</div>
 													</div>
 													<div class="button-group">
-														<button sec:authorize="isAuthenticated()" class="addToCart" type="button" data-toggle="tooltip" title="Add to Cart" th:data-pi="${article.idArticle}" th:data-ci="${customer.id}" th:data-pimg="${article.image}" th:data-pn="${article.label}" onclick="cart.add(this.getAttribute('data-pi'), this.getAttribute('data-ci'), 1, this.getAttribute('data-pimg'), this.getAttribute('data-pn'))"><i class="fa fa-shopping-cart"></i> <span class="hidden-xs">Add to Cart</span></button>
-														<button sec:authorize="isAuthenticated()" class="wishlist" type="button" data-toggle="tooltip" title="Add to Wish List" th:data-pi="${article.idArticle}" th:data-ci="${customer.id}" th:data-pimg="${article.image}" th:data-pn="${article.label}" onclick="wishlist.add(this.getAttribute('data-pi'), this.getAttribute('data-ci'), this.getAttribute('data-pimg'), this.getAttribute('data-pn'))"><i class="fa fa-heart"></i></button>
+														<button sec:authorize="isAuthenticated()" class="addToCart" type="button" data-toggle="tooltip" title="Add to Cart" th:data-pi="${article.idArticle}" th:data-ci="${customer.id}" th:data-pimg="${article.getImagePath()}" th:data-pn="${article.label}" onclick="cart.add(this.getAttribute('data-pi'), this.getAttribute('data-ci'), 1, this.getAttribute('data-pimg'), this.getAttribute('data-pn'))"><i class="fa fa-shopping-cart"></i> <span class="hidden-xs">Add to Cart</span></button>
+														<button sec:authorize="isAuthenticated()" class="wishlist" type="button" data-toggle="tooltip" title="Add to Wish List" th:data-pi="${article.idArticle}" th:data-ci="${customer.id}" th:data-pimg="${article.getImagePath()}" th:data-pn="${article.label}" onclick="wishlist.add(this.getAttribute('data-pi'), this.getAttribute('data-ci'), this.getAttribute('data-pimg'), this.getAttribute('data-pn'))"><i class="fa fa-heart"></i></button>
 													</div>
 												</div><!-- right block -->
 											</div>
@@ -373,7 +373,7 @@
 							<div th:each="category : ${categories}" class="content-box">
 								<div class="image-cat">
 									<a th:title="${category.label}">
-										<img th:src="@{${category.image}}" th:title="${category.label}" th:alt="${category.label}">
+										<img th:src="${category.getImagePath()}" th:title="${category.label}" th:alt="${category.label}">
 									</a>
 								</div>
 								<div class="inner">
