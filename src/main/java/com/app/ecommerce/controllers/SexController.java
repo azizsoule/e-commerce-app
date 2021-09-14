@@ -1,7 +1,7 @@
 package com.app.ecommerce.controllers;
 
-import com.app.ecommerce.models.Region;
-import com.app.ecommerce.services.RegionService;
+import com.app.ecommerce.models.Sex;
+import com.app.ecommerce.services.SexService;
 import com.app.ecommerce.utils.Router;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,37 +12,37 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
-public class RegionController {
-    private static final String URI="/regions";
-    private static final String ADD_URI = "/add-region";
-    private static final String LIST_VIEW="region";
-    private static final String VIEW="add_region";
+public class SexController {
+    private static final String URI="/sexes";
+    private static final String ADD_URI="/add-sex";
+    private static final String LIST_VIEW="sex";
+    private static final String VIEW="add_sex";
 
     @Autowired
-    private RegionService regionService;
+    private SexService service;
 
     @GetMapping(URI)
-    public String getAllRegions(Model model){
-        model.addAttribute("regions",regionService.findAll());
+    public String getAllSexs(Model model){
+        model.addAttribute("sexes",service.findAll());
         return LIST_VIEW;
     }
 
     @GetMapping(ADD_URI)
-    private String getRegion(Model model) {
-        model.addAttribute("region", new Region());
+    private String getSex(Model model) {
+        model.addAttribute("sex", new Sex());
         return VIEW;
     }
 
     @GetMapping(URI+"/{id}")
-    public String getRegion(@PathVariable(name = "id")Long id, Model model){
-        model.addAttribute("region", regionService.findById(id));
+    public String getSex(@PathVariable(name = "id")Long id, Model model){
+        model.addAttribute("sex", service.findById(id));
         return VIEW;
     }
 
     @PostMapping(ADD_URI + "/save")
-    private String postRegion(Region region, RedirectAttributes ra) {
+    private String postSex(Sex sex, RedirectAttributes ra) {
         try {
-            regionService.save(region);
+            service.save(sex);
             ra.addFlashAttribute("success", "Successfully saved !");
         } catch (Exception e) {
             System.out.println(e.getMessage());
