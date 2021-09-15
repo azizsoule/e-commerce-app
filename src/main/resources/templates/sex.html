@@ -1,20 +1,19 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:th="http://www.thymeleaf.org"
       layout:decorate="~{layout/base-layout}">
-
 <th:block layout:fragment="content">
     <link rel="stylesheet" type="text/css" th:href="@{/data-tables/datatables.min.css}"/>
 
     <main>
         <div class="container-fluid">
-            <h2 class="mt-30 page-title">Cities</h2>
+            <h2 class="mt-30 page-title">Categories</h2>
             <ol class="breadcrumb mb-30">
                 <li class="breadcrumb-item"><a href="/">Dashboard</a></li>
-                <li class="breadcrumb-item active">Cities</li>
+                <li class="breadcrumb-item active">Sex</li>
             </ol>
             <div class="row justify-content-between">
                 <div class="col-lg-12">
-                    <a th:href="@{/add-new}" class="add-btn hover-btn">Add New</a>
+                    <a th:href="@{/add-sex}" class="add-btn hover-btn">Add New</a>
                 </div>
                 <div class="col-lg-3 col-md-4">
                     <div class="bulk-section mt-30">
@@ -37,12 +36,9 @@
                             <input type="text" class="form-control" placeholder="Search">
                         </div>
                         <div class="input-group">
-                            <!-- <select id="categeory" name="categeory" class="form-control">
-                                 <option selected>Active</option>
-                                 <option value="1">Inactive</option>
-                             </select>-->
+
                             <div class="input-group-append">
-                                <button class="status-btn hover-btn" type="submit">Search UserGroup</button>
+                                <button class="status-btn hover-btn" type="submit">Search sex</button>
                             </div>
                         </div>
                     </div>
@@ -50,32 +46,29 @@
                 <div class="col-lg-12 col-md-12">
                     <div class="card card-static-2 mt-30 mb-30">
                         <div class="card-title-2">
-                            <h4>All Cities</h4>
+                            <h4>All sexes</h4>
                         </div>
                         <div class="card-body-table">
                             <div class="table-responsive">
-                                <table class="table ucp-table table-hover" id="groupUser-table">
+                                <table class="table ucp-table table-hover" id="category-table">
                                     <thead>
                                     <tr>
                                         <th style="width:60px"><input type="checkbox" class="check-all"></th>
                                         <th style="width:60px">ID</th>
                                         <th>Name</th>
-                                        <th>Region</th>
                                         <th>Action</th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr th:each="city:${cities}">
-                                        <td><input type="checkbox" class="check-item" name="ids[]" value="11"></td>
-                                        <td th:text="${city.idCity}">1</td>
-                                        <td th:text="${city.label}">Fruits and Vegetables</td>
-                                        <td th:text="${city.region.label}">Fruits and Vegetables</td>
+
+                                    <tr th:each="sex:${sexes}">
+                                        <td><input type="checkbox" class="check-item" name="ids[]" th:value="${sex.idSex}"></td>
+                                        <td th:text="${sex.idSex}">8</td>
+                                        <td th:text="${sex.label}">Personal Care</td>
                                         <td class="action-btns">
-                                            <a th:href="@{/cities/{id}(id=${city.idCity})}" class="edit-btn"><i
-                                                    class="fas fa-edit"></i> Edit</a>
+                                            <a th:href="@{/sexes/{id}(id=${sex.idSex})}" class="edit-btn"><i class="fas fa-edit"></i> Edit</a>
                                         </td>
                                     </tr>
-
                                     </tbody>
                                 </table>
                             </div>
@@ -90,9 +83,11 @@
 <th:block layout:fragment="scripts">
     <script>
         $(document).ready( function () {
-            $('#groupUser-table').DataTable();
+            $('#category-table').DataTable();
         } );
     </script>
 </th:block>
 
-</html>
+
+
+ </html>
