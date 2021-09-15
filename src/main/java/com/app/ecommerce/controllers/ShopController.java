@@ -14,8 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 @Controller
@@ -63,15 +62,26 @@ public class ShopController extends BaseController {
 
         List<Article> recommendedList = new ArrayList<>();
 
+        var counter = new Object() {
+            int i = 0;
+        };
+
         article.getSubCategory().getArticles().forEach(art -> {
-            int i =1;
             if (art.getComments().size()!=0 && art.getRatingSum()!=0) {
-                if (art.getRatingSum() / art.getComments().size() >= 3 && i <= 5) {
+                if (art.getRatingSum() / art.getComments().size() >= 3 && counter.i <= 5) {
                     recommendedList.add(article);
-                    i ++;
+                    counter.i++;
                 }
             }
         });
+
+        /*
+        List<Article> articles = new ArrayList<>(article.getSubCategory().getArticles());
+        articles.sort(Comparator.comparing(a -> (a.getRatingSum() / (a.getComments().size() == 0 ? 1 : a.getComments().size()))));
+
+        if (articles.size() >= 5) {
+
+        }*/
 
         model.addAttribute("recommendedList", recommendedList);
         model.addAttribute("customer", customer);
