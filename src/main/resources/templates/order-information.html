@@ -115,8 +115,8 @@
 						</thead>
 						<tbody>
 							<tr th:each="orderItem : ${order.orderItems}" >
-								<td class="text-left" th:text="${orderItem.article.label}" >iPhone5 </td>
-								<td class="text-left" th:text="${orderItem.article.brand}">product 11</td>
+								<td class="text-left" ><a th:href="@{/product/{id}(id=${orderItem.article.idArticle})}" th:text="${orderItem.article.label}"></a> </td>
+								<td class="text-left" ><a th:href="@{/product/{id}(id=${orderItem.article.idArticle})}" th:text="${orderItem.article.brand}"></a></td>
 								<td class="text-right" th:text="${orderItem.quantity}">1</td>
 								<td class="text-right">[[ ${orderItem.article.price} ]] FCFA</td>
 								<td class="text-right"> [[ ${orderItem.article.price * orderItem.quantity} ]] FCFA </td>

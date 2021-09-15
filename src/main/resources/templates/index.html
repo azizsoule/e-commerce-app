@@ -174,8 +174,8 @@
 										<div class="product-item-container">
 											<div class="left-block">
 												<div class="product-image-container second_img ">
-													<img th:src="@{/image/demo/shop/resize/J5-270x270.jpg}" alt="Apple Cinema 30&quot;" class="img-responsive" />
-													<img th:src="@{/image/demo/shop/resize/J9-270x270.jpg}" alt="Apple Cinema 30&quot;" class="img_0 img-responsive" />
+													<img th:src="${article.getImagePath()}" th:alt="${article.label}" class="img-responsive" />
+													<img th:src="${article.getImagePath()}" th:alt="${article.label}" class="img_0 img-responsive" />
 												</div>
 												<!--Sale Label-->
 												<span class="label label-sale">-15%</span>
@@ -296,8 +296,8 @@
 											<div class="product-item-container">
 												<div class="left-block">
 													<div class="product-image-container second_img ">
-														<img th:src="@{/image/demo/shop/resize/J5-270x270.jpg}" alt="Apple Cinema 30&quot;" class="img-responsive" />
-														<img th:src="@{/image/demo/shop/resize/J9-270x270.jpg}" alt="Apple Cinema 30&quot;" class="img_0 img-responsive" />
+														<img th:src="${article.getImagePath()}" th:alt="${article.label}" class="img-responsive" />
+														<img th:src="${article.getImagePath()}" th:alt="${article.label}" class="img_0 img-responsive" />
 													</div>
 													<!--Sale Label-->
 													<span class="label label-sale">-15%</span>

@@ -71,10 +71,11 @@
                                 </div>
 
                                 <div id="thumb-slider" class="owl-theme owl-loaded owl-drag full_slider">
-                                    <a th:each="image : ${article.images}" data-index="0" class="img thumbnail " data-image="image/demo/shop/product/J9.jpg"
-                                       th:title="${article.label}">
-                                        <img th:src="${image.getImagePath()}" th:title="${article.label}"
-                                             th:alt="${article.label}"/>
+                                    <a class="img thumbnail " th:data-image="${article.getImagePath()}" th:title="${article.label}">
+                                        <img height="155px" width="135px" th:src="${article.getImagePath()}" th:title="${article.label}" th:alt="${article.label}">
+                                    </a>
+                                    <a th:each="image : ${article.images}" class="img thumbnail " th:data-image="${image.getImagePath()}" th:title="${article.label}">
+                                        <img height="155px" width="135px" th:src="${image.getImagePath()}" th:title="${article.label}" th:alt="${article.label}">
                                     </a>
                                 </div>
 

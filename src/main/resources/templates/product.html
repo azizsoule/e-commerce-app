@@ -87,11 +87,14 @@
 						<div class="row">
 							<div class="content-product-left class-honizol col-sm-6 col-xs-12 ">
 								<div class="large-image  ">
-									<img itemprop="image" class="product-image-zoom" th:src="${article.getImagePath()}" data-zoom-image="image/demo/shop/product/J9.jpg" th:title="${article.label}" th:alt="${article.label}">
+									<img itemprop="image" class="product-image-zoom" th:src="${article.getImagePath()}" th:data-zoom-image="${article.getImagePath()}" th:title="${article.label}" th:alt="${article.label}">
 								</div>
 								<div id="thumb-slider" class="owl-theme owl-loaded owl-drag full_slider">
-									<a th:each="image : ${article.images}" data-index="0" class="img thumbnail " data-image="image/demo/shop/product/J9.jpg" th:title="${article.label}">
-										<img th:src="${image.getImagePath()}" th:title="${article.label}" th:alt="${article.label}">
+									<a class="img thumbnail " th:data-image="${article.getImagePath()}" th:title="${article.label}">
+										<img height="155px" width="135px" th:src="${article.getImagePath()}" th:title="${article.label}" th:alt="${article.label}">
+									</a>
+									<a th:each="image : ${article.images}" class="img thumbnail " th:data-image="${image.getImagePath()}" th:title="${article.label}">
+										<img height="155px" width="135px" th:src="${image.getImagePath()}" th:title="${article.label}" th:alt="${article.label}">
 									</a>
 								</div>
 								
@@ -225,7 +228,7 @@
 				</p>
 			</div>
 			<div id="tab-review" class="tab-pane fade">
-				<form method="post" th:action="@{/product/{articleId}/comment/add(articleId=${article.idArticle})}" th:object="${comment}">
+				<form id="rt-form" method="post" th:action="@{/product/{articleId}/comment/add(articleId=${article.idArticle})}" th:object="${comment}">
 					<div id="review">
 						<table class="table table-striped table-bordered">
 							<tbody>
@@ -260,21 +263,37 @@
 						<div class="text-right"></div>
 					</div>
 					<h2 sec:authorize="isAuthenticated()" id="review-title">Write a review</h2>
-					<div sec:authorize="isAuthenticated()" th:if="${hasAlreadyOrderedProduct}" class="contacts-form">
+					<div sec:authorize="isAuthenticated()" class="contacts-form">
+
+						<div th:if="${!hasAlreadyOrderedProduct}" class="badge badge-error">
+							vous n'avez pas encore acheté cet article !
+						</div>
 						
 						<div class="form-group"> <span class="icon icon-bubbles-2"></span>
-							<textarea th:field="${comment.content}" class="form-control" name="text" placeholder="Your Review"></textarea>
+							<textarea th:field="${comment.content}" th:disabled="${!hasAlreadyOrderedProduct}" class="form-control" name="text" placeholder="Your Review"></textarea>
 						</div> 
 						
 					
 						<div class="rate">
 						 <span style="font-size: 11px;"><span class="text-danger">Note:</span></span>
 						    <b>Rating</b> <br> </span>
-							<input th:field="${comment.rating}" id="input-id" type="number" class="rating" min=0 max=5 step=0.1 size="xl" />
+							<input th:field="${comment.rating}" th:disabled="${!hasAlreadyOrderedProduct}" id="rt-input" type="number" class="rating" min=0 max=5 step=0.1 size="xl" />
 						</div>
 						 <br> <br> <br>
-						<input type="submit" class="buttons clearfix btn buttonGray" id="button-review" value="send" />
-
+						<input th:disabled="${!hasAlreadyOrderedProduct}" type="button" onclick="submitForm()" class="buttons clearfix btn buttonGray" id="button-review" value="send" />
+						<script>
+							function submitForm() {
+								if (document.getElementById("rt-input").value === "") {
+									document.getElementById("rt-input").value = "0";
+								}
+								$("form").submit();
+							}
+						</script>
+					</div>
+					<div sec:authorize="isAnonymous()">
+						Vous devez vous connecter à votre compte pour pouvoir laisser votre avis. Si vous disposez déjà d'un compte, connectez vous
+						<a th:href="@{/login}" class="btn btn-primary" >Login</a> ou alors inscrivez vous
+						<a th:href="@{/register}" class="btn btn-primary" >Register</a> .
 					</div>
 				</form>
 			</div>
@@ -285,193 +304,52 @@
 				
 				<!-- Related Products -->
 				<div class="related titleLine products-list grid module ">
-	<h3 class="modtitle">Related Products  </h3>
-	<div class="releate-products ">
-		<div class="product-layout">
+	<h3 th:if="${recommendedList.size() != 0}" class="modtitle">Recommended Products  </h3>
+	<div th:if="${recommendedList.size() != 0}" class="releate-products ">
+		<div th:each="prod : ${recommendedList}" class="product-layout">
 			<div class="product-item-container">
 				<div class="left-block">
 					<div class="product-image-container second_img ">
-						<img th:src="@{/image/demo/shop/product/e11.jpg}" title="Apple Cinema 30&quot;" class="img-responsive" />
-						<img th:src="@{/image/demo/shop/product/e12.jpg}" title="Apple Cinema 30&quot;" class="img_0 img-responsive" />
+						<img th:src="${prod.getImagePath()}" th:title="${prod.label}" class="img-responsive" />
+						<img th:src="${prod.getImagePath()}" th:title="${prod.label}" class="img_0 img-responsive" />
 					</div>
 					<!--Sale Label-->
 					<span class="label label-sale">Sale</span>
 					<!--full quick view block-->
-					<a class="quickview iframe-link visible-lg" data-fancybox-type="iframe"  th:href="@{quickview}">  Quickview</a>
+					<a class="quickview iframe-link visible-lg" data-fancybox-type="iframe"  th:href="@{/quickview/{id}(id=${prod.idArticle})}">  Quickview</a>
 					<!--end full quick view block-->
 				</div>
-				
-				
-				<div class="right-block">
-					<div class="caption">
-						<h4><a th:href="@{product}">Apple Cinema 30&quot;</a></h4>
-						<div class="ratings">
-							<div class="rating-box">
-								<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-								<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-								<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-								<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-								<span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i></span>
-							</div>
-						</div>
-											
-						<div class="price">
-							<span class="price-new">$74.00</span> 
-							<span class="price-old">$122.00</span>		 
-							<span class="label label-percent">-40%</span>    
-						</div>
-						<div class="description item-desc hidden">
-							<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut l..</p>
-						</div>
-					</div>
-					
-					  <div class="button-group">
-						<button class="addToCart" type="button" data-toggle="tooltip" title="Add to Cart" onclick="cart.add('42', '1');"><i class="fa fa-shopping-cart"></i> <span class="hidden-xs">Add to Cart</span></button>
-						<button class="wishlist" type="button" data-toggle="tooltip" title="Add to Wish List" onclick="wishlist.add('42');"><i class="fa fa-heart"></i></button>
-						<button class="compare" type="button" data-toggle="tooltip" title="Compare this Product" onclick="compare.add('42');"><i class="fa fa-exchange"></i></button>
-					  </div>
-				</div><!-- right block -->
 
-			</div>
-		</div>
-		<div class="product-layout ">
-			<div class="product-item-container">
-				<div class="left-block">
-					<div class="product-image-container second_img ">
-						<img th:src="@{/image/demo/shop/product/11.jpg}" title="Apple Cinema 30&quot;" class="img-responsive" />
-						<img th:src="@{/image/demo/shop/product/10.jpg}" title="Apple Cinema 30&quot;" class="img_0 img-responsive" />
-						
-					</div>
-					<!--Sale Label-->
-					<span class="label label-sale">Sale</span>
-					<!--full quick view block-->
-					<a class="quickview iframe-link visible-lg" data-fancybox-type="iframe"  th:href="@{quickview}">  Quickview</a>
-					<!--end full quick view block-->
-				</div>
-				
-				
-				<div class="right-block">
-					<div class="caption">
-						<h4><a th:href="@{product}">Apple Cinema 30&quot;</a></h4>
-						<div class="ratings">
-							<div class="rating-box">
-								<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-								<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-								<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-								<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-								<span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i></span>
-							</div>
-						</div>
-											
-						<div class="price">
-							<span class="price-new">$74.00</span> 
-							<span class="price-old">$122.00</span>		 
-							<span class="label label-percent">-40%</span>    
-						</div>
-						<div class="description item-desc hidden">
-							<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut l..</p>
-						</div>
-					</div>
-					
-					  <div class="button-group">
-						<button class="addToCart" type="button" data-toggle="tooltip" title="Add to Cart" onclick="cart.add('42', '1');"><i class="fa fa-shopping-cart"></i> <span class="hidden-xs">Add to Cart</span></button>
-						<button class="wishlist" type="button" data-toggle="tooltip" title="Add to Wish List" onclick="wishlist.add('42');"><i class="fa fa-heart"></i></button>
-						<button class="compare" type="button" data-toggle="tooltip" title="Compare this Product" onclick="compare.add('42');"><i class="fa fa-exchange"></i></button>
-					  </div>
-				</div><!-- right block -->
 
-			</div>
-		</div>
-		<div class="product-layout ">
-			<div class="product-item-container">
-				<div class="left-block">
-					<div class="product-image-container second_img ">
-						<img th:src="@{/image/demo/shop/product/35.jpg}" title="Apple Cinema 30&quot;" class="img-responsive" />
-						<img th:src="@{/image/demo/shop/product/34.jpg}" title="Apple Cinema 30&quot;" class="img_0 img-responsive" />
-					</div>
-					<!--Sale Label-->
-					<span class="label label-sale">Sale</span>
-					<!--full quick view block-->
-					<a class="quickview iframe-link visible-lg" data-fancybox-type="iframe"  th:href="@{quickview}">  Quickview</a>
-					<!--end full quick view block-->
-				</div>
-				
-				
 				<div class="right-block">
 					<div class="caption">
-						<h4><a th:href="@{product}">Apple Cinema 30&quot;</a></h4>
-						<div class="ratings">
-							<div class="rating-box">
-								<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-								<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-								<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-								<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-								<span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i></span>
-							</div>
-						</div>
-											
-						<div class="price">
-							<span class="price-new">$74.00</span> 
-							<span class="price-old">$122.00</span>		 
-							<span class="label label-percent">-40%</span>    
-						</div>
-						<div class="description item-desc hidden">
-							<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut l..</p>
-						</div>
-					</div>
-					
-					  <div class="button-group">
-						<button class="addToCart" type="button" data-toggle="tooltip" title="Add to Cart" onclick="cart.add('42', '1');"><i class="fa fa-shopping-cart"></i> <span class="hidden-xs">Add to Cart</span></button>
-						<button class="wishlist" type="button" data-toggle="tooltip" title="Add to Wish List" onclick="wishlist.add('42');"><i class="fa fa-heart"></i></button>
-						<button class="compare" type="button" data-toggle="tooltip" title="Compare this Product" onclick="compare.add('42');"><i class="fa fa-exchange"></i></button>
-					  </div>
-				</div><!-- right block -->
+						<h4><a th:href="@{/product/{id}(id=${prod.idArticle})}" th:text="${prod.label}">Apple Cinema 30&quot;</a></h4>
 
-			</div>
-		</div>
-		<div class="product-layout ">
-			<div class="product-item-container">
-				<div class="left-block">
-					<div class="product-image-container second_img ">
-						<img th:src="@{/image/demo/shop/product/14.jpg}" title="Apple Cinema 30&quot;" class="img-responsive" />
-						<img th:src="@{/image/demo/shop/product/15.jpg}" title="Apple Cinema 30&quot;" class="img_0 img-responsive" />
-					</div>
-					<!--Sale Label-->
-					<span class="label label-sale">Sale</span>
-					<!--full quick view block-->
-					<a class="quickview iframe-link visible-lg" data-fancybox-type="iframe"  th:href="@{quickview}">  Quickview</a>
-					<!--end full quick view block-->
-				</div>
-				
-				
-				<div class="right-block">
-					<div class="caption">
-						<h4><a th:href="@{product}">Apple Cinema 30&quot;</a></h4>
-						<div class="ratings">
+						<div th:if="${prod.comments.size() != 0}" class="ratings">
 							<div class="rating-box">
-								<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-								<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-								<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-								<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-								<span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i></span>
+								<span th:each="i : ${#numbers.sequence(1, 5)}" class="fa fa-stack"><i th:class="${i<=(prod.ratingSum/prod.comments.size()) ? 'fa fa-star fa-stack-1x' : 'fa fa-star-o fa-stack-1x' }"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
 							</div>
 						</div>
-											
-						<div class="price">
-							<span class="price-new">$74.00</span> 
-							<span class="price-old">$122.00</span>		 
-							<span class="label label-percent">-40%</span>    
+
+						<div th:if="${prod.comments.size() == 0}" class="ratings" >
+							<div class="rating-box">
+								<span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
+								<span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
+								<span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
+								<span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
+								<span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
+							</div>
 						</div>
-						<div class="description item-desc hidden">
-							<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut l..</p>
+
+						<div class="price">
+							<span class="price-new">[[ ${prod.price} ]] FCFA</span>
 						</div>
 					</div>
-					
-					  <div class="button-group">
-						<button class="addToCart" type="button" data-toggle="tooltip" title="Add to Cart" onclick="cart.add('42', '1');"><i class="fa fa-shopping-cart"></i> <span class="hidden-xs">Add to Cart</span></button>
-						<button class="wishlist" type="button" data-toggle="tooltip" title="Add to Wish List" onclick="wishlist.add('42');"><i class="fa fa-heart"></i></button>
-						<button class="compare" type="button" data-toggle="tooltip" title="Compare this Product" onclick="compare.add('42');"><i class="fa fa-exchange"></i></button>
-					  </div>
+
+					<div class="button-group">
+						<button sec:authorize="isAuthenticated()" class="addToCart" type="button" data-toggle="tooltip" title="Add to Cart" th:data-pi="${prod.idArticle}" th:data-ci="${customer.id}" th:data-pimg="${prod.getImagePath()}" th:data-pn="${prod.label}" onclick="cart.add(this.getAttribute('data-pi'), this.getAttribute('data-ci'), 1, this.getAttribute('data-pimg'), this.getAttribute('data-pn'))"><i class="fa fa-shopping-cart"></i> <span class="hidden-xs">Add to Cart</span></button>
+						<button sec:authorize="isAuthenticated()" class="wishlist" type="button" data-toggle="tooltip" title="Add to Wish List" th:data-pi="${prod.idArticle}" th:data-ci="${customer.id}" th:data-pimg="${prod.getImagePath()}" th:data-pn="${prod.label}" onclick="wishlist.add(this.getAttribute('data-pi'), this.getAttribute('data-ci'), this.getAttribute('data-pimg'), this.getAttribute('data-pn'))"><i class="fa fa-heart"></i></button>
+					</div>
 				</div><!-- right block -->
 
 			</div>

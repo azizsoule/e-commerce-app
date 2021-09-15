@@ -23,14 +23,6 @@ public class ArticleService extends BaseService<Article, Long> {
         return repository.getById(idUser);
     }
 
-    public Article addComment(Customer customer, Article article, Comment comment) {
-        comment.setArticle(article);
-        comment.setCustomer(customer);
-        article.getComments().add(comment);
-        article.setRatingSum(article.getRatingSum()+comment.getRating());
-        return this.update(article);
-    }
-
     @Override
     public List<Article> findAll() {
         return repository.findAll();

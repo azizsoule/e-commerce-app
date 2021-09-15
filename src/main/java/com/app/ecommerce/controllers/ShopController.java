@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 @Controller
@@ -32,6 +34,9 @@ public class ShopController extends BaseController {
     @Autowired
     CustomerService customerService;
 
+    @Autowired
+    CommentService commentService;
+
     @GetMapping(Route.SUB_CATEGORY+"/{id}")
     String subCategory(@AuthenticationPrincipal Customer customer, @PathVariable String id, Model model) {
         model.addAttribute("customer", customer);
@@ -41,16 +46,34 @@ public class ShopController extends BaseController {
 
     @GetMapping(Route.PRODUCT+"/{id}")
     String article(@AuthenticationPrincipal Customer customer, @PathVariable String id, Model model) {
-        customer = customerService.findById(customer.getId());
         Article article = articleService.findById(Long.parseLong(id));
         AtomicBoolean hasAlreadyOrderedProduct = new AtomicBoolean(false);
-        customer.getOrders().forEach(order -> {
-            order.getOrderItems().forEach(orderItem -> {
-                if (orderItem.getArticle().equals(article)) {
-                    hasAlreadyOrderedProduct.set(true);
+        if (customer != null) {
+            customer = customerService.findById(customer.getId());
+            customer.getOrders().forEach(order -> {
+                if (order.getOrderState().getCodeOrderState().equals("COMPLETE")) {
+                    order.getOrderItems().forEach(orderItem -> {
+                        if (orderItem.getArticle().getIdArticle() == article.getIdArticle()) {
+                            hasAlreadyOrderedProduct.set(true);
+                        }
+                    });
                 }
             });
+        }
+
+        List<Article> recommendedList = new ArrayList<>();
+
+        article.getSubCategory().getArticles().forEach(art -> {
+            int i =1;
+            if (art.getComments().size()!=0 && art.getRatingSum()!=0) {
+                if (art.getRatingSum() / art.getComments().size() >= 3 && i <= 5) {
+                    recommendedList.add(article);
+                    i ++;
+                }
+            }
         });
+
+        model.addAttribute("recommendedList", recommendedList);
         model.addAttribute("customer", customer);
         model.addAttribute("article", article);
         model.addAttribute("comment", new Comment());
@@ -67,10 +90,14 @@ public class ShopController extends BaseController {
     }
 
     @PostMapping(Route.PRODUCT+"/{articleId}/comment/add")
-    public String addCommentToArticle(@AuthenticationPrincipal Customer customer, @PathVariable String articleId, Comment comment) {
+    public String addCommentToArticle(@AuthenticationPrincipal Customer customer, @PathVariable Long articleId, Comment comment) {
         customer = customerService.findById(customer.getId());
-        Article article = articleService.findById(Long.parseLong(articleId));
-        articleService.addComment(customer, article, comment);
+        Article article = articleService.findById(articleId);
+        comment.setArticle(article);
+        comment.setCustomer(customer);
+        commentService.save(comment);
+        article.setRatingSum(article.getRatingSum()+comment.getRating());
+        articleService.update(article);
         return Route.redirectTo(Route.PRODUCT+"/"+articleId);
     }
 

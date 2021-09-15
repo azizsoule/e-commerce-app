@@ -26,7 +26,7 @@ public class Image {
 
     @Transient
     public String getImagePath() {
-        return Constants.MEDIA_SERVER_ENDPOINT + "/" + article.getSku() + "/" + image;
+        return Constants.MEDIA_SERVER_ENDPOINT + "/articles/" + article.getSku() + "/" + image;
     }
 
 }

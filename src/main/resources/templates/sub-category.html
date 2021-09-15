@@ -103,7 +103,7 @@
 							<div class="col-sm-12">
 								<div class="banners">
 									<div>
-										<a><img th:src="${subCategory.getImagePath()}" th:alt="${subCategory.label}"><br></a>
+										<a><img height="260px" width="870px" th:src="${subCategory.getImagePath()}" th:alt="${subCategory.label}"><br></a>
 									</div>
 								</div>
 							
@@ -132,9 +132,9 @@
 							<div class="product-layout col-md-4 col-sm-6 col-xs-12 ">
 								<div class="product-item-container">
 									<div class="left-block">
-										<div class="product-image-container lazy second_img ">
+										<div class="product-image-container second_img ">
 											<img th:src="${article.getImagePath()}" th:alt="${article.label}" class="img-responsive" />
-											<img th:src="${article.getImagePath()}" th:alt="${article.label}" class="img_0 img-responsive" />
+											<img th:src="${article.images[0].getImagePath()}" th:alt="${article.label}" class="img_0 img-responsive" />
 										</div>
 										<!--Sale Label-->
 										<span class="label label-sale">Sale</span>
@@ -165,7 +165,7 @@
 											</div>
 
 											<div class="price">
-												<span th:text="${article.price}" class="price-new">$74.00</span>
+												<span class="price-new">[[${article.price}]] FCFA</span>
 												<span th:text="${article.price}" class="price-old">$122.00</span>
 												<span th:if="${!article.discounts.isEmpty()}" class="label label-percent">-40%</span>
 											</div>

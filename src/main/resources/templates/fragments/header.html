@@ -185,8 +185,8 @@
                                                 <ul class="megamenu">
                                                     <li th:each="catalog : ${catalogs}" class="item-vertical style1 with-sub-menu hover">
                                                         <p class="close-menu"></p>
-                                                        <a th:href="@{#}" class="clearfix">
-                                                            <img th:src="@{/image/theme/icons/13.png}" alt="icon">
+                                                        <a class="clearfix">
+                                                            <img style="border-radius: 100px" th:src="${catalog.getImagePath()}" width="24px" height="24px" alt="icon">
                                                             <span th:text="${catalog.label}">Automotive &amp; Motocrycle</span>
                                                             <b class="caret"></b>
                                                         </a>
@@ -219,7 +219,7 @@
                                                     </li>
                                                     <li class="loadmore">
                                                         <i class="fa fa-plus-square-o"></i>
-                                                        <span class="more-view">More Categories</span>
+                                                        <span class="more-view">More Catalogs</span>
                                                     </li>
                                                 </ul>
                                             </div>
